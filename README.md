@@ -93,7 +93,7 @@
 | 51 | Everybody Gets Mogged (Claude Opus 5.5 Music Video) | Automated Artist | 251 | https://youtu.be/wkS2D4DEz_A |
 | 52 | 小橘的一天（像素短片） | Denny | 27 | https://youtu.be/_lgbAGM2TTo |
 
-播放量数据截至 2026-10-26；不含官方账号，不含已下架的两支。
+播放量数据截至 2026-10-26。
 
 ## 本地查看
 
