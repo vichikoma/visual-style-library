@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>绘画质感动画 · 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{--pt-ink:#0a0e1a;--pt-deep:#16224a;--pt-blue:#3a4a72;--pt-amber:#e8a45c;--pt-cream:#ffe9c0}
+
+.pw{position:relative;overflow:hidden;background:#0a0e1a}
+.pw canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pw .cap{position:absolute;z-index:5;font-family:var(--f-serif);color:#f4ecdd;letter-spacing:.1em;
+  text-shadow:0 .3cqw 1.2cqw rgba(0,0,0,.55)}
+.pw .cap.bl{left:4cqw;bottom:3.6cqw;font-size:4.4cqw;font-weight:700;line-height:1.15}
+.pw .cap.bl small{display:block;font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.3em;opacity:.8;
+  margin-top:.9cqw;font-weight:400}
+.pw .cap.tr{right:4cqw;top:3.4cqw;text-align:right;font-size:1.2cqw;font-family:var(--f-mono);letter-spacing:.22em;opacity:.85}
+.pw .vignette{position:absolute;inset:0;z-index:4;
+  background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(4,6,14,.55) 100%)}
+.pw .brushnote{position:absolute;z-index:5;left:4cqw;top:3.4cqw;font-family:var(--f-mono);font-size:1.05cqw;
+  letter-spacing:.24em;color:rgba(255,233,192,.8)}
+
+/* 发光色面 */
+.frame.glow{background:#05070f}
+.glow .p1,.glow .p2,.glow .p3,.glow .p4{position:absolute;display:block;border-radius:50%;filter:blur(2.2cqw)}
+.glow .p1{left:6%;top:10%;width:42%;height:54%;background:rgba(232,164,92,.62)}
+.glow .p2{left:32%;top:20%;width:46%;height:52%;background:rgba(122,86,196,.55)}
+.glow .p3{left:16%;top:40%;width:50%;height:48%;background:rgba(58,168,196,.48)}
+.glow .p4{left:60%;top:34%;width:26%;height:32%;background:rgba(255,233,192,.72);filter:blur(1.8cqw)}
+.glow .band{position:absolute;left:-10%;right:-10%;height:8%;background:rgba(255,255,255,.10);filter:blur(1.6cqw)}
+.glow .edge{position:absolute;inset:0;background:
+  linear-gradient(120deg,rgba(255,233,192,.18),transparent 42%,rgba(122,86,196,.16) 70%,transparent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>06 / 25</span>
+    <span class="right"><a href="像素艺术.html">← 上一条</a><a href="新粗野主义平面风格.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>绘画质感动画<small>Painterly Animation</small></h1>
+    <p class="lead">以可见笔触、非写实渲染与发光色面构建画面，让每一帧都保留“被画出来”的痕迹。它不追求照片级真实，而是用色彩区块、笔刷方向与光晕关系表达光与空气。</p>
+    <div class="meta">
+      <div><b>风格定位</b>绘画质感动画（Painterly Animation），强调手绘痕迹与色彩关系，可跨题材使用</div>
+      <div><b>视觉媒介</b>可见笔触、厚涂色块、发光色面、边缘晕染，而非平滑三维渲染</div>
+      <div><b>典型母体</b>黄昏海景、肖像厚涂、抽象色面、水彩风景</div>
+    </div>
+    <div class="tags">
+      <span class="tag">绘画质感动画（Painterly Animation）</span><span class="tag">可见笔触</span><span class="tag">厚涂</span>
+      <span class="tag">发光色面</span><span class="tag">非写实渲染</span><span class="tag">空气感</span>
+      <span class="tag w">情绪化光线</span><span class="tag w">手作痕迹</span><span class="tag w">诗意</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#0a0e1a"></i>墨夜<br><code>#0A0E1A</code></div>
+      <div class="sw"><i style="background:#16224a"></i>深海蓝<br><code>#16224A</code></div>
+      <div class="sw"><i style="background:#3a4a72"></i>远山蓝<br><code>#3A4A72</code></div>
+      <div class="sw"><i style="background:#e8a45c"></i>琥珀光<br><code>#E8A45C</code></div>
+      <div class="sw"><i style="background:#ffe9c0"></i>奶白<br><code>#FFE9C0</code></div>
+      <div class="sw"><i style="background:#7a56c4"></i>紫晕<br><code>#7A56C4</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">整帧由上千条短笔触堆叠而成：先铺大色块，再用带方向的笔刷叠出过渡，最后点亮高光。笔触方向暗示形体走向，边界允许毛糙。</p>
+
+  <div class="frame pw" id="f-master">
+    <canvas id="c-master" width="640" height="360"></canvas>
+    <div class="brushnote">笔刷 3 层 · 约 2600 笔</div>
+    <div class="cap tr">OIL · 24FPS<br>PALETTE 09</div>
+    <div class="cap bl">海的另一边<small>THE OTHER SIDE OF THE SEA</small></div>
+    <div class="vignette"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>笔触可见</b>每笔带方向与厚度，笔画之间留有叠压痕迹，不追求边缘平滑。</div>
+    <div><b>色块造型</b>形体由色温差异区分（暖光面／冷暗面），而不是靠描边勾线。</div>
+    <div><b>发光色面</b>光源本身画成一团晕开的暖色，光晕向外扩散，形成空气感。</div>
+    <div><b>分层绘制</b>底层铺色、中层塑形、上层点高光，三层笔刷尺寸依次减小。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 4</span></h2>
+  <p class="h2note">四条方向分别对应厚涂、水彩、色面与笔触本身。画面均为页面内 canvas 实时绘制。</p>
+
+  <div class="subs">
+
+    <!-- 1. 厚涂肖像 -->
+    <section class="sub">
+      <div class="frame pw" id="f-portrait">
+        <canvas id="c-portrait" width="640" height="360"></canvas>
+        <div class="brushnote">IMPASTO · 侧面光</div>
+        <div class="vignette"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>厚涂肖像<small>Impasto Portraiture</small></h3>
+        <p>用宽笔刷推出面部的大块明暗，再以小笔触点出眼窝、鼻梁与唇部高光。结构靠色块咬合，笔触方向顺着面部转折走，保留堆叠的厚度感。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">大块明暗</span><span class="tag">结构笔触</span>
+          <span class="tag">边缘毛糙</span><span class="tag">局部高光</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 水彩风景 -->
+    <section class="sub">
+      <div class="frame pw" id="f-wash">
+        <canvas id="c-wash" width="640" height="360"></canvas>
+        <div class="brushnote" style="color:#5c5348">WATERCOLOR · 留白</div>
+        <div class="vignette" style="background:radial-gradient(ellipse at 50% 46%,transparent 52%,rgba(240,232,214,.5) 100%)"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>水彩风景<small>Watercolor Landscape</small></h3>
+        <p>以低不透明度叠加与纸面留白表现空气与水汽：颜色边缘自然积水变深，形体靠大片淡彩暗示，细节留给观者补全。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">湿边晕染</span><span class="tag">纸面留白</span>
+          <span class="tag">低饱和叠加</span><span class="tag">形体省略</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 发光色面 -->
+    <section class="sub">
+      <div class="frame glow" id="f-glow">
+        <div class="p1"></div><div class="p2"></div><div class="p3"></div><div class="p4"></div>
+        <div class="band" style="top:56%"></div>
+        <div class="band" style="top:64%;height:4%;opacity:.6"></div>
+        <div class="edge"></div>
+        <div class="brushnote" style="z-index:6">LIGHT FIELDS · 抽象色面</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>发光色面<small>Glowing Color Fields</small></h3>
+        <p>把画面简化为几块相互覆盖的发光色面，靠明度与色温关系建立空间，边缘模糊、不交代具体物件。适合做转场、氛围底与抽象段落。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">大色面叠加</span><span class="tag">柔边发光</span>
+          <span class="tag">色温对比</span><span class="tag">无具体物件</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 笔触特写 -->
+    <section class="sub">
+      <div class="frame pw" id="f-stroke">
+        <canvas id="c-stroke" width="640" height="360"></canvas>
+        <div class="brushnote" style="color:#3a2f2c">MACRO · 笔触与调色盘</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">04</span>笔触特写<small>Brushstroke Macro</small></h3>
+        <p>把镜头推到画面表面：笔毛痕迹、颜料厚度、刮刀边缘成为主角。这一方向常作为片头、章节页与质感过渡使用，用材质本身说话。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">笔毛肌理</span><span class="tag">颜料厚度</span>
+          <span class="tag">刮刀边缘</span><span class="tag">纯材质画面</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>笔触与边缘</b>允许并鼓励可见笔触，边缘毛糙、颜色越界；避免矢量硬边、抗锯齿线与照片级细节。</div>
+    <div><b>光与色</b>光源画成晕开的发光色面，暖冷对比承担空间关系；暗部不用纯黑，用偏冷的环境色。</div>
+    <div><b>绘制顺序</b>依次为铺色、塑形、提亮；每层笔刷尺寸递减，最后只在焦点处点高光。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>绘画质感动画风格：可见厚涂笔触与方向性笔刷堆叠，边缘毛糙不做锐化；黄昏海面与礁石悬崖，暖琥珀色光源晕开成光团，冷蓝暗部承担阴影，海面反光用竖向短笔触；画面焦点处高光集中、其余部分笔触放松；整体空气感强、颜色关系明确，非写实渲染。</div>
+
+  <footer>样例说明：主帧与子帧由 canvas 逐笔绘制（每帧约 2000–3000 笔），不含任何照片或视频素材；人物剪影为原创造型。子风格依据 <code>styles/绘画质感动画.md</code>。</footer>
+</div>
+
+<script>
+(function(){
+  const rnd=(()=>{let s=20251119;return()=>{s=(s*16807)%2147483647;return s/2147483647}})();
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const mix=(c1,c2,t)=>[lerp(c1[0],c2[0],t),lerp(c1[1],c2[1],t),lerp(c1[2],c2[2],t)];
+  const rgb=c=>`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${c[3]===undefined?1:c[3]})`;
+  const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+  const A=(r,g,b,a,ang)=>Object.assign([r,g,b,a===undefined?1:a],{ang:ang||0});
+
+  /* 通用“逐笔绘制”器 */
+  function paint(id, field, opt){
+    const cv=document.getElementById(id); if(!cv) return;
+    const c=cv.getContext('2d'), W=cv.width, H=cv.height;
+    const o=Object.assign({dabs:2600,sMin:5,sMax:26,alphaMin:.35,alphaMax:.9,curvy:.5,bg:'#0a0e1a',base:true},opt||{});
+    // 底层：按色场铺满（保证结构不被笔触缝隙打散）
+    if(o.base){
+      const img=c.createImageData(W,H), d=img.data;
+      for(let py=0;py<H;py++){
+        for(let px=0;px<W;px++){
+          const col=field(px,py,W,H), i=(py*W+px)*4;
+          if(!col){d[i+3]=0;continue;}
+          d[i]=clamp(col[0],0,255);d[i+1]=clamp(col[1],0,255);d[i+2]=clamp(col[2],0,255);d[i+3]=255;
+        }
+      }
+      c.putImageData(img,0,0);
+    }else{
+      c.fillStyle=o.bg;c.fillRect(0,0,W,H);
+    }
+    for(let i=0;i<o.dabs;i++){
+      const x=rnd()*W, y=rnd()*H;
+      const col=field(x,y,W,H);
+      if(!col) continue;
+      const a=lerp(o.alphaMin,o.alphaMax,rnd());
+      const s=lerp(o.sMin,o.sMax,Math.pow(rnd(),1.7));
+      const ang=(col.ang!==undefined?col.ang:0)+ (rnd()-0.5)*o.curvy*1.6;
+      c.save();c.translate(x,y);c.rotate(ang);
+      c.strokeStyle=rgb([col[0],col[1],col[2],a]);
+      c.lineWidth=Math.max(1.2,s*0.28);c.lineCap='round';
+      c.beginPath();c.moveTo(-s/2,0);
+      c.quadraticCurveTo(0,(rnd()-0.5)*s*0.5,s/2,0);c.stroke();
+      if(rnd()>0.86){ // 偶发厚涂亮点
+        c.strokeStyle=rgb([clamp(col[0]+18,0,255),clamp(col[1]+14,0,255),clamp(col[2]+10,0,255),a*0.5]);
+        c.lineWidth=Math.max(1,s*0.16);c.beginPath();c.moveTo(-s/2.4,-s*0.06);
+        c.lineTo(s/2.4,-s*0.04);c.stroke();
+      }
+      c.restore();
+    }
+  }
+
+  /* ---------- 主图：黄昏海与崖 ---------- */
+  const SKY_TOP=[14,18,46], SKY_MID=[40,52,100], SKY_LOW=[124,130,164],
+        SEA_FAR=[54,72,114], SEA_NEAR=[16,26,50],
+        ROCK_D=[10,12,18], ROCK_L=[52,56,72];
+
+  // 崖顶曲线：画面右下抬起
+  function cliffTopY(x,W,H){
+    const u=x/W;
+    if(u<0.42) return H*3;
+    const t=(u-0.42)/0.58;
+    return H*(0.72+0.20*t) + H*0.018*Math.sin(u*13);
+  }
+  // 站立人物（面朝海）
+  function personHit(px,py,W,H){
+    const cx=W*0.62, baseY=cliffTopY(cx,W,H)+2, hgt=H*0.225;
+    const hcy=baseY-hgt*0.90, hr=hgt*0.11;
+    if((px-cx)*(px-cx)+(py-hcy)*(py-hcy)<hr*hr) return 1;                    // 头
+    if(py>hcy+hr*0.55&&py<baseY-hgt*0.76&&Math.abs(px-cx)<hgt*0.045) return 1; // 颈
+    const tY=baseY-hgt*0.78, bY=baseY-hgt*0.42;
+    if(py>tY&&py<bY){                                                       // 外套
+      const t=(py-tY)/(bY-tY);
+      if(Math.abs(px-cx)<hgt*(0.105+0.055*t)) return 1;
+    }
+    if(py>bY&&py<baseY){                                                    // 腿
+      const dx=Math.abs(px-cx);
+      if(dx<hgt*0.085&&dx>0) return 1;
+    }
+    return 0;
+  }
+
+  function masterField(x,y,W,H){
+    const u=x/W, v=y/H, horizon=0.55;
+    let col, ang=0;
+    if(v<horizon){
+      const t=v/horizon;
+      col = t<0.55 ? mix(SKY_TOP,SKY_MID,t/0.55) : mix(SKY_MID,SKY_LOW,(t-0.55)/0.45);
+      // 地平线暖光
+      col=mix(col,[246,190,120],Math.exp(-Math.pow((v-horizon)/0.10,2))*0.85);
+      // 月亮与光晕
+      const dx=(u-0.60)*W/H*0.55, dy=(v-0.30);
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<0.05) col=mix([255,246,220],col,clamp(d/0.05,0,1)*0.2);
+      else col=mix(col,[255,226,172],Math.exp(-Math.pow((d-0.05)/0.075,2))*0.62);
+      // 薄云
+      const band=Math.sin(v*22+u*5)*0.5+0.5;
+      if(v>0.16&&v<0.44) col=mix(col,[132,120,140],band*0.12);
+    }else{
+      const t=(v-horizon)/(1-horizon);
+      col=mix(SEA_FAR,SEA_NEAR,Math.pow(t,0.65));
+      const refl=Math.exp(-Math.pow((u-0.60)/0.10,2))*Math.exp(-Math.pow((v-horizon-0.05)/0.16,2));
+      col=mix(col,[244,212,156],refl*0.9);
+      const wave=Math.sin(v*44+u*13)*0.5+0.5;
+      col=mix(col,[clamp(col[0]+22,0,255),clamp(col[1]+24,0,255),clamp(col[2]+28,0,255)],wave*0.2);
+      ang=0.1;
+    }
+    // 崖
+    const cy=cliffTopY(x,W,H);
+    if(y>cy){
+      const t=(y-cy)/(H-cy+1);
+      col=mix(ROCK_L,ROCK_D,Math.pow(t,0.55));
+      if(y-cy<5) col=mix(col,[196,140,92],0.55);
+      return A(col[0],col[1],col[2],1,1.25);
+    }
+    // 人物
+    if(personHit(x,y,W,H)){
+      const rim=!personHit(x-4,y,W,H)||!personHit(x,y-4,W,H);
+      col=rim?[255,192,124]:[9,11,17];
+      return A(col[0],col[1],col[2],1,1.45);
+    }
+    return A(col[0],col[1],col[2],1,ang);
+  }
+
+  paint('c-master',masterField,{dabs:7000,bg:'#232b46',sMin:8,sMax:34,alphaMin:.12,alphaMax:.34,curvy:.5});
+
+  /* 主图上的崖、人物、灯（叠加在笔触之上，仍用笔触画） */
+  (function(){
+    const cv=document.getElementById('c-master'),c=cv.getContext('2d'),W=cv.width,H=cv.height;
+    // 手提灯与光
+    const cx=W*0.62, baseY=cliffTopY(cx,W,H)+2, hgt=H*0.225;
+    const lx=cx+hgt*0.15, ly=baseY-hgt*0.42;
+    const g=c.createRadialGradient(lx,ly,1,lx,ly,hgt*0.62);
+    g.addColorStop(0,'rgba(255,236,190,.95)');g.addColorStop(.28,'rgba(244,176,96,.5)');g.addColorStop(1,'rgba(244,176,96,0)');
+    c.fillStyle=g;c.fillRect(lx-hgt*0.7,ly-hgt*0.7,hgt*1.4,hgt*1.4);
+    c.fillStyle='rgba(255,248,224,.98)';
+    c.fillRect(lx-1,ly-2,3,4);
+    // 崖顶暖边（笔触）
+    for(let i=0;i<220;i++){
+      const x=W*(0.42+rnd()*0.6);
+      const top=cliffTopY(x,W,H);
+      if(top>H) continue;
+      const y=top+(rnd()-0.5)*8;
+      c.save();c.translate(x,y);c.rotate(-0.1+(rnd()-0.5)*0.3);
+      c.strokeStyle=rgb([206,150,96,0.12+rnd()*0.3]);
+      c.lineWidth=2+rnd()*5;c.lineCap='round';
+      c.beginPath();c.moveTo(-9,0);c.lineTo(9,0);c.stroke();c.restore();
+    }
+    // 星点
+    for(let i=0;i<70;i++){
+      const x=rnd()*W,y=rnd()*H*0.5;
+      c.fillStyle=`rgba(255,244,214,${0.15+rnd()*0.5})`;
+      c.fillRect(x,y,rnd()>0.85?2:1,rnd()>0.85?2:1);
+    }
+  })();
+
+  /* ---------- 厚涂肖像 ---------- */
+  const SKIN_L=[250,224,200], SKIN_M=[224,178,150], SKIN_D=[156,108,92], SKIN_X=[92,60,58],
+        HAIR_D=[30,26,38], HAIR_M=[78,62,80], HAIR_L=[142,118,118], LIP=[176,92,92];
+  function portraitField(x,y,W,H){
+    const u=x/W, v=y/H;
+    const inEl=(cx,cy,rx,ry)=>Math.pow((u-cx)/rx,2)+Math.pow((v-cy)/ry,2);
+    // 背景：暗暖棕 + 右侧轮廓光
+    let col=mix([38,28,32],[78,56,50],Math.pow(clamp(1-v,0,1),0.8));
+    col=mix(col,[124,84,56],Math.exp(-Math.pow((u-0.80)/0.28,2))*0.35);
+    // 肩与衣领
+    if(v>0.775){
+      const t=Math.pow((v-0.775)/0.225,0.8);
+      col=mix([54,46,54],[108,86,78],t*0.85);
+      if(u>0.398&&u<0.502&&v>0.79&&v<0.855) col=mix(col,[186,138,118],0.4);
+    }
+    // 颈（矩形，处于阴影）
+    if(u>0.398&&u<0.522&&v>0.715&&v<0.815) col=mix(SKIN_D,SKIN_X,0.45);
+    // 头发大形
+    const hair=inEl(0.44,0.40,0.215,0.30);
+    if(hair<1){
+      const hl=clamp(0.95-1.15*(u-0.30),0,1);
+      let hc=mix(HAIR_D,HAIR_M,hl);
+      if(Math.sin(u*70+v*10)>0.9) hc=mix(hc,HAIR_L,0.5);
+      col=hc;
+    }
+    // 脸
+    const face=inEl(0.445,0.505,0.165,0.235);
+    if(face<1){
+      const light=clamp(1.15-0.95*((u-0.30)/0.33)-0.55*((v-0.36)/0.36),0,1);
+      col=mix(SKIN_D,SKIN_M,clamp(light*1.45,0,1));
+      col=mix(col,SKIN_L,Math.pow(clamp(light-0.35,0,1),1.2)*1.3);
+      // 颧红
+      if(inEl(0.548,0.588,0.072,0.048)<1) col=mix(col,[198,118,104],0.32);
+      // 右脸暗部
+      if(u>0.500) col=mix(col,[138,92,84],clamp((u-0.500)/0.11,0,1)*0.5);
+      // 下颌阴影
+      if(v>0.660) col=mix(col,[170,120,104],clamp((v-0.660)*1.4,0,1)*0.6);
+      // 鬃角暗
+      if(u<0.330||u>0.560) col=mix(col,SKIN_D,0.3);
+      // 鼻影与鼻梁
+      if(u>0.452&&u<0.474&&v>0.50&&v<0.60) col=mix(col,SKIN_D,0.4);
+      if(u>0.440&&u<0.452&&v>0.47&&v<0.56) col=mix(col,[252,232,210],0.35);
+      if(inEl(0.461,0.588,0.022,0.011)<1) col=mix(col,SKIN_X,0.55);
+      // 眼窝
+      const eyeArea=Math.min(inEl(0.375,0.475,0.048,0.030),inEl(0.518,0.475,0.048,0.030));
+      if(eyeArea<1) col=mix(col,[92,58,56],0.22*(1-eyeArea));
+      // 眼白
+      if(inEl(0.376,0.478,0.032,0.019)<1||inEl(0.517,0.478,0.032,0.019)<1) col=[236,230,220];
+      // 虹膜 / 瞳
+      if(inEl(0.382,0.478,0.015,0.016)<1||inEl(0.511,0.478,0.015,0.016)<1) col=[56,44,50];
+      if(inEl(0.384,0.476,0.006,0.007)<1||inEl(0.509,0.476,0.006,0.007)<1) col=[16,12,16];
+      // 瞳孔高光
+      if(inEl(0.380,0.472,0.004,0.005)<1||inEl(0.505,0.472,0.004,0.005)<1) col=[246,244,236];
+      // 下眼睑
+      if((u>0.340&&u<0.414&&v>0.496&&v<0.502)||(u>0.478&&u<0.552&&v>0.496&&v<0.502)) col=mix(col,SKIN_D,0.35);
+      // 上眼睑
+      if((u>0.338&&u<0.416&&v>0.454&&v<0.462)||(u>0.476&&u<0.554&&v>0.454&&v<0.462)) col=mix(col,[52,38,42],0.8);
+      // 眉
+      if((u>0.332&&u<0.420&&v>0.406&&v<0.419)||(u>0.472&&u<0.560&&v>0.406&&v<0.419)) col=mix(HAIR_D,col,0.2);
+      // 唇
+      const lip=inEl(0.434,0.655,0.055,0.021);
+      if(lip<1) col=mix(col,LIP,(1-lip)*0.85);
+      if(u>0.402&&u<0.468&&v>0.666&&v<0.672) col=mix(col,[228,162,150],0.5);
+    }
+    // 脸缘暗边
+    if(face>=1&&face<1.09) col=mix(col,[98,64,62],0.45);
+    // 刘海：波浪发际线压住额头
+    const fringe=0.392+0.028*Math.sin(u*42+0.7)+0.016*Math.sin(u*17+2);
+    if(face<1&&v<fringe) col=mix(HAIR_D,HAIR_M,0.28+0.28*Math.abs(Math.sin(u*90)));
+    return A(col[0],col[1],col[2],1,0.35);
+  }
+  paint('c-portrait',portraitField,{dabs:9000,bg:'#2a2026',sMin:5,sMax:26,alphaMin:.16,alphaMax:.42,curvy:.35});
+
+  /* ---------- 水彩风景 ---------- */
+  function washField(x,y,W,H){
+    const u=x/W,v=y/H;
+    let col=[246,240,228];  // 纸色
+    // 远山
+    const far=0.52-0.10*Math.sin(u*5.4+0.6)-0.05*Math.sin(u*11);
+    if(v>far) col=mix([196,206,216],[152,174,192],clamp((v-far)/0.2,0,1));
+    // 中景山
+    const mid=0.62-0.07*Math.sin(u*4.2+2.1);
+    if(v>mid) col=mix([112,138,150],[74,102,118],clamp((v-mid)/0.18,0,1));
+    // 水面
+    if(v>0.70){
+      const t=(v-0.70)/0.30;
+      col=mix([150,178,190],[92,122,142],t);
+      const ripple=Math.sin(v*70+u*14)*0.5+0.5;
+      col=mix(col,[226,232,228],ripple*0.35);
+    }
+    // 天空淡彩
+    if(v<0.5) col=mix(col,[236,230,214],Math.exp(-Math.pow((v-0.18)/0.22,2))*0.85);
+    // 暖阳
+    const sx=0.76,sy=0.20;
+    const d=Math.sqrt(Math.pow(u-sx,2)+Math.pow((v-sy)*1.1,2));
+    col=mix(col,[250,226,178],Math.exp(-Math.pow(d/0.16,2))*0.75);
+    if(d<0.028) col=mix([255,248,232],col,0.2);
+    // 小船与桅杆
+    const bx=0.315, by=0.688;
+    if(Math.abs((u-bx)/0.070)<1 && Math.abs((v-by)/0.017)<1) col=mix(col,[86,96,104],0.82);
+    if(Math.abs((u-bx)/0.0045)<1 && v>by-0.105 && v<by) col=mix(col,[92,100,106],0.75);
+    if(Math.abs((u-(bx+0.020))/0.030)<1 && Math.abs((v-(by-0.085))/0.020)<1) col=mix(col,[112,118,120],0.55);
+    // 倒影
+    if(Math.abs((u-bx)/0.045)<1 && v>by+0.02 && v<by+0.09) col=mix(col,[112,124,130],0.28);
+    return A(col[0],col[1],col[2],0.30,0.05);
+  }
+  paint('c-wash',washField,{dabs:3200,bg:'#f6f0e4',sMin:16,sMax:70,alphaMin:.10,alphaMax:.30,curvy:.25});
+
+  /* ---------- 笔触特写 ---------- */
+  (function(){
+    const cv=document.getElementById('c-stroke'),c=cv.getContext('2d'),W=cv.width,H=cv.height;
+    // 底色：暖灰画布
+    const bgGrad=c.createLinearGradient(0,0,W*0.4,H);
+    bgGrad.addColorStop(0,'#6b5244');bgGrad.addColorStop(.55,'#4a3a38');bgGrad.addColorStop(1,'#2a2429');
+    c.fillStyle=bgGrad;c.fillRect(0,0,W,H);
+    const pals=[[236,206,168],[214,148,96],[176,104,72],[150,140,132],[92,120,132],[64,52,58]];
+    const dir=0.18;  // 统一笔势
+    // 大笔（厚涂）
+    for(let i=0;i<200;i++){
+      const col=pals[(rnd()*pals.length)|0];
+      const x=rnd()*W,y=rnd()*H,s=lerp(90,260,rnd());
+      c.save();c.translate(x,y);c.rotate(dir+(rnd()-0.5)*0.30);
+      c.strokeStyle=rgb([col[0],col[1],col[2],0.30+rnd()*0.42]);
+      c.lineWidth=s*0.16;c.lineCap='round';
+      c.beginPath();c.moveTo(-s/2,0);c.quadraticCurveTo(0,(rnd()-0.5)*18,s/2,0);c.stroke();
+      // 一侧提亮（颜料厚度）
+      c.strokeStyle=rgb([Math.min(255,col[0]+40),Math.min(255,col[1]+34),Math.min(255,col[2]+28),0.18+rnd()*0.22]);
+      c.lineWidth=s*0.05;
+      c.beginPath();c.moveTo(-s/2,-s*0.06);c.lineTo(s/2,-s*0.06);c.stroke();
+      c.restore();
+    }
+    // 笔毛细纹
+    for(let i=0;i<1100;i++){
+      const col=pals[(rnd()*pals.length)|0];
+      const x=rnd()*W,y=rnd()*H,s=lerp(40,150,rnd());
+      c.save();c.translate(x,y);c.rotate(dir+(rnd()-0.5)*0.34);
+      c.strokeStyle=rgb([col[0],col[1],col[2],0.07+rnd()*0.16]);
+      c.lineWidth=0.8+rnd()*1.2;
+      for(let k=0;k<3;k++){
+        const o=(k-1)*2.4;
+        c.beginPath();c.moveTo(-s/2,o);c.lineTo(s/2,o+(rnd()-0.5)*2.5);c.stroke();
+      }
+      c.restore();
+    }
+    // 刮刀痕：浅色少量
+    for(let i=0;i<9;i++){
+      const x=rnd()*W,y=rnd()*H,w=lerp(140,320,rnd());
+      c.save();c.translate(x,y);c.rotate(dir+(rnd()-0.5)*0.5);
+      c.fillStyle=rgb([244,232,212,0.34+rnd()*0.22]);
+      c.beginPath();c.moveTo(-w/2,0);c.lineTo(w/2,-9);c.lineTo(w/2,12);c.lineTo(-w/2,3);c.closePath();c.fill();
+      c.restore();
+    }
+    // 光斑与暗角
+    const g=c.createRadialGradient(W*0.30,H*0.28,20,W*0.30,H*0.28,W*0.72);
+    g.addColorStop(0,'rgba(255,236,200,.34)');g.addColorStop(.55,'rgba(255,236,200,.06)');g.addColorStop(1,'rgba(10,8,14,.55)');
+    c.fillStyle=g;c.fillRect(0,0,W,H);
+  })();
+})();
+</script>
+<script src="_assets/base.js"></script>
+</body>
+</html>

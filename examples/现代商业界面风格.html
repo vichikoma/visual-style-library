@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>现代商业界面风格（Modern Commercial UI Aesthetics）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --u-deep:#2B1B4A; --u-deeper:#1C1130; --u-violet:#8B5CF6; --u-pink:#F472B6;
+  --u-paper:#FFFFFF; --u-lav:#F3EEFF; --u-ink:#241640; --u-dim:#8B82A6;
+  --u-soft:#E4DDF2; --u-grad:linear-gradient(100deg,#8B5CF6 0%,#A855F7 45%,#F472B6 100%);
+}
+.ui,.up1,.up2,.up3,.up4{color:var(--u-ink)}
+.mb{position:absolute;inset:0;
+  background:
+    radial-gradient(58% 66% at 12% 6%,#4E2C80 0%,rgba(78,44,128,0) 62%),
+    radial-gradient(46% 58% at 92% 92%,#7B2F80 0%,rgba(123,47,128,0) 58%),
+    linear-gradient(158deg,#2B1B4A 0%,#22143A 55%,#1C1130 100%)}
+
+/* 左侧文案 */
+.lc{position:absolute;left:5cqw;top:7.4cqw;width:29cqw;z-index:9}
+.brand{display:flex;align-items:center;gap:.85cqw}
+.logo{position:relative;width:2.9cqw;height:2.9cqw;border-radius:.9cqw;background:var(--u-grad);
+  box-shadow:0 .5cqw 1.2cqw rgba(139,92,246,.5)}
+.logo i{position:absolute;top:.95cqw;width:.42cqw;height:.42cqw;border-radius:50%;background:#fff}
+.logo i.a{left:.82cqw}.logo i.b{right:.82cqw}
+.logo u{position:absolute;left:50%;top:1.55cqw;width:1.15cqw;height:.62cqw;
+  margin-left:-.575cqw;border-bottom:.19cqw solid #fff;border-radius:0 0 1cqw 1cqw}
+.brand b{font-family:var(--f-sans);font-size:1.35cqw;font-weight:700;color:#fff;letter-spacing:-.01em}
+.brand em{font-family:var(--f-mono);font-size:.75cqw;font-style:normal;color:#A899C9;
+  border:.06cqw solid rgba(255,255,255,.22);border-radius:99px;padding:.15cqw .5cqw;letter-spacing:.1em}
+.lh{font-family:var(--f-sans);font-weight:800;font-size:4.5cqw;line-height:1.14;
+  letter-spacing:-.025em;color:#fff;margin:2.4cqw 0 0}
+.lh span{background:var(--u-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lp{font-size:1.05cqw;line-height:1.75;color:#BDB0D6;margin-top:1.5cqw;max-width:27cqw}
+.lp b{color:#fff;font-weight:700}
+
+.steps{margin-top:2.2cqw}
+.steps .r{display:flex;align-items:center;gap:.7cqw;font-family:var(--f-mono);font-size:.92cqw;
+  letter-spacing:.04em;color:#7E6FA0;padding:.42cqw 0;border-bottom:.05cqw solid rgba(255,255,255,.08)}
+.steps .r s{width:.42cqw;height:.42cqw;border-radius:50%;background:#54426F;text-decoration:none;flex:none}
+.steps .r.on{color:#fff}
+.steps .r.on s{background:var(--u-pink);box-shadow:0 0 0 .28cqw rgba(244,114,182,.22)}
+.steps .r b{margin-left:auto;font-weight:400;color:#6B5C8C}
+.legal{margin-top:1.6cqw;font-family:var(--f-mono);font-size:.78cqw;line-height:1.7;color:#6B5C8C}
+
+/* 浏览器卡片 */
+.card{position:absolute;left:38cqw;top:6.4cqw;width:57cqw;z-index:8;background:var(--u-paper);
+  border-radius:1.5cqw;box-shadow:0 2.6cqw 6cqw rgba(8,3,20,.5),0 .2cqw .6cqw rgba(8,3,20,.2);
+  overflow:hidden}
+.cbar{height:3.5cqw;display:flex;align-items:center;gap:.55cqw;padding:0 1.5cqw;
+  background:#FBFAFE;border-bottom:.07cqw solid #EDE8F7}
+.cbar s{width:.62cqw;height:.62cqw;border-radius:50%;display:block;flex:none}
+.cbar .url{margin-left:.9cqw;flex:1;height:1.85cqw;border-radius:99px;background:#F0EBFA;
+  display:flex;align-items:center;padding:0 .8cqw;font-family:var(--f-mono);font-size:.8cqw;
+  color:#8B82A6;letter-spacing:.02em}
+.cbar .lock{width:.52cqw;height:.62cqw;border:.09cqw solid #A79FB8;border-radius:.12cqw;
+  margin-right:.4cqw;position:relative}
+.cbar .lock::before{content:"";position:absolute;left:.1cqw;top:-.32cqw;width:.28cqw;height:.3cqw;
+  border:.09cqw solid #A79FB8;border-bottom:none;border-radius:.3cqw .3cqw 0 0}
+
+.cbody{position:relative;padding:2.4cqw 2.6cqw 2.8cqw}
+.steprow{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4cqw}
+.steprow span{font-family:var(--f-mono);font-size:.8cqw;letter-spacing:.12em;color:#9B92B4}
+.segs{display:flex;gap:.3cqw}
+.segs i{width:1.15cqw;height:.34cqw;border-radius:99px;background:#EDE8F7;display:block}
+.segs i.f{background:var(--u-grad)}
+.ct{font-family:var(--f-sans);font-size:2.35cqw;font-weight:800;color:var(--u-ink);
+  letter-spacing:-.015em;line-height:1.25}
+.cs{font-size:1.02cqw;line-height:1.7;color:#6B6482;margin-top:.7cqw}
+.lb{font-family:var(--f-mono);font-size:.82cqw;letter-spacing:.06em;color:#9B92B4;margin:1.8cqw 0 .6cqw}
+.sel{height:3.7cqw;border:.09cqw solid var(--u-soft);border-radius:.85cqw;background:#FCFBFE;
+  display:flex;align-items:center;justify-content:space-between;padding:0 1.1cqw;font-size:1cqw;color:var(--u-ink)}
+.sel em{font-style:normal;color:#B3AAC6;font-size:1.2cqw}
+.hint{font-family:var(--f-mono);font-size:.75cqw;color:#C0392B;letter-spacing:.03em;margin-top:.5cqw}
+.btn{display:flex;align-items:center;justify-content:center;height:4.2cqw;border-radius:1.05cqw;
+  background:var(--u-grad);color:#fff;font-family:var(--f-sans);font-weight:700;font-size:1.25cqw;
+  letter-spacing:.02em;box-shadow:0 .9cqw 2.2cqw rgba(139,92,246,.42);margin-top:1.4cqw}
+.altlink{text-align:center;margin-top:1.1cqw;font-size:.85cqw;color:#9B92B4;text-decoration:underline;
+  text-decoration-color:#D8D1E8;text-underline-offset:.25cqw}
+.cfoot{font-family:var(--f-mono);font-size:.76cqw;line-height:1.7;color:#B3AAC6;
+  margin-top:1.5cqw;max-width:32cqw}
+
+/* 挽留弹窗 */
+.toast{position:absolute;left:73cqw;top:42.6cqw;width:23cqw;z-index:11;background:#fff;
+  border-radius:1.15cqw;box-shadow:0 2cqw 4.4cqw rgba(8,3,20,.55);padding:1.3cqw 1.4cqw;
+  border:.09cqw solid #EFEAF8}
+.toast .tp{display:flex;align-items:center;gap:.5cqw;font-family:var(--f-sans);font-weight:800;
+  font-size:1.18cqw;color:var(--u-ink)}
+.toast .tp i{width:1.5cqw;height:1.5cqw;border-radius:50%;background:var(--u-grad);display:block;
+  position:relative;flex:none}
+.toast .tp i::after{content:"!";position:absolute;inset:0;color:#fff;font-size:.95cqw;font-weight:800;
+  text-align:center;line-height:1.5cqw}
+.toast p{font-size:.8cqw;line-height:1.6;color:#6B6482;margin:.55cqw 0 .8cqw}
+.toast .row{display:flex;align-items:center;gap:.5cqw}
+.toast .pill{flex:1;height:2.3cqw;border-radius:99px;background:var(--u-grad);color:#fff;
+  font-family:var(--f-sans);font-weight:700;font-size:.82cqw;display:flex;align-items:center;
+  justify-content:center;box-shadow:0 .35cqw .9cqw rgba(139,92,246,.4)}
+.toast .no{font-size:.72cqw;color:#B3AAC6;text-decoration:underline;white-space:nowrap}
+
+/* 通用子帧零件 */
+.pnl{position:absolute;background:#fff;border-radius:1.1cqw;
+  box-shadow:0 1.2cqw 3cqw rgba(24,10,52,.16)}
+.tg{position:absolute;font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.16em;z-index:12}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>15 / 25</span>
+    <span class="right"><a href="技术制图美学.html">← 上一条</a><a href="玩具感三维.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>现代商业界面风格<small>Modern Commercial UI Aesthetics</small></h1>
+    <p class="lead">以白色圆角卡片、粉紫渐变按钮、粗体标题、清晰表单和友好品牌图形建立现代数字产品外观。深紫背景与浅色面板交替，设备外壳、纸张和桌面材质提供实体触感——表面亲切流畅的品牌包装，和反复收费、难以取消的实际处境形成对照。</p>
+    <div class="meta">
+      <div><b>风格性质</b>现代商业界面风格（描述性风格），依据可见组件与配色建立</div>
+      <div><b>视觉媒介</b>2D 界面动画＋拟物场景合成＋场景内歌词排版</div>
+      <div><b>典型母体</b>订阅网站、电商结算、取消流程、客服聊天、设备面板、纸面与剪报</div>
+    </div>
+    <div class="tags">
+      <span class="tag">商业界面</span><span class="tag">圆角卡片</span><span class="tag">渐变按钮</span>
+      <span class="tag">设备样机</span><span class="tag">剪报拼贴</span><span class="tag">粉紫品牌配色</span>
+      <span class="tag w">消费讽刺</span><span class="tag w">戏仿</span><span class="tag w">交互障碍喜剧</span><span class="tag w">订阅制</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#2B1B4A"></i>深紫底<br><code>#2B1B4A</code></div>
+      <div class="sw"><i style="background:#FFFFFF"></i>卡片白<br><code>#FFFFFF</code></div>
+      <div class="sw"><i style="background:#8B5CF6"></i>品牌紫<br><code>#8B5CF6</code></div>
+      <div class="sw"><i style="background:#F472B6"></i>品牌粉<br><code>#F472B6</code></div>
+      <div class="sw"><i style="background:#F3EEFF"></i>浅紫底<br><code>#F3EEFF</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">一张取消订阅页：深紫背景上浮着白色圆角浏览器卡片，第七步才是打电话。左下角把整个流程列成四行步骤，第四行亮着；卡片右下角还压着一个「等一下」的挽留弹窗，粉紫渐变按钮比"仍要取消"的灰字大三倍。</p>
+
+  <div class="frame ui" id="f-master">
+    <div class="mb"></div>
+
+    <div class="lc">
+      <div class="brand">
+        <span class="logo"><i class="a"></i><i class="b"></i><u></u></span>
+        <b>the platform</b>
+        <em>PLUS</em>
+      </div>
+      <div class="lh">取消订阅<br>需要 <span>7</span> 步</div>
+      <div class="lp">我们尊重你的决定。请先完成以下必要步骤，以确保账户与所有<b>已购内容</b>的安全。</div>
+
+      <div class="steps">
+        <div class="r"><s></s>01 选择原因<b>已完成</b></div>
+        <div class="r"><s></s>02 接受挽留<b>×3</b></div>
+        <div class="r"><s></s>03 等待接通<b>04:31</b></div>
+        <div class="r on"><s></s>04 电话确认<b>进行中</b></div>
+        <div class="r"><s></s>05 — 07<b>未解锁</b></div>
+      </div>
+
+      <div class="legal">* 第 4 步需拨打 400 电话<br>工作日 9:00–17:00，节假日除外</div>
+    </div>
+
+    <div class="card">
+      <div class="cbar">
+        <s style="background:#FF5F57"></s><s style="background:#FEBC2E"></s><s style="background:#28C840"></s>
+        <div class="url"><i class="lock"></i>theplatform.com/account/cancel/step-4</div>
+      </div>
+      <div class="cbody">
+        <div class="steprow">
+          <span>第 4 步 · 共 7 步</span>
+          <div class="segs"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="ct">确定要取消吗？</div>
+        <div class="cs">我们会为你保留全部内容，直到本月底。之后，睡眠记录、打印额度与呼吸功能将转为只读。</div>
+
+        <div class="lb">请选择原因（必填）</div>
+        <div class="sel"><span>太贵了</span><em>▾</em></div>
+        <div class="hint">· 该选项不可取消本次操作</div>
+
+        <div class="btn">保留订阅 · 立省 ¥41</div>
+        <div class="altlink">仍要取消</div>
+
+        <div class="cfoot">取消后，以下功能将立即停止：睡眠追踪 / 云打印 / 电子书借阅 / 车辆启动 / 宠物喂食。</div>
+      </div>
+    </div>
+
+    <div class="toast">
+      <div class="tp"><i></i>等一下！</div>
+      <p>今天就取消的话，我们将失去你。首年 5 折，¥18 / 月，随时可再取消。</p>
+      <div class="row">
+        <span class="pill">好，我留下</span>
+        <span class="no">不用了</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><b>组件先统一，再荒诞</b>圆角、间距、按钮高度、阴影全部按一套规则来；正因为它像真产品，后面那些绕不出去的步骤才好笑。</div>
+    <div><b>渐变只给主操作</b>粉紫渐变永远出现在"留下""升级""立即购买"上，破坏性操作永远是灰色小字。</div>
+    <div><b>深紫托白卡</b>背景压到接近黑紫，白色卡片才有重量；卡片带 2cqw 以上的柔和大阴影，浮起来而不是贴上去。</div>
+    <div><b>界面要落在实物上</b>屏幕外壳、木桌、纸边、便签和剪报让界面产生实体后果——订阅失效会发生在生活里。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 4</span></h2>
+  <p class="h2note">四个方向：商业 SaaS 定价页、阻碍性流程（弹窗叠加）、拟物设备合成、新闻剪报拼贴。</p>
+
+  <div class="subs">
+
+    <!-- 1. 商业 SaaS 视觉 -->
+    <section class="sub">
+      <div class="frame up1" id="f-saas">
+        <div style="position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 0%,#FFFFFF 0%,#F6F2FE 70%)"></div>
+        <div style="position:absolute;left:0;top:3.2cqw;width:100%;text-align:center;z-index:6">
+          <div style="font-family:var(--f-mono);font-size:1.1cqw;letter-spacing:.22em;color:#9B92B4">PRICING · 定价</div>
+          <div style="font-family:var(--f-sans);font-weight:800;font-size:3.1cqw;color:#241640;
+            letter-spacing:-.02em;margin-top:.8cqw">选择你的版本</div>
+          <div style="display:inline-flex;background:#fff;border:1px solid #E7E1F5;border-radius:99px;
+            padding:.3cqw;margin-top:1.2cqw;box-shadow:0 .4cqw 1.2cqw rgba(24,10,52,.08)">
+            <span style="font-size:1.05cqw;padding:.42cqw 1.3cqw;border-radius:99px;color:#9B92B4">月付</span>
+            <span style="font-size:1.05cqw;padding:.42cqw 1.3cqw;border-radius:99px;color:#fff;
+              background:linear-gradient(100deg,#8B5CF6,#F472B6)">年付 · 省 40%</span>
+          </div>
+        </div>
+
+        <div style="position:absolute;left:4cqw;right:4cqw;top:18cqw;display:flex;gap:2.2cqw;z-index:6">
+          <div class="pnl" style="position:relative;flex:1;border-radius:1.4cqw;padding:1.7cqw 1.6cqw;
+            border:.09cqw solid #EDE8F7;box-shadow:0 1cqw 2.4cqw rgba(24,10,52,.08)">
+            <div style="font-family:var(--f-sans);font-weight:700;font-size:1.45cqw;color:#241640">基础</div>
+            <div style="font-family:var(--f-mono);font-size:.9cqw;color:#9B92B4;margin-top:.2cqw">给只睡觉的人</div>
+            <div style="font-family:var(--f-sans);font-weight:800;font-size:3.2cqw;color:#241640;
+              letter-spacing:-.03em;margin-top:1cqw">¥0<span style="font-size:1.1cqw;font-weight:400;color:#9B92B4"> /月</span></div>
+            <div style="font-size:1.02cqw;line-height:2.05;color:#5F5878;margin-top:1.2cqw">
+              ✓ 睡眠记录<br>✓ 每日 3 次打印<br>✓ 阅读试读页<br><span style="color:#C0B8D2">— 呼吸功能</span><br><span style="color:#C0B8D2">— 车辆启动</span>
+            </div>
+            <div style="height:2.9cqw;border-radius:99px;border:.09cqw solid #DCD4EE;color:#6B6386;
+              font-size:1.02cqw;display:flex;align-items:center;justify-content:center;margin-top:1.6cqw">当前版本</div>
+          </div>
+
+          <div class="pnl" style="position:relative;flex:1;border-radius:1.4cqw;padding:1.7cqw 1.6cqw;
+            background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,#8B5CF6,#F472B6) border-box;
+            border:.18cqw solid transparent;transform:translateY(-1cqw);
+            box-shadow:0 1.8cqw 3.6cqw rgba(139,92,246,.28)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="font-family:var(--f-sans);font-weight:700;font-size:1.45cqw;color:#241640">Plus</div>
+              <span style="background:linear-gradient(100deg,#8B5CF6,#F472B6);color:#fff;font-size:.72cqw;
+                letter-spacing:.1em;padding:.22cqw .6cqw;border-radius:99px;white-space:nowrap">最受欢迎</span>
+            </div>
+            <div style="font-family:var(--f-mono);font-size:.9cqw;color:#9B92B4;margin-top:.2cqw">给正常人</div>
+            <div style="font-family:var(--f-sans);font-weight:800;font-size:3.2cqw;color:#241640;
+              letter-spacing:-.03em;margin-top:1cqw">¥59<span style="font-size:1.1cqw;font-weight:400;color:#9B92B4"> /月</span></div>
+            <div style="font-size:1.02cqw;line-height:2.05;color:#5F5878;margin-top:1.2cqw">
+              ✓ 全部基础功能<br>✓ 无限打印<br>✓ 呼吸功能<br>✓ 车辆启动<br>✓ 宠物喂食 ×2
+            </div>
+            <div style="height:2.9cqw;border-radius:99px;background:linear-gradient(100deg,#8B5CF6,#F472B6);
+              color:#fff;font-weight:700;font-size:1.02cqw;display:flex;align-items:center;justify-content:center;
+              margin-top:1.6cqw;box-shadow:0 .6cqw 1.4cqw rgba(139,92,246,.4)">升级 · 立省 ¥18</div>
+          </div>
+
+          <div class="pnl" style="position:relative;flex:1;border-radius:1.4cqw;padding:1.7cqw 1.6cqw;
+            border:.09cqw solid #EDE8F7;box-shadow:0 1cqw 2.4cqw rgba(24,10,52,.08)">
+            <div style="font-family:var(--f-sans);font-weight:700;font-size:1.45cqw;color:#241640">Pro</div>
+            <div style="font-family:var(--f-mono);font-size:.9cqw;color:#9B92B4;margin-top:.2cqw">给还没睡的人</div>
+            <div style="font-family:var(--f-sans);font-weight:800;font-size:3.2cqw;color:#241640;
+              letter-spacing:-.03em;margin-top:1cqw">¥199<span style="font-size:1.1cqw;font-weight:400;color:#9B92B4"> /月</span></div>
+            <div style="font-size:1.02cqw;line-height:2.05;color:#5F5878;margin-top:1.2cqw">
+              ✓ Plus 全部功能<br>✓ 取消订阅入口<br>✓ 真人客服<br>✓ 优先接通<br>✓ 更快接通
+            </div>
+            <div style="height:2.9cqw;border-radius:99px;border:.09cqw solid #DCD4EE;color:#6B6386;
+              font-size:1.02cqw;display:flex;align-items:center;justify-content:center;margin-top:1.6cqw">选择 Pro</div>
+          </div>
+        </div>
+
+        <div style="position:absolute;left:0;bottom:1.6cqw;width:100%;text-align:center;
+          font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.08em;color:#A79FB8;z-index:6">
+          所有版本均包含 7 步取消流程 · 取消入口仅 Pro 可见</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>商业 SaaS 视觉<small>SaaS Visual Design</small></h3>
+        <p>模拟数字服务品牌常用的圆角组件、亲切口吻、渐变主按钮与醒目升级入口，再用不合理的收费内容反转这些设计所承诺的便利感。三档套餐、统一的组件尺寸、一句"最受欢迎"，全靠打磨过的产品语言完成说服。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">粉紫渐变</span><span class="tag">圆角卡片</span>
+          <span class="tag">套餐等级</span><span class="tag">升级标签</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 阻碍性流程动画 -->
+    <section class="sub">
+      <div class="frame up2" id="f-obstruct">
+        <div style="position:absolute;inset:0;
+          background:radial-gradient(60% 60% at 20% 10%,#4E2C80 0%,rgba(78,44,128,0) 60%),
+            linear-gradient(158deg,#2B1B4A,#1C1130)"></div>
+
+        <div style="position:absolute;left:2.6cqw;top:2.4cqw;font-family:var(--f-mono);font-size:1.1cqw;
+          letter-spacing:.2em;color:#8A7BA8;z-index:12">CANCEL FLOW · 已叠加 4 层</div>
+
+        <!-- 叠起来的对话框：后三张只露头 -->
+        <div class="pnl" style="left:22cqw;top:8.6cqw;width:44cqw;height:10cqw;border-radius:1.2cqw;z-index:5;
+          box-shadow:0 2cqw 4cqw rgba(0,0,0,.5);opacity:.55">
+          <div style="padding:1cqw 1.2cqw;font-family:var(--f-sans);font-weight:700;font-size:1.05cqw;color:#241640">
+            请填写取消原因（必填）</div>
+        </div>
+        <div class="pnl" style="left:18cqw;top:13.4cqw;width:44cqw;height:11cqw;border-radius:1.2cqw;z-index:6;
+          box-shadow:0 2cqw 4cqw rgba(0,0,0,.5);opacity:.7">
+          <div style="padding:1cqw 1.2cqw;font-family:var(--f-sans);font-weight:700;font-size:1.05cqw;color:#241640">
+            等一下，先看这个优惠</div>
+        </div>
+        <div class="pnl" style="left:14cqw;top:18.4cqw;width:44cqw;height:11.4cqw;border-radius:1.2cqw;z-index:7;
+          box-shadow:0 2cqw 4cqw rgba(0,0,0,.5);opacity:.86">
+          <div style="padding:1cqw 1.2cqw;font-family:var(--f-sans);font-weight:700;font-size:1.05cqw;color:#241640">
+            确定不再考虑一下吗？</div>
+        </div>
+
+        <!-- 最前面一张，完整可读 -->
+        <div class="pnl" style="left:9cqw;top:23.4cqw;width:50cqw;height:25cqw;border-radius:1.4cqw;z-index:8;
+          box-shadow:0 2.6cqw 5cqw rgba(0,0,0,.55);padding:1.5cqw 1.7cqw;
+          display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:.6cqw">
+            <i style="width:1.4cqw;height:1.4cqw;border-radius:50%;background:linear-gradient(100deg,#8B5CF6,#F472B6)"></i>
+            <span style="font-family:var(--f-sans);font-weight:800;font-size:1.5cqw;color:#241640">第 4 次确认</span>
+            <span style="margin-left:auto;font-family:var(--f-mono);font-size:.82cqw;color:#B3AAC6">1 / 3</span>
+          </div>
+          <div style="font-size:1.02cqw;line-height:1.7;color:#6B6482;margin-top:.7cqw">
+            你已连续点击"取消"四次。为了确认这不是误操作，请先完成一次电话回访。
+          </div>
+          <div style="display:flex;gap:.3cqw;margin-top:2.4cqw">
+            <i style="flex:1;height:.42cqw;border-radius:99px;background:linear-gradient(100deg,#8B5CF6,#F472B6)"></i>
+            <i style="flex:1;height:.42cqw;border-radius:99px;background:linear-gradient(100deg,#8B5CF6,#F472B6)"></i>
+            <i style="flex:1;height:.42cqw;border-radius:99px;background:linear-gradient(100deg,#8B5CF6,#F472B6)"></i>
+            <i style="flex:1;height:.42cqw;border-radius:99px;background:linear-gradient(100deg,#8B5CF6,#F472B6)"></i>
+            <i style="flex:1;height:.42cqw;border-radius:99px;background:#EDE8F7"></i>
+            <i style="flex:1;height:.42cqw;border-radius:99px;background:#EDE8F7"></i>
+            <i style="flex:1;height:.42cqw;border-radius:99px;background:#EDE8F7"></i>
+          </div>
+          <div style="font-family:var(--f-mono);font-size:.74cqw;letter-spacing:.04em;color:#B3AAC6;
+            margin-top:.55cqw">预计还需 3 步 · 约 12 分钟</div>
+
+          <div style="margin-top:1.1cqw;background:#F7F4FE;border-radius:.6cqw;padding:.65cqw .8cqw;
+            font-size:.76cqw;line-height:1.6;color:#8B82A6">提示：关闭此页面将重新从第 1 步开始。</div>
+
+          <div style="height:2.5cqw;border-radius:99px;background:linear-gradient(100deg,#8B5CF6,#F472B6);
+            color:#fff;font-size:.95cqw;font-weight:700;display:flex;align-items:center;
+            justify-content:center;margin-top:auto">预约回访</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.9cqw">
+            <span style="font-size:.82cqw;color:#B3AAC6;text-decoration:underline">仍要取消</span>
+            <span style="font-family:var(--f-mono);font-size:.78cqw;color:#C0392B">按钮已禁用</span>
+          </div>
+        </div>
+
+        <!-- 右侧步骤流水 -->
+        <div style="position:absolute;right:3cqw;top:24cqw;width:26cqw;z-index:9;
+          font-family:var(--f-mono);font-size:.92cqw;letter-spacing:.03em">
+          <div style="color:#8A7BA8;letter-spacing:.18em;font-size:.85cqw;padding-bottom:.5cqw;
+            border-bottom:.07cqw solid rgba(255,255,255,.25);margin-bottom:.7cqw">OBSTRUCTIONS</div>
+          <div style="color:#fff;padding:.3cqw 0">01 必填原因</div>
+          <div style="color:#fff;padding:.3cqw 0">02 优惠挽留 ×2</div>
+          <div style="color:#fff;padding:.3cqw 0">03 客服转接</div>
+          <div style="color:#F472B6;padding:.3cqw 0">04 电话确认 ←</div>
+          <div style="color:#6B5C8C;padding:.3cqw 0">05 等待接通 4:31</div>
+          <div style="color:#6B5C8C;padding:.3cqw 0">06 重新验证</div>
+          <div style="color:#6B5C8C;padding:.3cqw 0">07 提交</div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>阻碍性流程动画<small>Obstructive Interaction Sequences</small></h3>
+        <p>把产品操作中的反复确认、步骤延长、无效选项和客服循环转化成表演。笑点来自用户行动与系统反馈之间不断加大的距离——弹窗一层层叠上去，而真正能取消的那个按钮越来越小。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">弹窗叠加</span><span class="tag">重复挽留</span>
+          <span class="tag">提交受阻</span><span class="tag">文案反讽</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 拟物生活道具合成 -->
+    <section class="sub">
+      <div class="frame up3" id="f-desk">
+        <div style="position:absolute;inset:0;background:linear-gradient(170deg,#7A5137 0%,#5E3C28 55%,#4A2E1E 100%)"></div>
+        <div style="position:absolute;inset:0;opacity:.5;
+          background-image:repeating-linear-gradient(92deg,rgba(0,0,0,.16) 0 .12cqw,transparent .12cqw 1.1cqw),
+            repeating-linear-gradient(88deg,rgba(255,255,255,.05) 0 .08cqw,transparent .08cqw 2.4cqw)"></div>
+
+        <!-- 光斑与投影 -->
+        <div style="position:absolute;left:2cqw;top:-6cqw;width:60cqw;height:34cqw;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(255,226,180,.35),rgba(255,226,180,0));filter:blur(1cqw)"></div>
+        <div style="position:absolute;left:8cqw;top:41cqw;width:52cqw;height:5cqw;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(0,0,0,.45),rgba(0,0,0,0))"></div>
+        <div style="position:absolute;right:8.6cqw;top:39cqw;width:16cqw;height:3cqw;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(0,0,0,.4),rgba(0,0,0,0))"></div>
+
+        <!-- 笔记本 -->
+        <div style="position:absolute;left:8cqw;top:6cqw;width:50cqw;height:32cqw;border-radius:1.2cqw;
+          background:linear-gradient(160deg,#3B3350,#262033);padding:1cqw;
+          box-shadow:0 2cqw 3.4cqw rgba(0,0,0,.45),inset 0 0 0 .09cqw rgba(255,255,255,.16)">
+          <div style="position:relative;width:100%;height:100%;border-radius:.5cqw;background:#fff;overflow:hidden">
+            <div style="height:3.4cqw;background:linear-gradient(100deg,#8B5CF6,#F472B6);
+              display:flex;align-items:center;padding:0 1cqw;gap:.5cqw">
+              <i style="width:1cqw;height:1cqw;border-radius:.3cqw;background:rgba(255,255,255,.9)"></i>
+              <span style="font-size:.9cqw;color:#fff;font-weight:700">the platform</span>
+              <span style="margin-left:auto;font-size:.75cqw;color:rgba(255,255,255,.85)">账户 · PLUS</span>
+            </div>
+            <div style="padding:1.4cqw 1.6cqw">
+              <div style="font-family:var(--f-sans);font-weight:800;font-size:1.5cqw;color:#241640">确定要取消吗？</div>
+              <div style="font-size:.82cqw;color:#6B6482;margin-top:.45cqw;line-height:1.6">
+                我们会为你保留全部内容，直到本月底。</div>
+              <div style="height:2cqw;border:.07cqw solid #E4DDF2;border-radius:.5cqw;margin-top:1cqw;
+                display:flex;align-items:center;padding:0 .7cqw;font-size:.78cqw;color:#6B6482">太贵了 ▾</div>
+              <div style="height:2.2cqw;border-radius:99px;background:linear-gradient(100deg,#8B5CF6,#F472B6);
+                margin-top:1cqw;display:flex;align-items:center;justify-content:center;
+                color:#fff;font-size:.8cqw;font-weight:700">保留订阅 · 立省 ¥41</div>
+              <div style="text-align:center;font-size:.72cqw;color:#B3AAC6;margin-top:.6cqw;
+                text-decoration:underline">仍要取消</div>
+            </div>
+            <div style="position:absolute;left:1.4cqw;right:1.4cqw;bottom:1.2cqw;background:#F7F4FE;
+              border-radius:.6cqw;padding:.75cqw .8cqw;display:flex;align-items:center;gap:.7cqw">
+              <div style="flex:1">
+                <div style="font-size:.8cqw;font-weight:700;color:#241640">要不要先试试 Pro？</div>
+                <div style="font-size:.7cqw;color:#8B82A6;margin-top:.15cqw">取消入口只在 Pro 里可见</div>
+              </div>
+              <div style="background:linear-gradient(100deg,#8B5CF6,#F472B6);color:#fff;font-size:.72cqw;
+                padding:.34cqw .75cqw;border-radius:99px;font-weight:700;white-space:nowrap">升级</div>
+            </div>
+            <div style="position:absolute;right:1cqw;bottom:.8cqw;font-family:var(--f-mono);
+              font-size:.62cqw;color:#C9C1DA">step 4 / 7</div>
+          </div>
+        </div>
+        <!-- 转轴与底座 -->
+        <div style="position:absolute;left:8cqw;top:37.6cqw;width:50cqw;height:4.6cqw;
+          background:linear-gradient(180deg,#4A4160,#2E2740);border-radius:0 0 1.2cqw 1.2cqw"></div>
+        <div style="position:absolute;left:8cqw;top:41.2cqw;width:50cqw;height:1.6cqw;
+          background:linear-gradient(180deg,#3A3350,#241E33);border-radius:.4cqw"></div>
+
+        <!-- 手机 -->
+        <div style="position:absolute;right:5cqw;top:19cqw;width:13cqw;height:26cqw;border-radius:2cqw;
+          background:linear-gradient(160deg,#2F2842,#1D172B);padding:.5cqw;
+          box-shadow:0 1.6cqw 3cqw rgba(0,0,0,.5),inset 0 0 0 .09cqw rgba(255,255,255,.18);
+          transform:rotate(-7deg)">
+          <div style="width:100%;height:100%;border-radius:1.6cqw;background:#F7F4FE;overflow:hidden;padding:.8cqw">
+            <div style="font-family:var(--f-mono);font-size:.62cqw;color:#9B92B4;text-align:center">客服 · 在线</div>
+            <div style="margin-top:.8cqw;background:#fff;border:.06cqw solid #E9E3F6;border-radius:.5cqw;
+              padding:.5cqw;font-size:.66cqw;line-height:1.5;color:#4A4360">
+              你要取消的话，<br>需要先取消取消</div>
+            <div style="margin-top:.5cqw;margin-left:1.4cqw;background:linear-gradient(100deg,#8B5CF6,#F472B6);
+              border-radius:.5cqw;padding:.5cqw;font-size:.66cqw;line-height:1.5;color:#fff">？？？</div>
+            <div style="margin-top:.5cqw;background:#fff;border:.06cqw solid #E9E3F6;border-radius:.5cqw;
+              padding:.5cqw;font-size:.66cqw;line-height:1.5;color:#4A4360">请先完成回访预约。</div>
+            <div style="margin-top:.7cqw;text-align:center;font-family:var(--f-mono);
+              font-size:.58cqw;color:#B3AAC6">等待接通 04:31</div>
+            <div style="position:absolute;left:.8cqw;right:.8cqw;bottom:.8cqw;height:1.6cqw;
+              border:.06cqw solid #E4DDF2;border-radius:.8cqw;display:flex;align-items:center;
+              padding:0 .5cqw;font-size:.58cqw;color:#B3AAC6">回复…
+              <i style="margin-left:auto;width:.9cqw;height:.9cqw;border-radius:50%;
+                background:linear-gradient(100deg,#8B5CF6,#F472B6)"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 便签 -->
+        <div style="position:absolute;left:47cqw;top:2.4cqw;width:9.4cqw;height:9.4cqw;
+          background:linear-gradient(160deg,#FFE9A3,#FFD86B);transform:rotate(6deg);
+          box-shadow:0 1cqw 2cqw rgba(0,0,0,.35);padding:.9cqw">
+          <div style="font-family:var(--f-serif);font-size:1.05cqw;line-height:1.5;color:#6B5A20">
+            别忘了<br>第 7 步<br>要打电话</div>
+          <div style="position:absolute;right:.7cqw;bottom:.5cqw;font-family:var(--f-mono);
+            font-size:.6cqw;color:#A08A3A">03:41</div>
+        </div>
+
+        <div style="position:absolute;left:3cqw;bottom:1.6cqw;font-family:var(--f-mono);font-size:.9cqw;
+          letter-spacing:.14em;color:rgba(255,255,255,.5);z-index:9">DESK · 木桌 / 屏幕 / 便签</div>
+
+        <div style="position:absolute;left:10cqw;bottom:7.6cqw;width:21cqw;height:.85cqw;border-radius:.45cqw;
+          background:linear-gradient(180deg,#4A4160,#2A2338);transform:rotate(-5deg);z-index:7;
+          box-shadow:0 .35cqw .8cqw rgba(0,0,0,.45)">
+          <span style="position:absolute;right:0;top:0;width:1.5cqw;height:100%;
+            border-radius:0 .45cqw .45cqw 0;background:linear-gradient(90deg,#CFC9DA,#8E879C)"></span>
+          <span style="position:absolute;left:2.4cqw;top:-.16cqw;width:.5cqw;height:1.16cqw;
+            border-radius:.2cqw;background:#948CA6"></span>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>拟物生活道具合成<small>Realistic Prop Compositing</small></h3>
+        <p>把简洁界面安放在可辨认的设备和日常空间中，通过木纹、纸边、阴影、透视和景深提供生活触感。屏幕里的取消按钮和桌上的黄色便签说的是同一件事，抽象服务就产生了实体后果。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">屏幕外壳</span><span class="tag">桌面材质</span>
+          <span class="tag">纸张卷角</span><span class="tag">分层光影</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 剪报拼贴 -->
+    <section class="sub">
+      <div class="frame up4" id="f-clip">
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#C6A176,#A8814F)"></div>
+        <div style="position:absolute;inset:0;opacity:.55;
+          background-image:radial-gradient(rgba(90,60,20,.35) .09cqw,transparent .09cqw),
+            radial-gradient(rgba(255,240,210,.28) .07cqw,transparent .07cqw);
+          background-size:.9cqw .9cqw,1.3cqw 1.3cqw;background-position:0 0,.4cqw .6cqw"></div>
+
+        <!-- 剪报 A：主标题 -->
+        <div style="position:absolute;left:3.4cqw;top:3.6cqw;width:41cqw;background:#FBF7EE;
+          transform:rotate(-2.4deg);box-shadow:0 1.2cqw 2.4cqw rgba(60,35,10,.4);
+          padding:1.2cqw 1.3cqw 1.5cqw;z-index:6;
+          clip-path:polygon(0 0,100% 0,100% 94%,72% 100%,44% 96%,18% 100%,0 95%)">
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);
+            font-size:.78cqw;letter-spacing:.12em;color:#8A7C64;border-bottom:.06cqw solid #C9B99B;
+            padding-bottom:.35cqw">THE DAILY PLATFORM · 2026.11.19</div>
+          <div style="font-family:var(--f-serif);font-weight:700;font-size:2cqw;line-height:1.25;
+            color:#1E1A14;margin-top:.7cqw">取消订阅<br>需要七步，第七步是打电话</div>
+          <div style="font-family:var(--f-serif);font-style:italic;font-size:1.05cqw;line-height:1.6;
+            color:#5E5443;margin-top:.45cqw">三步即可购买，七步才能离开。</div>
+          <div style="font-family:var(--f-serif);font-size:1cqw;line-height:1.7;color:#4A4235;
+            margin-top:.6cqw;column-count:2;column-gap:1.1cqw;text-align:justify">
+            平台方表示，此举是为了"确保每一位用户都经过充分考虑"。用户称，他只想关掉睡眠追踪。
+            据称，第五步需要重新登录，第六步需要验证邮箱，第七步的电话在工作日九点后接通。
+          </div>
+        </div>
+
+        <!-- 剪报 B：照片 + 说明 -->
+        <div style="position:absolute;right:4cqw;top:8cqw;width:30cqw;background:#FBF7EE;
+          transform:rotate(2.2deg);box-shadow:0 1.2cqw 2.4cqw rgba(60,35,10,.4);padding:1cqw;z-index:7">
+          <div style="height:14cqw;background:linear-gradient(160deg,#4A3F52,#2A2436);border-radius:.2cqw;
+            position:relative;overflow:hidden">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+              width:5.4cqw;height:5.4cqw;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6E5E86,#241E33)"></div>
+            <div style="position:absolute;left:1cqw;bottom:1cqw;font-family:var(--f-mono);
+              font-size:.62cqw;color:rgba(255,255,255,.45)">FIG. 2 电话</div>
+          </div>
+          <div style="font-family:var(--f-serif);font-size:.9cqw;line-height:1.65;color:#4A4235;
+            margin-top:.6cqw">第七步的唯一入口：一台只在工作日响起的电话。</div>
+        </div>
+
+        <!-- 剪报 C：读者来信 -->
+        <div style="position:absolute;left:45cqw;top:29cqw;width:27cqw;background:#FFFDF6;
+          transform:rotate(2.8deg);box-shadow:0 1cqw 2cqw rgba(60,35,10,.35);padding:1cqw 1.1cqw;z-index:8">
+          <div style="font-family:var(--f-mono);font-size:.74cqw;letter-spacing:.14em;color:#8A7C64;
+            border-bottom:.06cqw solid #D8CBB0;padding-bottom:.3cqw">读者来信 · 第 41 封</div>
+          <div style="font-family:var(--f-serif);font-size:1.15cqw;line-height:1.7;color:#2A2418;
+            margin-top:.5cqw">"我只想关掉闹钟的订阅，<br>结果它问我睡得好不好。"</div>
+          <div style="font-family:var(--f-mono);font-size:.7cqw;color:#A08A3A;margin-top:.4cqw">— 一位 Plus 用户</div>
+        </div>
+
+        <!-- 剪报 D：巨型数字 -->
+        <div style="position:absolute;right:3.4cqw;bottom:6cqw;width:26cqw;background:#FBF7EE;
+          transform:rotate(-3.4deg);box-shadow:0 1cqw 2cqw rgba(60,35,10,.38);
+          padding:.9cqw 1.1cqw;z-index:7;
+          clip-path:polygon(0 0,100% 0,100% 88%,76% 96%,48% 90%,22% 98%,0 90%)">
+          <div style="display:flex;align-items:flex-end;gap:1cqw">
+            <div style="font-family:var(--f-serif);font-weight:700;font-size:6.4cqw;line-height:.85;
+              color:#1E1A14;letter-spacing:-.06em">7</div>
+            <div style="font-family:var(--f-serif);font-size:.92cqw;line-height:1.55;color:#4A4235;
+              padding-bottom:.3cqw">步之后<br>才算取消</div>
+          </div>
+          <div style="font-family:var(--f-mono);font-size:.66cqw;letter-spacing:.1em;color:#8A7C64;
+            margin-top:.45cqw;border-top:.06cqw solid #C9B99B;padding-top:.3cqw">FIG. 3 · 流程长度</div>
+        </div>
+
+        <!-- 小纸条 + 荧光标记 -->
+        <div style="position:absolute;left:4.6cqw;top:33cqw;width:34cqw;background:#FFFDF6;
+          transform:rotate(1.4deg);box-shadow:0 .9cqw 1.8cqw rgba(60,35,10,.35);padding:1cqw 1.2cqw;z-index:8">
+          <div style="font-family:var(--f-mono);font-size:.7cqw;letter-spacing:.1em;color:#8A7C64">备忘录 / 手写</div>
+          <div style="font-family:var(--f-serif);font-size:1.12cqw;line-height:1.75;color:#2A2418;margin-top:.4cqw">
+            他们说随时可以取消。<br>
+            <span style="background:linear-gradient(transparent 55%,#FFE066 55%)">"随时"指的是他们的工作时间。</span></div>
+        </div>
+
+        <!-- 胶带与图钉 -->
+        <div style="position:absolute;left:16cqw;top:2.6cqw;width:9cqw;height:2.4cqw;
+          background:rgba(255,255,255,.42);transform:rotate(-4deg);z-index:9;
+          box-shadow:0 .2cqw .5cqw rgba(0,0,0,.12)"></div>
+        <div style="position:absolute;right:17cqw;top:6cqw;width:8cqw;height:2.2cqw;
+          background:rgba(255,255,255,.4);transform:rotate(6deg);z-index:9;
+          box-shadow:0 .2cqw .5cqw rgba(0,0,0,.12)"></div>
+        <div style="position:absolute;left:5.4cqw;top:5.2cqw;width:1.5cqw;height:1.5cqw;border-radius:50%;
+          background:radial-gradient(circle at 34% 30%,#FF6B6B,#A8202B);z-index:10;
+          box-shadow:0 .3cqw .7cqw rgba(0,0,0,.45)"></div>
+        <div style="position:absolute;right:5.6cqw;top:9cqw;width:1.5cqw;height:1.5cqw;border-radius:50%;
+          background:radial-gradient(circle at 34% 30%,#FFE07A,#C08A1E);z-index:10;
+          box-shadow:0 .3cqw .7cqw rgba(0,0,0,.45)"></div>
+        <div style="position:absolute;left:13cqw;top:31.4cqw;width:8cqw;height:2.2cqw;
+          background:rgba(255,255,255,.4);transform:rotate(-4deg);z-index:9;
+          box-shadow:0 .2cqw .5cqw rgba(0,0,0,.12)"></div>
+        <div style="position:absolute;right:11cqw;top:40.4cqw;width:6.4cqw;height:2.1cqw;
+          background:rgba(255,255,255,.38);transform:rotate(6deg);z-index:9;
+          box-shadow:0 .2cqw .5cqw rgba(0,0,0,.12)"></div>
+        <div style="position:absolute;left:56.6cqw;top:27.6cqw;width:1.35cqw;height:1.35cqw;border-radius:50%;
+          background:radial-gradient(circle at 34% 30%,#7FB8E8,#2A5E8C);z-index:10;
+          box-shadow:0 .3cqw .7cqw rgba(0,0,0,.45)"></div>
+
+        <div style="position:absolute;right:3cqw;bottom:1.4cqw;font-family:var(--f-mono);font-size:.88cqw;
+          letter-spacing:.14em;color:rgba(60,35,10,.55);z-index:9">CORK BOARD · 03 则</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">04</span>剪报拼贴<small>Newspaper Collage</small></h3>
+        <p>借用新闻版式、专利文件和资料公告板，把文本组织为带有出处感的实体纸片，通过叠放、胶带、图钉与纸张纹理构成视觉信息层级。衬线标题配日期与栏目，虚构故事就带上了案例档案的外观。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">衬线新闻标题</span><span class="tag">撕边纸张</span>
+          <span class="tag">荧光标记</span><span class="tag">软木板</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>配色与组件</b>深紫底配白色圆角面板，洋红与粉紫渐变用于主要按钮和升级提示，组件尺寸与间距统一——先建立可信度，再破坏规则。</div>
+    <div><b>字体与图形</b>粗重无衬线标题、圆润品牌字、简洁图标与笑脸；表单和套餐卡保持真实产品的信息层级，价格永远比条款大。</div>
+    <div><b>材质与动态</b>把界面放进有透视和阴影的电脑、手机与设备样机，辅以木纹、纸面与剪报纹理；光标操作、逐字输入、弹窗叠加和数值变化构成节奏，歌词成为组件里的正文。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>现代商业界面风格（Modern Commercial UI Aesthetics）：深紫背景与白色圆角卡片，粉紫渐变主按钮，圆润友好品牌图形与粗重无衬线标题。构建订阅套餐页、取消表单、客服聊天和智能设备面板，统一间距与组件样式。界面置于带柔和阴影与透视的电脑、手机和生活设备中，局部加入纸张与新闻剪报。歌词通过表单输入、聊天追加、打印和弹窗状态变化出现。</div>
+
+  <footer>样例说明：本页取消页、定价表、弹窗层叠、桌面设备与剪报板均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/现代商业界面风格.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

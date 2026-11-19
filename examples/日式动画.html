@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日式动画（Anime）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+/* ================= 日式动画 ================= */
+:root{
+  --hair:#2B3A5B; --hair-s:#1B2740; --hair-h:#4A5F86;
+  --skin:#FBE0CF; --skin-s:#E4B49C;
+  --navy:#26314D; --navy-s:#171F33;
+  --shirt:#F2F4F8; --shirt-s:#CBD3E0;
+  --ribbon:#D9435A; --sky1:#8FC4E8; --sky2:#CFE6F2; --sky3:#F2C9A8;
+}
+
+/* ---------- 主视觉 ---------- */
+.an .sky{inset:0;background:linear-gradient(180deg,#6FA8D8 0%,var(--sky1) 32%,var(--sky2) 62%,var(--sky3) 88%,#E9B491 100%)}
+.an .cloud{position:absolute;background:#fff;border-radius:50%;filter:blur(1.2cqw);opacity:.85}
+.an .cl1{width:26cqw;height:5cqw;left:6cqw;top:8cqw}
+.an .cl2{width:18cqw;height:4cqw;left:34cqw;top:14cqw;opacity:.7}
+.an .cl3{width:32cqw;height:6cqw;right:4cqw;top:6cqw;opacity:.6}
+.an .flare{left:52cqw;top:-14cqw;width:44cqw;height:44cqw;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,240,200,.9),rgba(255,214,150,.45) 42%,transparent 66%)}
+.an .speed{inset:0;opacity:.5;
+  background:repeating-conic-gradient(from 0deg at 62% 46%,rgba(255,255,255,.55) 0 .5deg,transparent .5deg 3deg);
+  -webkit-mask-image:radial-gradient(circle at 62% 46%,transparent 30%,#000 62%,transparent 84%);
+  mask-image:radial-gradient(circle at 62% 46%,transparent 30%,#000 62%,transparent 84%)}
+.an .girl{left:44cqw;bottom:0;width:38cqw;z-index:8;
+  filter:drop-shadow(0 1.4cqw 2.4cqw rgba(40,40,90,.28))}
+.an .vtext{z-index:12;right:5cqw;top:5cqw;writing-mode:vertical-rl;font-family:var(--f-serif);
+  font-size:4.4cqw;font-weight:900;letter-spacing:.24em;color:#1B2740;
+  text-shadow:0 0 1.2cqw rgba(255,255,255,.85)}
+.an .vtext small{font-size:1.5cqw;letter-spacing:.5em;font-weight:400;color:#2E3F63}
+.an .hline{z-index:12;left:5cqw;top:6cqw;width:.4cqw;height:16cqw;background:#1B2740}
+.an .tl{z-index:12;left:7cqw;top:6cqw;width:32cqw}
+.an .tl .n{font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.26em;color:#1B2740;opacity:.8}
+.an .tl .t{font-family:var(--f-serif);font-size:4.2cqw;font-weight:900;line-height:1.16;color:#fff;
+  text-shadow:.25cqw .25cqw 0 #1B2740;margin-top:.7cqw}
+.an .tl .t em{font-style:normal;color:#FFE9A8}
+.an .tl .s{margin-top:1.1cqw;font-size:1.3cqw;color:#24344F;letter-spacing:.1em}
+.an .bar{z-index:12;left:7cqw;top:24cqw;display:flex;gap:.6cqw}
+.an .bar i{width:3.4cqw;height:.55cqw;background:#1B2740;opacity:.55}
+.an .bar i:first-child{background:#D9435A;opacity:1}
+.an .hud{z-index:12;left:7cqw;bottom:3cqw}
+
+/* ---------- 赛璐璐机甲 ---------- */
+.mech .bg{inset:0;background:linear-gradient(180deg,#0A1220,#111C2E 60%,#070C15)}
+.mech .grid{inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(90,140,190,.22) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(90,140,190,.22) 1px,transparent 1px);
+  background-size:4.4cqw 4.4cqw}
+.mech .lamp{left:6cqw;top:4cqw;width:18cqw;height:1.2cqw;background:#7FD8FF;opacity:.75;
+  box-shadow:0 0 3cqw #7FD8FF}
+.mech .lamp2{right:8cqw;top:4cqw;width:12cqw;height:.9cqw;background:#FFB347;opacity:.7;box-shadow:0 0 2.4cqw #FFB347}
+.mech .floor{left:0;right:0;bottom:0;height:16cqw;background:linear-gradient(180deg,#0B1424,#16233A)}
+.mech .floorline{left:0;right:0;bottom:16cqw;height:.5cqw;background:rgba(120,190,255,.5)}
+.mech .hazard{left:0;right:0;bottom:0;height:1.6cqw;
+  background:repeating-linear-gradient(45deg,#F2C14E 0 1.6cqw,#1A1A1A 1.6cqw 3.2cqw);opacity:.5}
+.mech .mecha{left:32cqw;bottom:13.4cqw;width:36cqw;z-index:6}
+.mech .stencil{z-index:12;right:5cqw;bottom:4.4cqw;font-family:var(--f-mono);font-size:1.15cqw;
+  color:#8FC4E8;letter-spacing:.3em;text-align:right;line-height:1.8}
+.mech .stencil b{color:#F2C14E;font-size:1.5cqw;letter-spacing:.16em}
+.mech .tag{z-index:12;left:5cqw;top:7cqw;border:.25cqw solid #7FD8FF;color:#BFE9FF;
+  font-family:var(--f-mono);font-size:1.1cqw;padding:.5cqw 1cqw;letter-spacing:.22em;
+  background:rgba(10,30,50,.5)}
+.mech .pilot{z-index:9;left:76cqw;bottom:16cqw;width:6cqw;opacity:.85}
+.mech .glowline{z-index:7;left:0;right:0;bottom:15.4cqw;height:5cqw;
+  background:radial-gradient(ellipse at 48% 100%,rgba(255,150,60,.45),transparent 66%)}
+
+/* ---------- 热血镜头 ---------- */
+.shonen .bg{inset:0;background:radial-gradient(circle at 50% 58%,#3B1E2E,#140A12 68%)}
+.shonen .rays{inset:0;
+  background:repeating-conic-gradient(from 0deg at 50% 58%,rgba(255,210,120,.5) 0 .6deg,rgba(255,210,120,0) .6deg 2.2deg)}
+.shonen .ring{left:50%;top:58%;translate:-50% -50%;border-radius:50%;border:.5cqw solid rgba(255,230,160,.7)}
+.shonen .r1{width:26cqw;height:26cqw}
+.shonen .r2{width:40cqw;height:40cqw;opacity:.6}
+.shonen .r3{width:56cqw;height:56cqw;opacity:.3}
+.shonen .fig{left:34cqw;bottom:8cqw;width:30cqw;z-index:8;filter:drop-shadow(0 0 2.4cqw rgba(255,190,90,.85))}
+.shonen .aura{left:50%;top:56%;translate:-50% -50%;width:34cqw;height:34cqw;border-radius:50%;z-index:6;
+  background:radial-gradient(circle,rgba(255,236,170,.85),rgba(255,150,60,.4) 45%,transparent 70%)}
+.shonen .word{z-index:14;font-family:var(--f-display);color:#fff;line-height:.9;letter-spacing:.02em;
+  text-shadow:.4cqw .4cqw 0 #C1292E}
+.shonen .w1{left:5cqw;top:6cqw;font-size:9.4cqw;transform:rotate(-6deg)}
+.shonen .w2{right:4cqw;top:16cqw;font-size:5.6cqw;transform:rotate(5deg);color:#FFD86B;text-shadow:.3cqw .3cqw 0 #2A0A10}
+.shonen .rival{z-index:10;right:8cqw;bottom:10cqw;width:12cqw;opacity:.9;transform:rotate(6deg)}
+.shonen .cap{z-index:14;left:5cqw;bottom:4.4cqw;font-family:var(--f-mono);font-size:1.15cqw;
+  color:#FFD9A8;letter-spacing:.28em}
+.shonen .meter{z-index:14;right:5cqw;bottom:4.6cqw;width:22cqw}
+.shonen .meter .m{height:.9cqw;background:rgba(255,255,255,.15);border-radius:.5cqw;overflow:hidden}
+.shonen .meter .m i{display:block;height:100%;width:96%;background:linear-gradient(90deg,#FFD86B,#FF5A3C)}
+.shonen .meter .mt{font-family:var(--f-mono);font-size:1cqw;color:#FFD9A8;letter-spacing:.2em;margin-bottom:.5cqw}
+
+/* ---------- 卡通历史插画 ---------- */
+.hist .bg{inset:0;background:linear-gradient(180deg,#EFE2C8,#E3D2AE)}
+.hist .paper{inset:0;mix-blend-mode:multiply;opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='q'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3'/><feColorMatrix values='0 0 0 0 .55 0 0 0 0 .45 0 0 0 0 .32 0 0 0 .3 0'/></filter><rect width='100%' height='100%' filter='url(%23q)'/></svg>")}
+.hist .sun{right:12cqw;top:6cqw;width:10cqw;height:10cqw;border-radius:50%;background:#E8A44A;opacity:.85}
+.hist .hill{left:-6%;right:-6%;bottom:14cqw;height:12cqw;background:#C9B183;
+  border-radius:50% 50% 0 0/100% 100% 0 0}
+.hist .hill2{left:30%;right:-10%;bottom:16cqw;height:9cqw;background:#B79E72;
+  border-radius:50% 50% 0 0/100% 100% 0 0}
+.hist .ground{left:0;right:0;bottom:0;height:12cqw;background:#D9C49B}
+.hist .temple{left:40cqw;bottom:13cqw;width:28cqw;z-index:5}
+.hist .figs{left:8cqw;bottom:12cqw;width:26cqw;z-index:8}
+.hist .banner{z-index:12;left:0;right:0;top:3cqw;text-align:center}
+.hist .banner b{display:block;font-family:var(--f-serif);font-weight:900;font-size:4.4cqw;color:#4A3524;letter-spacing:.14em}
+.hist .banner span{font-family:var(--f-mono);font-size:1.1cqw;color:#6d573f;letter-spacing:.34em}
+.hist .cap{z-index:12;right:4cqw;bottom:1.8cqw;font-family:var(--f-serif);font-size:1.2cqw;color:#4A3524;opacity:.75}
+.hist .tl2{z-index:11;left:0;right:0;bottom:0;height:11cqw;display:flex;border-top:.25cqw solid rgba(120,90,50,.45);
+  background:rgba(220,201,162,.55)}
+.hist .tl2 .ti{flex:1;padding:1.2cqw 2cqw;border-right:.2cqw dashed rgba(120,90,50,.35)}
+.hist .tl2 .ti:last-child{border-right:0}
+.hist .tl2 .ti b{display:block;font-family:var(--f-serif);font-size:1.5cqw;color:#6B3B2C;letter-spacing:.08em}
+.hist .tl2 .ti span{display:block;font-size:1.1cqw;color:#5B4632;margin-top:.3cqw;line-height:1.6}
+
+/* ---------- Q 版 ---------- */
+.chibi .bg{inset:0;background:linear-gradient(160deg,#FFF6E6,#FFE8E2 60%,#E8F1FF)}
+.chibi .dots{inset:0;opacity:.5;
+  background-image:radial-gradient(circle,rgba(200,150,150,.35) 30%,transparent 32%);background-size:3.4cqw 3.4cqw}
+.chibi .grid{inset:0;display:grid;grid-template-columns:repeat(4,1fr);align-items:end;padding:6cqw 4cqw 5cqw;gap:2cqw}
+.chibi .cell{text-align:center}
+.chibi .cell svg{width:15cqw;display:block;margin:0 auto}
+.chibi .cell .nm{margin-top:.6cqw;font-size:1.1cqw;color:#5B4A55;font-family:var(--f-mono);letter-spacing:.1em}
+.chibi .bubble{position:absolute;left:5cqw;top:4cqw;background:#fff;border-radius:1.6cqw;
+  padding:.9cqw 1.5cqw;font-size:1.6cqw;color:#4A3A46;font-weight:700;
+  box-shadow:0 .8cqw 1.6cqw rgba(120,80,110,.16)}
+.chibi .bubble::after{content:"";position:absolute;left:2.4cqw;bottom:-1cqw;border:.9cqw solid transparent;border-top-color:#fff}
+.chibi .ttl{position:absolute;right:5cqw;top:4.4cqw;font-family:var(--f-serif);font-size:2.2cqw;color:#4A3A46;letter-spacing:.1em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span>
+    <span>03 / 25</span>
+    <span class="right"><a href="手绘绘本风格.html">← 上一条</a><a href="动漫数字拼贴.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>日式动画<small>Anime</small></h1>
+    <p class="lead">以鲜明的角色设计、富有表现力的五官与姿态、绘画式背景和戏剧化镜头建立日式动画外观。可结合赛璐璐着色、机甲、Q 版等不同方向，不限定为单一上色方式或题材。</p>
+    <div class="meta">
+      <div><b>风格定位</b>日式动画（Anime），以角色表现与镜头调度为核心，可跨题材使用</div>
+      <div><b>视觉媒介</b>赛璐璐着色（硬边明暗块面）、绘画式背景、线稿描边与戏剧化光效</div>
+      <div><b>典型母体</b>机甲登场、热血对战、历史题材卡通化、Q 版表情包</div>
+    </div>
+    <div class="tags">
+      <span class="tag">日式动画（Anime）</span><span class="tag">赛璐璐着色（Cel Shading）</span><span class="tag">机甲（Mecha）</span>
+      <span class="tag">Q版（Chibi）</span><span class="tag">硬边阴影</span><span class="tag">绘画式背景</span>
+      <span class="tag w">强者登场</span><span class="tag w">仪式感</span><span class="tag w">跨时代幽默</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#2B3A5B"></i>发色深蓝<br><code>#2B3A5B</code></div>
+      <div class="sw"><i style="background:#FBE0CF"></i>肤色<br><code>#FBE0CF</code></div>
+      <div class="sw"><i style="background:#8FC4E8"></i>天空蓝<br><code>#8FC4E8</code></div>
+      <div class="sw"><i style="background:#F2C9A8"></i>夕照橙<br><code>#F2C9A8</code></div>
+      <div class="sw"><i style="background:#D9435A"></i>校服红<br><code>#D9435A</code></div>
+      <div class="sw"><i style="background:#7FD8FF"></i>机舱冷光<br><code>#7FD8FF</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">角色用硬边明暗（一层亮面、一层暗面、一层高光）建立体积，背景用偏绘画式的天空与云层；两者质感不同、故意不统一，这是日式动画的常见分层方式。</p>
+
+  <div class="frame an" id="master">
+    <div class="sky"></div>
+    <div class="cloud cl3"></div><div class="cloud cl1"></div><div class="cloud cl2"></div>
+    <div class="flare"></div>
+    <div class="speed"></div>
+    <div class="girl"><svg viewBox="10 24 380 392"><use href="#agirl" width="400" height="560"/></svg></div>
+
+    <div class="hline"></div>
+    <div class="tl">
+      <div class="n">SCENE 04 · 夕方</div>
+      <div class="t">这一帧<br><em>不会重来</em></div>
+      <div class="s">硬边阴影 · 绘画式背景 · 逆光轮廓</div>
+      <div class="bar"><i></i><i></i><i></i></div>
+    </div>
+    <div class="vtext">静<small>SHIZUKA</small>止<small>NO.04</small></div>
+    <div class="hud">24 FPS · CEL 03 LAYERS</div>
+    <div class="fx-grain"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>硬边明暗</b>角色只用亮面／暗面／高光三层色块表现体积，交界清晰不渐变。</div>
+    <div><b>绘画式背景</b>天空云层偏厚涂与渐变，与角色平面着色形成质感分层。</div>
+    <div><b>戏剧化光</b>逆光与镜头光斑强调轮廓，焦点集中在角色肩线与发梢。</div>
+    <div><b>镜头语言</b>低角度、偏心构图与速度线交代力量感；文字用竖排衬线承担标题。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 4</span></h2>
+  <p class="h2note">每个样例帧突出一个方向，可与主风格交叉使用。以下画面均为 HTML / CSS / SVG 绘制。</p>
+
+  <div class="subs">
+
+    <!-- 1. 赛璐璐机甲 -->
+    <section class="sub">
+      <div class="frame mech">
+        <div class="bg"></div>
+        <div class="grid"></div>
+        <div class="lamp"></div><div class="lamp2"></div>
+        <div class="floor"></div><div class="floorline"></div><div class="hazard"></div>
+        <div class="glowline"></div>
+        <div class="mecha"><svg viewBox="0 0 400 460"><use href="#mecha" width="400" height="460"/></svg></div>
+        <div class="pilot"><svg viewBox="0 0 120 200"><use href="#pilotfig" width="120" height="200"/></svg></div>
+        <div class="tag">HANGAR B · STANDBY</div>
+        <div class="stencil"><b>UNIT-07</b><br>FRAME TYPE / PROTOTYPE<br>PILOT: R. KAITO</div>
+        <div class="fx-scan"></div><div class="fx-vig"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>赛璐璐机甲<small>Cel-shaded Mecha</small></h3>
+        <p>用深色线稿、清晰的明暗块面、几何装甲与局部发光，建立日式机器人动画的视觉印象。机库、机体编号、登场名牌、仰视构图和大小对比进一步强化机甲题材。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">硬边明暗</span><span class="tag">几何装甲</span>
+          <span class="tag">局部发光</span><span class="tag">机体编号</span><span class="tag">仰视与大尺度对比</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 热血动画式镜头 -->
+    <section class="sub">
+      <div class="frame shonen">
+        <div class="bg"></div>
+        <div class="rays"></div>
+        <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
+        <div class="aura"></div>
+        <div class="fig"><svg viewBox="0 20 400 420"><use href="#agirl" width="400" height="560"/></svg></div>
+        <div class="rival"><svg viewBox="0 20 400 420"><use href="#agirl" width="400" height="560" style="--hair:#5B4636;--ribbon:#3E7BC4"/></svg></div>
+        <div class="word w1">限界<br>突破</div>
+        <div class="word w2">第 七 形 态</div>
+        <div class="cap">POWER LEVEL · RISING</div>
+        <div class="meter"><div class="mt">AURA 96%</div><div class="m"><i></i></div></div>
+        <div class="fx-grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>热血动画式镜头<small>Shōnen Anime-style Staging · 镜头表现</small></h3>
+        <p>借用热血动画中强者登场、实力升级、对手失势和胜者加冕的套路，将竞争处理为充满仪式感的夸张表演。它可以与机甲结合，也可以迁移到人物、运动或其他拟人角色。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">放射速度线</span><span class="tag">光环与冲击环</span>
+          <span class="tag">仰视中央构图</span><span class="tag">对手失势</span><span class="tag">口号式大字</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 卡通历史插画 -->
+    <section class="sub">
+      <div class="frame hist">
+        <div class="bg"></div>
+        <div class="paper"></div>
+        <div class="sun"></div>
+        <div class="hill2"></div><div class="hill"></div>
+        <div class="temple"><svg viewBox="0 0 300 220"><use href="#temple" width="300" height="220"/></svg></div>
+        <div class="figs"><svg viewBox="0 0 260 140"><use href="#histfigs" width="260" height="140"/></svg></div>
+        <div class="ground"></div>
+        <div class="tl2">
+          <div class="ti"><b>公元 1050</b><span>县令在城门贴出告示</span></div>
+          <div class="ti"><b>公元 1900</b><span>同一张告示，换成铅字</span></div>
+          <div class="ti"><b>公元 2024</b><span>告示变成了推送通知</span></div>
+        </div>
+        <div class="banner"><b>同一个下午</b><span>THREE DYNASTIES · THREE AFTERNOONS</span></div>
+        <div class="cap">↑ 三个时代的同一个难题</div>
+        <div class="fx-paper"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>卡通历史插画<small>Cartoon Historical Illustration · 题材方向</small></h3>
+        <p>以简化的历史人物、动物和标志性场景，组织跨时代的幽默叙事。人物轮廓与身份符号清楚，背景保留插画感，适合用多个时代的相似事件映射同一主题。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">简化历史人物</span><span class="tag">身份符号清楚</span>
+          <span class="tag">时代对照</span><span class="tag">插画式土色背景</span></div>
+      </div>
+    </section>
+
+    <!-- 4. Q 版 -->
+    <section class="sub">
+      <div class="frame chibi">
+        <div class="bg"></div>
+        <div class="dots"></div>
+        <div class="grid">
+          <div class="cell">
+            <svg viewBox="0 0 200 200"><use href="#chibi" width="200" height="200"/><path d="M84,138 q16,10 32,0" stroke="#5B3A46" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+            <div class="nm">困惑</div>
+          </div>
+          <div class="cell">
+            <svg viewBox="0 0 200 200"><use href="#chibi" width="200" height="200"/>
+              <circle cx="100" cy="140" r="7" fill="#5B3A46"/>
+              <path d="M70,92 q10,-10 20,-2" stroke="#5B3A46" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M130,92 q-10,-10 -20,-2" stroke="#5B3A46" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="nm">惊讶</div>
+          </div>
+          <div class="cell">
+            <svg viewBox="0 0 200 200"><use href="#chibi" width="200" height="200"/>
+              <path d="M84,142 q16,-10 32,0" stroke="#5B3A46" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M74,104 q8,4 14,0" stroke="#5B3A46" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M112,104 q8,4 14,0" stroke="#5B3A46" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="nm">失落</div>
+          </div>
+          <div class="cell">
+            <svg viewBox="0 0 200 200"><use href="#chibi" width="200" height="200"/>
+              <path d="M80,136 q20,18 40,0" stroke="#5B3A46" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <path d="M100,66 q6,-14 16,-16" stroke="#D9435A" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="nm">围观</div>
+          </div>
+        </div>
+        <div class="bubble">诶？等等——</div>
+        <div class="ttl">Q 版表情表</div>
+        <div class="fx-grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">04</span>Q 版造型与表情<small>Chibi Character Design &amp; Expressions</small></h3>
+        <p>通过简化五官、调整头身比例和放大表情，快速传达困惑、尴尬、失落或围观反应。可用于局部人物与情绪处理，作为辅助造型方向与主画风组合。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">大头小身</span><span class="tag">圆润五官</span>
+          <span class="tag">夸张表情</span><span class="tag">表情表排列</span><span class="tag">气泡吐槽</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>着色与线稿</b>角色使用赛璐璐着色：一层基色、一层硬边暗面、一层高光，交界清晰不渐变；保留深色线稿与清晰轮廓。</div>
+    <div><b>背景与镜头</b>背景可以更绘画化（天空、云、机械内部），与角色的平面着色分层处理；用低角度、偏心构图与速度线制造戏剧感。</div>
+    <div><b>题材与表演</b>机甲靠几何装甲＋局部发光＋编号标牌；热血靠光环、冲击环与口号字；Q 版靠头身比与表情夸张。三者都能与主画风叠加。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>日式动画风格画面：赛璐璐着色角色（硬边明暗三层次、深色线稿、清晰轮廓），绘画式天空与云层背景，逆光轮廓与镜头光斑；低角度戏剧化构图，竖排衬线标题与速度线；可切换为几何装甲机甲（机库、编号标牌、局部发光）或 Q 版表情处理。</div>
+
+  <footer>样例说明：本页所有画面均为 HTML / CSS / SVG 原创绘制的风格示意，未使用来源视频画面；角色、机甲与人体比例均为示意性原创造型，颜色通过 CSS 变量切换。子风格依据 <code>styles/日式动画.md</code>。</footer>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+
+  <!-- 赛璐璐角色：只使用平涂色块 + 一层暗面 + 一层高光 -->
+  <symbol id="agirl" viewBox="0 0 400 560">
+    <path fill="var(--hair,#2B3A5B)" d="M200,62 C124,62 96,142 100,232 C102,320 82,430 66,560 L132,560 C130,470 134,400 146,330 L254,330 C266,400 270,470 268,560 L334,560 C318,430 298,320 300,232 C304,142 276,62 200,62 Z"/>
+    <path fill="var(--hair-s,#1B2740)" d="M254,330 C266,400 270,470 268,560 L334,560 C318,430 298,320 300,232 C296,300 292,330 254,330 Z"/>
+    <path fill="var(--skin-s,#E4B49C)" d="M181,278 L181,344 L219,344 L219,278 Z"/>
+    <path fill="var(--navy,#26314D)" d="M62,560 C70,450 112,378 176,340 L224,340 C288,378 330,450 338,560 Z"/>
+    <path fill="var(--navy-s,#171F33)" d="M224,340 C288,378 330,450 338,560 L286,560 C282,450 258,382 224,340 Z"/>
+    <path fill="var(--shirt,#F2F4F8)" d="M176,340 L200,404 L224,340 Z"/>
+    <path fill="var(--shirt-s,#CBD3E0)" d="M200,404 L224,340 L232,344 L200,406 Z"/>
+    <path fill="var(--navy,#26314D)" d="M168,336 L200,410 L176,438 L138,362 Z"/>
+    <path fill="var(--navy,#26314D)" d="M232,336 L200,410 L224,438 L262,362 Z"/>
+    <path fill="var(--navy-s,#171F33)" d="M232,336 L200,410 L224,438 L262,362 Z" opacity=".55"/>
+    <path fill="none" stroke="var(--ribbon,#D9435A)" stroke-width="3" stroke-linejoin="round" d="M138,362 L176,438 L200,410 L224,438 L262,362"/>
+    <path fill="none" stroke="var(--hair-h,#4A5F86)" stroke-width="2.5" d="M96,472 L130,444 L160,444 M304,472 L270,444 L240,444" opacity=".9"/>
+    <rect x="179" y="316" width="42" height="9" rx="3" fill="#1A1220"/>
+    <path d="M200,322 l6,8 l-6,9 l-6,-9z" fill="var(--ribbon,#D9435A)"/>
+    <!-- 脸：基色 + 硬边暗面 -->
+    <path fill="var(--skin,#FBE0CF)" d="M138,150 C136,214 148,252 172,279 C185,294 194,302 200,303 C206,302 215,294 228,279 C252,252 264,214 262,150 Z"/>
+    <path fill="var(--skin-s,#E4B49C)" d="M262,150 C264,214 252,252 228,279 C215,294 206,302 200,303 C222,290 236,250 240,196 C242,168 246,150 262,150 Z"/>
+    <path fill="var(--skin-s,#E4B49C)" opacity=".7" d="M136,196 q10,44 32,66 q-24,-14 -34,-44 Z"/>
+    <ellipse cx="158" cy="254" rx="13" ry="5.5" fill="#F09A9A" opacity=".5"/>
+    <ellipse cx="242" cy="254" rx="13" ry="5.5" fill="#F09A9A" opacity=".5"/>
+    <!-- 眼 -->
+    <g>
+      <path fill="#fff" d="M148,214 Q168,198 192,208 Q190,236 170,238 Q152,233 148,214 Z"/>
+      <path fill="#3E7BC4" d="M160,208 Q184,204 190,222 Q186,238 170,238 Q156,234 156,220 Z"/>
+      <path fill="#14213A" d="M167,214 Q176,212 178,224 Q176,236 170,236 Q163,232 164,222 Z"/>
+      <path fill="#0E1A2E" d="M158,206 Q180,200 194,212 L192,217 Q176,206 158,212 Z"/>
+      <circle cx="166" cy="212" r="4.6" fill="#fff"/>
+      <circle cx="178" cy="228" r="2.2" fill="#fff" opacity=".8"/>
+      <path fill="var(--hair-s,#1B2740)" d="M142,215 Q166,189 197,203 L195,211 Q168,199 148,219 Z"/>
+    </g>
+    <g>
+      <path fill="#fff" d="M252,214 Q232,198 208,208 Q210,236 230,238 Q248,233 252,214 Z"/>
+      <path fill="#3E7BC4" d="M240,208 Q216,204 210,222 Q214,238 230,238 Q244,234 244,220 Z"/>
+      <path fill="#14213A" d="M233,214 Q224,212 222,224 Q224,236 230,236 Q237,232 236,222 Z"/>
+      <path fill="#0E1A2E" d="M242,206 Q220,200 206,212 L208,217 Q224,206 242,212 Z"/>
+      <circle cx="234" cy="212" r="4.6" fill="#fff"/>
+      <circle cx="222" cy="228" r="2.2" fill="#fff" opacity=".8"/>
+      <path fill="var(--hair-s,#1B2740)" d="M258,215 Q234,189 203,203 L205,211 Q232,199 252,219 Z"/>
+    </g>
+    <path d="M201,250 l-3,7 l5,0" stroke="#C98A7C" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M186,276 Q202,282 216,270" stroke="#A9505A" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <!-- 侧发 + 刘海 + 高光 -->
+    <path fill="var(--hair,#2B3A5B)" d="M142,140 C126,220 128,300 112,394 C124,382 130,374 136,362 C144,300 152,232 158,170 Z"/>
+    <path fill="var(--hair,#2B3A5B)" d="M258,140 C274,220 272,300 288,394 C276,382 270,374 264,362 C256,300 248,232 242,170 Z"/>
+    <path fill="var(--hair-s,#1B2740)" d="M258,140 C274,220 272,300 288,394 C280,384 275,376 271,364 C264,300 256,236 250,180 Z" opacity=".8"/>
+    <path fill="var(--hair,#2B3A5B)" d="M116,200 C104,110 146,58 204,58 C264,58 302,112 286,202 L270,158 L262,204 L246,148 L232,198 L216,136 L202,194 L186,138 L172,200 L158,150 L148,206 L136,166 Z"/>
+    <path fill="none" stroke="var(--hair-s,#1B2740)" stroke-width="2.4" stroke-linejoin="round" opacity=".85" d="M116,200 C104,110 146,58 204,58 C264,58 302,112 286,202 L270,158 L262,204 L246,148 L232,198 L216,136 L202,194 L186,138 L172,200 L158,150 L148,206 L136,166 Z"/>
+    <path fill="none" stroke="var(--skin-s,#E4B49C)" stroke-width="2" opacity=".5" d="M136,166 L148,206 L158,150 L172,200 L186,138 L202,194 L216,136 L232,198 L246,148 L262,204 L270,158"/>
+    <path fill="var(--hair-s,#1B2740)" d="M246,148 L232,198 L240,150 Z M216,136 L202,194 L208,140 Z M262,204 L270,158 L268,200 Z"/>
+    <path fill="var(--hair-h,#4A5F86)" d="M146,104 Q200,80 256,104 Q252,113 246,111 Q200,94 154,113 Q148,113 146,104 Z"/>
+    <path fill="var(--hair,#2B3A5B)" d="M206,62 C210,28 238,18 256,30 C236,30 222,42 214,64 Z"/>
+  </symbol>
+
+  <!-- 机甲：几何装甲 + 硬边暗面 + 发光 -->
+  <symbol id="mecha" viewBox="0 0 400 460">
+    <g stroke="#0B111C" stroke-width="3" stroke-linejoin="round">
+      <!-- 肩甲 -->
+      <path d="M78,168 L28,196 L34,244 L96,222 Z" fill="#4E6B8C"/>
+      <path d="M96,222 L34,244 L40,258 L100,240 Z" fill="#2C4058" stroke="none"/>
+      <path d="M322,168 L372,196 L366,244 L304,222 Z" fill="#4E6B8C"/>
+      <path d="M304,222 L366,244 L360,258 L300,240 Z" fill="#2C4058" stroke="none"/>
+      <!-- 手臂 -->
+      <path d="M40,250 L92,240 L88,342 L44,350 Z" fill="#3E5771"/>
+      <path d="M44,350 L88,342 L86,392 L48,398 Z" fill="#54708E"/>
+      <path d="M360,250 L308,240 L312,342 L356,350 Z" fill="#3E5771"/>
+      <path d="M356,350 L312,342 L314,392 L352,398 Z" fill="#54708E"/>
+      <!-- 躯干 -->
+      <path d="M120,150 L280,150 L296,300 L260,344 L140,344 L104,300 Z" fill="#6B87A8"/>
+      <path d="M280,150 L296,300 L260,344 L238,330 L252,206 Z" fill="#3E5771" stroke="none"/>
+      <path d="M120,150 L104,300 L140,344 L150,318 L138,196 Z" fill="#8AA4C0" stroke="none"/>
+      <path d="M148,196 L252,196 L244,262 L156,262 Z" fill="#22334A" stroke="none"/>
+      <path d="M162,306 L238,306 L232,336 L168,336 Z" fill="#2C4058" stroke="none"/>
+      <!-- 胸灯 -->
+      <circle cx="200" cy="228" r="17" fill="#FFB347"/>
+      <circle cx="200" cy="228" r="8" fill="#FFF0C2"/>
+      <!-- 腰 -->
+      <path d="M150,344 L250,344 L246,376 L154,376 Z" fill="#40597A"/>
+      <!-- 头 -->
+      <path d="M162,96 L238,96 L246,148 L154,148 Z" fill="#8AA4C0"/>
+      <path d="M238,96 L246,148 L224,148 L222,100 Z" fill="#4E6B8C" stroke="none"/>
+      <path d="M166,118 L234,118 L230,132 L170,132 Z" fill="#7FD8FF"/>
+      <path d="M176,110 L224,110 L222,118 L178,118 Z" fill="#FFB347" opacity=".9"/>
+      <path d="M200,66 L212,96 L188,96 Z" fill="#D9435A"/>
+      <path d="M148,86 L162,96 L148,104 Z" fill="#8AA4C0"/>
+      <path d="M252,86 L238,96 L252,104 Z" fill="#8AA4C0"/>
+      <!-- 细节线 -->
+      <path d="M126,180 L150,178 M126,206 L150,204" stroke="#1B2739" stroke-width="2.5"/>
+      <path d="M274,180 L250,178 M274,206 L250,204" stroke="#1B2739" stroke-width="2.5"/>
+      <!-- 腿 -->
+      <path d="M154,376 L196,376 L192,432 L158,432 Z" fill="#4E6B8C"/>
+      <path d="M204,376 L246,376 L242,432 L208,432 Z" fill="#4E6B8C"/>
+      <path d="M196,376 L192,432 L204,432 L206,376 Z" fill="#22334A" stroke="none"/>
+      <path d="M156,432 L194,432 L192,456 L148,456 Z" fill="#6B87A8"/>
+      <path d="M206,432 L244,432 L252,456 L208,456 Z" fill="#6B87A8"/>
+    </g>
+    <path d="M200,228 r17" fill="none"/>
+  </symbol>
+
+  <symbol id="pilotfig" viewBox="0 0 120 200">
+    <ellipse cx="60" cy="192" rx="26" ry="5" fill="#000" opacity=".4"/>
+    <path d="M40,110 q-4,44 2,74" stroke="#12253C" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M80,110 q4,44 -2,74" stroke="#12253C" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M34,64 q26,-10 52,0 q8,44 0,56 q-26,8 -52,0 q-8,-12 0,-56 Z" fill="#1E3550"/>
+    <path d="M60,26 q20,0 22,22 q2,22 -22,24 q-24,-2 -22,-24 q2,-22 22,-22 Z" fill="#2E4A68"/>
+    <path d="M38,44 q22,-8 44,0 l-2,8 q-20,-6 -40,0 Z" fill="#7FD8FF" opacity=".85"/>
+    <path d="M46,22 q14,-10 28,0 l-4,8 q-10,-6 -20,0 Z" fill="#D9435A"/>
+  </symbol>
+
+  <symbol id="temple" viewBox="0 0 300 220">
+    <g stroke="#6B5030" stroke-width="3" stroke-linejoin="round">
+      <path d="M20,86 L150,30 L280,86 L262,96 L150,52 L38,96 Z" fill="#8C4A3C"/>
+      <path d="M40,96 L260,96 L246,110 L54,110 Z" fill="#A85C46"/>
+      <rect x="62" y="110" width="176" height="14" fill="#C9B183"/>
+      <rect x="76" y="124" width="20" height="76" fill="#8C4A3C"/>
+      <rect x="140" y="124" width="20" height="76" fill="#8C4A3C"/>
+      <rect x="204" y="124" width="20" height="76" fill="#8C4A3C"/>
+      <rect x="54" y="200" width="192" height="14" fill="#C9B183"/>
+      <path d="M96,124 L204,124 L200,196 L100,196 Z" fill="#6B5030" opacity=".25" stroke="none"/>
+    </g>
+  </symbol>
+
+  <symbol id="histfigs" viewBox="0 0 260 140">
+    <g stroke="#5A422C" stroke-width="2.6" stroke-linejoin="round">
+      <!-- 三个时代的人物剪影，简化服饰轮廓 -->
+      <g>
+        <path d="M22,138 q-2,-40 14,-56 q-8,-10 0,-20 q10,-8 18,2 q6,10 -2,18 q16,16 14,56 Z" fill="#8C4A3C"/>
+        <circle cx="44" cy="56" r="12" fill="#E8C9A8"/>
+        <path d="M32,50 q12,-12 24,0 q-12,-4 -24,0 Z" fill="#3B2A1C"/>
+        <circle cx="39" cy="58" r="1.6" fill="#3B2A1C"/><circle cx="49" cy="58" r="1.6" fill="#3B2A1C"/>
+      </g>
+      <g>
+        <path d="M100,138 q-2,-44 16,-58 q-6,-12 2,-22 q12,-8 18,4 q4,12 -4,18 q18,16 16,58 Z" fill="#6E7C4A"/>
+        <circle cx="124" cy="54" r="12" fill="#E8C9A8"/>
+        <path d="M112,48 q12,-10 24,0 l2,-10 q-14,-8 -28,0 Z" fill="#3B2A1C"/>
+        <circle cx="119" cy="56" r="1.6" fill="#3B2A1C"/><circle cx="129" cy="56" r="1.6" fill="#3B2A1C"/>
+      </g>
+      <g>
+        <path d="M182,138 q0,-42 16,-56 q-6,-12 2,-22 q12,-8 18,4 q4,12 -4,18 q18,16 16,56 Z" fill="#4A5E7C"/>
+        <circle cx="204" cy="54" r="12" fill="#E8C9A8"/>
+        <path d="M192,46 q12,-8 24,2 l4,-12 q-16,-8 -30,2 Z" fill="#3B2A1C"/>
+        <circle cx="199" cy="56" r="1.6" fill="#3B2A1C"/><circle cx="209" cy="56" r="1.6" fill="#3B2A1C"/>
+      </g>
+    </g>
+  </symbol>
+
+  <symbol id="chibi" viewBox="0 0 200 200">
+    <ellipse cx="100" cy="186" rx="46" ry="8" fill="#8A6F7A" opacity=".18"/>
+    <path d="M52,182 q-6,-46 18,-64 q-6,-56 30,-58 q36,2 30,58 q24,18 18,64 Z" fill="var(--hair,#2B3A5B)"/>
+    <circle cx="100" cy="96" r="52" fill="var(--skin,#FBE0CF)"/>
+    <path d="M48,92 q2,-44 52,-44 q50,0 52,44 q-10,-26 -30,-24 q-14,10 -30,2 q-22,-2 -30,22 Z" fill="var(--hair,#2B3A5B)"/>
+    <ellipse cx="80" cy="100" rx="11" ry="13" fill="#fff"/>
+    <ellipse cx="120" cy="100" rx="11" ry="13" fill="#fff"/>
+    <circle cx="82" cy="102" r="7" fill="var(--hair-s,#1B2740)"/>
+    <circle cx="118" cy="102" r="7" fill="var(--hair-s,#1B2740)"/>
+    <circle cx="79" cy="99" r="2.4" fill="#fff"/>
+    <circle cx="115" cy="99" r="2.4" fill="#fff"/>
+    <ellipse cx="64" cy="116" rx="8" ry="5" fill="#F09A9A" opacity=".6"/>
+    <ellipse cx="136" cy="116" rx="8" ry="5" fill="#F09A9A" opacity=".6"/>
+  </symbol>
+</defs></svg>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

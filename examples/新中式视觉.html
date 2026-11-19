@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新中式视觉 · 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --cn-night:#0E1626; --cn-blue:#1E3049; --cn-red:#B03A2E;
+  --cn-gold:#C9A227; --cn-paper:#F2EDE2;
+}
+.cn,.nn1,.nn2,.nn3{color:var(--cn-paper)}
+.cn .vtitle,.vtitle{writing-mode:vertical-rl;font-family:var(--f-serif);letter-spacing:.4em}
+.seal{display:flex;align-items:center;justify-content:center;background:#B03A2E;color:#F2EDE2;
+  font-family:var(--f-serif);border-radius:.12cqw;letter-spacing:.06em;line-height:1.1}
+.cloudline{position:absolute;height:.1cqw;background:linear-gradient(90deg,rgba(201,162,39,0),rgba(201,162,39,.55) 20%,rgba(201,162,39,.55) 80%,rgba(201,162,39,0))}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>25 / 25</span>
+    <span class="right"><a href="古典奢华视觉.html">← 上一条</a><a href="index.html">回到索引 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>新中式视觉<small>Contemporary Chinese-inspired Design</small></h1>
+    <p class="lead">将中国传统山水、云纹、印章、灯笼和建筑符号转化为现代图形，以留白、层叠空间、克制装饰与清楚的信息层级组织画面。判断它成立的不是"有没有汉字"，而是<strong>层叠空间</strong>、<strong>红金与蓝黑两套配色</strong>、以及<strong>传统符号与现代网格的并置</strong>。</p>
+    <div class="meta">
+      <div><b>术语性质</b>通行但范围较宽的文化视觉方向；本条目限定山水层次、红金装饰与现代排版的组合</div>
+      <div><b>视觉媒介</b>二维层叠山水与图形动画＋空间化道具＋动态排版</div>
+      <div><b>典型母体</b>山水画与月夜意象、传统建筑与节庆装饰、现代报告与科技图形</div>
+    </div>
+    <div class="tags">
+      <span class="tag">新中式</span><span class="tag">山水意象</span><span class="tag">云纹</span>
+      <span class="tag">方印</span><span class="tag">红金与蓝黑</span>
+      <span class="tag w">科技议题</span><span class="tag w">设问</span><span class="tag w">文化语境</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#0E1626"></i>夜蓝<br><code>#0E1626</code></div>
+      <div class="sw"><i style="background:#1E3049"></i>山青<br><code>#1E3049</code></div>
+      <div class="sw"><i style="background:#B03A2E"></i>朱红<br><code>#B03A2E</code></div>
+      <div class="sw"><i style="background:#C9A227"></i>金<br><code>#C9A227</code></div>
+      <div class="sw"><i style="background:#F2EDE2"></i>宣纸白<br><code>#F2EDE2</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">蓝黑月夜：五层山形由远及近逐层加深，圆月与竖排题字各占一处焦点，中段留给云纹细线与大片空白。红色只出现在方印上——这是整页唯一的朱红，也是它的落款。</p>
+
+  <div class="frame cn" id="f-master">
+    <div style="position:absolute;inset:0;background:
+      linear-gradient(180deg,#070C16 0%,#0E1626 34%,#16233A 62%,#0A101C 100%)"></div>
+
+    <!-- 星点 -->
+    <div style="position:absolute;left:12cqw;top:5cqw;width:.16cqw;height:.16cqw;background:#F2EDE2;opacity:.6;border-radius:50%"></div>
+    <div style="position:absolute;left:26cqw;top:9cqw;width:.12cqw;height:.12cqw;background:#F2EDE2;opacity:.45;border-radius:50%"></div>
+    <div style="position:absolute;left:44cqw;top:4cqw;width:.14cqw;height:.14cqw;background:#F2EDE2;opacity:.5;border-radius:50%"></div>
+    <div style="position:absolute;left:78cqw;top:7cqw;width:.12cqw;height:.12cqw;background:#F2EDE2;opacity:.4;border-radius:50%"></div>
+    <div style="position:absolute;left:88cqw;top:14cqw;width:.16cqw;height:.16cqw;background:#F2EDE2;opacity:.55;border-radius:50%"></div>
+
+    <!-- 圆月 -->
+    <div style="position:absolute;left:66cqw;top:6cqw;width:15cqw;height:15cqw;border-radius:50%;
+      background:radial-gradient(circle,#FFFDF4 0%,#F2EDE2 58%,#E2DAC8 100%);
+      box-shadow:0 0 6cqw rgba(242,237,226,.22),0 0 16cqw rgba(242,237,226,.10)"></div>
+    <div style="position:absolute;left:66cqw;top:6cqw;width:15cqw;height:15cqw;border-radius:50%;
+      background:radial-gradient(60% 60% at 36% 32%,rgba(255,255,255,.5),rgba(255,255,255,0) 62%)"></div>
+
+    <!-- 层叠山形 -->
+    <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+      <defs>
+        <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3D5878" stop-opacity=".62"/><stop offset="1" stop-color="#2B415C" stop-opacity=".38"/>
+        </linearGradient>
+        <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#27405F" stop-opacity=".9"/><stop offset="1" stop-color="#1B2C44" stop-opacity=".7"/>
+        </linearGradient>
+        <linearGradient id="m3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#16243A"/><stop offset="1" stop-color="#101A2C"/>
+        </linearGradient>
+        <linearGradient id="m4" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0B1220"/><stop offset="1" stop-color="#070C15"/>
+        </linearGradient>
+      </defs>
+      <!-- 远山 -->
+      <g style="filter:blur(.22cqw)">
+        <path d="M0,33 L6,27 L11,30 L18,21 L24,27 L30,23 L37,29 L44,22 L51,28 L58,24 L65,30 L72,25 L79,31 L87,26 L94,31 L100,27 L100,42 L0,42 Z" fill="url(#m1)"></path>
+      </g>
+      <!-- 中山 -->
+      <g style="filter:blur(.1cqw)">
+        <path d="M0,37 L8,31 L15,35 L23,27 L31,33 L39,29 L47,35 L55,28 L63,34 L71,30 L79,36 L87,31 L95,36 L100,33 L100,46 L0,46 Z" fill="url(#m2)"></path>
+      </g>
+      <!-- 近山 -->
+      <path d="M0,41 L9,36 L17,40 L26,34 L35,40 L43,35 L52,41 L60,36 L69,41 L78,36 L88,41 L96,37 L100,40 L100,50 L0,50 Z" fill="url(#m3)"></path>
+      <!-- 最近一层 -->
+      <path d="M0,46 L12,42 L24,46 L34,42 L46,47 L58,42 L70,47 L82,43 L92,47 L100,44 L100,56.25 L0,56.25 Z" fill="url(#m4)"></path>
+    </svg>
+
+    <!-- 山脚雾气 -->
+    <div style="position:absolute;left:0;right:0;top:38cqw;height:8cqw;
+      background:linear-gradient(180deg,rgba(14,22,38,0),rgba(160,185,210,.10) 46%,rgba(14,22,38,0) 100%)"></div>
+    <div style="position:absolute;left:0;right:0;top:43.6cqw;height:6cqw;
+      background:linear-gradient(180deg,rgba(10,16,28,0),rgba(10,16,28,.9))"></div>
+
+    <!-- 云纹细线 -->
+    <div class="cloudline" style="left:6cqw;width:38cqw;top:24cqw;opacity:.5"></div>
+    <div class="cloudline" style="left:58cqw;width:36cqw;top:29.4cqw;opacity:.34"></div>
+    <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+      <path d="M30,22 q4,-2.2 8,0 t8,0 t8,0" fill="none" stroke="rgba(201,162,39,.55)" stroke-width=".12"></path>
+      <path d="M30,20.6 q4,-2.2 8,0 t8,0 t8,0" fill="none" stroke="rgba(201,162,39,.32)" stroke-width=".1"></path>
+      <path d="M58,32 q5,-2.4 10,0 t10,0" fill="none" stroke="rgba(201,162,39,.4)" stroke-width=".11"></path>
+    </svg>
+
+    <!-- 水面倒影 -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:9cqw;
+      background:linear-gradient(180deg,rgba(20,32,50,.5),rgba(8,12,20,.95))"></div>
+    <div style="position:absolute;left:60cqw;top:47cqw;width:27cqw;height:8cqw;
+      background:radial-gradient(closest-side,rgba(242,237,226,.22),rgba(242,237,226,.08) 52%,rgba(242,237,226,0) 78%);
+      filter:blur(.7cqw)"></div>
+    <div class="cloudline" style="left:66cqw;width:15cqw;top:50.6cqw;opacity:.16"></div>
+    <div class="cloudline" style="left:68cqw;width:11cqw;top:52.6cqw;opacity:.11"></div>
+    <div class="cloudline" style="left:65cqw;width:17cqw;top:54.4cqw;opacity:.08"></div>
+    <div class="cloudline" style="left:44cqw;width:34cqw;top:48cqw;opacity:.22"></div>
+    <div class="cloudline" style="left:56cqw;width:22cqw;top:50.4cqw;opacity:.16"></div>
+
+    <!-- 竖排题字 -->
+    <div class="vtitle" style="position:absolute;left:7.4cqw;top:5.4cqw;font-size:4.6cqw;
+      color:rgba(242,237,226,.92);text-shadow:0 .2cqw 1.2cqw rgba(0,0,0,.5)">山水有声</div>
+    <!-- 红印 -->
+    <div class="seal" style="position:absolute;left:8.4cqw;top:34cqw;width:2.9cqw;height:2.9cqw;font-size:1.1cqw;
+      flex-direction:column;transform:rotate(-2deg);box-shadow:0 .2cqw .8cqw rgba(0,0,0,.4)">山<br>水</div>
+
+    <!-- 横向信息 -->
+    <div style="position:absolute;left:7.4cqw;bottom:3cqw;z-index:8">
+      <div style="width:12cqw;height:.1cqw;background:rgba(201,162,39,.5);margin-bottom:.7cqw"></div>
+      <div style="font-family:var(--f-mono);font-size:.72cqw;letter-spacing:.24em;color:rgba(201,162,39,.85)">
+        SHANSHUI / LAYERED / SILENT<br>
+        <span style="color:rgba(242,237,226,.5)">山 5 层 · 月 1 轮 · 朱红 1 处</span></div>
+    </div>
+    <div style="position:absolute;right:4.4cqw;bottom:3cqw;text-align:right;z-index:8;
+      font-family:var(--f-serif);font-size:1.05cqw;line-height:1.9;color:rgba(242,237,226,.6)">
+      远看是山，近看是墨，<br>放大是像素。</div>
+
+    <div style="position:absolute;inset:0;pointer-events:none;z-index:12;background:
+      radial-gradient(78% 70% at 50% 42%,rgba(4,7,12,0) 44%,rgba(4,7,12,.66) 100%)"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>五层山，五个明度</b>远山最浅最淡、近山最黑最实。层数不是装饰，是空间：少了没有纵深，多了变成剪影墙。每层之间留一条雾，边界才不会黏在一起。</div>
+    <div><b>大面积留白是规格</b>天空占一半以上，题字只占一角。新中式一旦把画面填满，就滑向年画；空出来的地方，是给"气"走的。</div>
+    <div><b>两套配色，不混着用</b>蓝黑负责山水与夜，朱红与金负责建筑与节庆。同一帧里红色只做点（印章、灯笼、门钉），不做面。</div>
+    <div><b>传统符号＋现代网格</b>竖排题字、方印、云纹是旧的；等宽小字、细线标尺、数据行是新的。新旧各占一块区域，谁也不压谁。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向：层叠山水与月夜（深度分层）、红金建筑与细线装饰（朱红门与金钉）、传统意象与现代排版（全宽，旧符号＋新网格）。</p>
+
+  <div class="subs">
+
+    <!-- 1. 层叠山水与月夜 -->
+    <section class="sub">
+      <div class="frame nn1" id="f-layer">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#080D17,#111C2E 58%,#0A111C)"></div>
+        <div style="position:absolute;left:58cqw;top:5cqw;width:11cqw;height:11cqw;border-radius:50%;
+          background:radial-gradient(circle,#FFFDF4,#F2EDE2 62%,#E4DCC9);box-shadow:0 0 5cqw rgba(242,237,226,.2)"></div>
+
+        <!-- 五层，明度阶梯 -->
+        <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+          <path d="M0,34 L10,26 L19,31 L29,22 L38,29 L47,23 L56,30 L66,24 L75,30 L84,25 L92,30 L100,26 L100,44 L0,44 Z" fill="#3E5C80" opacity=".55"></path>
+          <path d="M0,38 L12,31 L21,36 L31,28 L41,35 L50,29 L60,36 L70,30 L80,36 L89,31 L100,36 L100,46 L0,46 Z" fill="#2A415F" opacity=".85"></path>
+          <path d="M0,42 L11,36 L22,41 L32,35 L43,41 L53,36 L64,42 L74,37 L85,42 L95,38 L100,41 L100,50 L0,50 Z" fill="#17253A"></path>
+          <path d="M0,47 L14,43 L27,47 L39,43 L52,48 L65,43 L78,48 L90,44 L100,47 L100,56.25 L0,56.25 Z" fill="#0B1320"></path>
+          <path d="M0,52 L18,49 L34,52 L50,49 L66,52 L82,49 L100,52 L100,56.25 L0,56.25 Z" fill="#060A11"></path>
+        </svg>
+
+        <!-- 层标注 -->
+        <div style="position:absolute;right:5cqw;top:15cqw;font-family:var(--f-mono);font-size:.72cqw;
+          letter-spacing:.14em;line-height:2.1;color:rgba(242,237,226,.6);text-align:right">
+          <div>远山　L1　55%</div><div>中山　L2　85%</div><div>近山　L3　100%</div>
+          <div>山脚　L4　100%</div><div>水面　L5　100%</div></div>
+        <!-- 引线 -->
+        <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+          <line x1="72" y1="19" x2="86" y2="19" stroke="rgba(201,162,39,.45)" stroke-width=".08"></line>
+          <line x1="72" y1="22.4" x2="86" y2="22.4" stroke="rgba(201,162,39,.35)" stroke-width=".08"></line>
+          <line x1="72" y1="26" x2="86" y2="26" stroke="rgba(201,162,39,.28)" stroke-width=".08"></line>
+        </svg>
+
+        <!-- 竖排小字 -->
+        <div class="vtitle" style="position:absolute;left:6cqw;top:5cqw;font-size:1.5cqw;line-height:1.9;
+          color:rgba(242,237,226,.7);letter-spacing:.34em">夜 山 无 人</div>
+        <div class="seal" style="position:absolute;left:5.4cqw;top:20.6cqw;width:2.2cqw;height:2.2cqw;
+          font-size:.9cqw;flex-direction:column">夜</div>
+
+        <!-- 雾带 -->
+        <div style="position:absolute;left:0;right:0;top:36cqw;height:5cqw;
+          background:linear-gradient(180deg,rgba(180,205,230,0),rgba(180,205,230,.14),rgba(180,205,230,0))"></div>
+        <div style="position:absolute;left:0;right:0;top:43cqw;height:4cqw;
+          background:linear-gradient(180deg,rgba(180,205,230,.10),rgba(180,205,230,0))"></div>
+
+        <div style="position:absolute;right:4cqw;bottom:2.6cqw;font-family:var(--f-mono);font-size:.68cqw;
+          letter-spacing:.16em;color:rgba(201,162,39,.7)">LAYERED · 5 STEPS</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>层叠山水与月夜<small>Layered Shanshui &amp; Moonlit Landscapes</small></h3>
+        <p>同一套山形画五遍，只改明度和高度，纵深就出来了。关键是"逐层递增"：越远越浅、越远越模糊、越远越靠上。留白不是空着的余数，是给月亮和题字的固定位置——先留白，再放山。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">五层明度阶梯</span><span class="tag">圆月焦点</span>
+          <span class="tag">雾带分隔</span><span class="tag">大面积留白</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 红金建筑与细线装饰 -->
+    <section class="sub">
+      <div class="frame nn2" id="f-door">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(70% 66% at 50% 44%,#B03A2E 0%,#93271C 44%,#5E150F 82%,#3C0C09 100%)"></div>
+
+        <!-- 门框 -->
+        <div style="position:absolute;left:9cqw;top:3.4cqw;width:82cqw;height:50cqw;
+          border:.22cqw solid rgba(201,162,39,.75)"></div>
+        <div style="position:absolute;left:10.4cqw;top:4.6cqw;width:79.2cqw;height:47.6cqw;
+          border:.08cqw solid rgba(201,162,39,.4)"></div>
+
+        <!-- 两扇门 -->
+        <div style="position:absolute;left:12cqw;top:6cqw;width:37cqw;height:45cqw;
+          background:linear-gradient(160deg,#A72E22 0%,#8A1F16 52%,#6C150F 100%);
+          border:.12cqw solid rgba(201,162,39,.35)"></div>
+        <div style="position:absolute;left:51cqw;top:6cqw;width:37cqw;height:45cqw;
+          background:linear-gradient(200deg,#A72E22 0%,#8A1F16 52%,#6C150F 100%);
+          border:.12cqw solid rgba(201,162,39,.35)"></div>
+        <!-- 中缝 -->
+        <div style="position:absolute;left:49.5cqw;top:6cqw;width:.6cqw;height:45cqw;
+          background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.25),rgba(0,0,0,.55))"></div>
+
+        <!-- 金钉：每扇 3 × 3 -->
+        <div style="position:absolute;left:18cqw;top:11cqw;width:21cqw;height:24cqw;
+          background-image:radial-gradient(circle closest-side at 50% 50%,#F7E7B8 0 22%,#C9A227 26% 31%,#8E6A19 34% 40%,rgba(0,0,0,0) 44%);
+          background-size:7cqw 6cqw"></div>
+        <div style="position:absolute;left:57cqw;top:11cqw;width:21cqw;height:24cqw;
+          background-image:radial-gradient(circle closest-side at 50% 50%,#F7E7B8 0 22%,#C9A227 26% 31%,#8E6A19 34% 40%,rgba(0,0,0,0) 44%);
+          background-size:7cqw 6cqw"></div>
+
+        <!-- 门环 -->
+        <div style="position:absolute;left:34.6cqw;top:37cqw;width:6cqw;height:6cqw">
+          <div style="position:absolute;left:50%;top:0;width:2.2cqw;height:2.2cqw;margin-left:-1.1cqw;border-radius:50%;
+            background:radial-gradient(circle at 34% 30%,#F6E4AE,#C9A227 50%,#8E6A19)"></div>
+          <div style="position:absolute;left:50%;top:1.7cqw;width:4cqw;height:4cqw;margin-left:-2cqw;border-radius:50%;
+            border:.3cqw solid #C9A227;box-shadow:0 .2cqw .8cqw rgba(0,0,0,.5)"></div>
+        </div>
+        <div style="position:absolute;left:59.4cqw;top:37cqw;width:6cqw;height:6cqw">
+          <div style="position:absolute;left:50%;top:0;width:2.2cqw;height:2.2cqw;margin-left:-1.1cqw;border-radius:50%;
+            background:radial-gradient(circle at 34% 30%,#F6E4AE,#C9A227 50%,#8E6A19)"></div>
+          <div style="position:absolute;left:50%;top:1.7cqw;width:4cqw;height:4cqw;margin-left:-2cqw;border-radius:50%;
+            border:.3cqw solid #C9A227;box-shadow:0 .2cqw .8cqw rgba(0,0,0,.5)"></div>
+        </div>
+
+        <!-- 灯笼 -->
+        <div style="position:absolute;left:4.4cqw;top:-3cqw;width:.1cqw;height:8.6cqw;background:rgba(201,162,39,.45)"></div>
+        <div style="position:absolute;left:2.2cqw;top:5cqw;width:4.4cqw;height:6.2cqw;border-radius:50%;
+          background:radial-gradient(circle at 40% 34%,#E05B44,#B03A2E 52%,#7A1A12 100%);
+          box-shadow:0 0 3cqw rgba(224,91,68,.32)"></div>
+        <div style="position:absolute;left:3.1cqw;top:4.3cqw;width:2.6cqw;height:.7cqw;background:#C9A227"></div>
+        <div style="position:absolute;left:3.1cqw;top:11.1cqw;width:2.6cqw;height:.7cqw;background:#C9A227"></div>
+        <div style="position:absolute;left:4.4cqw;top:11.8cqw;width:.1cqw;height:2.2cqw;background:#C9A227"></div>
+
+        <div style="position:absolute;right:4.4cqw;top:-3cqw;width:.1cqw;height:8.6cqw;background:rgba(201,162,39,.45)"></div>
+        <div style="position:absolute;right:2.2cqw;top:5cqw;width:4.4cqw;height:6.2cqw;border-radius:50%;
+          background:radial-gradient(circle at 40% 34%,#E05B44,#B03A2E 52%,#7A1A12 100%);
+          box-shadow:0 0 3cqw rgba(224,91,68,.35)"></div>
+        <div style="position:absolute;right:3.1cqw;top:4.3cqw;width:2.6cqw;height:.7cqw;background:#C9A227"></div>
+        <div style="position:absolute;right:3.1cqw;top:11.1cqw;width:2.6cqw;height:.7cqw;background:#C9A227"></div>
+        <div style="position:absolute;right:4.4cqw;top:11.8cqw;width:.1cqw;height:2.2cqw;background:#C9A227"></div>
+
+        <!-- 云纹细线（底部） -->
+        <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+          <path d="M0,52 q6,-3 12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0" fill="none" stroke="rgba(201,162,39,.5)" stroke-width=".12"></path>
+          <path d="M0,54 q6,-3 12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0" fill="none" stroke="rgba(201,162,39,.3)" stroke-width=".1"></path>
+        </svg>
+
+        <!-- 匾额 -->
+        <div style="position:absolute;left:34cqw;top:7.6cqw;width:32cqw;height:8cqw;
+          background:linear-gradient(180deg,#2A1512,#1A0B09);border:.16cqw solid rgba(201,162,39,.7)">
+          <div style="position:absolute;inset:.5cqw;border:.06cqw solid rgba(201,162,39,.3)"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+            font-family:var(--f-serif);font-size:3.4cqw;letter-spacing:.4em;color:#E8D9A8;text-indent:.4em">门 内 有 山</div>
+        </div>
+
+        <div style="position:absolute;left:4cqw;bottom:4.8cqw;font-family:var(--f-mono);font-size:.72cqw;
+          letter-spacing:.16em;line-height:1.9;color:rgba(232,217,168,.65)">
+          金钉 18 · 灯笼 2 · 云纹 2 条<br>朱红 #B03A2E / 金 #C9A227</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>红金建筑与细线装饰<small>Red-and-gold Architecture &amp; Fine-line Ornaments</small></h3>
+        <p>红门是这套风格里最"响"的一个元素：两扇、中缝、成排金钉、一对门环，再加匾额。全部靠严格的中轴和等距排列撑住气场。云纹不要画满，两条细线贴着下沿就够了——它是把装饰延伸到留白里的导线。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">朱红门扇</span><span class="tag">金钉阵列</span>
+          <span class="tag">门环匾额</span><span class="tag">云纹细线</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 传统意象与现代排版（全宽） -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame nn3" id="f-type">
+        <div style="position:absolute;inset:0;background:linear-gradient(150deg,#F5F1E7 0%,#F2EDE2 54%,#E8E0CE 100%)"></div>
+        <!-- 纸纤维 -->
+        <div style="position:absolute;inset:0;opacity:.5;background:
+          repeating-linear-gradient(92deg,rgba(120,100,70,.05) 0 .1cqw,rgba(0,0,0,0) .1cqw 1.6cqw)"></div>
+
+        <!-- 左：大好问号 + 竖排 -->
+        <div style="position:absolute;left:5cqw;top:0;height:100%;width:34cqw">
+          <div style="position:absolute;left:0;top:2.6cqw;font-family:var(--f-serif);font-size:22cqw;line-height:.9;
+            color:#16223A;letter-spacing:-.02em">？</div>
+          <div class="vtitle" style="position:absolute;left:25.4cqw;top:5cqw;font-size:1.45cqw;letter-spacing:.3em;
+            color:#3A4761">我们为什么在这里</div>
+          <div class="seal" style="position:absolute;left:25.9cqw;top:40cqw;width:2.6cqw;height:2.6cqw;
+            font-size:1.1cqw;flex-direction:column;transform:rotate(-3deg)">中<br>国</div>
+        </div>
+        <!-- 中缝竖线 -->
+        <div style="position:absolute;left:42cqw;top:4cqw;bottom:4cqw;width:.08cqw;background:rgba(22,34,58,.25)"></div>
+
+        <!-- 右：现代网格 -->
+        <div style="position:absolute;left:45cqw;top:5.4cqw;width:50cqw">
+          <div style="font-family:var(--f-mono);font-size:.74cqw;letter-spacing:.28em;color:#7A6A4E">
+            REPORT / 2026 · 数据不是山，但一样要分层</div>
+          <div style="margin-top:1.2cqw;font-family:var(--f-serif);font-size:2.5cqw;line-height:1.3;color:#16223A">
+            把传统的重量，放进清楚的格子。</div>
+          <div style="margin-top:1.8cqw;height:.06cqw;background:rgba(22,34,58,.25)"></div>
+
+          <!-- 数据行 -->
+          <div id="rows" style="margin-top:2cqw;font-family:var(--f-mono);font-size:.92cqw;color:#2A3A55"></div>
+          <script>
+          (function(){
+            const data=[['山水层数','5','60%'],['留白占比','48%','48%'],['朱红面积','3%','12%'],['装饰线宽','0.1 cqw','6%']];
+            document.getElementById('rows').innerHTML = data.map(d=>`
+              <div style="display:flex;align-items:center;gap:1.2cqw;padding:.72cqw 0;border-bottom:.06cqw solid rgba(22,34,58,.14)">
+                <span style="width:9cqw;color:#5C6B85;letter-spacing:.08em">${d[0]}</span>
+                <span style="flex:0 0 18cqw;height:.5cqw;background:rgba(22,34,58,.1);position:relative">
+                  <span style="position:absolute;left:0;top:0;bottom:0;width:${d[2]};background:#B03A2E;opacity:.85"></span>
+                </span>
+                <span style="margin-left:auto;color:#16223A">${d[1]}</span>
+              </div>`).join('');
+          })();
+          </script>
+
+          <div style="margin-top:1.8cqw;display:flex;justify-content:space-between;align-items:flex-end">
+            <div style="font-family:var(--f-mono);font-size:.72cqw;line-height:1.9;letter-spacing:.1em;color:#7A6A4E">
+              旧符号负责认亲，新网格负责说清楚。<br>两者共用一条基线，就不打架。</div>
+            <div style="font-family:var(--f-serif);font-size:1.6cqw;color:#B03A2E;letter-spacing:.14em">山／水／问</div>
+          </div>
+        </div>
+
+        <!-- 底部远山剪影 -->
+        <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;left:0;right:0;bottom:0;height:8cqw;width:100%">
+          <path d="M0,52 L8,48 L16,51 L26,46 L35,51 L44,47 L54,52 L64,47 L74,51 L84,47 L93,51 L100,48 L100,56.25 L0,56.25 Z"
+            fill="#16223A" opacity=".16"></path>
+        </svg>
+
+        <div style="position:absolute;left:4cqw;bottom:2.2cqw;font-family:var(--f-mono);font-size:.66cqw;
+          letter-spacing:.22em;color:rgba(60,72,96,.6)">TRADITIONAL MOTIFS × CONTEMPORARY GRID</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>传统意象与现代排版<small>Traditional Motifs with Contemporary Typography</small></h3>
+        <p>这一支是把"文化"和"信息"放在同一张纸上：左边一个大问号、一行竖排、一枚方印；右边等宽数字、细横线、比例条。诀窍是各自归属——传统符号只做框景与情绪，数据只做内容，中间用一条竖线划清边界。文字一旦混排在同一行，两边都会失效。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">大问号</span><span class="tag">竖排题字</span>
+          <span class="tag">数据网格</span><span class="tag">宣纸白底</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>两套配色，明确切换</b>蓝黑（夜、山、水）与朱红金（门、灯、印）分别成景，不在同一帧里五五混用。红色永远做点，不做面。</div>
+    <div><b>母题固定五个</b>远山、圆月、云纹、方印、建筑构件。每次出现都从这五个里选，造型保持一致，风格才认得出来。</div>
+    <div><b>留白是主动设计</b>天空与水面各留一块干净区域，装饰贴着边缘走。填满画面就等于放弃这套风格。</div>
+    <div><b>新旧各占一块</b>传统符号与现代标题、图表分区域排布，共用一条基线或一条中轴；不要在同一行里混排两种语气。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>新中式视觉（Contemporary Chinese-inspired Design）动态图形：蓝黑层叠山水、圆月与留白，交替朱红背景、金色细线云纹、灯笼与红门金钉。红色方印、波浪纹和传统建筑构件形成统一母题，现代衬线标题、大问号、清单和科技图表以清楚网格排列。山形分层移动，局部灯笼与文字缓慢显现，画面在传统意象与当代表达之间保持协调。</div>
+
+  <footer>样例说明：本页山形、圆月、云纹、方印、红门金钉、灯笼、匾额与全部文字，均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面。子风格依据 <code>styles/新中式视觉.md</code>。</footer>
+</div>
+</body>
+</html>

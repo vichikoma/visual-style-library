@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手工立体绘本美学（Handcrafted Pop-up Storybook Aesthetics）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --pk-paper:#F0E2CC; --pk-gold:#C9A227; --pk-green:#6E8B6B;
+  --pk-red:#B4553F; --pk-navy:#3A4A63;
+  --pk-ink:#3A2A20; --pk-wood:#6B4A33;
+}
+.pk,.pa1,.pa2,.pa3{color:var(--pk-paper)}
+.mono{font-family:var(--f-mono);letter-spacing:.08em}
+
+/* 背面 */
+.pkbg{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(52% 46% at 50% 34%,rgba(255,206,140,.30) 0%,rgba(255,206,140,0) 66%),
+  linear-gradient(170deg,#463429 0%,#33251D 46%,#1E1510 100%)}
+
+/* 书 */
+.book{position:absolute;left:0;right:0;top:26cqw;bottom:2.2cqw;z-index:2}
+.pg{position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(88deg,rgba(120,90,60,.055) 0,rgba(120,90,60,.055) .08cqw,transparent .08cqw,transparent 1.9cqw),
+    radial-gradient(56% 46% at 50% 96%,rgba(255,247,232,.85) 0%,rgba(255,247,232,0) 68%),
+    linear-gradient(178deg,#E9D8BC 0%,#F4E7D2 34%,#EFE0C7 72%,#DCC9AB 100%)}
+.pg-l{clip-path:polygon(13% 0,50% 0,50% 100%,2% 100%)}
+.pg-r{clip-path:polygon(50% 0,87% 0,98% 100%,50% 100%)}
+.pg-l::after{content:"";position:absolute;right:50%;top:0;bottom:0;width:9%;
+  background:linear-gradient(270deg,rgba(90,62,38,.30),rgba(90,62,38,0));z-index:3}
+.pg-r::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:9%;
+  background:linear-gradient(90deg,rgba(90,62,38,.26),rgba(90,62,38,0));z-index:3}
+.cover{position:absolute;left:0;right:0;bottom:-.4cqw;height:1.6cqw;z-index:1;
+  background:linear-gradient(180deg,#8E6A4C,#5E4128);
+  clip-path:polygon(1.4% 0,98.6% 0,100% 100%,0 100%)}
+.edgeL{position:absolute;left:0;bottom:0;width:50%;height:1cqw;z-index:4;
+  background:linear-gradient(180deg,#FFFCF4,#D3BE9C 70%,#B99F7C)}
+.edgeR{position:absolute;right:0;bottom:0;width:50%;height:1cqw;z-index:4;
+  background:linear-gradient(180deg,#FFFCF4,#D3BE9C 70%,#B99F7C)}
+.spine{position:absolute;left:49.2%;top:0;width:1.6%;bottom:0;z-index:3;
+  background:linear-gradient(90deg,rgba(120,88,58,0),rgba(120,88,58,.45),
+    rgba(120,88,58,.55),rgba(120,88,58,.45),rgba(120,88,58,0))}
+
+/* 纸板零件：厚度靠一层偏移的深色副本 */
+.card{position:absolute;z-index:6}
+.card>i{position:absolute;display:block}
+.thk{filter:drop-shadow(0 .32cqw 0 #B79E7C) drop-shadow(0 .55cqw .7cqw rgba(60,40,24,.35))}
+
+/* 山丘 */
+.hill{width:34cqw;height:9cqw;border-radius:50% 50% 6% 6% / 96% 96% 6% 6%;
+  background:radial-gradient(80% 120% at 40% 20%,#8CA882,#6E8B6B 62%,#546C52 100%);
+  border-bottom:.22cqw solid #4A5F49}
+.hill2{width:22cqw;height:6.4cqw;border-radius:50% 50% 6% 6% / 96% 96% 6% 6%;
+  background:radial-gradient(80% 120% at 42% 18%,#9FB695,#7D9A76 64%,#5B7457 100%)}
+
+/* 树 */
+.tree{width:100%;height:100%}
+.tree .cn{position:absolute;left:0;right:0;border-radius:52% 52% 46% 46%;
+  background:radial-gradient(70% 60% at 38% 30%,#93AE88,#6E8B6B 58%,#52694F 100%);
+  box-shadow:inset 0 -.3cqw .5cqw rgba(40,60,40,.4)}
+.tree .tr{position:absolute;left:50%;bottom:0;width:.9cqw;transform:translateX(-50%);
+  background:linear-gradient(90deg,#7A5738,#9C7550 40%,#6A4B2E)}
+
+/* 云 */
+.cloud{position:absolute;z-index:7}
+.cloud .b1,.cloud .b2,.cloud .b3{position:absolute;border-radius:50%;
+  background:radial-gradient(60% 60% at 36% 30%,#FFFDF6,#E6DAC4 70%,#CDBFA6)}
+.cloud .stem{position:absolute;left:50%;bottom:-100%;width:.14cqw;height:100%;
+  background:linear-gradient(180deg,rgba(90,70,50,.5),rgba(90,70,50,.12))}
+
+/* 控制台 */
+.cons{width:20cqw;height:9cqw}
+.cons .top{position:absolute;left:-.5cqw;right:-.5cqw;top:-1.5cqw;height:2cqw;
+  background:linear-gradient(180deg,#5B6C86,#42526B);
+  clip-path:polygon(6% 100%,94% 100%,100% 0,0 0)}
+.cons .fb{position:absolute;inset:0;border-radius:.3cqw;
+  background:linear-gradient(170deg,#41516B,#2F3D53 60%,#25313F);
+  border-bottom:.25cqw solid #1E2833}
+.cons .sc{position:absolute;left:1.2cqw;right:1.2cqw;top:1cqw;height:4.4cqw;border-radius:.25cqw;
+  background:linear-gradient(170deg,#1D2733,#131A22);box-shadow:inset 0 0 .8cqw rgba(0,0,0,.7)}
+.cons .kn{position:absolute;bottom:1.1cqw;width:1.5cqw;height:1.5cqw;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#E8D6B6,#A98B62);box-shadow:0 .1cqw .25cqw rgba(0,0,0,.5)}
+
+/* 方块塔 */
+.tow i{position:absolute;left:0;right:0;border-radius:.35cqw;
+  box-shadow:inset 0 -.3cqw .5cqw rgba(0,0,0,.22)}
+
+/* 布偶机器人 */
+.pp{position:absolute;z-index:8}
+.pp .hd{position:absolute;left:50%;top:0;border-radius:44% 44% 42% 42%;
+  background:radial-gradient(60% 55% at 36% 28%,#FFF9EC,#EADCC2 62%,#CDBB9E);
+  box-shadow:inset 0 -.4cqw .7cqw rgba(120,96,66,.35),0 .3cqw .6cqw rgba(60,40,24,.35)}
+.pp .bd{position:absolute;left:50%;border-radius:40% 40% 34% 34%;
+  background:radial-gradient(60% 50% at 36% 24%,#FFF9EC,#E7D8BC 60%,#C8B698);
+  box-shadow:inset 0 -.5cqw .9cqw rgba(120,96,66,.32),0 .35cqw .7cqw rgba(60,40,24,.32)}
+.pp .eye{position:absolute;border-radius:50%;background:#3A2A20}
+.pp .chk{position:absolute;border-radius:50%;background:rgba(180,85,63,.35);filter:blur(.06cqw)}
+.pp .arm{position:absolute;border-radius:99px;
+  background:linear-gradient(160deg,#F3E6CE,#D9C6A6);box-shadow:0 .2cqw .4cqw rgba(60,40,24,.3)}
+.pp .leg{position:absolute;border-radius:.4cqw .4cqw .3cqw .3cqw;
+  background:linear-gradient(180deg,#D9C6A6,#B79E7C)}
+
+/* 便签 */
+.note{position:absolute;z-index:9;background:linear-gradient(160deg,#FFE9A8,#F2CB6E);
+  box-shadow:0 .45cqw .9cqw rgba(60,40,24,.4)}
+.note .tape{position:absolute;left:50%;top:-.9cqw;width:5.4cqw;height:1.7cqw;margin-left:-2.7cqw;
+  background:rgba(255,255,255,.5);transform:rotate(-2deg);
+  box-shadow:0 .15cqw .3cqw rgba(60,40,24,.15)}
+.note.pink{background:linear-gradient(160deg,#FBD8CE,#EFB7A8)}
+
+/* 标牌 */
+.sign{position:absolute;z-index:8;background:var(--pk-paper);border:.14cqw solid #C9B295;
+  box-shadow:0 .3cqw .6cqw rgba(60,40,24,.35)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>17 / 25</span>
+    <span class="right"><a href="玩具感三维.html">← 上一条</a><a href="电影感三维场景.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>手工立体绘本美学<small>Handcrafted Pop-up Storybook Aesthetics</small></h1>
+    <p class="lead">把页面展开成有厚度的微缩世界：纸板、布料、黏土感形体与玩具模型共同构成可触摸的立体绘本。材料边缘、叠层阴影与柔和灯光比写实皮肤和复杂机械结构更重要——翻开是书，摊开是城。</p>
+    <div class="meta">
+      <div><b>风格性质</b>手工立体绘本美学（描述性组合），结合立体书、手工模型与玩具式角色</div>
+      <div><b>视觉媒介</b>手工质感三维／图像合成＋模型场景展示（Diorama Presentation）</div>
+      <div><b>典型母体</b>立体书（Pop-up Book）、手工微缩模型、便签与纸艺</div>
+    </div>
+    <div class="tags">
+      <span class="tag">立体书</span><span class="tag">微缩模型</span><span class="tag">纸艺</span>
+      <span class="tag">黏土质感</span><span class="tag">手工材料</span>
+      <span class="tag w">童趣</span><span class="tag w">科技隐喻</span><span class="tag w">可爱与风险反差</span><span class="tag w">小冒险</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#F0E2CC"></i>纸板米<br><code>#F0E2CC</code></div>
+      <div class="sw"><i style="background:#C9A227"></i>便签黄<br><code>#C9A227</code></div>
+      <div class="sw"><i style="background:#6E8B6B"></i>纸山绿<br><code>#6E8B6B</code></div>
+      <div class="sw"><i style="background:#B4553F"></i>砖红<br><code>#B4553F</code></div>
+      <div class="sw"><i style="background:#3A4A63"></i>布幕蓝<br><code>#3A4A63</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">一本摊开的厚纸书从桌面立起来变成舞台：左页是纸板山丘和两棵树，右页是控制台、方块塔和一个布偶机器人。零件全都有厚度——每样东西下面压着一层深色纸边；便签写着歌词，贴在页面上。</p>
+
+  <div class="frame pk" id="f-master">
+    <div class="pkbg"></div>
+
+    <!-- 书 -->
+    <div class="book">
+      <div class="cover"></div>
+      <div class="pg pg-r"></div>
+      <div class="pg pg-l"></div>
+      <div class="edgeL"></div>
+      <div class="edgeR"></div>
+      <div class="spine"></div>
+    </div>
+
+    <!-- 云 -->
+    <div class="cloud thk" style="left:31cqw;top:10.4cqw;width:9cqw;height:4.4cqw">
+      <div class="stem" style="height:15cqw"></div>
+      <div class="b1" style="left:0;bottom:0;width:4.6cqw;height:4.6cqw"></div>
+      <div class="b2" style="left:2.6cqw;bottom:-.4cqw;width:6.2cqw;height:5.6cqw"></div>
+      <div class="b3" style="right:0;bottom:.2cqw;width:3.4cqw;height:3.4cqw"></div>
+    </div>
+    <div class="cloud thk" style="left:66.6cqw;top:12.6cqw;width:6.4cqw;height:3.2cqw;opacity:.92">
+      <div class="stem" style="height:13cqw"></div>
+      <div class="b1" style="left:0;bottom:0;width:3.4cqw;height:3.4cqw"></div>
+      <div class="b2" style="left:1.8cqw;bottom:-.3cqw;width:4.4cqw;height:4cqw"></div>
+    </div>
+
+    <!-- 左页：山丘 -->
+    <div class="card thk hill" style="left:6cqw;top:25.6cqw;z-index:7"></div>
+    <div class="card thk hill2" style="left:30cqw;top:28.2cqw;z-index:7"></div>
+
+    <!-- 树 -->
+    <div class="card thk tree" style="left:15cqw;top:18.2cqw;width:9cqw;height:12cqw">
+      <div class="cn" style="top:0;height:9.4cqw"></div>
+      <div class="tr" style="height:3cqw"></div>
+    </div>
+    <div class="card thk tree" style="left:26cqw;top:21.4cqw;width:7cqw;height:9.4cqw">
+      <div class="cn" style="top:0;height:7.2cqw"></div>
+      <div class="tr" style="height:2.4cqw"></div>
+    </div>
+
+    <!-- 左页标牌 -->
+    <div class="sign thk" style="left:11cqw;top:31.4cqw;width:11cqw;height:4.6cqw;transform:rotate(-2.5deg)">
+      <div style="font-family:var(--f-mono);font-size:.78cqw;letter-spacing:.16em;color:#8A6A48;
+        padding:.5cqw .7cqw">PAGE 01 · 他们出发的地方</div>
+    </div>
+
+    <!-- 右页：控制台 -->
+    <div class="card cons thk" style="left:54cqw;top:27.4cqw">
+      <div class="top"></div>
+      <div class="fb"></div>
+      <div class="sc">
+        <div style="position:absolute;left:8%;top:22%;width:52%;height:.28cqw;background:rgba(201,162,39,.85)"></div>
+        <div style="position:absolute;left:8%;top:44%;width:74%;height:.24cqw;background:rgba(240,226,204,.45)"></div>
+        <div style="position:absolute;left:8%;top:64%;width:40%;height:.24cqw;background:rgba(240,226,204,.3)"></div>
+        <div style="position:absolute;left:8%;top:80%;width:60%;height:.24cqw;background:rgba(180,85,63,.65)"></div>
+      </div>
+      <div class="kn" style="left:1.4cqw"></div>
+      <div class="kn" style="left:3.6cqw"></div>
+      <div style="position:absolute;right:1.4cqw;bottom:1.4cqw;width:6cqw;height:.8cqw;border-radius:.2cqw;
+        background:rgba(240,226,204,.28)"></div>
+    </div>
+
+    <!-- 右页：方块塔 -->
+    <div class="card tow thk" style="left:37.2cqw;top:41.6cqw;width:7.6cqw;height:8.4cqw">
+      <i style="top:0;height:2.4cqw;background:linear-gradient(180deg,#D9B23E,#B8901F)"></i>
+      <i style="top:2.7cqw;height:2.7cqw;left:.9cqw;right:.9cqw;background:linear-gradient(180deg,#C46850,#9C4230)"></i>
+      <i style="top:5.7cqw;height:2.7cqw;left:1.9cqw;right:1.9cqw;background:linear-gradient(180deg,#82A07C,#5E7959)"></i>
+    </div>
+    <div style="position:absolute;left:35.4cqw;top:49.4cqw;width:11cqw;height:2.2cqw;border-radius:50%;z-index:5;
+      background:radial-gradient(closest-side,rgba(90,62,38,.42),rgba(90,62,38,0))"></div>
+
+    <!-- 接触阴影 -->
+    <div style="position:absolute;left:5cqw;top:32.6cqw;width:36cqw;height:3.4cqw;z-index:5;border-radius:50%;
+      background:radial-gradient(closest-side,rgba(90,62,38,.42),rgba(90,62,38,0))"></div>
+    <div style="position:absolute;left:52cqw;top:35.4cqw;width:24cqw;height:2.6cqw;z-index:5;border-radius:50%;
+      background:radial-gradient(closest-side,rgba(90,62,38,.45),rgba(90,62,38,0))"></div>
+    <div style="position:absolute;left:74.6cqw;top:44.2cqw;width:16cqw;height:2.6cqw;z-index:5;border-radius:50%;
+      background:radial-gradient(closest-side,rgba(90,62,38,.5),rgba(90,62,38,0))"></div>
+    <div style="position:absolute;left:88cqw;top:35.6cqw;width:10cqw;height:2.2cqw;z-index:5;border-radius:50%;
+      background:radial-gradient(closest-side,rgba(90,62,38,.4),rgba(90,62,38,0))"></div>
+
+    <!-- 布偶机器人 -->
+    <div class="pp" style="left:76.6cqw;top:30.4cqw;width:12cqw;height:15cqw">
+      <div class="hd" style="width:7.4cqw;height:6.4cqw;margin-left:-3.7cqw"></div>
+      <div class="bd" style="top:6.2cqw;width:8.6cqw;height:8cqw;margin-left:-4.3cqw"></div>
+      <div class="eye" style="left:4.1cqw;top:2.8cqw;width:.78cqw;height:.78cqw"></div>
+      <div class="eye" style="right:4.1cqw;top:2.8cqw;width:.78cqw;height:.78cqw"></div>
+      <div class="chk" style="left:2.4cqw;top:3.8cqw;width:1.3cqw;height:.8cqw"></div>
+      <div class="chk" style="right:2.4cqw;top:3.8cqw;width:1.3cqw;height:.8cqw"></div>
+      <div class="arm" style="left:-.5cqw;top:7.2cqw;width:2cqw;height:5.2cqw;transform:rotate(8deg)"></div>
+      <div class="arm" style="right:-.5cqw;top:7.2cqw;width:2cqw;height:5.2cqw;transform:rotate(-8deg)"></div>
+      <div class="leg" style="left:2.6cqw;top:13.6cqw;width:2cqw;height:1.9cqw"></div>
+      <div class="leg" style="right:2.6cqw;top:13.6cqw;width:2cqw;height:1.9cqw"></div>
+      <div style="position:absolute;left:50%;top:9.4cqw;width:.14cqw;height:2.2cqw;margin-left:-.07cqw;
+        background:rgba(120,96,66,.35)"></div>
+    </div>
+
+    <!-- 便签 -->
+    <div class="note" style="left:8.4cqw;top:38.4cqw;width:14cqw;height:10.6cqw;transform:rotate(-4deg)">
+      <div class="tape"></div>
+      <div style="padding:1.2cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.15cqw;line-height:1.8;color:#5A4416">
+        折起来是一本书<br>摊开来是一座城<br><span style="color:#8A6A20">轻一点翻</span></div>
+    </div>
+    <div class="note pink" style="left:57.4cqw;top:41.6cqw;width:12.4cqw;height:9.4cqw;transform:rotate(3.4deg)">
+      <div class="tape"></div>
+      <div style="padding:1.2cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.1cqw;line-height:1.75;color:#5A3428">
+        所有的门<br>都是画上去的<br><span style="color:#8E4634">但我们还是敲了</span></div>
+    </div>
+
+    <div style="position:absolute;left:4.4cqw;top:3.2cqw;width:26cqw;z-index:16">
+      <div class="mono" style="font-size:.95cqw;letter-spacing:.24em;color:#C2A183">POP-UP · 立体书 · 第 01 页</div>
+      <div style="font-family:var(--f-sans);font-weight:800;font-size:4.2cqw;line-height:1.12;
+        letter-spacing:-.02em;color:#FFF4E2;margin-top:1.4cqw;text-shadow:0 .4cqw 1.4cqw rgba(0,0,0,.45)">
+        纸做的世界<br>也会<span style="color:#E08060">塌</span></div>
+      <div style="font-size:1.08cqw;line-height:1.75;color:#C0A588;margin-top:1.2cqw">
+        纸板、布料、黏土感，全都有厚度。<br>每一层下面都压着一道影子。</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><b>材料要分得开</b>纸板硬、布料软、黏土圆；同一画面里至少三种手感，靠边缘的毛糙与高光强弱区分，而不是靠颜色。</div>
+    <div><b>每件东西都有厚度</b>零件底边压一层深色纸边（或用两层 drop-shadow），纸才有"立起来"的重量，不然就是贴纸。</div>
+    <div><b>纸页承担空间</b>立体书的页不是背景板，是舞台地板；角色的脚要踩在页面的透视线上，不是浮在画面里。</div>
+    <div><b>文字也进布景</b>歌词写在便签、标牌和折页上，跟着纸面一起倾斜、一起被光照到，才会被当成道具而不是字幕。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向：立体书布景（折层构成舞台）、软质玩具与手工模型（缝线、毛毡、黏土感）、便签歌词与纸艺场景（全宽，文字与纸片云同处一景）。</p>
+  <div class="subs">
+
+    <!-- 1. 立体书布景 -->
+    <section class="sub">
+      <div class="frame pa1" id="f-stage">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(70% 60% at 50% 18%,#5C4636 0%,#3A2A20 60%,#241A14 100%)"></div>
+        <!-- 纸页 -->
+        <div style="position:absolute;left:0;right:0;top:20cqw;bottom:0;
+          background:
+            radial-gradient(58% 50% at 50% 96%,rgba(255,247,232,.7) 0%,rgba(255,247,232,0) 66%),
+            linear-gradient(178deg,#E2D0B1 0%,#F5E9D4 26%,#EFE0C7 66%,#D3C0A0 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:20cqw;height:.55cqw;
+          background:linear-gradient(180deg,rgba(255,252,244,.9),rgba(255,252,244,0))"></div>
+
+        <!-- 远景：山 -->
+        <div style="position:absolute;left:32cqw;top:17.6cqw;width:62cqw;height:17cqw;z-index:6;
+          filter:drop-shadow(0 .45cqw 0 #4A5F44) drop-shadow(0 .85cqw 1cqw rgba(70,48,28,.45))">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,#93AE88,#6E8B6B 58%,#516A4F);
+            clip-path:polygon(0 56%,9% 34%,19% 46%,30% 18%,43% 40%,55% 22%,68% 42%,80% 30%,91% 48%,100% 38%,100% 100%,0 100%)"></div>
+        </div>
+        <!-- 山脚落地影 -->
+        <div style="position:absolute;left:36cqw;top:34cqw;width:52cqw;height:2.6cqw;z-index:5;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(70,48,28,.35),rgba(70,48,28,0))"></div>
+
+        <!-- 中景：树 -->
+        <div style="position:absolute;left:40.6cqw;top:26cqw;width:6.6cqw;height:9cqw;z-index:7;
+          filter:drop-shadow(0 .3cqw 0 #4A5F44) drop-shadow(0 .5cqw .5cqw rgba(70,48,28,.4))">
+          <div style="position:absolute;left:0;right:0;top:0;height:6.2cqw;border-radius:52% 52% 46% 46%;
+            background:radial-gradient(70% 60% at 38% 30%,#96B08B,#6E8B6B 58%,#52694F)"></div>
+          <div style="position:absolute;left:50%;bottom:0;width:.7cqw;height:2.8cqw;transform:translateX(-50%);
+            background:linear-gradient(90deg,#7A5738,#9C7550)"></div>
+        </div>
+        <!-- 中景：塔 -->
+        <div style="position:absolute;left:65.6cqw;top:25.4cqw;width:5.6cqw;height:10.2cqw;z-index:7;
+          filter:drop-shadow(0 .3cqw 0 #8A3A2A) drop-shadow(0 .55cqw .6cqw rgba(70,48,28,.4))">
+          <div style="position:absolute;left:0;right:0;top:0;height:2.4cqw;background:linear-gradient(180deg,#D9B23E,#B8901F);
+            clip-path:polygon(50% 0,100% 100%,0 100%)"></div>
+          <div style="position:absolute;left:.5cqw;right:.5cqw;top:2.4cqw;height:7.8cqw;
+            background:linear-gradient(180deg,#C46850,#9C4230)"></div>
+        </div>
+
+        <!-- 前景：控制台 -->
+        <div style="position:absolute;left:71.4cqw;top:45.4cqw;width:26cqw;height:3.2cqw;z-index:7;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(70,48,28,.45),rgba(70,48,28,0))"></div>
+        <div style="position:absolute;left:71.4cqw;top:38cqw;width:16cqw;height:8cqw;z-index:8">
+          <div style="position:absolute;left:-.4cqw;right:-.4cqw;top:-1.4cqw;height:1.8cqw;
+            background:linear-gradient(180deg,#5B6C86,#42526B);
+            clip-path:polygon(6% 100%,94% 100%,100% 0,0 0)"></div>
+          <div style="position:absolute;inset:0;border-radius:.25cqw;background:linear-gradient(170deg,#41516B,#2F3D53 60%,#25313F);
+            border-bottom:.2cqw solid #1E2833;box-shadow:0 .5cqw 1cqw rgba(20,12,6,.5)"></div>
+          <div style="position:absolute;left:1cqw;right:1cqw;top:.9cqw;height:3.6cqw;border-radius:.2cqw;
+            background:linear-gradient(170deg,#1D2733,#131A22);box-shadow:inset 0 0 .7cqw rgba(0,0,0,.7)">
+            <div style="position:absolute;left:8%;top:24%;width:56%;height:.26cqw;background:rgba(201,162,39,.9)"></div>
+            <div style="position:absolute;left:8%;top:48%;width:78%;height:.22cqw;background:rgba(240,226,204,.45)"></div>
+            <div style="position:absolute;left:8%;top:70%;width:44%;height:.22cqw;background:rgba(180,85,63,.7)"></div>
+          </div>
+          <div style="position:absolute;left:1.2cqw;bottom:.8cqw;width:1.2cqw;height:1.2cqw;border-radius:50%;
+            background:radial-gradient(circle at 34% 30%,#E8D6B6,#A98B62)"></div>
+          <div style="position:absolute;left:3.1cqw;bottom:.8cqw;width:1.2cqw;height:1.2cqw;border-radius:50%;
+            background:radial-gradient(circle at 34% 30%,#E8D6B6,#A98B62)"></div>
+        </div>
+
+        <!-- 布偶 -->
+        <div class="pp" style="left:48.6cqw;top:38.4cqw;width:10cqw;height:12.4cqw;z-index:9">
+          <div class="hd" style="width:6.2cqw;height:5.4cqw;margin-left:-3.1cqw"></div>
+          <div class="bd" style="top:5.2cqw;width:7.2cqw;height:6.6cqw;margin-left:-3.6cqw"></div>
+          <div class="eye" style="left:3.4cqw;top:2.4cqw;width:.66cqw;height:.66cqw"></div>
+          <div class="eye" style="right:3.4cqw;top:2.4cqw;width:.66cqw;height:.66cqw"></div>
+          <div class="chk" style="left:2cqw;top:3.2cqw;width:1.1cqw;height:.7cqw"></div>
+          <div class="chk" style="right:2cqw;top:3.2cqw;width:1.1cqw;height:.7cqw"></div>
+          <div class="arm" style="left:-.4cqw;top:6cqw;width:1.7cqw;height:4.4cqw;transform:rotate(10deg)"></div>
+          <div class="arm" style="right:-.4cqw;top:6cqw;width:1.7cqw;height:4.4cqw;transform:rotate(-10deg)"></div>
+          <div class="leg" style="left:2.2cqw;top:11.2cqw;width:1.7cqw;height:1.6cqw"></div>
+          <div class="leg" style="right:2.2cqw;top:11.2cqw;width:1.7cqw;height:1.6cqw"></div>
+          <div style="position:absolute;left:1.4cqw;right:1.4cqw;top:5cqw;height:1.5cqw;border-radius:.4cqw;
+            background:linear-gradient(180deg,#C46850,#96402E);box-shadow:0 .2cqw .4cqw rgba(60,40,24,.35)"></div>
+        </div>
+        <div style="position:absolute;left:46.8cqw;top:49.8cqw;width:14cqw;height:2.6cqw;border-radius:50%;z-index:8;
+          background:radial-gradient(closest-side,rgba(70,48,28,.5),rgba(70,48,28,0))"></div>
+
+        <!-- 前景纸丛（被画框裁切） -->
+        <div style="position:absolute;right:-6cqw;bottom:-2cqw;width:26cqw;height:14cqw;z-index:10;
+          background:radial-gradient(60% 70% at 40% 20%,#7D9A76,#5C7558 62%,#455A44);
+          border-radius:50% 50% 0 0;filter:drop-shadow(0 -.3cqw 0 #3E513D)"></div>
+
+        <!-- 书页左边缘与卷角 -->
+        <div style="position:absolute;left:0;top:20cqw;bottom:0;width:3cqw;z-index:11;
+          background:linear-gradient(90deg,rgba(90,62,38,.42),rgba(90,62,38,0))"></div>
+        <div style="position:absolute;left:0;bottom:0;width:9cqw;height:7cqw;z-index:11;
+          background:linear-gradient(46deg,#FFFBF2,#DECBA9 58%,#B99F7C);
+          clip-path:polygon(0 100%,100% 100%,0 0);
+          filter:drop-shadow(.5cqw -.4cqw .5cqw rgba(70,48,28,.35))"></div>
+
+        <!-- 前景纸丛（左下，被画框裁切） -->
+        <div style="position:absolute;left:11.6cqw;top:43.6cqw;width:18cqw;height:12.6cqw;z-index:10;
+          filter:drop-shadow(0 -.28cqw 0 #3E513D) drop-shadow(0 .4cqw .8cqw rgba(70,48,28,.4))">
+          <div style="position:absolute;left:0;bottom:0;width:9cqw;height:9cqw;border-radius:50% 50% 20% 20%;
+            background:radial-gradient(60% 70% at 40% 18%,#7D9A76,#5C7558 62%,#445943)"></div>
+          <div style="position:absolute;left:4.4cqw;bottom:0;width:12cqw;height:12.6cqw;border-radius:50% 50% 16% 16%;
+            background:radial-gradient(60% 70% at 38% 16%,#86A47E,#5F7859 60%,#475C45)"></div>
+          <div style="position:absolute;right:0;bottom:0;width:8cqw;height:8.4cqw;border-radius:50% 50% 20% 20%;
+            background:radial-gradient(60% 70% at 40% 18%,#79966F,#566E52 64%,#425641)"></div>
+        </div>
+
+        <!-- 页码 -->
+        <div style="position:absolute;left:6cqw;bottom:2.2cqw;font-family:var(--f-serif);
+          font-size:1.7cqw;letter-spacing:.3em;color:rgba(110,82,52,.45);z-index:9">— 12 —</div>
+
+        <!-- 左侧说明 -->
+        <div style="position:absolute;left:5cqw;top:6.4cqw;width:25cqw;z-index:12">
+          <div class="mono" style="font-size:1.05cqw;letter-spacing:.18em;color:#C2A183">POP-UP · 折层</div>
+          <div style="font-family:var(--f-sans);font-weight:800;font-size:2.3cqw;line-height:1.2;
+            color:#FFF2DE;margin-top:.6cqw">三层纸，<br>一个舞台</div>
+          <div style="margin-top:1.4cqw;font-size:.92cqw;line-height:1.85;color:#BCA184">
+            纸页就是地面：远景压低、中景抬高一档、前景最靠前也最清楚。每片纸板底边压着一道影子，纸才立得起来。
+          </div>
+          <div style="margin-top:1.6cqw;display:flex;flex-direction:column;gap:.65cqw">
+            <div style="display:flex;align-items:center;gap:.7cqw">
+              <span style="width:.7cqw;height:.7cqw;border-radius:50%;background:#6E8B6B"></span>
+              <span class="mono" style="font-size:.85cqw;color:#B7CBAE">01 远景 · 山</span></div>
+            <div style="display:flex;align-items:center;gap:.7cqw">
+              <span style="width:.7cqw;height:.7cqw;border-radius:50%;background:#B4553F"></span>
+              <span class="mono" style="font-size:.85cqw;color:#D9A695">02 中景 · 树与塔</span></div>
+            <div style="display:flex;align-items:center;gap:.7cqw">
+              <span style="width:.7cqw;height:.7cqw;border-radius:50%;background:#3A4A63"></span>
+              <span class="mono" style="font-size:.85cqw;color:#9AAAC2">03 前景 · 控制台</span></div>
+          </div>
+        </div>
+
+        <div style="position:absolute;right:3.6cqw;bottom:1.8cqw;font-family:var(--f-mono);font-size:.85cqw;
+          letter-spacing:.12em;color:rgba(90,62,38,.5);z-index:12">SPREAD 04 · 折角 90°</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>立体书布景<small>Pop-up Book Scenery</small></h3>
+        <p>让纸页承担空间基座，而不是只放在画面角落当装饰：远景压低、中景抬高一档、前景最靠前，三片纸板背后各有一道 90° 折角支撑，影子落在页面上，纵深立刻出来。角色永远踩在页面的透视线上，不是浮在画面中间。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">折层景片</span><span class="tag">纸页地面</span>
+          <span class="tag">折角支架</span><span class="tag">层间投影</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 软质玩具与手工模型 -->
+    <section class="sub">
+      <div class="frame pa2" id="f-soft">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(60% 60% at 46% 30%,#7A6450 0%,#4A3A2C 66%,#2E2118 100%)"></div>
+        <div style="position:absolute;inset:0;opacity:.5;background-image:
+          repeating-linear-gradient(45deg,rgba(255,240,220,.05) 0,rgba(255,240,220,.05) .12cqw,transparent .12cqw,transparent .5cqw),
+          repeating-linear-gradient(-45deg,rgba(0,0,0,.06) 0,rgba(0,0,0,.06) .12cqw,transparent .12cqw,transparent .5cqw)"></div>
+
+        <!-- 布面桌台 -->
+        <div style="position:absolute;left:0;right:0;bottom:0;height:16cqw;
+          background:linear-gradient(180deg,#6E5742,#4E3B2A)"></div>
+        <div style="position:absolute;left:0;right:0;top:38.6cqw;height:.5cqw;
+          background:linear-gradient(180deg,rgba(255,235,210,.4),transparent)"></div>
+
+        <!-- 大布偶 -->
+        <div style="position:absolute;left:26cqw;top:5.4cqw;width:44cqw;height:34cqw;z-index:6">
+          <!-- 头 -->
+          <div style="position:absolute;left:50%;top:0;width:21cqw;height:18cqw;margin-left:-10.5cqw;
+            border-radius:46% 46% 44% 44%;
+            background:radial-gradient(58% 52% at 36% 26%,#FFFBF0,#EDE0C8 58%,#CFBDA0);
+            border:.14cqw dashed rgba(160,132,96,.55);
+            box-shadow:inset 0 -1.2cqw 2cqw rgba(120,96,66,.35),0 1cqw 2cqw rgba(40,26,14,.45)"></div>
+          <!-- 身体 -->
+          <div style="position:absolute;left:50%;top:16.2cqw;width:25cqw;height:13cqw;margin-left:-12.5cqw;
+            border-radius:40% 40% 30% 30%;
+            background:radial-gradient(58% 50% at 36% 22%,#FFFBF0,#E9DCC2 58%,#C9B698);
+            border:.14cqw dashed rgba(160,132,96,.5);
+            box-shadow:inset 0 -1.2cqw 1.8cqw rgba(120,96,66,.35),0 1.2cqw 2.4cqw rgba(40,26,14,.5)"></div>
+          <!-- 腿 -->
+          <div style="position:absolute;left:9.4cqw;top:28.2cqw;width:6.2cqw;height:5.4cqw;border-radius:.6cqw .6cqw 1.6cqw 1.6cqw;
+            background:linear-gradient(180deg,#EBDFC6,#C4B092);
+            border:.12cqw dashed rgba(160,132,96,.45);box-shadow:0 .3cqw .6cqw rgba(40,26,14,.4)"></div>
+          <div style="position:absolute;right:9.4cqw;top:28.2cqw;width:6.2cqw;height:5.4cqw;border-radius:.6cqw .6cqw 1.6cqw 1.6cqw;
+            background:linear-gradient(180deg,#EBDFC6,#C4B092);
+            border:.12cqw dashed rgba(160,132,96,.45);box-shadow:0 .3cqw .6cqw rgba(40,26,14,.4)"></div>
+
+          <!-- 纽扣眼 -->
+          <div style="position:absolute;left:13.2cqw;top:6.4cqw;width:4cqw;height:4cqw;border-radius:50%;z-index:3;
+            background:radial-gradient(circle at 34% 28%,#4A4038,#2A231D 70%);
+            box-shadow:inset 0 -.2cqw .4cqw rgba(255,255,255,.15),0 .2cqw .45cqw rgba(0,0,0,.45)">
+            <i style="position:absolute;left:1cqw;top:1.2cqw;width:.55cqw;height:.55cqw;border-radius:50%;background:#0E0B09"></i>
+            <i style="position:absolute;right:1cqw;top:1.2cqw;width:.55cqw;height:.55cqw;border-radius:50%;background:#0E0B09"></i>
+            <i style="position:absolute;left:.8cqw;top:2cqw;width:2.3cqw;height:.14cqw;background:#C07A52;transform:rotate(6deg)"></i>
+          </div>
+          <div style="position:absolute;right:13.2cqw;top:6.4cqw;width:4cqw;height:4cqw;border-radius:50%;z-index:3;
+            background:radial-gradient(circle at 34% 28%,#4A4038,#2A231D 70%);
+            box-shadow:inset 0 -.2cqw .4cqw rgba(255,255,255,.15),0 .2cqw .45cqw rgba(0,0,0,.45)">
+            <i style="position:absolute;left:1cqw;top:1.2cqw;width:.55cqw;height:.55cqw;border-radius:50%;background:#0E0B09"></i>
+            <i style="position:absolute;right:1cqw;top:1.2cqw;width:.55cqw;height:.55cqw;border-radius:50%;background:#0E0B09"></i>
+            <i style="position:absolute;left:.8cqw;top:2cqw;width:2.3cqw;height:.14cqw;background:#C07A52;transform:rotate(-6deg)"></i>
+          </div>
+
+          <!-- 嘴（一针缝线） -->
+          <div style="position:absolute;left:50%;top:12.2cqw;width:4.4cqw;height:.16cqw;margin-left:-2.2cqw;
+            background:rgba(120,90,60,.55);border-radius:99px"></div>
+
+          <!-- 补丁 -->
+          <div style="position:absolute;left:12.4cqw;top:19.6cqw;width:6.4cqw;height:5.2cqw;
+            background:linear-gradient(160deg,#C46850,#9C4230);transform:rotate(-4deg);
+            border:.12cqw dashed rgba(255,240,220,.55);box-shadow:0 .3cqw .6cqw rgba(40,26,14,.35)"></div>
+
+          <!-- 手臂 -->
+          <div style="position:absolute;left:4.6cqw;top:17.4cqw;width:4.8cqw;height:11cqw;border-radius:99px;
+            background:linear-gradient(160deg,#F6EBD4,#DCC9A8);transform:rotate(11deg);
+            border:.12cqw dashed rgba(160,132,96,.45);box-shadow:0 .4cqw .8cqw rgba(40,26,14,.4)"></div>
+          <div style="position:absolute;right:4.6cqw;top:17.4cqw;width:4.8cqw;height:11cqw;border-radius:99px;
+            background:linear-gradient(160deg,#F6EBD4,#DCC9A8);transform:rotate(-11deg);
+            border:.12cqw dashed rgba(160,132,96,.45);box-shadow:0 .4cqw .8cqw rgba(40,26,14,.4)"></div>
+        </div>
+        <div style="position:absolute;left:24cqw;top:38.6cqw;width:48cqw;height:3.6cqw;border-radius:50%;z-index:5;
+          background:radial-gradient(closest-side,rgba(30,18,8,.55),rgba(30,18,8,0))"></div>
+
+        <!-- 标注 -->
+        <div style="position:absolute;right:4cqw;top:6.4cqw;width:26cqw;z-index:9;text-align:right">
+          <div class="mono" style="font-size:1cqw;letter-spacing:.18em;color:#D6B892">MATERIAL · 手感</div>
+          <div style="font-family:var(--f-sans);font-weight:800;font-size:2.2cqw;color:#FFF2DE;margin-top:.5cqw">
+            毛毡、棉布、<br>一点黏土</div>
+        </div>
+        <div style="position:absolute;right:4cqw;top:20cqw;width:25cqw;z-index:9">
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.85cqw;
+            color:#C7A98A;padding:.5cqw 0;border-bottom:.06cqw solid rgba(214,184,146,.28)">
+            <span>缝线</span><span style="color:#EDD9BE">2 mm 明线</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.85cqw;
+            color:#C7A98A;padding:.5cqw 0;border-bottom:.06cqw solid rgba(214,184,146,.28)">
+            <span>毛毡</span><span style="color:#EDD9BE">1.5 mm 厚</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.85cqw;
+            color:#C7A98A;padding:.5cqw 0;border-bottom:.06cqw solid rgba(214,184,146,.28)">
+            <span>纽扣眼</span><span style="color:#EDD9BE">Ø 12 mm</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.85cqw;
+            color:#C7A98A;padding:.5cqw 0"><span>填充</span><span style="color:#EDD9BE">30% 棉</span></div>
+        </div>
+
+        <div style="position:absolute;left:4cqw;bottom:2.2cqw;display:flex;gap:1.4cqw;z-index:9">
+          <div style="display:flex;align-items:center;gap:.5cqw">
+            <span style="width:2.2cqw;height:2.2cqw;border-radius:50%;
+              background:radial-gradient(circle at 34% 30%,#E9DCC2,#B9A587)"></span>
+            <span class="mono" style="font-size:.8cqw;color:#D2B492">毛毡</span></div>
+          <div style="display:flex;align-items:center;gap:.5cqw">
+            <span style="width:2.2cqw;height:2.2cqw;border-radius:50%;
+              background:radial-gradient(circle at 34% 30%,#9FB6C9,#5E7488)"></span>
+            <span class="mono" style="font-size:.8cqw;color:#D2B492">棉布</span></div>
+          <div style="display:flex;align-items:center;gap:.5cqw">
+            <span style="width:2.2cqw;height:2.2cqw;border-radius:50%;
+              background:radial-gradient(circle at 34% 30%,#D9A087,#A95F45)"></span>
+            <span class="mono" style="font-size:.8cqw;color:#D2B492">黏土</span></div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>软质玩具与手工模型<small>Soft Toy &amp; Handmade Model</small></h3>
+        <p>圆润机器人、布料和柔和表面形成可触摸的联想。关键不是做得粗糙，而是保留"手工的痕迹"：一圈 2 mm 明线、一块打补丁的布、两颗纽扣当眼睛、边缘不齐的毛毡。微小不规则和材料厚度留下来，才不会退化成无纹理塑料。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">明线缝迹</span><span class="tag">纽扣眼</span>
+          <span class="tag">补丁</span><span class="tag">哑光毛毡</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 便签歌词与纸艺场景（全宽） -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame pa3" id="f-notes">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(46% 50% at 50% 34%,#8A7058 0%,#5C4636 52%,#33251B 100%)"></div>
+        <div style="position:absolute;inset:0;opacity:.35;background-image:
+          repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0,rgba(0,0,0,.05) .1cqw,transparent .1cqw,transparent 3.4cqw)"></div>
+        <div style="position:absolute;inset:0;z-index:14;pointer-events:none;background:
+          radial-gradient(72% 64% at 50% 44%,rgba(20,10,4,0) 42%,rgba(20,10,4,.55) 100%)"></div>
+
+        <!-- 纸树（左） -->
+        <div style="position:absolute;left:-4cqw;top:6cqw;width:22cqw;height:46cqw;z-index:4;
+          filter:drop-shadow(.3cqw .6cqw .5cqw rgba(20,12,6,.45))">
+          <div style="position:absolute;left:7cqw;bottom:0;width:2cqw;height:30cqw;
+            background:linear-gradient(90deg,#7A5738,#A07B52 45%,#6A4B2E)"></div>
+          <div style="position:absolute;left:0;top:0;width:18cqw;height:20cqw;border-radius:52% 52% 46% 46%;
+            background:radial-gradient(70% 60% at 38% 30%,#8FAA85,#6E8B6B 58%,#52694F)"></div>
+          <div style="position:absolute;left:11cqw;top:9cqw;width:11cqw;height:12cqw;border-radius:50%;
+            background:radial-gradient(70% 60% at 38% 30%,#96B08B,#6E8B6B 60%,#546C52)"></div>
+          <div style="position:absolute;left:-3cqw;top:13cqw;width:9cqw;height:10cqw;border-radius:50%;
+            background:radial-gradient(70% 60% at 42% 30%,#9CB691,#6E8B6B 62%,#586E55)"></div>
+        </div>
+
+        <!-- 纸云 -->
+        <div style="position:absolute;left:16cqw;top:2cqw;width:12cqw;height:5.4cqw;z-index:5;
+          filter:drop-shadow(0 .3cqw 0 #C4B49A)">
+          <div style="position:absolute;left:6cqw;top:-6cqw;width:.1cqw;height:6cqw;
+            background:rgba(240,226,204,.4)"></div>
+          <div style="position:absolute;left:0;bottom:0;width:6cqw;height:6cqw;border-radius:50%;
+            background:radial-gradient(60% 60% at 36% 30%,#FFFDF6,#E6DAC4 70%,#CDBFA6)"></div>
+          <div style="position:absolute;left:4cqw;bottom:-.4cqw;width:8cqw;height:7.4cqw;border-radius:50%;
+            background:radial-gradient(60% 60% at 36% 30%,#FFFDF6,#E6DAC4 70%,#CDBFA6)"></div>
+        </div>
+        <div style="position:absolute;left:84cqw;top:1.4cqw;width:9cqw;height:4.2cqw;z-index:5;
+          filter:drop-shadow(0 .3cqw 0 #C4B49A)">
+          <div style="position:absolute;left:4.4cqw;top:-5cqw;width:.1cqw;height:5cqw;
+            background:rgba(240,226,204,.35)"></div>
+          <div style="position:absolute;left:0;bottom:0;width:4.6cqw;height:4.6cqw;border-radius:50%;
+            background:radial-gradient(60% 60% at 36% 30%,#FFFDF6,#E6DAC4 70%,#CDBFA6)"></div>
+          <div style="position:absolute;left:3cqw;bottom:-.3cqw;width:6cqw;height:5.4cqw;border-radius:50%;
+            background:radial-gradient(60% 60% at 36% 30%,#FFFDF6,#E6DAC4 70%,#CDBFA6)"></div>
+        </div>
+
+        <!-- 便签墙 -->
+        <div class="note" style="left:13cqw;top:9.6cqw;width:16cqw;height:12cqw;transform:rotate(-3deg)">
+          <div class="tape"></div>
+          <div style="padding:1.5cqw 1.2cqw 0;font-family:var(--f-serif);font-size:1.25cqw;line-height:1.8;color:#5A4416">
+            我们都在<br>往下掉</div>
+        </div>
+        <div class="note" style="left:32cqw;top:7.4cqw;width:14.4cqw;height:11cqw;transform:rotate(2.4deg)">
+          <div class="tape"></div>
+          <div style="padding:1.4cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.15cqw;line-height:1.8;color:#5A4416">
+            只是没人<br>先说</div>
+        </div>
+        <div class="note pink" style="left:49.4cqw;top:10.4cqw;width:15cqw;height:11.6cqw;transform:rotate(-1.8deg)">
+          <div class="tape"></div>
+          <div style="padding:1.4cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.15cqw;line-height:1.8;color:#5A3428">
+            风把话<br>吹散了</div>
+        </div>
+        <div class="note" style="left:67.6cqw;top:8.2cqw;width:14cqw;height:12.4cqw;transform:rotate(3.2deg)">
+          <div class="tape"></div>
+          <div style="padding:1.4cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.1cqw;line-height:1.85;color:#5A4416">
+            你数到三<br><span style="color:#8A6A20">我就松手</span></div>
+        </div>
+
+        <div class="note pink" style="left:18cqw;top:25.4cqw;width:14.6cqw;height:10.4cqw;transform:rotate(1.6deg)">
+          <div class="tape"></div>
+          <div style="padding:1.3cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.1cqw;line-height:1.8;color:#5A3428">
+            地面很软，<br>像一句谎</div>
+        </div>
+        <div class="note" style="left:37cqw;top:23.6cqw;width:17.4cqw;height:12.6cqw;transform:rotate(-2.4deg)">
+          <div class="tape"></div>
+          <div style="padding:1.5cqw 1.2cqw 0;font-family:var(--f-serif);font-size:1.2cqw;line-height:1.85;color:#5A4416">
+            所有的门<br>都是画上去的<br><span style="color:#8A6A20;font-size:1.05cqw">但我们还是敲了</span></div>
+        </div>
+        <div class="note" style="left:60cqw;top:25.8cqw;width:15cqw;height:10.6cqw;transform:rotate(2.1deg)">
+          <div class="tape"></div>
+          <div style="padding:1.3cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.12cqw;line-height:1.8;color:#5A4416">
+            轻一点<br>再轻一点</div>
+        </div>
+
+        <div class="note" style="left:29cqw;top:39.4cqw;width:15.4cqw;height:10.6cqw;transform:rotate(-3.4deg)">
+          <div class="tape"></div>
+          <div style="padding:1.3cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.12cqw;line-height:1.8;color:#5A4416">
+            折起来是书<br>摊开是城</div>
+        </div>
+        <div class="note pink" style="left:50cqw;top:38.6cqw;width:13.6cqw;height:10.4cqw;transform:rotate(2.8deg)">
+          <div class="tape"></div>
+          <div style="padding:1.3cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.1cqw;line-height:1.8;color:#5A3428">
+            别把灯<br>关掉</div>
+        </div>
+        <div class="note" style="left:69cqw;top:40.4cqw;width:15cqw;height:11cqw;transform:rotate(-2deg)">
+          <div class="tape"></div>
+          <div style="padding:1.3cqw 1.1cqw 0;font-family:var(--f-serif);font-size:1.12cqw;line-height:1.8;color:#5A4416">
+            我先走一步<br><span style="color:#8A6A20">你随后</span></div>
+        </div>
+
+        <div class="mono" style="position:absolute;left:4cqw;top:2cqw;font-size:.95cqw;letter-spacing:.2em;
+          color:rgba(240,226,204,.6);z-index:13">LYRICS · 便签纸艺 · 12 处</div>
+        <!-- 图钉 -->
+        <div style="position:absolute;left:47.4cqw;top:9.4cqw;width:1.5cqw;height:1.5cqw;border-radius:50%;z-index:16;
+          background:radial-gradient(circle at 34% 30%,#E2695A,#A32A21);box-shadow:0 .25cqw .5cqw rgba(0,0,0,.5)"></div>
+        <div style="position:absolute;left:19.4cqw;top:24.8cqw;width:1.4cqw;height:1.4cqw;border-radius:50%;z-index:16;
+          background:radial-gradient(circle at 34% 30%,#E7CE7C,#A98A2A);box-shadow:0 .25cqw .5cqw rgba(0,0,0,.5)"></div>
+        <div style="position:absolute;left:71.6cqw;top:39.6cqw;width:1.4cqw;height:1.4cqw;border-radius:50%;z-index:16;
+          background:radial-gradient(circle at 34% 30%,#9FC0D9,#3C5D78);box-shadow:0 .25cqw .5cqw rgba(0,0,0,.5)"></div>
+        <div style="position:absolute;right:4cqw;bottom:2cqw;font-family:var(--f-mono);font-size:.9cqw;
+          letter-spacing:.12em;color:rgba(240,226,204,.5);z-index:13">第 3 段 · 手写体 · 逐张贴入</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>便签歌词与纸艺场景<small>Sticky-note Typography &amp; Paper Craft</small></h3>
+        <p>文字不挂在画面上，而是被"贴"进布景：便签各自倾斜几度、边缘压出阴影、顶部贴一小段胶带，纸片云用细线吊着，纸树贴着画框边缘裁切。每张便签只放两三个词，观众读得完，也还看得见它是一张纸。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">手写便签</span><span class="tag">胶带</span>
+          <span class="tag">纸片云</span><span class="tag">纸树景片</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>材料与厚度</b>纸板、布料、黏土三种手感要分得开：纸板边缘硬、有折痕；布料有毛边和缝线；黏土圆润、高光散。每件道具底边压一层深色纸边，才有立起来的重量。</div>
+    <div><b>光与影</b>一盏柔主光从侧上方来，接触阴影贴紧纸面；层与层之间必须有投影，否则立体书会摊平成一张插画。浅景深只虚化最远一片景片。</div>
+    <div><b>构图与文字</b>纸页就是地面，角色的脚踩在页面透视线上；远景压低、中景抬高、前景最清楚。歌词写进便签、折页和标牌，跟着纸面一起倾斜，让它成为道具而不是字幕。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>手工立体绘本美学（Handcrafted Pop-up Storybook Aesthetics）：打开的厚纸书展开为微缩城市和机器人工作台，纸板景片、布料背景、黏土感圆润机器人、彩色模块塔与纸片云。保留折边、材料厚度和叠层接触阴影，柔和灯光与适度浅景深，明快但协调的粉彩和亮色。歌词写在贴入场景的黄色便签和立体标牌上，镜头缓慢靠近，穿插小型角色动作。</div>
+
+  <footer>样例说明：本页书籍纸页、折层景片、纸板山丘与树木、布偶机器人、控制台、便签与纸云均为 HTML / CSS / SVG 现场绘制（渐变、clip-path 与多层投影模拟纸张厚度），未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/手工立体绘本美学.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>复古终端与技术制图（Retro Terminal &amp; Technical Illustration）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --k-paper:#EFEAD9; --k-ink:#14140F; --k-screen:#04120A;
+  --k-neon:#39FF88; --k-moss:#1E7A46; --k-blue:#2C4A6B;
+  --k-red:#C0392B; --k-orange:#E07B39; --k-line:#A8A18B;
+}
+.pe,.ps1,.ps2,.ps3,.ps4{background:var(--k-paper);color:var(--k-ink)}
+.mono{font-family:var(--f-mono);letter-spacing:.06em}
+
+/* 纸面网格 */
+.gridpaper{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(90deg,rgba(20,20,15,.055) 0,.06cqw,transparent .06cqw,transparent 3cqw),
+    repeating-linear-gradient(0deg,rgba(20,20,15,.055) 0,.06cqw,transparent .06cqw,transparent 3cqw)}
+
+/* 文档页眉 */
+.hd{position:absolute;left:5cqw;right:5cqw;top:3.2cqw;height:2.8cqw;display:flex;
+  align-items:center;justify-content:space-between;z-index:8;
+  font-family:var(--f-mono);font-size:.92cqw;letter-spacing:.16em;color:#5A5647;
+  border-bottom:.08cqw solid rgba(20,20,15,.4);padding-bottom:.4cqw}
+.hd .l{display:flex;align-items:center;gap:.6cqw}
+.hd .l u{width:1.1cqw;height:1.1cqw;background:var(--k-orange);display:block}
+.hd b{font-weight:400;color:var(--k-ink)}
+
+/* 主标题 */
+.hl{position:absolute;left:5cqw;top:8.8cqw;z-index:8;font-family:var(--f-sans);font-weight:800;
+  font-size:6.6cqw;line-height:1.14;letter-spacing:-.015em;color:var(--k-ink)}
+.hl em{font-style:normal;color:var(--k-moss)}
+.hlnote{position:absolute;left:5cqw;top:24.4cqw;z-index:8;font-family:var(--f-mono);
+  font-size:1.02cqw;letter-spacing:.12em;color:#4A463A;display:flex;align-items:center;gap:.7cqw}
+.hlnote u{width:.62cqw;height:1.3cqw;background:var(--k-moss);display:block}
+
+/* 印章 */
+.stamp{position:absolute;left:4.6cqw;top:29.6cqw;z-index:9;transform:rotate(-6.5deg);
+  border:.42cqw double var(--k-moss);padding:.6cqw 1.5cqw .8cqw;text-align:center;
+  color:var(--k-moss);font-family:var(--f-sans);font-weight:900;font-size:4.5cqw;
+  line-height:1;letter-spacing:.06em;opacity:.9;
+  box-shadow:inset 0 0 0 .1cqw rgba(30,122,70,.35)}
+.stamp small{display:block;font-family:var(--f-mono);font-weight:400;font-size:.86cqw;
+  letter-spacing:.3em;margin-top:.5cqw}
+
+.stamp::after{content:"";position:absolute;inset:-.3cqw;pointer-events:none;
+  background:
+    radial-gradient(circle at 13% 26%,var(--k-paper) 0 .2cqw,transparent .26cqw),
+    radial-gradient(circle at 72% 18%,var(--k-paper) 0 .13cqw,transparent .2cqw),
+    radial-gradient(circle at 84% 66%,var(--k-paper) 0 .17cqw,transparent .24cqw),
+    radial-gradient(circle at 38% 82%,var(--k-paper) 0 .11cqw,transparent .18cqw),
+    linear-gradient(104deg,transparent 0 44%,var(--k-paper) 44% 45%,transparent 45%)}
+
+/* 机器人线框 */
+.bot{position:absolute;left:50cqw;top:6.4cqw;width:46cqw;z-index:7}
+.bot svg{width:100%;height:auto;display:block;overflow:visible}
+
+/* 终端条 */
+.tm{position:absolute;left:0;bottom:0;width:100%;height:14.4cqw;background:var(--k-screen);
+  z-index:12;overflow:hidden;border-top:.14cqw solid var(--k-moss)}
+.tm::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(180deg,rgba(57,255,136,.055) 0,.34cqw,transparent .34cqw,.7cqw)}
+.tm .tx{position:absolute;left:5cqw;top:1.8cqw;right:26cqw;font-family:var(--f-mono);
+  font-size:1.06cqw;line-height:1.85;color:var(--k-neon);z-index:2}
+.tm .tx .dim{color:#5E8B6E}
+.tm .tx .p{color:var(--k-neon)}
+.tm .tx b{color:#EAF6EC;font-weight:400}
+.tm .cur{display:inline-block;width:.72cqw;height:1.42cqw;background:var(--k-neon);
+  vertical-align:-.22cqw;margin-left:.35cqw;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.tm .cur{animation:none;opacity:1}}
+.tm .badge{position:absolute;right:5cqw;top:2.4cqw;width:16cqw;border:.11cqw solid var(--k-red);
+  padding:.7cqw .9cqw;z-index:2;text-align:center}
+.tm .badge .t1{font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.22em;color:var(--k-red)}
+.tm .badge .t2{font-family:var(--f-sans);font-weight:800;font-size:2.3cqw;line-height:1.2;
+  color:var(--k-red);letter-spacing:.02em}
+.tm .badge .t3{font-family:var(--f-mono);font-size:.8cqw;letter-spacing:.14em;color:#8E5348}
+
+/* 文档脚注 */
+.fnote{position:absolute;right:5cqw;top:39.4cqw;z-index:8;font-family:var(--f-mono);
+  font-size:.86cqw;letter-spacing:.16em;color:#6E6A57}
+
+/* ---------- 子帧通用 ---------- */
+.tagm{position:absolute;font-family:var(--f-mono);font-size:1.12cqw;letter-spacing:.16em;
+  color:#6E6A57;z-index:14}
+.hair{position:absolute;height:0;border-top:.08cqw solid rgba(20,20,15,.35);z-index:6}
+.haird{position:absolute;height:0;border-top:.08cqw dashed rgba(44,74,107,.6);z-index:6}
+
+/* 1 企业汇报 */
+.ps1 .sld{position:absolute;left:3.4cqw;top:3.4cqw;right:3.4cqw;bottom:3.4cqw;z-index:5}
+.ps1 .sld .top{display:flex;justify-content:space-between;font-family:var(--f-mono);
+  font-size:1.2cqw;letter-spacing:.16em;color:#6E6A57;border-bottom:.08cqw solid rgba(20,20,15,.4);
+  padding-bottom:.35cqw}
+.ps1 .sld h4{font-family:var(--f-sans);font-weight:800;font-size:3.1cqw;line-height:1.2;
+  margin:1.4cqw 0 .5cqw;letter-spacing:-.01em}
+.ps1 .sld .sub{font-family:var(--f-mono);font-size:1.18cqw;letter-spacing:.1em;color:#5A5647}
+.ps1 .org{position:absolute;left:0;top:14.6cqw;width:56cqw;height:21.4cqw;z-index:8}
+.ps1 .org .n{position:absolute;border:.09cqw solid var(--k-ink);background:#F4F0E2;
+  font-family:var(--f-mono);font-size:.82cqw;letter-spacing:.06em;text-align:center;
+  padding:.42cqw 0;color:var(--k-ink)}
+.ps1 .org .n.on{background:var(--k-ink);color:var(--k-paper)}
+.ps1 .org .n.gray{color:#8A8574}
+.ps1 .org svg{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;overflow:visible}
+.ps1 .vel{position:absolute;right:0;top:14.6cqw;width:32cqw;z-index:8}
+.ps1 .vel .vt{font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.14em;color:#6E6A57;
+  margin-bottom:.6cqw}
+.ps1 .vel .bar{display:flex;align-items:flex-end;gap:.5cqw;height:9cqw;
+  border-bottom:.08cqw solid rgba(20,20,15,.4)}
+.ps1 .vel .bar i{flex:1;background:var(--k-moss);display:block;opacity:.92}
+.ps1 .vel .xl{display:flex;gap:.5cqw;margin-top:.4cqw}
+.ps1 .vel .xl span{flex:1;text-align:center;font-family:var(--f-mono);font-size:1cqw;color:#8A8574}
+
+/* 2 复古终端 */
+.ps2 .crt{position:absolute;left:4cqw;top:5cqw;width:92cqw;height:44cqw;z-index:5;
+  background:#D9D2BC;border:.14cqw solid #8E8874;border-radius:1.2cqw;
+  box-shadow:.5cqw .5cqw 0 rgba(20,20,15,.18)}
+.ps2 .crt .scr{position:absolute;left:4.6cqw;top:4.4cqw;right:4.6cqw;height:26cqw;
+  background:var(--k-screen);border-radius:1.6cqw;overflow:hidden;
+  box-shadow:inset 0 0 2.4cqw rgba(0,0,0,.9)}
+.ps2 .crt .scr::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 40%,rgba(57,255,136,.09),transparent 70%),
+    repeating-linear-gradient(180deg,rgba(57,255,136,.06) 0,.34cqw,transparent .34cqw,.68cqw)}
+.ps2 .crt .txt{position:absolute;left:2.4cqw;top:1.6cqw;right:1.6cqw;z-index:3;
+  font-family:var(--f-mono);font-size:1.72cqw;line-height:1.9;color:var(--k-neon);
+  text-shadow:0 0 .5cqw rgba(57,255,136,.55)}
+.ps2 .crt .txt .d{color:#4E7D5F}
+.ps2 .crt .brand{position:absolute;right:5cqw;bottom:1.6cqw;font-family:var(--f-mono);
+  font-size:1.05cqw;letter-spacing:.3em;color:#6E6A57}
+.ps2 .crt .led{position:absolute;left:5cqw;bottom:2.4cqw;width:.85cqw;height:.85cqw;
+  border-radius:50%;background:#2FBF62;box-shadow:0 0 .9cqw rgba(47,191,98,.85)}
+.ps2 .crt .pw{position:absolute;right:3.4cqw;bottom:6.4cqw;width:21cqw;height:9.2cqw;
+  background:#F7E08A;transform:rotate(3.5deg);padding:.7cqw .9cqw;z-index:6;
+  box-shadow:.2cqw .25cqw 0 rgba(20,20,15,.22);font-family:var(--f-mono);font-size:.98cqw;
+  line-height:1.6;color:#3E3A22}
+.ps2 .crt .pw b{display:block;font-weight:400;font-size:.95cqw;letter-spacing:.14em;color:#7A7040}
+
+/* 3 线框图解 */
+.ps3 .fig{position:absolute;left:0;top:0;width:100%;height:100%;z-index:6;overflow:visible}
+.ps3 .cap{position:absolute;right:4cqw;bottom:3.6cqw;z-index:9;text-align:right;
+  font-family:var(--f-mono);font-size:1.3cqw;letter-spacing:.12em;color:#5A5647}
+.sub .tagm{font-size:1.3cqw}
+
+/* 4 印章拼贴 */
+.ps4 .card{position:absolute;background:#F6F2E5;border:.1cqw solid rgba(20,20,15,.5);
+  box-shadow:.45cqw .45cqw 0 rgba(20,20,15,.14);z-index:5}
+.ps4 .card .ch{font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.16em;color:#6E6A57}
+.ps4 .card .cb{font-family:var(--f-sans);font-weight:800;font-size:2.1cqw;line-height:1.24;
+  color:var(--k-ink);margin-top:.4cqw}
+.ps4 .card .cm{font-family:var(--f-mono);font-size:1cqw;letter-spacing:.08em;color:#7A7565;
+  margin-top:.5cqw}
+.ps4 .sm{position:absolute;font-family:var(--f-mono);font-weight:700;letter-spacing:.14em;
+  padding:.3cqw .7cqw;border:.26cqw solid currentColor;line-height:1.3;z-index:9}
+.ps4 .sm.g{color:var(--k-moss)}
+.ps4 .sm.r{color:var(--k-red)}
+.ps4 .sm.b{color:var(--k-blue)}
+.ps4 .sm.d{color:#9A9380;border-style:dashed;border-width:.16cqw}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>13 / 25</span>
+    <span class="right"><a href="复古桌面界面美学.html">← 上一条</a><a href="技术制图美学.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>复古终端与技术制图<small>Retro Terminal &amp; Technical Illustration Aesthetics</small></h1>
+    <p class="lead">以黑底绿字的终端屏幕、米白色技术文档、细线工程示意和模块化汇报版式组织画面：等宽小字、几何线框、状态标签与磨损印章构成可辨认的视觉系统。深色终端强调技术与效率，米白汇报页强调管理与制度，红色留给事故告警。</p>
+    <div class="meta">
+      <div><b>风格性质</b>复古终端与技术制图（描述性组合），企业汇报为版式来源，信息设计为所属领域</div>
+      <div><b>视觉媒介</b>二维界面动画＋信息图动画＋线框图形＋动态排版</div>
+      <div><b>典型母体</b>汇报幻灯片、团队聊天与代码审查、运维面板、工程文档、审批工单</div>
+    </div>
+    <div class="tags">
+      <span class="tag">复古终端</span><span class="tag">技术插图</span><span class="tag">线框</span>
+      <span class="tag">等宽字体</span><span class="tag">企业汇报版式</span><span class="tag">印章纹理</span>
+      <span class="tag w">职场讽刺</span><span class="tag w">黑色幽默</span><span class="tag w">开发者文化</span><span class="tag w">AI 辅助编程</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#04120A"></i>屏幕黑<br><code>#04120A</code></div>
+      <div class="sw"><i style="background:#39FF88"></i>荧光绿<br><code>#39FF88</code></div>
+      <div class="sw"><i style="background:#EFEAD9"></i>文档米白<br><code>#EFEAD9</code></div>
+      <div class="sw"><i style="background:#2C4A6B"></i>钢蓝<br><code>#2C4A6B</code></div>
+      <div class="sw"><i style="background:#C0392B"></i>告警红<br><code>#C0392B</code></div>
+      <div class="sw"><i style="background:#E07B39"></i>机器人橙<br><code>#E07B39</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">一页内部文档：页眉带编号与页码，标题说「所有系统运行正常」，下面一枚绿色 LGTM 印章盖得歪了些；右侧是 BOT-001 的分解图，四个部件被拆开、引线标注；页面底部压着一条黑色终端，最后一行写着「人类评审剩余：0」。</p>
+
+  <div class="frame pe" id="f-master">
+    <div class="gridpaper"></div>
+
+    <div class="hd">
+      <div class="l"><u></u><b>DEGENERATIVE PIXELS</b><span>/ 内部文档</span></div>
+      <span>全员大会 · Q3 REVIEW</span>
+      <span>P. 12 / 24 · REV 7</span>
+    </div>
+
+    <div class="hl">所有系统<br><em>运行正常</em></div>
+    <div class="hlnote"><u></u>ALL SYSTEMS OPERATIONAL · 已确认 4 位评审</div>
+
+    <div class="stamp">LGTM<small>LOOKS GOOD TO ME</small></div>
+
+    <!-- BOT-001 分解图 -->
+    <div class="bot">
+      <svg viewBox="0 0 460 350">
+        <g stroke="#14140F" stroke-width="1.3" fill="none">
+          <!-- 中心轴 -->
+          <line x1="230" y1="6" x2="230" y2="330" stroke="#2C4A6B" stroke-width="0.9"
+                stroke-dasharray="7 5 2 5" opacity="0.75"/>
+          <!-- 头 -->
+          <g>
+            <rect x="180" y="24" width="100" height="54" fill="#E07B39"/>
+            <rect x="196" y="42" width="14" height="14" fill="#14140F" stroke="none"/>
+            <rect x="250" y="42" width="14" height="14" fill="#14140F" stroke="none"/>
+            <line x1="230" y1="24" x2="230" y2="8"/>
+            <circle cx="230" cy="6" r="4"/>
+          </g>
+          <!-- 颈部分离 -->
+          <line x1="204" y1="86" x2="204" y2="96" stroke="#2C4A6B" stroke-width="0.9" stroke-dasharray="3 3"/>
+          <line x1="256" y1="86" x2="256" y2="96" stroke="#2C4A6B" stroke-width="0.9" stroke-dasharray="3 3"/>
+          <!-- 机身 -->
+          <rect x="140" y="102" width="180" height="100"/>
+          <rect x="162" y="124" width="136" height="28" fill="#E07B39" fill-opacity="0.28"/>
+          <text x="230" y="144" font-family="ui-monospace,monospace" font-size="11"
+                fill="#14140F" stroke="none" text-anchor="middle">BOT-001</text>
+          <line x1="162" y1="170" x2="298" y2="170" stroke-width="0.9" stroke="#2C4A6B"/>
+          <line x1="162" y1="182" x2="248" y2="182" stroke-width="0.9" stroke="#2C4A6B"/>
+          <!-- 手臂 左 -->
+          <rect x="92" y="112" width="30" height="90" fill="#EFEAD9"/>
+          <line x1="92" y1="140" x2="122" y2="140" stroke-width="0.8"/>
+          <line x1="92" y1="172" x2="122" y2="172" stroke-width="0.8"/>
+          <!-- 手臂 右 -->
+          <rect x="338" y="104" width="30" height="90" fill="#EFEAD9"/>
+          <line x1="338" y1="132" x2="368" y2="132" stroke-width="0.8"/>
+          <line x1="338" y1="164" x2="368" y2="164" stroke-width="0.8"/>
+          <!-- 腿 -->
+          <rect x="164" y="222" width="42" height="72" fill="#EFEAD9"/>
+          <rect x="254" y="222" width="42" height="72" fill="#EFEAD9"/>
+          <line x1="164" y1="250" x2="206" y2="250" stroke-width="0.8"/>
+          <line x1="254" y1="250" x2="296" y2="250" stroke-width="0.8"/>
+          <!-- 地面 -->
+          <line x1="96" y1="316" x2="364" y2="316" stroke-width="1"/>
+          <g stroke="#A8A18B" stroke-width="0.7">
+            <line x1="110" y1="322" x2="122" y2="330"/><line x1="140" y1="322" x2="152" y2="330"/>
+            <line x1="170" y1="322" x2="182" y2="330"/><line x1="200" y1="322" x2="212" y2="330"/>
+            <line x1="230" y1="322" x2="242" y2="330"/><line x1="260" y1="322" x2="272" y2="330"/>
+            <line x1="290" y1="322" x2="302" y2="330"/><line x1="320" y1="322" x2="332" y2="330"/>
+          </g>
+        </g>
+        <!-- 引线 -->
+        <g stroke="#2C4A6B" stroke-width="0.9" fill="none">
+          <path d="M280 40 L356 24 L396 24"/><circle cx="280" cy="40" r="2.6" fill="#2C4A6B"/>
+          <path d="M300 202 L358 224 L396 224"/><circle cx="300" cy="202" r="2.6" fill="#2C4A6B"/>
+          <path d="M92 200 L64 224 L40 224"/><circle cx="92" cy="200" r="2.6" fill="#2C4A6B"/>
+          <path d="M170 294 L150 308 L106 308"/><circle cx="170" cy="294" r="2.6" fill="#2C4A6B"/>        </g>
+        <g font-family="ui-monospace,monospace" font-size="9" fill="#2C4A6B" letter-spacing="0.6">
+          <text x="400" y="27">01 HEAD</text>
+          <text x="400" y="227">02 CHASSIS</text>
+          <text x="36" y="219" text-anchor="end">03 ARM ×2</text>
+          <text x="100" y="303" text-anchor="end">04 LEG ×2</text>
+        </g>
+        <!-- 尺寸线 -->
+        <g stroke="#14140F" stroke-width="0.8">
+          <line x1="140" y1="336" x2="320" y2="336"/>
+          <line x1="140" y1="331" x2="140" y2="341"/>
+          <line x1="320" y1="331" x2="320" y2="341"/>
+        </g>
+        <text x="230" y="348" font-family="ui-monospace,monospace" font-size="9" fill="#6E6A57"
+              text-anchor="middle" letter-spacing="1">440 mm</text>
+      </svg>
+    </div>
+
+    <!-- 终端条 -->
+    <div class="tm">
+      <div class="tx">
+        <div><span class="p">$</span> <b>review --approve --all</b></div>
+        <div><span class="dim">&gt;</span> 4 approvals received · merged to main</div>
+        <div><span class="dim">&gt;</span> human reviewers remaining: <b>0</b></div>
+        <div><span class="dim">&gt;</span> status: ALL GREEN<span class="cur"></span></div>
+      </div>
+      <div class="badge">
+        <div class="t1">INCIDENT · 03:41</div>
+        <div class="t2">SEV-1</div>
+        <div class="t3">root cause: unclear</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><b>两套基调</b>黑底绿字给技术与效率，米白文档给管理与制度；同一页里各占一半，红色只留给告警。</div>
+    <div><b>文档的克制</b>固定页眉、页码、细线分隔、等宽小字；留白比图形多，越像内部材料越可信。</div>
+    <div><b>线框说明</b>细线、虚线中心轴、引线标注、FIG 编号；不画写实细节，只画结构和关系。</div>
+    <div><b>印章与状态</b>LGTM / APPROVED / WON'T DO 是可以盖章的图形动作，绿色通过、红色拒绝。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 4</span></h2>
+  <p class="h2note">四个方向：企业汇报版式、复古终端、工程线框图解、印章与文档拼贴。</p>
+
+  <div class="subs">
+
+    <!-- 1. 企业汇报式版式 -->
+    <section class="sub">
+      <div class="frame ps1" id="f-deck">
+        <div class="gridpaper"></div>
+        <div class="tagm" style="left:3.4cqw;top:1.2cqw;opacity:.7">CORPORATE DECK</div>
+
+        <div class="sld">
+          <div class="top"><span>DEGENERATIVE PIXELS</span><span>组织架构 · 2026 Q3</span></div>
+          <h4>以更少的人，<br>做更多的事</h4>
+          <div class="sub">ENGINEERING · HEADCOUNT &amp; VELOCITY</div>
+
+          <div class="org">
+            <svg viewBox="0 0 320 122">
+              <g stroke="#2C4A6B" stroke-width="1" fill="none">
+                <path d="M160 20 V31 M45 31 H275 M45 31 V42 M160 31 V42 M275 31 V42"/>
+                <path d="M160 62 V74 M127 74 H211 M127 74 V84 M169 74 V84 M211 74 V84"/>
+              </g>
+              <g fill="#EFEAD9" stroke="#14140F" stroke-width="1.1">
+                <rect x="120" y="0" width="80" height="20" fill="#14140F"/>
+                <rect x="0" y="42" width="90" height="20"/>
+                <rect x="115" y="42" width="90" height="20"/>
+                <rect x="230" y="42" width="90" height="20"/>
+                <rect x="110" y="84" width="34" height="20"/>
+                <rect x="152" y="84" width="34" height="20"/>
+                <rect x="194" y="84" width="34" height="20" stroke="#C0392B"/>
+              </g>
+              <g font-family="ui-monospace,monospace" font-size="8.6" fill="#14140F"
+                 text-anchor="middle" letter-spacing="0.4">
+                <text x="160" y="13.5" fill="#EFEAD9">CEO</text>
+                <text x="45" y="55.5">ENG ×80</text>
+                <text x="160" y="55.5">PRODUCT ×12</text>
+                <text x="275" y="55.5">PEOPLE ×6</text>
+                <text x="127" y="97.5">×8</text>
+                <text x="169" y="97.5">×3</text>
+                <text x="211" y="97.5" fill="#C0392B">×1</text>
+              </g>
+              <text x="0" y="118" font-family="ui-monospace,monospace" font-size="7.6"
+                    fill="#8A8574" letter-spacing="0.8">* 红框为本次调整</text>
+            </svg>
+          </div>
+
+          <div class="vel">
+            <div class="vt">VELOCITY / 人效</div>
+            <div class="bar">
+              <i style="height:26%"></i><i style="height:34%"></i><i style="height:30%"></i><i style="height:41%"></i>
+              <i style="height:48%"></i><i style="height:44%"></i><i style="height:57%"></i><i style="height:63%"></i>
+              <i style="height:72%"></i><i style="height:81%"></i><i style="height:92%"></i><i style="height:100%;background:#C0392B"></i>
+            </div>
+            <div class="xl"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+            <div class="vt" style="margin-top:1.2cqw;color:#1E7A46">↑ +214% 同比</div>
+          </div>
+
+          <div class="cap" style="position:absolute;left:0;bottom:0;font-family:var(--f-mono);
+            font-size:1.15cqw;letter-spacing:.12em;color:#6E6A57">P. 04 · 仅供内部使用</div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>企业汇报式版式<small>Corporate Presentation Layout，描述性方向</small></h3>
+        <p>采用公司演示文稿与内部报告的规范排版：大量留白、固定页眉、页码、图表和组织关系。核心是清晰的信息层级与统一模板——用管理层汇报的形式呈现增长、裁员和效率承诺。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">米白底</span><span class="tag">绿色强调</span>
+          <span class="tag">页码</span><span class="tag">组织架构</span><span class="tag">效率图表</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 复古终端视觉 -->
+    <section class="sub">
+      <div class="frame ps2" id="f-crt">
+        <div class="gridpaper"></div>
+        <div class="tagm" style="left:4cqw;top:1.4cqw">RETRO TERMINAL</div>
+
+        <div class="crt">
+          <div class="scr">
+            <div class="txt">
+              <div><span class="d">LAST LOGIN</span> Tue 03:38</div>
+              <div><span class="d">$</span> cat /var/log/review.log</div>
+              <div>[ok] 4 approvals received</div>
+              <div>[ok] merged to main</div>
+              <div><span class="d">$</span> who --human</div>
+              <div><span class="d">     (no results)</span></div>
+              <div><span class="d">$</span> _</div>
+            </div>
+          </div>
+          <div class="brand">PHOSPHOR · 14"</div>
+          <i class="led"></i>
+          <div class="pw"><b>NOTES</b>pwd: 还是那个<br>别告诉运维<br>— 03:41</div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>复古终端视觉<small>Retro Terminal Aesthetics</small></h3>
+        <p>深色背景、等宽字符、绿色发光与扫描质感建立技术氛围。实体显示器外壳与便签使它保留办公生活感——不是纯 UI，而是有人在用的机器。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">黑绿配色</span><span class="tag">命令提示符</span>
+          <span class="tag">打字光标</span><span class="tag">米色显示器</span><span class="tag">扫描线</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 工程线框与技术图解 -->
+    <section class="sub">
+      <div class="frame ps3" id="f-fig">
+        <div class="gridpaper"></div>
+        <div class="tagm" style="left:4cqw;top:1.4cqw">WIREFRAME &amp; TECHNICAL ILLUSTRATION</div>
+
+        <div class="fig">
+          <svg viewBox="0 0 578 325">
+            <!-- 黑箱：正面黑，棱线绿，问号绿 -->
+            <g>
+              <polygon points="200,110 240,74 380,74 340,110" fill="#14140F"/>
+              <polygon points="340,110 380,74 380,184 340,220" fill="#0A0A06"/>
+              <rect x="200" y="110" width="140" height="110" fill="#04120A"/>
+              <g stroke="#39FF88" stroke-width="1.2" fill="none" opacity=".9">
+                <rect x="200" y="110" width="140" height="110"/>
+                <polygon points="200,110 240,74 380,74 340,110"/>
+                <polyline points="240,74 240,184 340,220" opacity=".55"/>
+                <line x1="380" y1="74" x2="380" y2="184" opacity=".55"/>
+                <line x1="340" y1="110" x2="340" y2="220" opacity=".55"/>
+              </g>
+              <text x="270" y="180" font-family="ui-monospace,monospace" font-size="46"
+                    fill="#39FF88" text-anchor="middle" opacity=".9">?</text>
+            </g>
+
+            <!-- 输入箭头 -->
+            <g stroke="#2C4A6B" stroke-width="1.2" fill="none">
+              <line x1="70" y1="150" x2="186" y2="150"/>
+              <polygon points="186,150 176,145 176,155" fill="#2C4A6B" stroke="none"/>
+            </g>
+            <!-- 输出箭头 -->
+            <g stroke="#2C4A6B" stroke-width="1.2" fill="none">
+              <line x1="392" y1="150" x2="508" y2="150"/>
+              <polygon points="508,150 498,145 498,155" fill="#2C4A6B" stroke="none"/>
+            </g>
+            <g font-family="ui-monospace,monospace" font-size="11" fill="#14140F" letter-spacing="1">
+              <text x="70" y="140">IN</text>
+              <text x="70" y="170" fill="#5A5647" font-size="9.5">12,438,902 行</text>
+              <text x="440" y="140">OUT</text>
+              <text x="440" y="170" fill="#1E7A46" font-size="9.5">LGTM</text>
+            </g>
+
+            <!-- 数据库圆柱 -->
+            <g stroke="#2C4A6B" stroke-width="1.1" fill="none">
+              <ellipse cx="120" cy="228" rx="34" ry="11"/>
+              <path d="M86 228 V272 A34 11 0 0 0 154 272 V228"/>
+              <path d="M86 246 A34 11 0 0 0 154 246" opacity=".6"/>
+              <path d="M86 262 A34 11 0 0 0 154 262" opacity=".6"/>
+            </g>
+            <g font-family="ui-monospace,monospace" font-size="9.5" fill="#2C4A6B" letter-spacing=".8">
+              <text x="86" y="292">DB-04</text>
+              <text x="86" y="305" fill="#8A8574" font-size="8.6">read-only</text>
+            </g>
+
+            <!-- 尺寸标注 -->
+            <g stroke="#14140F" stroke-width="0.9">
+              <line x1="200" y1="234" x2="340" y2="234"/>
+              <line x1="200" y1="228" x2="200" y2="240"/>
+              <line x1="340" y1="228" x2="340" y2="240"/>
+            </g>
+            <text x="270" y="250" font-family="ui-monospace,monospace" font-size="9" fill="#6E6A57"
+                  text-anchor="middle" letter-spacing=".6">140 mm</text>
+
+            <!-- 引线 -->
+            <g stroke="#A8A18B" stroke-width="0.9" fill="none">
+              <path d="M270 100 L270 56 L330 56"/>
+              <circle cx="270" cy="100" r="2.6" fill="#A8A18B"/>
+              <path d="M340 200 L420 236 L470 236"/>
+              <circle cx="340" cy="200" r="2.6" fill="#A8A18B"/>
+            </g>
+            <g font-family="ui-monospace,monospace" font-size="9.5" fill="#6E6A57" letter-spacing=".8">
+              <text x="336" y="59">FIG. 03 — UNVERIFIED</text>
+              <text x="428" y="239">no known internals</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="cap">FIG. 03 · 训练数据黑箱 · 剖面不可见</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>工程线框与技术图解<small>Wireframe &amp; Technical Illustration</small></h3>
+        <p>用细线、虚线中心轴、分解部件与注释引线把抽象关系画成工程文档里的说明图。不依赖写实细节，也能表达空间结构与概念关系——把"代码黑箱"这类术语变成可观看的图解。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">透视网格</span><span class="tag">细线</span>
+          <span class="tag">爆炸视图</span><span class="tag">FIG 编号</span><span class="tag">引线注释</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 印章与文档拼贴 -->
+    <section class="sub">
+      <div class="frame ps4" id="f-stamp">
+        <div class="gridpaper"></div>
+        <div class="tagm" style="left:4cqw;top:1.4cqw">RUBBER STAMP &amp; DOCUMENT COLLAGE</div>
+
+        <div class="card" style="left:3cqw;top:9cqw;width:31cqw;padding:1.4cqw;transform:rotate(-2deg)">
+          <div class="ch">PULL REQUEST · #4821</div>
+          <div class="cb">+12,408<br>−3 行</div>
+          <div class="cm">4 reviewers · 0 comments</div>
+          <div class="sm g" style="right:1.2cqw;bottom:2cqw;transform:rotate(-7deg);font-size:1.8cqw">APPROVED</div>
+        </div>
+
+        <div class="card" style="left:35.4cqw;top:6.6cqw;width:32cqw;padding:1.4cqw;transform:rotate(1.5deg);z-index:7">
+          <div class="ch">INCIDENT · 03:41 · SEV-1</div>
+          <div class="cb">根因<br>未明</div>
+          <div class="cm">root cause: unclear</div>
+          <div class="sm r" style="right:1.2cqw;bottom:1.2cqw;transform:rotate(6deg);font-size:1.75cqw">WON'T DO</div>
+        </div>
+
+        <div class="card" style="left:69.4cqw;top:8.6cqw;width:27cqw;padding:1.4cqw;transform:rotate(-1.4deg);z-index:6">
+          <div class="ch">复盘 · FOLLOW-UP</div>
+          <div class="cb">后续事项</div>
+          <div class="cm">01 补充监控<br>02 补充人力<br>03 无</div>
+          <div class="sm d" style="right:2cqw;bottom:2cqw;transform:rotate(-4deg);font-size:1.5cqw">TBD</div>
+        </div>
+
+        <div class="hair" style="left:4cqw;right:4cqw;top:33.4cqw"></div>
+        <div style="position:absolute;left:4cqw;right:4cqw;top:35cqw;display:flex;justify-content:space-between;
+          font-family:var(--f-mono);font-size:1.1cqw;letter-spacing:.1em;color:#6E6A57;z-index:9">
+          <span>01 PR #4821<span style="color:#1E7A46"> ✓ APPROVED</span></span>
+          <span>02 INCIDENT 03:41<span style="color:#C0392B"> ✕ WON'T DO</span></span>
+          <span>03 复盘<span style="color:#2C4A6B"> ○ TBD</span></span>
+        </div>
+
+        <div class="sm b" style="left:4cqw;top:41.4cqw;transform:rotate(-3deg);font-size:1.9cqw">MERGED</div>
+        <div style="position:absolute;right:4cqw;top:43.2cqw;font-family:var(--f-mono);
+          font-size:1.1cqw;letter-spacing:.14em;color:#6E6A57;z-index:9">4 份材料 · 均已归档 · 无后续</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">04</span>印章与文档拼贴<small>Rubber Stamp Graphics &amp; Document Collage</small></h3>
+        <p>把批准、拒绝、完成和不处理转化为醒目的印章与标签：磨损边框、红绿编码、卡片叠放。一张歪盖的章同时是图形动作和叙事判断，"通过"与"不管"可以被盖章成同一件事。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">磨损印章</span><span class="tag">矩形边框</span>
+          <span class="tag">红绿状态</span><span class="tag">工单</span><span class="tag">卡片叠放</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>配色</b>深黑与荧光绿建立终端模式，米白与炭黑建立文档模式，红色只用于事故告警；橙色机器人作为稳定焦点，全片不换色。</div>
+    <div><b>字体与构图</b>等宽小字、固定页眉、编号、细线分隔与网格对齐；大号粗体承载核心词句，米白页面留出宽阔空白。</div>
+    <div><b>图形与动态</b>细线线框、爆炸视图、引线注释与几何设备；逐字输入、曲线增长、消息追加、状态切换与盖章，动作紧扣界面功能。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>复古终端与技术制图视觉，黑底荧光绿的等宽字符界面交替切换米白色企业汇报页；统一页眉编号、细线网格、图表和小号技术注释。以线框机器人、设备爆炸图和引线标注表现技术对象，橙色几何机器人贯穿各页。大号粗体歌词融入代码审查和状态按钮，通过输入、曲线增长和磨损印章落下形成节奏；事故段落转为红色警示。</div>
+
+  <footer>样例说明：本页终端、幻灯片、线框分解图与印章均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/复古终端与技术制图.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>极简主义书刊排版（Minimalist Editorial Typography）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --e-paper:#F5F2EA; --e-paper2:#FBF8F1;
+  --e-ink:#22201D; --e-ink2:#4A463F;
+  --e-gray:#9A9488; --e-light:#DCD7CB; --e-red:#C0392B;
+}
+.pe,.ps1,.ps2,.ps3,.ps4{background:var(--e-paper);color:var(--e-ink)}
+.grain{position:absolute;inset:0;filter:url(#egr);opacity:.2;mix-blend-mode:multiply;
+  pointer-events:none;z-index:60}
+.mono{font-family:var(--f-mono);letter-spacing:.14em}
+
+/* ---------- 主视觉 ---------- */
+.pe .rh{position:absolute;left:5cqw;top:3.2cqw;right:5cqw;display:flex;justify-content:space-between;
+  font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.22em;color:var(--e-gray);z-index:9}
+.pe .hr{position:absolute;height:.08cqw;background:var(--e-ink);opacity:.28;z-index:8}
+
+.pe .t1{position:absolute;left:5cqw;top:8.6cqw;font-family:var(--f-serif);font-size:8.4cqw;
+  font-weight:700;line-height:1;letter-spacing:.02em;color:var(--e-ink);white-space:nowrap;z-index:6}
+.pe .t2{position:absolute;left:5cqw;top:19.4cqw;font-family:var(--f-serif);font-size:8.4cqw;
+  font-weight:700;line-height:1;letter-spacing:.02em;color:var(--e-ink);white-space:nowrap;z-index:6}
+.pe .t2 em{font-style:normal;color:var(--e-red)}
+.pe .en{position:absolute;left:5cqw;top:32.6cqw;font-family:var(--f-serif);font-style:italic;
+  font-size:2.15cqw;letter-spacing:.02em;color:var(--e-ink2);white-space:nowrap;z-index:6}
+.pe .en i{color:var(--e-red);font-style:italic}
+
+.pe .body{position:absolute;left:5cqw;top:40.6cqw;width:19.4cqw;font-size:1.38cqw;line-height:1.95;
+  color:var(--e-ink2);text-align:justify;z-index:6}
+.pe .body2{position:absolute;left:26cqw;top:40.6cqw;width:19.4cqw;font-size:1.38cqw;line-height:1.95;
+  color:var(--e-ink2);text-align:justify;z-index:6}
+.pe .body b,.pe .body2 b{color:var(--e-red);font-weight:400}
+.pe .fn{position:absolute;left:5cqw;top:52.6cqw;font-family:var(--f-mono);font-size:.92cqw;
+  letter-spacing:.12em;color:var(--e-gray);z-index:6}
+
+/* 图卡 */
+.pe .fig{position:absolute;left:50cqw;top:7.6cqw;width:45cqw;height:24.6cqw;z-index:7}
+.pe .fig svg{width:100%;height:100%;display:block}
+.pe .figcap{position:absolute;left:50cqw;top:33.2cqw;width:45cqw;font-family:var(--f-mono);
+  font-size:.92cqw;line-height:1.8;letter-spacing:.08em;color:var(--e-gray);z-index:7}
+.pe .figcap b{color:var(--e-ink);font-weight:400}
+
+/* 表格 */
+.pe .tb{position:absolute;left:50cqw;top:37.4cqw;width:45cqw;z-index:7;font-family:var(--f-mono);
+  font-size:.98cqw;letter-spacing:.06em;color:var(--e-ink2)}
+.pe .tb .row{display:flex;align-items:center;gap:1cqw;height:2.75cqw;
+  border-bottom:.07cqw solid rgba(34,32,29,.24)}
+.pe .tb .row.h{border-top:.07cqw solid rgba(34,32,29,.5);border-bottom:.07cqw solid rgba(34,32,29,.5);
+  color:var(--e-ink);letter-spacing:.18em}
+.pe .tb .c1{width:8cqw}
+.pe .tb .c2{width:13cqw}
+.pe .tb .c3{flex:1}
+.pe .tb .no{color:var(--e-red)}
+.pe .tb .ok{color:var(--e-red)}
+
+.pe .pno{position:absolute;right:4.4cqw;top:47.2cqw;font-family:var(--f-serif);font-size:9.6cqw;
+  line-height:.9;font-weight:700;color:#D3CEC0;z-index:4;letter-spacing:.02em}
+.pe .circ{position:absolute;left:49.2cqw;top:45cqw;width:9.4cqw;height:3.9cqw;
+  border:.13cqw solid var(--e-red);border-radius:50%;transform:rotate(-2.5deg);opacity:.8;z-index:8}
+
+/* ---------- 子帧通用 ---------- */
+.tagm{position:absolute;font-family:var(--f-mono);font-size:1.2cqw;letter-spacing:.16em;
+  color:var(--e-gray);z-index:9}
+.hair{position:absolute;height:.07cqw;background:var(--e-ink);opacity:.3;z-index:7}
+.hairr{position:absolute;height:.07cqw;background:var(--e-red);opacity:.85;z-index:7}
+.base{position:absolute;height:0;border-top:.05cqw dashed rgba(154,148,136,.7);z-index:3}
+
+/* 1 书刊式衬线排版 */
+.ps1 .pno{position:absolute;right:2.4cqw;top:-1.6cqw;font-family:var(--f-serif);font-size:15cqw;
+  line-height:1;font-weight:700;color:var(--e-light);z-index:2;letter-spacing:-.02em}
+.ps1 .chap{position:absolute;left:3.4cqw;top:6.2cqw;font-family:var(--f-mono);font-size:1.2cqw;
+  letter-spacing:.26em;color:var(--e-gray);z-index:8}
+.ps1 h3{position:absolute;left:3.4cqw;top:9cqw;font-family:var(--f-serif);font-size:3.5cqw;
+  font-weight:700;line-height:1.1;color:var(--e-ink);white-space:nowrap;z-index:8}
+.ps1 .rule{position:absolute;left:3.4cqw;top:16.2cqw;width:11cqw;height:.18cqw;
+  background:var(--e-ink);z-index:8}
+.ps1 .q{position:absolute;left:3.4cqw;top:19cqw;width:31cqw;font-family:var(--f-serif);
+  font-style:italic;font-size:1.95cqw;line-height:1.7;color:var(--e-ink2);z-index:8}
+.ps1 .q i{color:var(--e-red);font-style:italic}
+.ps1 .tx{position:absolute;left:3.4cqw;top:28.6cqw;width:31cqw;font-size:1.4cqw;line-height:2;
+  color:var(--e-ink2);text-align:justify;z-index:8}
+.ps1 .tx b{color:var(--e-red);font-weight:400}
+.ps1 .sc{position:absolute;left:60cqw;top:9.6cqw;width:36cqw;z-index:8}
+.ps1 .sc .s{display:flex;align-items:baseline;gap:1.2cqw;height:6.2cqw;
+  border-bottom:.05cqw dashed rgba(154,148,136,.8)}
+.ps1 .sc .s span{font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.1em;color:var(--e-gray);
+  width:9cqw;flex:0 0 auto}
+.ps1 .sc .s b{font-family:var(--f-serif);font-weight:700;color:var(--e-ink);line-height:1}
+.ps1 .sc .s i{font-family:var(--f-serif);font-style:italic;color:var(--e-ink2);line-height:1}
+.ps1 .sc .s u{font-size:1.4cqw;color:var(--e-ink2);text-decoration:none;line-height:1.3}
+.ps1 .note{position:absolute;left:60cqw;top:38.6cqw;width:36cqw;font-family:var(--f-mono);
+  font-size:1.15cqw;line-height:2;letter-spacing:.06em;color:var(--e-ink2);z-index:8}
+
+/* 2 学术出版 */
+.ps2 .pg{position:absolute;left:3.4cqw;top:4.4cqw;right:3.4cqw;bottom:4.4cqw;
+  background:var(--e-paper2);border:.07cqw solid rgba(34,32,29,.16);z-index:5;
+  box-shadow:.4cqw .5cqw 0 rgba(34,32,29,.05);padding:2.4cqw 3cqw 1.4cqw;overflow:hidden;
+  display:flex;flex-direction:column}
+.ps2 .k{font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.2em;color:var(--e-gray)}
+.ps2 h4{font-family:var(--f-serif);font-size:2.7cqw;font-weight:700;line-height:1.22;
+  margin:.8cqw 0 .5cqw;color:var(--e-ink)}
+.ps2 .au{font-family:var(--f-mono);font-size:1.1cqw;letter-spacing:.08em;color:var(--e-ink2)}
+.ps2 .hr2{height:.07cqw;background:rgba(34,32,29,.4);margin:1.1cqw 0 1cqw}
+.ps2 .ab{display:flex;gap:1.6cqw}
+.ps2 .ab .lab{font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.16em;color:var(--e-gray);
+  flex:0 0 auto;padding-top:.2cqw}
+.ps2 .ab p{font-size:1.28cqw;line-height:1.9;color:var(--e-ink2);text-align:justify}
+.ps2 .ab p b{color:var(--e-red);font-weight:400}
+.ps2 .fml{font-family:var(--f-serif);font-style:italic;font-size:2.1cqw;color:var(--e-ink);
+  text-align:center;margin:1.4cqw 0 1cqw;letter-spacing:.02em}
+.ps2 .fml span{font-style:normal;font-size:1.1cqw;font-family:var(--f-mono);color:var(--e-gray);
+  margin-left:.8cqw;letter-spacing:.1em}
+.ps2 table{width:100%;border-collapse:collapse;font-family:var(--f-mono);font-size:1.1cqw;
+  letter-spacing:.04em;color:var(--e-ink2);margin-top:auto}
+.ps2 th:first-child,.ps2 td:first-child{width:27%}
+.ps2 th:nth-child(2),.ps2 td:nth-child(2){width:19%}
+.ps2 th:nth-child(3),.ps2 td:nth-child(3){width:19%}
+.ps2 th:last-child,.ps2 td:last-child{width:35%}
+.ps2 th{font-weight:400;text-align:left;letter-spacing:.14em;color:var(--e-ink);
+  border-top:.07cqw solid rgba(34,32,29,.5);border-bottom:.07cqw solid rgba(34,32,29,.5);
+  padding:.7cqw .4cqw}
+.ps2 td{padding:.62cqw .4cqw;border-bottom:.05cqw solid rgba(34,32,29,.14)}
+.ps2 td.n{color:var(--e-red)}
+.ps2 .ft{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.95cqw;
+  letter-spacing:.14em;color:var(--e-gray);margin-top:.9cqw}
+
+/* 3 科学图解 */
+.ps3 .plot{position:absolute;left:3.4cqw;top:8cqw;width:52cqw;height:34cqw;z-index:6}
+.ps3 .plot svg{width:100%;height:100%;display:block}
+.ps3 .cap{position:absolute;left:3.4cqw;top:44cqw;width:52cqw;font-family:var(--f-mono);
+  font-size:1.15cqw;line-height:1.9;letter-spacing:.06em;color:var(--e-gray)}
+.ps3 .cap b{color:var(--e-ink);font-weight:400}
+.ps3 .tiles{position:absolute;left:60cqw;top:8cqw;width:36cqw;display:grid;
+  grid-template-columns:1fr 1fr;gap:2.4cqw 1.6cqw;z-index:6}
+.ps3 .tile{height:13cqw;border:.07cqw solid rgba(34,32,29,.22);background:var(--e-paper2);
+  display:flex;align-items:center;justify-content:center}
+.ps3 .tile svg{width:72%;height:72%;display:block}
+.ps3 .tl{font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.1em;color:var(--e-gray);
+  text-align:center;margin-top:.5cqw}
+.ps3 .lgd{position:absolute;left:60cqw;top:44cqw;width:36cqw;font-family:var(--f-mono);
+  font-size:1.05cqw;letter-spacing:.06em;color:var(--e-ink2)}
+.ps3 .lgd div{display:flex;align-items:center;gap:.9cqw;height:3.2cqw}
+.ps3 .lgd i{flex:0 0 auto;width:3.4cqw;height:0;border-top:.1cqw solid var(--e-ink)}
+.ps3 .lgd i.dash{border-top:.1cqw dashed var(--e-gray)}
+.ps3 .lgd i.red{border-top:.1cqw solid var(--e-red);opacity:.75}
+
+/* 4 点阵 */
+.ps4 .dm{position:absolute;left:4cqw;top:9cqw;width:52cqw;height:20cqw;z-index:7}
+.ps4 .dm svg{width:100%;height:100%;display:block}
+.ps4 .dlab{position:absolute;left:4cqw;top:4.4cqw;font-family:var(--f-mono);font-size:1.25cqw;
+  letter-spacing:.2em;color:var(--e-gray)}
+.ps4 .dtx{position:absolute;left:4cqw;top:31.6cqw;width:52cqw;font-size:1.35cqw;line-height:1.95;
+  color:var(--e-ink2);z-index:7}
+.ps4 .dtx b{color:var(--e-red);font-weight:400}
+.ps4 .flap{position:absolute;left:63cqw;top:7.6cqw;width:33cqw;height:22cqw;z-index:7}
+.ps4 .flap .unit{position:absolute;inset:0;background:var(--e-paper2);
+  border:.08cqw solid rgba(34,32,29,.28);box-shadow:.3cqw .4cqw 0 rgba(34,32,29,.06)}
+.ps4 .flap .u{position:absolute;left:0;width:100%;height:33.33%;
+  display:flex;align-items:center;justify-content:center;font-family:var(--f-serif);
+  font-size:3.4cqw;color:var(--e-ink);border-bottom:.06cqw solid rgba(34,32,29,.3)}
+.ps4 .flap .u::after{content:"";position:absolute;left:0;top:0;width:100%;height:52%;
+  background:linear-gradient(rgba(34,32,29,.07),rgba(34,32,29,.02))}
+.ps4 .flap .hinge{position:absolute;left:0;width:100%;height:.13cqw;background:rgba(34,32,29,.4);
+  top:33.33%;box-shadow:0 7.3cqw 0 rgba(34,32,29,.4)}
+.ps4 .fsp{position:absolute;left:63cqw;top:32.4cqw;width:33cqw;font-family:var(--f-mono);
+  font-size:1.1cqw;line-height:2;letter-spacing:.06em;color:var(--e-ink2)}
+
+/* 翻片横条 */
+.ps4 .strip{position:absolute;left:8cqw;top:43.4cqw;display:flex;gap:.65cqw;z-index:7}
+.ps4 .strip .cell{position:relative;width:6.9cqw;height:9cqw;background:var(--e-paper2);
+  border:.08cqw solid rgba(34,32,29,.26);box-shadow:.18cqw .22cqw 0 rgba(34,32,29,.05)}
+.ps4 .strip .cell::before,.ps4 .strip .cell::after{content:attr(data-l);position:absolute;left:0;
+  top:0;width:100%;height:9cqw;line-height:9cqw;text-align:center;font-family:var(--f-serif);
+  font-size:3.2cqw;color:var(--e-ink)}
+.ps4 .strip .cell::before{clip-path:inset(0 0 50% 0)}
+.ps4 .strip .cell::after{clip-path:inset(50% 0 0 0)}
+.ps4 .strip .cell s{position:absolute;left:0;top:50%;width:100%;height:.1cqw;z-index:3;
+  background:rgba(34,32,29,.34);text-decoration:none}
+.ps4 .strip .cell.flip::before{content:"E";color:#847D70}
+.ps4 .strip .cell.flip{box-shadow:.18cqw .22cqw 0 rgba(34,32,29,.05),inset 0 1.6cqw 1.6cqw -.6cqw rgba(34,32,29,.3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>10 / 25</span>
+    <span class="right"><a href="复古版画拼贴.html">← 上一条</a><a href="极简主义动态图形.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>极简主义书刊排版<small>Minimalist Editorial Typography</small></h1>
+    <p class="lead">以极简主义的留白与克制配色，结合书刊式衬线排版：大标题、斜体引语、细线图表、页码与宽页边共同构成出版物外观。米白纸面、炭黑文字与少量红色批注保持统一，文字自身承担构图，图形只做注释。</p>
+    <div class="meta">
+      <div><b>风格定位</b>极简主义书刊排版（Minimalist Editorial Typography），美学原则与排版语言的组合描述</div>
+      <div><b>视觉媒介</b>动态排版（Kinetic Typography）＋科学图解动画（Animated Scientific Diagrams）＋纸面分层合成</div>
+      <div><b>典型母体</b>学术论文与书籍内页，结合数学图谱、棋谱、乐谱与纸面批注</div>
+    </div>
+    <div class="tags">
+      <span class="tag">极简主义（Minimalism）</span><span class="tag">书刊排版（Editorial Typography）</span>
+      <span class="tag">衬线字体（Serif Typeface）</span><span class="tag">科学图解</span><span class="tag">米白黑红</span>
+      <span class="tag w">抒情反思</span><span class="tag w">失落感</span><span class="tag w">存在主义倾向</span><span class="tag w">AI 与人的价值</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#F5F2EA"></i>米白纸<br><code>#F5F2EA</code></div>
+      <div class="sw"><i style="background:#22201D"></i>炭黑<br><code>#22201D</code></div>
+      <div class="sw"><i style="background:#C0392B"></i>批注红<br><code>#C0392B</code></div>
+      <div class="sw"><i style="background:#9A9488"></i>灰<br><code>#9A9488</code></div>
+      <div class="sw"><i style="background:#DCD7CB"></i>淡纸灰<br><code>#DCD7CB</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">一页摊开的书：左边是标题、英文副题与两栏正文，右边是一张细线图卡和一张对照表，右下角的页码用淡纸灰压住一切。红色只落在几处——副题里的稿次、正文里的关键词、表里被圈住的那一行。</p>
+
+  <div class="frame pe" id="f-master">
+    <div class="rh"><span>MINIMALIST EDITORIAL TYPOGRAPHY</span><span>024 / 书刊排版</span></div>
+    <div class="hr" style="left:5cqw;top:5.8cqw;width:90cqw"></div>
+    <div class="hr" style="left:5cqw;top:6.1cqw;width:90cqw;opacity:.12"></div>
+
+    <div class="t1">没有人</div>
+    <div class="t2">再需要我们</div>
+    <div class="en">No One Needs Us Anymore <i>— 第七稿</i></div>
+
+    <div class="hr" style="left:5cqw;top:38.4cqw;width:40.8cqw"></div>
+
+    <div class="body">我把这句话改了<b>七遍</b>。每一遍都更短、更准，也更像结论。删掉形容词之后，剩下的部分不再像在请求什么。</div>
+    <div class="body2">第七遍没有加句号。它看起来像一行注释，等着被谁划掉；但既然是最后一稿，划掉也就等于同意。</div>
+
+    <div class="fn">EDITOR 07 · 校对 3 次 · 定稿 2026.11</div>
+
+    <div class="fig">
+      <svg viewBox="0 0 450 246" preserveAspectRatio="none">
+        <!-- 细网格 -->
+        <g stroke="#DCD7CB" stroke-width="1">
+          <path d="M46 22 H430 M46 62 H430 M46 102 H430 M46 142 H430 M46 182 H430"/>
+          <path d="M46 22 V182 M142 22 V182 M238 22 V182 M334 22 V182 M430 22 V182"/>
+        </g>
+        <!-- 坐标轴 -->
+        <path d="M46 22 V182 H430" fill="none" stroke="#22201D" stroke-width="1.4"/>
+        <!-- 需求下降曲线 -->
+        <path d="M46 44 C120 46 168 62 214 92 C262 124 300 148 356 166 C388 176 412 180 430 182"
+          fill="none" stroke="#22201D" stroke-width="2"/>
+        <!-- 第二条参考线 -->
+        <path d="M46 66 C130 70 190 86 250 112 C312 139 372 158 430 168"
+          fill="none" stroke="#9A9488" stroke-width="1" stroke-dasharray="5 4"/>
+        <!-- 端点 -->
+        <circle cx="430" cy="182" r="4.4" fill="#C0392B"/>
+        <circle cx="430" cy="168" r="3.2" fill="none" stroke="#9A9488" stroke-width="1.2"/>
+        <!-- 标注 -->
+        <g font-family="Consolas, monospace" font-size="10" fill="#9A9488" letter-spacing="1">
+          <text x="14" y="26">1.0</text><text x="14" y="106">0.5</text><text x="14" y="186">0</text>
+          <text x="40" y="200">0</text><text x="228" y="200">5</text><text x="424" y="200">10</text>
+        </g>
+        <text x="330" y="96" font-family="Songti SC, SimSun, serif" font-size="13" fill="#4A463F"
+          font-style="italic">被需要的程度</text>
+        <text x="196" y="228" font-family="Consolas, monospace" font-size="10" fill="#9A9488"
+          letter-spacing="1">ELAPSED / 周</text>
+      </svg>
+    </div>
+    <div class="figcap"><b>图 1</b>　需求随时间下降，灰色虚线为上一版<br>两者在第 7 周重合，此后不再分开</div>
+
+    <div class="tb">
+      <div class="row h"><span class="c1">版本</span><span class="c2">改动</span><span class="c3">结论</span></div>
+      <div class="row"><span class="c1">第 5 稿</span><span class="c2">删去比喻</span><span class="c3">太长</span></div>
+      <div class="row"><span class="c1">第 6 稿</span><span class="c2">删去人称</span><span class="c3">太硬</span></div>
+      <div class="row"><span class="c1 no">第 7 稿</span><span class="c2">只留动词</span><span class="c3 ok">定稿</span></div>
+    </div>
+
+    <div class="circ"></div>
+    <div class="pno">024</div>
+
+    <div class="grain"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>层级而非装饰</b>标题、引语、正文、图注、页码五档字号，靠字距与留白区分，不靠色块。</div>
+    <div><b>米白炭黑加一点红</b>红色只给关键词、批注和结论；一页里出现三次以上就失效。</div>
+    <div><b>细线图形</b>坐标、曲线、表格都用 1px 线，密度明显低于文字，只做注释不抢版面。</div>
+    <div><b>纸面质感</b>颗粒、叠页阴影、手写圈画补上材料感，让干净版面不至于变成幻灯片。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 4</span></h2>
+  <p class="h2note">四个方向分别对应章节页排版、论文式版式、科学图解与机械点阵，可与主风格组合使用。</p>
+
+  <div class="subs">
+
+    <!-- 1. 书刊式衬线排版 -->
+    <section class="sub">
+      <div class="frame ps1" id="f-serif">
+        <div class="pno">07</div>
+        <div class="chap">CHAPTER · 第三章</div>
+        <h3>留下的部分</h3>
+        <div class="rule"></div>
+        <div class="q">“如果一句诗删到只剩动词，<br>它还算不算在<i>请求</i>什么。”</div>
+        <div class="tx">排版不解释内容，它只决定先读哪一句。标题占两行，引语缩进一格，正文留一处空行——读者自然知道该在哪里停一下。<b>空行是标点。</b></div>
+        <div class="base" style="left:3.4cqw;top:11.4cqw;width:18cqw"></div>
+
+        <div class="sc">
+          <div class="s"><span>标题 3.5cqw</span><b style="font-size:3.5cqw">标题</b></div>
+          <div class="s"><span>引语 1.95cqw</span><i style="font-size:1.95cqw">引语</i></div>
+          <div class="s"><span>正文 1.4cqw</span><u>正文行距 2.0，左对齐，不拉开字距</u></div>
+        </div>
+        <div class="note">页码用淡纸灰，压住版面<br>字号只差两档，不要三档以上<br>斜体只给引语，别给正文</div>
+        <div class="hair" style="left:3.4cqw;top:47.4cqw;width:43cqw"></div>
+        <div class="tagm" style="left:3.4cqw;top:48.8cqw">第三章 · 留下的部分 · 07</div>
+
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>书刊式衬线排版<small>Serif Editorial Typography</small></h3>
+        <p>用衬线字体的正体、斜体与不同字号建立阅读层级，强调字距、行距、对齐和留白。画面类似扉页、章节页或引文页面，文字自身承担构图。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">大号衬线标题</span><span class="tag">斜体引语</span>
+          <span class="tag">宽页边</span><span class="tag">页码</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 学术出版式版式 -->
+    <section class="sub">
+      <div class="frame ps2" id="f-paper">
+        <div class="pg">
+          <div class="k">PREPRINT · 预印本 / 2026-11</div>
+          <h4>关于一句被反复修改的话<br>及其最终失效的说明</h4>
+          <div class="au">第七稿 · 单人撰写 · 无同行评议</div>
+          <div class="hr2"></div>
+          <div class="ab">
+            <div class="lab">摘要</div>
+            <p>本文记录同一句话的七次删改。每次删改都提高准确度、降低温度；当准确度到达上限时，句子不再指向任何收件人。<b>结论：可读性与可被需要，并不总是同一件事。</b></p>
+          </div>
+          <div class="fml">N(t) = N₀ · e<sup>−λt</sup><span>EQ. 1</span></div>
+          <table>
+            <tr><th>版本</th><th>词数</th><th>温度</th><th>结论</th></tr>
+            <tr><td>第 5 稿</td><td class="n">34</td><td>0.62</td><td>过长</td></tr>
+            <tr><td>第 6 稿</td><td class="n">21</td><td>0.35</td><td>过硬</td></tr>
+            <tr><td>第 7 稿</td><td class="n">9</td><td>0.08</td><td class="n">定稿</td></tr>
+          </table>
+          <div class="ft"><span>MINIMALIST EDITORIAL / FIG. 2</span><span>1 / 12</span></div>
+        </div>
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>学术出版式版式<small>Academic Publication Layout，版式方向</small></h3>
+        <p>借用论文的结构规范，通过摘要、公式、编号、图注与表格组织信息。强调逻辑秩序与细节可信感，能承载科普、研究展示或其他叙事。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">论文标题页</span><span class="tag">摘要</span>
+          <span class="tag">数学符号</span><span class="tag">细线表格</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 极简科学图解 -->
+    <section class="sub">
+      <div class="frame ps3" id="f-diagram">
+        <div class="tagm" style="left:3.4cqw;top:4.4cqw">FIG. 3 · 需求衰减与三条拟合</div>
+        <div class="tagm" style="right:3.4cqw;top:4.4cqw">PLOT / 1:1</div>
+
+        <div class="plot">
+          <svg viewBox="0 0 520 340">
+            <g stroke="#DCD7CB" stroke-width="1">
+              <path d="M56 40 H492 M56 100 H492 M56 160 H492 M56 220 H492 M56 280 H492"/>
+              <path d="M56 40 V280 M165 40 V280 M274 40 V280 M383 40 V280 M492 40 V280"/>
+            </g>
+            <path d="M56 40 V280 H492" fill="none" stroke="#22201D" stroke-width="1.6"/>
+            <path d="M56 56 C130 68 190 104 246 152 C300 198 360 240 424 262 C452 272 476 276 492 278"
+              fill="none" stroke="#22201D" stroke-width="2.4"/>
+            <path d="M56 96 C140 112 210 148 268 190 C322 228 380 256 440 270 C464 275 480 277 492 278"
+              fill="none" stroke="#9A9488" stroke-width="1.2" stroke-dasharray="6 5"/>
+            <path d="M56 44 C120 52 174 88 226 138 C282 192 348 240 416 266 C448 277 476 281 492 282"
+              fill="none" stroke="#C0392B" stroke-width="1.2" opacity=".75"/>
+            <circle cx="492" cy="278" r="4.6" fill="#22201D"/>
+            <g fill="#22201D" opacity=".55">
+              <circle cx="90" cy="70" r="2"/><circle cx="130" cy="88" r="2"/>
+              <circle cx="170" cy="112" r="2"/><circle cx="210" cy="132" r="2"/>
+              <circle cx="252" cy="158" r="2"/><circle cx="294" cy="186" r="2"/>
+              <circle cx="336" cy="212" r="2"/><circle cx="378" cy="234" r="2"/>
+              <circle cx="420" cy="252" r="2"/>
+            </g>
+            <g font-family="Consolas, monospace" font-size="11" fill="#9A9488" letter-spacing="1">
+              <text x="16" y="44">1.0</text><text x="16" y="164">0.5</text><text x="20" y="284">0</text>
+              <text x="50" y="304">0</text><text x="270" y="304">6</text><text x="486" y="304">12</text>
+              <text x="56" y="326">TIME / 周</text>
+            </g>
+          </svg>
+        </div>
+        <div class="cap"><b>图 3</b>　实线为观测值，虚线为 λ=0.4 的拟合，红线为初稿的预测。<br>三种画法只差线型，读者却会先相信实线。</div>
+
+        <div class="tiles">
+          <div>
+            <div class="tile"><svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="34" fill="none" stroke="#22201D" stroke-width="1.6"/>
+              <path d="M16 50 H84 M50 16 V84" stroke="#DCD7CB" stroke-width="1.2"/>
+              <circle cx="50" cy="50" r="2.6" fill="#C0392B"/>
+            </svg></div>
+            <div class="tl">圆心 / 半径 1</div>
+          </div>
+          <div>
+            <div class="tile"><svg viewBox="0 0 100 100">
+              <g fill="none" stroke="#22201D" stroke-width="1.4">
+                <path d="M50 16 L79.4 33 L79.4 67 L50 84 L20.6 67 L20.6 33 Z"/>
+                <path d="M50 16 V84 M20.6 33 L79.4 67 M79.4 33 L20.6 67" stroke="#9A9488" stroke-width="1"/>
+              </g>
+            </svg></div>
+            <div class="tl">六边格 / 间距 1</div>
+          </div>
+          <div>
+            <div class="tile"><svg viewBox="0 0 100 100">
+              <g fill="#22201D">
+                <circle cx="22" cy="22" r="2.4"/><circle cx="42" cy="22" r="2.4"/>
+                <circle cx="62" cy="22" r="2.4"/><circle cx="82" cy="22" r="2.4"/>
+                <circle cx="22" cy="42" r="2.4"/><circle cx="42" cy="42" r="2.4"/>
+                <circle cx="62" cy="42" r="2.4"/><circle cx="82" cy="42" r="2.4"/>
+                <circle cx="22" cy="62" r="2.4"/><circle cx="42" cy="62" r="2.4"/>
+                <circle cx="62" cy="62" r="2.4"/><circle cx="82" cy="62" r="2.4"/>
+                <circle cx="22" cy="82" r="2.4"/><circle cx="42" cy="82" r="2.4"/>
+                <circle cx="62" cy="82" r="2.4"/>
+              </g>
+              <circle cx="82" cy="82" r="6" fill="none" stroke="#C0392B" stroke-width="1.6"/>
+            </svg></div>
+            <div class="tl">点阵 / 4×4</div>
+          </div>
+          <div>
+            <div class="tile"><svg viewBox="0 0 100 100">
+              <path d="M18 76 L34 44 L52 56 L66 30 L84 40" fill="none" stroke="#22201D" stroke-width="1.6"/>
+              <g fill="#22201D">
+                <circle cx="18" cy="76" r="2.6"/><circle cx="34" cy="44" r="2.6"/>
+                <circle cx="52" cy="56" r="2.6"/><circle cx="66" cy="30" r="2.6"/><circle cx="84" cy="40" r="2.6"/>
+              </g>
+              <path d="M14 84 H88" stroke="#DCD7CB" stroke-width="1.2"/>
+            </svg></div>
+            <div class="tl">折线 / 5 点</div>
+          </div>
+        </div>
+
+        <div class="lgd"><div><i></i>观测值</div><div><i class="dash"></i>拟合 λ=0.4</div><div><i class="red"></i>初稿预测</div></div>
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>极简科学图解<small>Minimalist Scientific Diagrams，图形方向</small></h3>
+        <p>用点、线、曲线、网格与少量数字构成图解，减少装饰与写实细节，让关系、规律和变化成为画面重点。线越细，越像证据。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">细线曲线</span><span class="tag">点阵</span>
+          <span class="tag">简化坐标</span><span class="tag">克制标注</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 机械点阵与翻片显示 -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame ps4" id="f-matrix">
+        <div class="dlab">MECHANICAL DOT-MATRIX / 5×7 单元</div>
+
+        <div class="dm">
+          <svg viewBox="0 0 59.8 18.6" preserveAspectRatio="xMinYMid meet">
+            <g stroke="#22201D" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="0.01 2.59">
+              <!-- L -->
+              <path d="M1.3 1.3 H1.32 M1.3 3.9 H1.32 M1.3 6.5 H1.32 M1.3 9.1 H1.32
+                M1.3 11.7 H1.32 M1.3 14.3 H1.32 M1.3 16.9 H11.7"/>
+              <!-- E -->
+              <path d="M16.9 1.3 H27.3 M16.9 3.9 H16.92 M16.9 6.5 H16.92
+                M16.9 9.1 H24.7 M16.9 11.7 H16.92 M16.9 14.3 H16.92 M16.9 16.9 H27.3"/>
+              <!-- F -->
+              <path d="M32.5 1.3 H42.9 M32.5 3.9 H32.52 M32.5 6.5 H32.52
+                M32.5 9.1 H40.3 M32.5 11.7 H32.52 M32.5 14.3 H32.52 M32.5 16.9 H32.52"/>
+              <!-- T -->
+              <path d="M48.1 1.3 H58.5"/>
+            </g>
+            <g stroke="#C0392B" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="0.01 2.59">
+              <path d="M53.3 3.9 H53.32 M53.3 6.5 H53.32 M53.3 9.1 H53.32
+                M53.3 11.7 H53.32 M53.3 14.3 H53.32 M53.3 16.9 H53.32"/>
+            </g>
+          </svg>
+        </div>
+        <div class="dtx">把字拆成方格，动的是单元不是笔画：整块翻动时像计数器，单列跳动时像仪表。<b>红色单元只标出正在变化的那一位。</b></div>
+
+        <div class="flap">
+          <div class="unit"></div>
+          <div class="u" style="top:0">N</div>
+          <div class="u" style="top:33.33%">O</div>
+          <div class="u" style="top:66.66%">—</div>
+          <div class="hinge"></div>
+        </div>
+        <div class="fsp">翻片单元 33.3% 高<br>缝线 0.14cqw<br>翻动 120ms / 单元<br>停稳后留 40ms 空白</div>
+
+        <div class="tagm" style="left:8cqw;top:39.4cqw">SPLIT-FLAP · 11 位 · 缝 0.65 · 第 6 位正在翻动</div>
+        <div class="strip">
+          <div class="cell" data-l="N"><s></s></div>
+          <div class="cell" data-l="O"><s></s></div>
+          <div class="cell" data-l=""><s></s></div>
+          <div class="cell" data-l="O"><s></s></div>
+          <div class="cell" data-l="N"><s></s></div>
+          <div class="cell flip" data-l="N"><s></s></div>
+          <div class="cell" data-l=""><s></s></div>
+          <div class="cell" data-l="N"><s></s></div>
+          <div class="cell" data-l="E"><s></s></div>
+          <div class="cell" data-l="E"><s></s></div>
+          <div class="cell" data-l="D"><s></s></div>
+        </div>
+
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">04</span>机械点阵与翻片显示<small>Mechanical Dot-matrix &amp; Split-flap-inspired Displays，显示手法</small></h3>
+        <p>把字形拆成规则方格，通过单元变化、明暗切换和空间翻动形成文字。观感来自计数牌与机械信息屏，与平静的纸页形成动态反差，适合放在副歌放大核心句。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">黑白方格</span><span class="tag">模块化字形</span>
+          <span class="tag">规则阵列</span><span class="tag">局部红色单元</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>版式与字体</b>用大号衬线标题、斜体引语、小号正文、页码与图注建立层级，保留宽阔页边与清晰版心。</div>
+    <div><b>配色与材料</b>米白、炭黑与少量红色；纸面颗粒、轻微叠页阴影和手写圈点保持细腻，红不超过三处。</div>
+    <div><b>图形与动态</b>细线坐标、曲线、几何关系图与简表，密度低于文字；逐词强调、翻页、曲线绘制与纸页堆叠推动节奏。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>极简主义书刊排版（Minimalist Editorial Typography）音乐短片：米白纸面、炭黑衬线大标题、斜体引语、宽阔页边与少量红色关键词。将歌词排成章节页、论文摘要和图注，配合极细数学曲线、编号与简洁表格。加入轻微纸张颗粒、叠页阴影和红色手写圈点，以逐词变色、翻页、曲线绘制和纸稿堆叠推进动画，副歌局部采用黑白模块化点阵文字。</div>
+
+  <footer>样例说明：本页所有排版、图表、公式、点阵与翻片单元均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/极简主义书刊排版.md</code>。</footer>
+</div>
+
+<!-- 共用滤镜 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="egr">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".42"/></feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

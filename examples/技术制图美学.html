@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>技术制图美学（Technical / Schematic Aesthetics）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --t-bg:#0A0A0C; --t-ink:#111111; --t-white:#F2F2F4;
+  --t-mag:#E6197C; --t-gray:#8A8A90; --t-paper:#F7F7F5; --t-cool:#DDE1E6;
+}
+.tch,.tp1,.tp2,.tp3,.tp4{background:var(--t-bg);color:var(--t-white)}
+.mono{font-family:var(--f-mono);letter-spacing:.06em}
+
+/* 细线网格 */
+.tgrid{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0,.05cqw,transparent .05cqw,2.5cqw),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0,.05cqw,transparent .05cqw,2.5cqw)}
+
+/* 顶栏 */
+.tbar{position:absolute;left:0;top:0;width:100%;height:3.1cqw;z-index:12;
+  border-bottom:.08cqw solid rgba(255,255,255,.2);display:flex;align-items:center;
+  justify-content:space-between;padding:0 2.4cqw;
+  font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.18em;color:#8A8A90}
+.tbar b{color:#F2F2F4;font-weight:400}
+.tbar .m{color:var(--t-mag)}
+
+/* 大标题 */
+.thl{position:absolute;left:5cqw;top:9.2cqw;z-index:9;font-family:var(--f-sans);font-weight:800;
+  font-size:5.9cqw;line-height:1.16;letter-spacing:-.018em;color:var(--t-white)}
+.thl em{font-style:normal;color:var(--t-mag)}
+.tnote{position:absolute;left:5cqw;top:23.6cqw;z-index:9;font-family:var(--f-mono);
+  font-size:1cqw;letter-spacing:.14em;color:#8A8A90}
+.tnote b{color:#F2F2F4;font-weight:400}
+
+/* 参数面板 */
+.pp{position:absolute;left:5cqw;top:26.4cqw;width:33cqw;z-index:9}
+.pp .ph{font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.22em;color:#8A8A90;
+  padding-bottom:.5cqw;border-bottom:.08cqw solid rgba(255,255,255,.3);margin-bottom:.55cqw}
+.pp .rw{display:flex;justify-content:space-between;align-items:baseline;
+  font-family:var(--f-mono);font-size:1cqw;letter-spacing:.06em;color:#A6A6AE;
+  padding:.34cqw 0;border-bottom:.06cqw solid rgba(255,255,255,.1)}
+.pp .rw b{font-weight:400;color:var(--t-white)}
+.pp .rw b.m{color:var(--t-mag)}
+
+/* 英雄线框 */
+.hero{position:absolute;left:47cqw;top:4.4cqw;width:49cqw;z-index:8}
+.hero svg{width:100%;height:auto;display:block;overflow:visible}
+
+/* 进度条 */
+.load{position:absolute;left:5cqw;right:5cqw;bottom:5.4cqw;z-index:10}
+.load .cap{display:flex;justify-content:space-between;font-family:var(--f-mono);
+  font-size:.95cqw;letter-spacing:.2em;color:#A6A6AE;margin-bottom:.6cqw}
+.load .cap b{color:var(--t-mag);font-weight:400}
+.load .trk{position:relative;height:2.1cqw;border:.09cqw solid rgba(255,255,255,.4);
+  background:rgba(255,255,255,.05)}
+.load .fil{position:absolute;left:0;top:0;bottom:0;width:99%;background:var(--t-mag);opacity:.92}
+.load .fil::after{content:"";position:absolute;right:0;top:0;bottom:0;width:2.4cqw;
+  background:repeating-linear-gradient(45deg,rgba(10,10,12,.9) 0 .45cqw,transparent .45cqw .9cqw)}
+.load .log{margin-top:.7cqw;display:flex;justify-content:space-between;
+  font-family:var(--f-mono);font-size:.92cqw;letter-spacing:.12em;color:#7E7E86}
+.load .log b{color:var(--t-mag);font-weight:400}
+
+/* 引导脚注条 */
+.tfoot{position:absolute;left:5cqw;right:5cqw;bottom:2.2cqw;height:.08cqw;
+  background:rgba(255,255,255,.14)}
+
+/* ---------- 子帧 ---------- */
+.tn{position:absolute;font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.02em;fill:#8A8A90}
+.pn{position:absolute;border:.09cqw solid rgba(255,255,255,.22);background:rgba(255,255,255,.03);z-index:5}
+.pn .pnh{height:2.3cqw;border-bottom:.08cqw solid rgba(255,255,255,.22);display:flex;
+  align-items:center;justify-content:space-between;padding:0 .8cqw;
+  font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.16em;color:#8A8A90}
+.pn .pnh b{color:#F2F2F4;font-weight:400}
+.tagx{position:absolute;font-family:var(--f-mono);font-size:1.2cqw;letter-spacing:.18em;
+  color:#7E7E86;z-index:12}
+
+/* 1 爆炸图 */
+.tp1 .spec{position:absolute;right:3.4cqw;top:6.2cqw;width:34cqw;z-index:8;
+  font-family:var(--f-mono);font-size:1.12cqw;letter-spacing:.04em;color:#A6A6AE}
+.tp1 .spec .sh{font-size:.9cqw;letter-spacing:.2em;color:#7E7E86;
+  border-bottom:.08cqw solid rgba(255,255,255,.25);padding-bottom:.4cqw;margin-bottom:.7cqw}
+.tp1 .spec .sr{display:flex;justify-content:space-between;padding:.3cqw 0;
+  border-bottom:.06cqw solid rgba(255,255,255,.09)}
+.tp1 .spec .sr b{color:#F2F2F4;font-weight:400}
+.tp1 .spec .sr b.m{color:var(--t-mag)}
+
+/* 2 调试界面 */
+.tp2 .log{position:absolute;left:3.2cqw;top:5.6cqw;width:40cqw;z-index:8;
+  font-family:var(--f-mono);font-size:1.12cqw;line-height:1.9;color:#A6A6AE}
+.tp2 .log .m{color:var(--t-mag)}
+.tp2 .log .d{color:#6E6E76}
+.tp2 .fps{position:absolute;right:3.2cqw;top:6.4cqw;width:50cqw;height:19cqw;z-index:8}
+.tp2 .sl{position:absolute;left:3.2cqw;right:3.2cqw;bottom:3.2cqw;z-index:8}
+.tp2 .sl .s1{margin-bottom:1.5cqw}
+.tp2 .sl .lb{display:flex;justify-content:space-between;font-family:var(--f-mono);
+  font-size:1.02cqw;letter-spacing:.1em;color:#8A8A90;margin-bottom:.35cqw}
+.tp2 .sl .lb b{color:#F2F2F4;font-weight:400}
+.tp2 .sl .tk{position:relative;height:.75cqw;background:rgba(255,255,255,.13)}
+.tp2 .sl .tk i{position:absolute;left:0;top:0;bottom:0;background:#F2F2F4;display:block}
+.tp2 .sl .tk i.m{background:var(--t-mag)}
+.tp2 .sl .tk u{position:absolute;top:-.42cqw;width:.32cqw;height:1.6cqw;background:#F2F2F4}
+.tp2 .stt{position:absolute;right:3.2cqw;top:27.2cqw;width:50cqw;z-index:8;
+  font-family:var(--f-mono);font-size:1.02cqw;letter-spacing:.06em;color:#8A8A90}
+.tp2 .stt .sr{display:flex;justify-content:space-between;padding:.32cqw 0;
+  border-bottom:.06cqw solid rgba(255,255,255,.12)}
+.tp2 .stt .sr b{color:#F2F2F4;font-weight:400}
+.tp2 .stt .sr b.m{color:var(--t-mag)}
+
+/* 3 科学出版 */
+.tp3{background:var(--t-paper);color:#151515}
+.tp3 .pg{position:absolute;left:4cqw;top:3.4cqw;right:4cqw;bottom:3.4cqw;z-index:5}
+.tp3 .run{display:flex;justify-content:space-between;font-family:var(--f-mono);
+  font-size:.9cqw;letter-spacing:.16em;color:#7A7A7A;border-bottom:.06cqw solid #C9C9C4;
+  padding-bottom:.4cqw}
+.tp3 h4{font-family:var(--f-serif);font-size:2.5cqw;line-height:1.3;margin:1.2cqw 0 .3cqw;
+  color:#151515;font-weight:600}
+.tp3 .by{font-family:var(--f-serif);font-style:italic;font-size:1.12cqw;color:#5E5E5E}
+.tp3 .body{position:absolute;left:0;top:13.4cqw;width:44cqw;font-family:var(--f-serif);
+  font-size:1.16cqw;line-height:1.78;color:#2A2A2A;text-align:left}
+.tp3 .body .m{color:var(--t-mag);font-weight:600}
+.tp3 .body .fn{font-size:.88cqw;color:#7A7A7A}
+.tp3 .fig{position:absolute;right:0;top:12.4cqw;width:40cqw;z-index:6}
+.tp3 .fcap{position:absolute;right:0;top:45.6cqw;width:40cqw;font-family:var(--f-serif);
+  font-size:.88cqw;line-height:1.55;color:#5E5E5E;text-align:center}
+.tp3 .fcap b{color:#151515}
+
+/* 4 故障 */
+.tp4 .cell{position:absolute;top:6.6cqw;width:14cqw;height:14cqw;z-index:6;
+  border:.08cqw solid rgba(255,255,255,.28);overflow:hidden;background:#000}
+.tp4 .cell .lb{position:absolute;left:0;top:0;width:100%;height:2.6cqw;z-index:4;
+  background:#0A0A0C;border-bottom:.08cqw solid rgba(255,255,255,.28);
+  display:flex;align-items:center;justify-content:space-between;padding:0 .45cqw;
+  font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.06em;color:#8A8A90}
+.tp4 .cell .lb b{color:#E6197C;font-weight:400}
+.tp4 .capx{position:absolute;left:3.4cqw;top:22.4cqw;font-family:var(--f-mono);font-size:.95cqw;
+  letter-spacing:.14em;color:#6E6E76;z-index:8}
+.tp4 .tl{position:absolute;left:3.4cqw;right:3.4cqw;top:25.2cqw;z-index:8}
+.tp4 .tlh{display:flex;justify-content:space-between;font-family:var(--f-mono);
+  font-size:.9cqw;letter-spacing:.16em;color:#7E7E86;margin-bottom:.55cqw}
+.tp4 .tlh b{color:#E6197C;font-weight:400}
+.tp4 .tlt{position:relative;height:2.4cqw;border-bottom:.08cqw solid rgba(255,255,255,.25);
+  background:repeating-linear-gradient(90deg,#8A8A90 0,.42cqw,transparent .42cqw,1.32cqw)}
+.tp4 .tlt i{position:absolute;top:-.35cqw;width:.5cqw;height:3.1cqw;background:#E6197C}
+.tp4 .gh{position:absolute;left:3.4cqw;top:32cqw;font-family:var(--f-sans);font-weight:800;
+  font-size:5.6cqw;letter-spacing:.02em;z-index:8}
+.tp4 .gh span{position:absolute;left:0;top:0;white-space:nowrap}
+.tp4 .gh .g1{color:rgba(230,25,124,.55);transform:translate(-.38cqw,-.12cqw)}
+.tp4 .gh .g2{color:rgba(230,25,124,.32);transform:translate(.46cqw,.14cqw)}
+.tp4 .gh .g3{color:#F2F2F4}
+.tp4 .ghn{position:absolute;left:3.4cqw;top:40.4cqw;font-family:var(--f-mono);font-size:.92cqw;
+  letter-spacing:.16em;color:#6E6E76;z-index:8}
+.tp4 .ghn b{color:#E6197C;font-weight:400}
+.tp4 .big{position:absolute;right:3.4cqw;top:6.4cqw;font-family:var(--f-sans);font-weight:800;
+  font-size:9.4cqw;line-height:1;color:var(--t-mag);z-index:8}
+.tp4 .bigsub{position:absolute;right:3.6cqw;top:18.4cqw;font-family:var(--f-mono);
+  font-size:1cqw;letter-spacing:.18em;color:#8A8A90;z-index:8}
+.tp4 .strip{position:absolute;left:3.4cqw;right:3.4cqw;bottom:3.2cqw;height:3.2cqw;
+  border:.08cqw solid rgba(255,255,255,.22);display:flex;align-items:center;
+  justify-content:space-between;padding:0 .9cqw;font-family:var(--f-mono);
+  font-size:.95cqw;letter-spacing:.12em;color:#8A8A90;z-index:8}
+.tp4 .strip b{color:var(--t-mag);font-weight:400}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>14 / 25</span>
+    <span class="right"><a href="复古终端与技术制图.html">← 上一条</a><a href="现代商业界面风格.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>技术制图美学<small>Technical / Schematic Aesthetics</small></h1>
+    <p class="lead">以细线网格、几何线框、引线标注、等宽注释和模块化面板建立技术图纸式外观。黑、白、灰为底，洋红是唯一的高亮色——关键词、焦点、曲线、选中状态和告警都用它；粗体无衬线标题与精细参数形成稳定反差。</p>
+    <div class="meta">
+      <div><b>风格性质</b>技术制图美学（描述性风格），技术插图／工程示意图／调试界面的组合</div>
+      <div><b>视觉媒介</b>界面动画＋动态排版＋线框动画＋程序化图形观感</div>
+      <div><b>典型母体</b>矢量编辑与三维视口、渲染调试工具、系统监控、工程规格页、科学论文</div>
+    </div>
+    <div class="tags">
+      <span class="tag">技术插图</span><span class="tag">工程示意图</span><span class="tag">线框</span>
+      <span class="tag">调试界面</span><span class="tag">动态排版</span><span class="tag">洋红强调色</span>
+      <span class="tag w">模拟假说</span><span class="tag w">科技幽默</span><span class="tag w">开发者文化</span><span class="tag w">末日感</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#0A0A0C"></i>视口黑<br><code>#0A0A0C</code></div>
+      <div class="sw"><i style="background:#F2F2F4"></i>线框白<br><code>#F2F2F4</code></div>
+      <div class="sw"><i style="background:#E6197C"></i>强调洋红<br><code>#E6197C</code></div>
+      <div class="sw"><i style="background:#8A8A90"></i>注释灰<br><code>#8A8A90</code></div>
+      <div class="sw"><i style="background:#F7F7F5"></i>论文白<br><code>#F7F7F5</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">一个调试视口：中间是一颗线框球，脸上的笑被选成一条可编辑的贝塞尔曲线，四个节点带控制柄；左边参数面板列出网格数、预算和纹理层；底部一条加载进度条，卡在 99%，读数写着 12 FPS。</p>
+
+  <div class="frame tch" id="f-master">
+    <div class="tgrid"></div>
+
+    <div class="tbar">
+      <span>SIMULATION VIEWPORT <b>/ 视口 01</b></span>
+      <span>FRAME <b>04:12:07</b></span>
+      <span><span class="m">12 FPS</span> · GPU 98%</span>
+    </div>
+
+    <div class="thl">一切都在<br><em>渲染</em>之中</div>
+    <div class="tnote">// 这一帧还没有画完 · <b>PATH 04 已选中</b></div>
+
+    <div class="pp">
+      <div class="ph">PARAMETERS</div>
+      <div class="rw"><span>网格面数</span><b>4,096</b></div>
+      <div class="rw"><span>粒子预算</span><b>38%</b></div>
+      <div class="rw"><span>纹理层</span><b class="m">7 / 12</b></div>
+      <div class="rw"><span>绘制调用</span><b>14,882</b></div>
+      <div class="rw"><span>内存写入</span><b class="m">3.8 / 4.0 GB</b></div>
+    </div>
+
+    <div class="hero">
+      <svg viewBox="0 0 480 420">
+        <!-- 线框球 -->
+        <g stroke="#F2F2F4" fill="none" opacity=".55">
+          <circle cx="230" cy="200" r="150" stroke-width="1.1"/>
+          <g stroke-width=".8" opacity=".7">
+            <ellipse cx="230" cy="200" rx="150" ry="38"/>
+            <ellipse cx="230" cy="200" rx="150" ry="85"/>
+            <ellipse cx="230" cy="200" rx="150" ry="120"/>
+            <ellipse cx="230" cy="140" rx="132" ry="30" opacity=".5"/>
+            <ellipse cx="230" cy="262" rx="132" ry="30" opacity=".5"/>
+            <ellipse cx="230" cy="200" rx="38" ry="150"/>
+            <ellipse cx="230" cy="200" rx="85" ry="150"/>
+            <ellipse cx="230" cy="200" rx="120" ry="150"/>
+          </g>
+        </g>
+
+        <!-- 选中包围盒 -->
+        <g stroke="#E6197C" stroke-width="1" opacity=".55">
+          <path d="M150 96 h14 M150 96 v14 M310 96 h-14 M310 96 v14
+                   M150 250 h14 M150 250 v-14 M310 250 h-14 M310 250 v-14"/>
+        </g>
+
+        <!-- 眼睛 -->
+        <g fill="none" stroke="#F2F2F4" stroke-width="1.6">
+          <circle cx="186" cy="150" r="9"/>
+          <circle cx="274" cy="150" r="9"/>
+        </g>
+
+        <!-- 笑容曲线 + 控制柄 -->
+        <g>
+          <path d="M150 205 C 178 262, 282 262, 310 205" stroke="#E6197C" stroke-width="2.4" fill="none"/>
+          <g stroke="#E6197C" stroke-width=".9" stroke-dasharray="4 4" opacity=".8" fill="none">
+            <line x1="150" y1="205" x2="178" y2="262"/>
+            <line x1="310" y1="205" x2="282" y2="262"/>
+          </g>
+          <g fill="#0A0A0C" stroke="#F2F2F4" stroke-width="1.2">
+            <rect x="144" y="199" width="12" height="12"/>
+            <rect x="304" y="199" width="12" height="12"/>
+          </g>
+          <g fill="#E6197C">
+            <circle cx="230" cy="243" r="4"/>
+            <circle cx="178" cy="262" r="4"/>
+            <circle cx="282" cy="262" r="4"/>
+          </g>
+        </g>
+
+        <!-- 引线 -->
+        <g stroke="#8A8A90" stroke-width=".9" fill="none" opacity=".85">
+          <path d="M310 205 L372 205 L400 205"/>
+          <path d="M178 262 L120 300 L84 300"/>
+          <path d="M230 243 L300 300 L352 300"/>
+        </g>
+        <g font-family="ui-monospace,monospace" font-size="9.5" fill="#8A8A90" letter-spacing=".6">
+          <text x="404" y="208">NODE 04 · x .82</text>
+          <text x="20" y="316" text-anchor="start">CTRL · ±12 px</text>
+          <text x="356" y="303">ANCHOR 02</text>
+        </g>
+        <text x="150" y="36" font-family="ui-monospace,monospace" font-size="9.5"
+              fill="#E6197C" letter-spacing="1">PATH 04 — SMILE</text>
+      </svg>
+    </div>
+
+    <div class="load">
+      <div class="cap"><span>LOADING SIMULATION</span><span><b>99%</b> · 剩余 1 个资源</span></div>
+      <div class="trk"><div class="fil"></div></div>
+      <div class="log">
+        <span>&gt; rendering frame 04:12 … <b>12 fps</b> · dropped 348</span>
+        <span>PRESS ANY KEY</span>
+      </div>
+    </div>
+    <div class="tfoot"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>洋红只做一件事</b>全片黑白灰，洋红只出现在选中、曲线、关键词和告警上；只要出现洋红，就说明"这里是焦点"。</div>
+    <div><b>细线说话</b>网格、线框、引线和控制柄都用发丝线；靠线的数量和密度表达复杂度，不靠色块。</div>
+    <div><b>两级文字</b>大号粗体无衬线承担歌词与结论，小号等宽承担参数、日志和引线标签，中间没有别的层级。</div>
+    <div><b>把经验写成参数</b>情绪、记忆、日常动作都被翻译成预算、帧率和写入量，画面因此像一台正在运行的机器。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 4</span></h2>
+  <p class="h2note">四个方向：工程线框爆炸图、调试与性能面板、科学出版式排版、数字故障与低保真。</p>
+
+  <div class="subs">
+
+    <!-- 1. 工程线框与技术图解 -->
+    <section class="sub">
+      <div class="frame tp1" id="f-explode">
+        <div class="tgrid"></div>
+        <div class="tagx" style="left:3.4cqw;top:1.6cqw">EXPLODED VIEW · GPU-24</div>
+
+        <div style="position:absolute;left:0;top:3.4cqw;width:62cqw;height:52.85cqw;z-index:6">
+          <svg viewBox="0 0 358 325" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block">
+            <!-- 分解轴 -->
+            <line x1="175" y1="16" x2="175" y2="280" stroke="#E6197C" stroke-width=".9"
+                  stroke-dasharray="6 5" opacity=".7"/>
+            <g stroke="#F2F2F4" fill="none" stroke-width="1">
+              <!-- 风扇 -->
+              <circle cx="175" cy="58" r="44" opacity=".9"/>
+              <circle cx="175" cy="58" r="9" opacity=".9"/>
+              <g opacity=".55" stroke-width=".8">
+                <path d="M175 58 L175 20"/><path d="M175 58 L207 76"/><path d="M175 58 L207 40"/>
+                <path d="M175 58 L143 76"/><path d="M175 58 L143 40"/>
+              </g>
+              <!-- 散热鳍片 -->
+              <rect x="102" y="106" width="146" height="24" opacity=".9"/>
+              <g opacity=".5" stroke-width=".7">
+                <line x1="114" y1="106" x2="114" y2="130"/><line x1="130" y1="106" x2="130" y2="130"/>
+                <line x1="146" y1="106" x2="146" y2="130"/><line x1="162" y1="106" x2="162" y2="130"/>
+                <line x1="178" y1="106" x2="178" y2="130"/><line x1="194" y1="106" x2="194" y2="130"/>
+                <line x1="210" y1="106" x2="210" y2="130"/><line x1="226" y1="106" x2="226" y2="130"/>
+              </g>
+              <rect x="96" y="134" width="158" height="7" opacity=".7"/>
+              <!-- 芯片 -->
+              <rect x="137" y="166" width="76" height="16" opacity=".95"/>
+              <rect x="150" y="170" width="50" height="8" opacity=".5"/>
+              <!-- PCB -->
+              <rect x="72" y="200" width="206" height="46" opacity=".95"/>
+              <g opacity=".55" stroke-width=".7">
+                <rect x="86" y="210" width="26" height="14"/><rect x="120" y="210" width="18" height="10"/>
+                <rect x="238" y="210" width="26" height="14"/>
+                <line x1="72" y1="232" x2="278" y2="232"/>
+              </g>
+              <g fill="#F2F2F4" stroke="none" opacity=".55">
+                <rect x="150" y="246" width="6" height="8"/><rect x="160" y="246" width="6" height="8"/>
+                <rect x="170" y="246" width="6" height="8"/><rect x="180" y="246" width="6" height="8"/>
+                <rect x="190" y="246" width="6" height="8"/><rect x="200" y="246" width="6" height="8"/>
+              </g>
+            </g>
+
+            <!-- 引线 -->
+            <g stroke="#8A8A90" stroke-width=".9" fill="none" opacity=".9">
+              <path d="M219 58 L292 58"/><path d="M248 118 L292 118"/>
+              <path d="M213 174 L292 174"/><path d="M278 223 L292 223"/>
+            </g>
+            <g stroke="#8A8A90" fill="none" stroke-width="1">
+              <circle cx="219" cy="58" r="2.4" fill="#8A8A90"/>
+            </g>
+            <g font-family="ui-monospace,monospace" font-size="9" fill="#8A8A90" letter-spacing=".4">
+              <text x="296" y="61">01 FAN ×1</text>
+              <text x="296" y="121">02 HEATSINK</text>
+              <text x="296" y="177">03 DIE</text>
+              <text x="296" y="226">04 PCB</text>
+            </g>
+            <text x="60" y="292" font-family="ui-monospace,monospace" font-size="8.5"
+                  fill="#6E6E76" letter-spacing=".4">SCALE 1:4 · 零件沿虚线轴分离</text>
+          </svg>
+        </div>
+
+        <div class="spec">
+          <div class="sh">SPECIFICATION</div>
+          <div class="sr"><span>显存</span><b>24 GB</b></div>
+          <div class="sr"><span>功耗</span><b class="m">320 W</b></div>
+          <div class="sr"><span>核心面积</span><b>608 mm²</b></div>
+          <div class="sr"><span>风扇</span><b>1 × 88 mm</b></div>
+          <div class="sr"><span>鳍片</span><b>8 片 · 2.1 mm</b></div>
+          <div class="sr"><span>接口</span><b>PCIe 4.0 ×16</b></div>
+          <div class="sr"><span>建议电源</span><b class="m">750 W</b></div>
+          <div style="margin-top:1cqw;font-size:.88cqw;line-height:1.7;color:#6E6E76">
+            图中零件仅示意装配顺序，<br>尺寸与实物无对应关系。
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>工程线框与技术图解<small>Wireframe &amp; Technical Illustration</small></h3>
+        <p>用网格、轮廓、引线和尺寸／参数标注解释对象结构。几何造型与爆炸视图减少写实材质干扰，让组成和关系成为重点——显卡、球体、粒子装置都按同一套编号规则拆开。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">细线轮廓</span><span class="tag">分解轴</span>
+          <span class="tag">编号引线</span><span class="tag">参数表</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 调试界面与性能监控 -->
+    <section class="sub">
+      <div class="frame tp2" id="f-debug">
+        <div class="tgrid"></div>
+        <div class="tagx" style="left:3.2cqw;top:1.6cqw">DEBUG CONSOLE</div>
+
+        <div class="log">
+          <div><span class="d">04:11:52</span> [OK] boot viewport</div>
+          <div><span class="d">04:11:53</span> [OK] context created</div>
+          <div><span class="d">04:11:54</span> [OK] shaders 42 compiled</div>
+          <div><span class="d">04:11:55</span> [OK] mesh 4,096 loaded</div>
+          <div><span class="d">04:11:57</span> [OK] textures 7/12</div>
+          <div><span class="d">04:11:58</span> <span class="m">[WARN] tex_pool near limit</span></div>
+          <div><span class="d">04:11:59</span> [OK] lights 2</div>
+          <div><span class="d">04:12:00</span> [OK] bvh rebuilt</div>
+          <div><span class="d">04:12:01</span> <span class="m">[WARN] shadow bias .003</span></div>
+          <div><span class="d">04:12:02</span> [OK] post fx on</div>
+          <div><span class="d">04:12:03</span> <span class="m">[ERR] frame 348 dropped</span></div>
+          <div><span class="d">04:12:03</span> <span class="m">[ERR] reason: unknown</span></div>
+          <div><span class="d">04:12:04</span> <span class="m">[WARN] vram 3.8 / 4.0 gb</span></div>
+          <div><span class="d">04:12:04</span> [OK] fallback lvl 3</div>
+          <div><span class="d">04:12:05</span> render 12 fps</div>
+          <div><span class="d">04:12:07</span> <span class="d">waiting…</span></div>
+        </div>
+
+        <div class="fps">
+          <div class="tagx" style="left:0;top:-3cqw;letter-spacing:.16em">FPS / 帧率 · 60 → 12</div>
+          <svg viewBox="0 0 300 118">
+            <g stroke="rgba(255,255,255,.14)" stroke-width=".7">
+              <line x1="26" y1="10" x2="292" y2="10"/><line x1="26" y1="42" x2="292" y2="42"/>
+              <line x1="26" y1="74" x2="292" y2="74"/><line x1="26" y1="106" x2="292" y2="106"/>
+              <line x1="26" y1="10" x2="26" y2="106"/><line x1="92" y1="10" x2="92" y2="106"/>
+              <line x1="158" y1="10" x2="158" y2="106"/><line x1="224" y1="10" x2="224" y2="106"/>
+              <line x1="292" y1="10" x2="292" y2="106"/>
+            </g>
+            <polyline points="26,24 60,24 60,28 92,28 92,26 124,26 124,44 156,44 156,60
+                              188,60 188,74 220,74 220,88 252,88 252,96 292,96"
+                      fill="none" stroke="#E6197C" stroke-width="1.8"/>
+            <circle cx="292" cy="96" r="3" fill="#E6197C"/>
+            <g font-family="ui-monospace,monospace" font-size="7.5" fill="#6E6E76">
+              <text x="4" y="13">60</text><text x="4" y="45">40</text>
+              <text x="4" y="77">20</text><text x="2" y="109">0</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="stt">
+          <div class="sr"><span>绘制调用 · DRAW CALLS</span><b>14,882</b></div>
+          <div class="sr"><span>顶点 · VERTS</span><b>2.1 M</b></div>
+          <div class="sr"><span>纹理 · TEX</span><b class="m">7 / 12</b></div>
+          <div class="sr"><span>VRAM</span><b class="m">3.8 / 4.0 GB</b></div>
+        </div>
+
+        <div class="sl">
+          <div class="s1">
+            <div class="lb"><span>粒子预算</span><b>38%</b></div>
+            <div class="tk"><i class="m" style="width:38%"></i><u style="left:38%"></u></div>
+          </div>
+          <div class="s1">
+            <div class="lb"><span>阴影距离</span><b>62%</b></div>
+            <div class="tk"><i style="width:62%"></i><u style="left:62%"></u></div>
+          </div>
+          <div>
+            <div class="lb"><span>纹理池</span><b style="color:#E6197C">100% · 已满</b></div>
+            <div class="tk"><i class="m" style="width:100%"></i><u style="left:99%"></u></div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>调试界面与性能监控<small>Debug UI &amp; Performance Monitoring</small></h3>
+        <p>借用程序后台与分析工具的布局，把状态、日志、错误与资源消耗显示成图形。密集的小号注释里只有几个醒目读数——例如停在 99% 的加载和掉到 12 的帧率。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">等宽日志</span><span class="tag">帧率曲线</span>
+          <span class="tag">预算滑杆</span><span class="tag">报错堆栈</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 科学出版式排版 -->
+    <section class="sub">
+      <div class="frame tp3" id="f-paper">
+        <div class="pg">
+          <div class="run"><span>PREPRINT · 未经同行评审</span><span>pp. 1 / 8</span></div>
+          <h4>模拟假说与它的三种结局</h4>
+          <div class="by">On the simulation argument — a short note</div>
+
+          <div class="body">
+            如果文明有能力在耗尽资源之前运行大量<span class="m">祖先模拟</span>，那么
+            我们几乎必然身处其中；若多数文明选择关停，我们便是少数；若两者都不成立，
+            则说明这类能力从未被获得。<span class="fn">[1]</span><br><br>
+            三种结局互斥且穷尽，唯一被排除的是"我们确定不在模拟中"这一种说法。
+            图 1 用三元坐标标出当前观测落在的区域。<span class="fn">[2]</span><br><br>
+            无论落在哪一角，当下的观测结果不变；改变的只是我们如何解释它。
+          </div>
+
+          <div class="fig">
+            <svg viewBox="0 0 232 186">
+              <polygon points="116,16 14,170 218,170" fill="none" stroke="#151515" stroke-width="1"/>
+              <g stroke="#B9B9B2" stroke-width=".6" stroke-dasharray="3 3">
+                <line x1="116" y1="16" x2="116" y2="170"/>
+                <line x1="65" y1="93" x2="167" y2="93"/>
+                <line x1="65" y1="93" x2="167" y2="170"/>
+              </g>
+              <g stroke="#E6197C" stroke-width=".8" stroke-dasharray="2 3">
+                <line x1="132" y1="96" x2="132" y2="170"/>
+                <line x1="132" y1="96" x2="84" y2="64"/>
+                <line x1="132" y1="96" x2="158" y2="79"/>
+              </g>
+              <circle cx="132" cy="96" r="4" fill="#E6197C"/>
+              <g font-family="Georgia,var(--f-serif),serif" font-size="8.5" fill="#2A2A2A">
+                <text x="116" y="10" text-anchor="middle">毁灭</text>
+                <text x="10" y="180">模拟</text>
+                <text x="222" y="180" text-anchor="end">真实</text>
+              </g>
+              <g font-family="ui-monospace,monospace" font-size="7" fill="#7A7A7A">
+                <text x="136" y="88">观测</text>
+                <text x="116" y="182" text-anchor="middle" fill="#E6197C">p &lt; .02</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="fcap"><b>图 1</b>　三元坐标中的观测位置。虚线为三条边上的等高线，洋红点为当前样本。</div>
+
+          <div style="position:absolute;left:0;bottom:0;width:44cqw;border-top:.06cqw solid #C9C9C4;
+            padding-top:.6cqw;font-family:var(--f-serif);font-size:.82cqw;line-height:1.6;color:#7A7A7A">
+            <b style="color:#151515">注</b>　[1] Bostrom, N. <i>Are You Living in a Computer
+            Simulation?</i> Philosophical Quarterly, 2003.<br>
+            [2] 图中坐标仅用于版式示意，不构成实证结论。
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>科学出版式排版<small>Scientific Publication Layout，版式方向</small></h3>
+        <p>用公式、图号、细线坐标、引用和正文组织页面，以学术图表的阅读规则承载叙事信息。浅色页面配衬线正文与斜体图注，和深色视口交替出现，构成轻重节奏。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">浅色页面</span><span class="tag">衬线正文</span>
+          <span class="tag">图注</span><span class="tag">数学符号</span><span class="tag">引用编号</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 数字故障与低保真 -->
+    <section class="sub">
+      <div class="frame tp4" id="f-glitch">
+        <div class="tgrid"></div>
+        <div class="tagx" style="left:3.4cqw;top:1.6cqw">TEXTURE LEVEL TEST</div>
+
+        <div class="cell" style="left:3.4cqw">
+          <div class="lb"><span>LVL 01</span><b>512²</b></div>
+          <div style="position:absolute;left:0;top:2.6cqw;right:0;bottom:0;
+            background-image:repeating-conic-gradient(#E6197C 0 25%,#000 0 50%);
+            background-size:1.1cqw 1.1cqw"></div>
+        </div>
+        <div class="cell" style="left:18.4cqw">
+          <div class="lb"><span>LVL 02</span><b>256²</b></div>
+          <div style="position:absolute;left:0;top:2.6cqw;right:0;bottom:0;
+            background-image:repeating-conic-gradient(#E6197C 0 25%,#000 0 50%);
+            background-size:2.2cqw 2.2cqw"></div>
+        </div>
+        <div class="cell" style="left:33.4cqw">
+          <div class="lb"><span>LVL 03</span><b>128²</b></div>
+          <div style="position:absolute;left:0;top:2.6cqw;right:0;bottom:0;
+            background-image:repeating-conic-gradient(#E6197C 0 25%,#000 0 50%);
+            background-size:4.4cqw 4.4cqw"></div>
+        </div>
+        <div class="cell" style="left:48.4cqw">
+          <div class="lb"><span>LVL 04</span><b>64²</b></div>
+          <div style="position:absolute;left:0;top:2.6cqw;right:0;bottom:0;
+            background-image:repeating-conic-gradient(#E6197C 0 25%,#000 0 50%);
+            background-size:8.8cqw 8.8cqw"></div>
+        </div>
+
+        <div class="big">12</div>
+        <div class="bigsub">FPS · 帧率不足</div>
+
+        <div class="capx">同一张贴图逐级降采样 · 4 级降级</div>
+
+        <div class="tl">
+          <div class="tlh"><span>FRAME TIMELINE · 60 帧</span><span>DROP <b>348</b></span></div>
+          <div class="tlt">
+            <i style="left:8%"></i><i style="left:19.5%"></i><i style="left:31%"></i>
+            <i style="left:52.5%"></i><i style="left:63%"></i><i style="left:86%"></i>
+          </div>
+        </div>
+
+        <div class="gh"><span class="g1">渲染</span><span class="g2">渲染</span><span class="g3">渲染</span></div>
+        <div class="ghn">GHOST ×3 · +4 px · <b>残影未清除</b></div>
+
+        <div class="strip">
+          <span>RENDER 未完成</span>
+          <span>DROPPED <b>348</b></span>
+          <span>GHOST <b>×3</b></span>
+          <span>LEVEL <b>04 / 04</b></span>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">04</span>数字故障与低保真效果<small>Glitch &amp; Lo-fi Effects，效果手法</small></h3>
+        <p>有意让图形出现像素化、低帧率、延迟、重影或渲染不完整，用质量下降本身传达系统不稳定。同一张贴图被逐级降采样并排展示，降级过程就成了叙事。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">纹理降级</span><span class="tag">像素块</span>
+          <span class="tag">卡顿读数</span><span class="tag">图形残影</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>色彩</b>黑、白、灰为底，洋红是唯一高亮色，只用于选中、曲线、关键词与告警；一旦某个元素变洋红，它就是本帧的重点。</div>
+    <div><b>线条与空间</b>细线网格、白色几何线框、节点控制柄、编号引线与爆炸视图；以结构而不是写实材质塑造对象。</div>
+    <div><b>文字与动态</b>大号粗体无衬线标题配小号等宽注释，对齐与留白严格；曲线绘制、参数更新、进度推进、部件分解与面板切换构成节奏，局部用像素化和停顿表现异常。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>采用技术制图美学（Technical / Schematic Aesthetics）：黑色与米白色为底，洋红为唯一高亮强调色；细线网格、白色线框模型、编号引线、参数表与调试面板。大号粗体无衬线歌词搭配小号等宽注释，构图严谨、留白明确。歌词融入进度条、报错信息和图形标签，以曲线绘制、数值更新、部件分解和模块切换形成动画，局部出现像素化与加载停滞。</div>
+
+  <footer>样例说明：本页视口、线框分解图、调试面板、论文页与贴图降级均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/技术制图美学.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>视觉风格库 · 静态样例索引</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+.idxhead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-bottom:1px solid var(--chrome-line);padding-bottom:20px;margin-bottom:8px}
+.idxhead h1{font-size:40px;margin:8px 0 0}
+.prog{font-family:var(--f-mono);font-size:12px;color:var(--chrome-dim);letter-spacing:.1em;text-align:right}
+.prog b{color:var(--chrome-accent);font-size:22px;letter-spacing:0}
+.prog .bar{width:180px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin-top:8px;overflow:hidden}
+.prog .bar u{display:block;height:100%;background:linear-gradient(90deg,#38e8ff,#7a5cff)}
+
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:30px}
+.card{display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.09);border-radius:9px;
+  overflow:hidden;background:rgba(255,255,255,.02);text-decoration:none;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.card:hover{transform:translateY(-3px);border-color:rgba(56,232,255,.55);background:rgba(56,232,255,.05)}
+.card:hover .thumb img{transform:scale(1.04)}
+.thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.cap{padding:10px 11px 11px}
+.cap .ln{display:flex;align-items:baseline;gap:7px}
+.cap .n{font-family:var(--f-mono);font-size:10px;color:#6d688a;letter-spacing:.12em}
+.cap b{font-size:14px;color:var(--chrome-hi);font-weight:700;line-height:1.35}
+.cap .en{font-family:var(--f-mono);font-size:9.5px;color:#7d7896;letter-spacing:.03em;margin-top:4px;
+  line-height:1.35;min-height:26px}
+.pal{display:flex;height:4px;margin-top:auto}
+.pal i{flex:1}
+@media (max-width:1080px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:860px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:620px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">风格库索引</a><span class="sep">/</span>
+    <span>STATIC SAMPLES</span>
+    <span class="right"><a href="../视觉风格合集.md">风格合集文档</a></span>
+  </nav>
+
+  <div class="idxhead">
+    <div>
+      <div class="kicker">VISUAL STYLE LIBRARY</div>
+      <h1>风格静态样例</h1>
+      <p class="lead" style="margin-top:12px;max-width:660px">25 条风格，一页一条。缩略图即该页的「主风格综合帧」；点开进入完整页面：风格概览 → 主风格综合帧 → 子风格样例帧 → AI 创作视觉规则。画面里的动效只用于示意节奏，静止截图即为设计稿。</p>
+    </div>
+    <div class="prog">
+      <div><b>25</b> / 25 <span>已完成</span></div>
+      <div class="bar"><u style="width:100%"></u></div>
+      <div style="margin-top:10px">最近更新：2026-11-19</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="扁平化矢量卡通.html" title="扁平化矢量卡通 · Flat Vector Cartoon Style">
+      <div class="thumb"><img src="_assets/thumbs/01.png" alt="扁平化矢量卡通·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">01</span><b>扁平化矢量卡通</b></div>
+        <div class="en">Flat Vector Cartoon Style</div>
+      </div>
+      <div class="pal"><i style="background:#FDF8EF"></i><i style="background:#F1A8A0"></i><i style="background:#7ED7C1"></i><i style="background:#93C6E7"></i><i style="background:#21304D"></i></div>
+    </a>
+    <a class="card" href="手绘绘本风格.html" title="手绘绘本风格 · Hand-drawn Storybook Style">
+      <div class="thumb"><img src="_assets/thumbs/02.png" alt="手绘绘本风格·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">02</span><b>手绘绘本风格</b></div>
+        <div class="en">Hand-drawn Storybook Style</div>
+      </div>
+      <div class="pal"><i style="background:#F4EBDC"></i><i style="background:#3B3226"></i><i style="background:#D97757"></i><i style="background:#8FAE8B"></i><i style="background:#E3B23C"></i></div>
+    </a>
+    <a class="card" href="日式动画.html" title="日式动画 · Anime">
+      <div class="thumb"><img src="_assets/thumbs/03.png" alt="日式动画·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">03</span><b>日式动画</b></div>
+        <div class="en">Anime</div>
+      </div>
+      <div class="pal"><i style="background:#2B3A5B"></i><i style="background:#FBE0CF"></i><i style="background:#8FC4E8"></i><i style="background:#D9435A"></i><i style="background:#7FD8FF"></i></div>
+    </a>
+    <a class="card" href="动漫数字拼贴.html" title="动漫数字拼贴 · Anime-inspired Digital Collage">
+      <div class="thumb"><img src="_assets/thumbs/04.png" alt="动漫数字拼贴·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">04</span><b>动漫数字拼贴</b></div>
+        <div class="en">Anime-inspired Digital Collage</div>
+      </div>
+      <div class="pal"><i style="background:#07060D"></i><i style="background:#0B1030"></i><i style="background:#2A1450"></i><i style="background:#FF7A2F"></i><i style="background:#F5F3FF"></i></div>
+    </a>
+    <a class="card" href="像素艺术.html" title="像素艺术 · Pixel Art">
+      <div class="thumb"><img src="_assets/thumbs/05.png" alt="像素艺术·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">05</span><b>像素艺术</b></div>
+        <div class="en">Pixel Art</div>
+      </div>
+      <div class="pal"><i style="background:#1B1035"></i><i style="background:#5A3E8C"></i><i style="background:#F2A65A"></i><i style="background:#7ED0C4"></i><i style="background:#F6EDE3"></i></div>
+    </a>
+    <a class="card" href="绘画质感动画.html" title="绘画质感动画 · Painterly Animation">
+      <div class="thumb"><img src="_assets/thumbs/06.png" alt="绘画质感动画·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">06</span><b>绘画质感动画</b></div>
+        <div class="en">Painterly Animation</div>
+      </div>
+      <div class="pal"><i style="background:#0E1630"></i><i style="background:#2C3E6B"></i><i style="background:#E8873F"></i><i style="background:#F3D8A8"></i><i style="background:#6E7FA8"></i></div>
+    </a>
+    <a class="card" href="新粗野主义平面风格.html" title="新粗野主义平面风格 · Neo-Brutalism">
+      <div class="thumb"><img src="_assets/thumbs/07.png" alt="新粗野主义平面风格·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">07</span><b>新粗野主义平面风格</b></div>
+        <div class="en">Neo-Brutalism</div>
+      </div>
+      <div class="pal"><i style="background:#FFF7E6"></i><i style="background:#111111"></i><i style="background:#FF5A3C"></i><i style="background:#FFD84D"></i><i style="background:#2E5BFF"></i></div>
+    </a>
+    <a class="card" href="朋克杂志拼贴.html" title="朋克杂志拼贴 · Punk Zine Collage">
+      <div class="thumb"><img src="_assets/thumbs/08.png" alt="朋克杂志拼贴·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">08</span><b>朋克杂志拼贴</b></div>
+        <div class="en">Punk Zine Collage</div>
+      </div>
+      <div class="pal"><i style="background:#E7E2D3"></i><i style="background:#111111"></i><i style="background:#E8206E"></i><i style="background:#F2E14C"></i><i style="background:#2FA8C9"></i></div>
+    </a>
+    <a class="card" href="复古版画拼贴.html" title="复古版画拼贴 · Vintage Engraving Collage">
+      <div class="thumb"><img src="_assets/thumbs/09.png" alt="复古版画拼贴·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">09</span><b>复古版画拼贴</b></div>
+        <div class="en">Vintage Engraving Collage</div>
+      </div>
+      <div class="pal"><i style="background:#F2EADB"></i><i style="background:#3D2B56"></i><i style="background:#6B4C8A"></i><i style="background:#1D2233"></i><i style="background:#B08A4A"></i></div>
+    </a>
+    <a class="card" href="极简主义书刊排版.html" title="极简主义书刊排版 · Minimalist Editorial Typography">
+      <div class="thumb"><img src="_assets/thumbs/10.png" alt="极简主义书刊排版·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">10</span><b>极简主义书刊排版</b></div>
+        <div class="en">Minimalist Editorial Typography</div>
+      </div>
+      <div class="pal"><i style="background:#F5F2EA"></i><i style="background:#22201D"></i><i style="background:#C0392B"></i><i style="background:#9A9488"></i><i style="background:#DCD7CB"></i></div>
+    </a>
+    <a class="card" href="极简主义动态图形.html" title="极简主义动态图形 · Minimalist Motion Graphics">
+      <div class="thumb"><img src="_assets/thumbs/11.png" alt="极简主义动态图形·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">11</span><b>极简主义动态图形</b></div>
+        <div class="en">Minimalist Motion Graphics</div>
+      </div>
+      <div class="pal"><i style="background:#0B1220"></i><i style="background:#1C2942"></i><i style="background:#8FA3BF"></i><i style="background:#38E8FF"></i><i style="background:#FF5A5F"></i></div>
+    </a>
+    <a class="card" href="复古桌面界面美学.html" title="复古桌面界面美学 · Retro Desktop GUI Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/12.png" alt="复古桌面界面美学·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">12</span><b>复古桌面界面美学</b></div>
+        <div class="en">Retro Desktop GUI Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#F4F1E8"></i><i style="background:#1B1B1B"></i><i style="background:#E5267F"></i><i style="background:#2E6BE6"></i><i style="background:#8A6FD1"></i></div>
+    </a>
+    <a class="card" href="复古终端与技术制图.html" title="复古终端与技术制图 · Retro Terminal &amp; Technical Illustration">
+      <div class="thumb"><img src="_assets/thumbs/13.png" alt="复古终端与技术制图·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">13</span><b>复古终端与技术制图</b></div>
+        <div class="en">Retro Terminal &amp; Technical Illustration</div>
+      </div>
+      <div class="pal"><i style="background:#04120A"></i><i style="background:#39FF88"></i><i style="background:#EFEAD9"></i><i style="background:#C0392B"></i><i style="background:#E07B39"></i></div>
+    </a>
+    <a class="card" href="技术制图美学.html" title="技术制图美学 · Technical / Schematic Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/14.png" alt="技术制图美学·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">14</span><b>技术制图美学</b></div>
+        <div class="en">Technical / Schematic Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#0A0A0C"></i><i style="background:#F2F2F4"></i><i style="background:#E6197C"></i><i style="background:#8A8A90"></i><i style="background:#F7F7F5"></i></div>
+    </a>
+    <a class="card" href="现代商业界面风格.html" title="现代商业界面风格 · Modern Commercial UI Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/15.png" alt="现代商业界面风格·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">15</span><b>现代商业界面风格</b></div>
+        <div class="en">Modern Commercial UI Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#FFFFFF"></i><i style="background:#2B1B4A"></i><i style="background:#8B5CF6"></i><i style="background:#F472B6"></i><i style="background:#F3EEFF"></i></div>
+    </a>
+    <a class="card" href="玩具感三维.html" title="玩具感三维 · Toy-like 3D Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/16.png" alt="玩具感三维·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">16</span><b>玩具感三维</b></div>
+        <div class="en">Toy-like 3D Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#F6D9B8"></i><i style="background:#EA7A3C"></i><i style="background:#7EC8C0"></i><i style="background:#2B2B38"></i><i style="background:#FFFFFF"></i></div>
+    </a>
+    <a class="card" href="手工立体绘本美学.html" title="手工立体绘本美学 · Handcrafted Pop-up Storybook">
+      <div class="thumb"><img src="_assets/thumbs/17.png" alt="手工立体绘本美学·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">17</span><b>手工立体绘本美学</b></div>
+        <div class="en">Handcrafted Pop-up Storybook</div>
+      </div>
+      <div class="pal"><i style="background:#F0E2CC"></i><i style="background:#C9A227"></i><i style="background:#6E8B6B"></i><i style="background:#B4553F"></i><i style="background:#3A4A63"></i></div>
+    </a>
+    <a class="card" href="电影感三维场景.html" title="电影感三维场景 · Cinematic 3D Environments">
+      <div class="thumb"><img src="_assets/thumbs/18.png" alt="电影感三维场景·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">18</span><b>电影感三维场景</b></div>
+        <div class="en">Cinematic 3D Environments</div>
+      </div>
+      <div class="pal"><i style="background:#1A1A20"></i><i style="background:#3E4650"></i><i style="background:#C9B49A"></i><i style="background:#F0E6D8"></i><i style="background:#E8A45C"></i></div>
+    </a>
+    <a class="card" href="黑色电影式漫画视觉.html" title="黑色电影式漫画视觉 · Noir Graphic-novel Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/19.png" alt="黑色电影式漫画视觉·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">19</span><b>黑色电影式漫画视觉</b></div>
+        <div class="en">Noir Graphic-novel Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#0D1117"></i><i style="background:#2A3138"></i><i style="background:#5C6570"></i><i style="background:#8E9499"></i><i style="background:#C9A227"></i></div>
+    </a>
+    <a class="card" href="超现实主义空间.html" title="超现实主义空间 · Surrealist Spatial Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/20.png" alt="超现实主义空间·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">20</span><b>超现实主义空间</b></div>
+        <div class="en">Surrealist Spatial Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#0A0E14"></i><i style="background:#1C2630"></i><i style="background:#3E4A55"></i><i style="background:#C98A3E"></i><i style="background:#D8D2C4"></i></div>
+    </a>
+    <a class="card" href="宇宙太空美学.html" title="宇宙太空美学 · Cosmic / Space Art">
+      <div class="thumb"><img src="_assets/thumbs/21.png" alt="宇宙太空美学·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">21</span><b>宇宙太空美学</b></div>
+        <div class="en">Cosmic / Space Art</div>
+      </div>
+      <div class="pal"><i style="background:#05060F"></i><i style="background:#131B3E"></i><i style="background:#2E6BE6"></i><i style="background:#8FC4E8"></i><i style="background:#F2C14E"></i></div>
+    </a>
+    <a class="card" href="锐舞美学.html" title="锐舞美学 · Rave Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/22.png" alt="锐舞美学·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">22</span><b>锐舞美学</b></div>
+        <div class="en">Rave Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#08080C"></i><i style="background:#B026FF"></i><i style="background:#00F0FF"></i><i style="background:#39FF14"></i><i style="background:#FF2E88"></i></div>
+    </a>
+    <a class="card" href="装饰艺术.html" title="装饰艺术 · Art Deco">
+      <div class="thumb"><img src="_assets/thumbs/23.png" alt="装饰艺术·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">23</span><b>装饰艺术</b></div>
+        <div class="en">Art Deco</div>
+      </div>
+      <div class="pal"><i style="background:#0A0A0C"></i><i style="background:#141118"></i><i style="background:#C9A227"></i><i style="background:#E8D9A8"></i><i style="background:#7A1F2B"></i></div>
+    </a>
+    <a class="card" href="古典奢华视觉.html" title="古典奢华视觉 · Classical Luxury Aesthetics">
+      <div class="thumb"><img src="_assets/thumbs/24.png" alt="古典奢华视觉·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">24</span><b>古典奢华视觉</b></div>
+        <div class="en">Classical Luxury Aesthetics</div>
+      </div>
+      <div class="pal"><i style="background:#14100E"></i><i style="background:#2A1F1A"></i><i style="background:#C9A227"></i><i style="background:#F0E4CC"></i><i style="background:#7A2B33"></i></div>
+    </a>
+    <a class="card" href="新中式视觉.html" title="新中式视觉 · Contemporary Chinese-inspired Design">
+      <div class="thumb"><img src="_assets/thumbs/25.png" alt="新中式视觉·主风格综合帧" loading="lazy" width="472" height="266"></div>
+      <div class="cap">
+        <div class="ln"><span class="n">25</span><b>新中式视觉</b></div>
+        <div class="en">Contemporary Chinese-inspired Design</div>
+      </div>
+      <div class="pal"><i style="background:#0E1626"></i><i style="background:#1E3049"></i><i style="background:#B03A2E"></i><i style="background:#C9A227"></i><i style="background:#F2EDE2"></i></div>
+    </a>
+  </div>
+
+  <h2 style="margin-top:56px">使用说明 <span>ABOUT</span></h2>
+  <div class="rules">
+    <div><b>文件结构</b>每页独立 HTML，公共样式与脚本在 <code>_assets/base.css</code> 与 <code>_assets/base.js</code>。画面内的元素尺寸统一用容器查询单位（cqw），画框缩放时构图不变形。</div>
+    <div><b>图像来源</b>页内画面全部由 HTML / CSS / SVG / Canvas 现场绘制，不引用任何视频截图与外部图片；索引页的缩略图是各页主帧的实际渲染截图（<code>_assets/thumbs/</code>，240×135），可直接作为设计参考或改造成拍摄的分镜稿。</div>
+    <div><b>动效说明</b>页面里的循环动效只用于示意节奏（故障闪烁、粒子、图层展开等），并非成片动画；静态截图即为设计稿，系统开启“减少动态效果”时会自动停播。</div>
+  </div>
+  <div class="prompt"><b>与风格库的关系</b>样例页依据 <a href="../视觉风格合集.md">视觉风格合集</a> 与 <code>styles/</code> 下的条目描述制作：概览段与子风格名称、识别要素、AI 创作视觉规则均对应条目内容；提示词一栏是依据条目中的检索标签整理的“要素组合”版，便于直接改写为生成提示。</div>
+
+  <footer>视觉风格库 · 静态样例 · 2026-11 · 共 25 条风格条目</footer>
+</div>
+<script src="_assets/base.js"></script>
+</body>
+</html>

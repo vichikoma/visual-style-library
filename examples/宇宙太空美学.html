@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宇宙太空美学（Cosmic / Space Art Aesthetics）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --cs-void:#05060F; --cs-deep:#131B3E; --cs-blue:#2E6BE6;
+  --cs-ice:#8FC4E8; --cs-gold:#F2C14E;
+}
+.cs,.ca1,.ca2,.ca3{color:#E8EEF9}
+.nar{font-family:var(--f-display);letter-spacing:.01em;line-height:.92;font-weight:400}
+.cs .star1,.ca1 .star1,.ca2 .star1{position:absolute;inset:0;background-repeat:repeat;pointer-events:none}
+.starA{background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,.9) 0 1px,rgba(255,255,255,0) 1.4px);
+  background-size:83px 71px}
+.starB{background-image:radial-gradient(circle at 50% 50%,rgba(200,220,255,.75) 0 1.4px,rgba(200,220,255,0) 1.9px);
+  background-size:137px 119px;background-position:31px 47px}
+.starC{background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,.5) 0 .9px,rgba(255,255,255,0) 1.2px);
+  background-size:47px 53px;background-position:19px 11px}
+.gl{position:absolute;border-radius:50%}
+.tl{position:absolute;height:.1cqw;background:rgba(143,196,232,.45)}
+.tk{position:absolute;width:.1cqw;background:rgba(143,196,232,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>21 / 25</span>
+    <span class="right"><a href="超现实主义空间.html">← 上一条</a><a href="锐舞美学.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>宇宙太空美学<small>Cosmic / Space Art Aesthetics</small></h1>
+    <p class="lead">以行星、恒星、星系、粒子与深色宇宙空间构成宏大尺度的画面，强调天体边缘光、发光尘埃与深远透视。它不是工程线框，而是有体积、有纹理、有大气光的实体——尺度靠镜头切换交代，时间靠顶部那根细小的宇宙日历刻度交代。</p>
+    <div class="meta">
+      <div><b>术语性质</b>以太空艺术为基础的题材型视觉美学，外观由星体、光效和尺度规则限定</div>
+      <div><b>视觉媒介</b>天体空间动画＋粒子与光效＋动态排版</div>
+      <div><b>典型母体</b>太空艺术与宇宙影像、宇宙日历与时间线、科学传播海报</div>
+    </div>
+    <div class="tags">
+      <span class="tag">太空艺术</span><span class="tag">天体</span><span class="tag">大气边缘光</span>
+      <span class="tag">星空粒子</span><span class="tag">动态排版</span>
+      <span class="tag w">时间加速</span><span class="tag w">文明史</span><span class="tag w">科技未来</span><span class="tag w">宏大感</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#05060F"></i>深空<br><code>#05060F</code></div>
+      <div class="sw"><i style="background:#131B3E"></i>夜蓝<br><code>#131B3E</code></div>
+      <div class="sw"><i style="background:#2E6BE6"></i>大气蓝<br><code>#2E6BE6</code></div>
+      <div class="sw"><i style="background:#8FC4E8"></i>冰蓝<br><code>#8FC4E8</code></div>
+      <div class="sw"><i style="background:#F2C14E"></i>恒星金<br><code>#F2C14E</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">贴着地球拍的：镜头上方是一片斜向的银河，地球没有居中，而是从左下顶进来，只露一道弧。太阳在画面右上方（画外），所以亮边只出现在地球的右上侧，暗面还留着城市灯。顶部一条 13.8 亿年跨度的日历刻度，右中是一句窄体大字，金色只给一个词。</p>
+
+  <div class="frame cs" id="f-master">
+    <div style="position:absolute;inset:0;background:
+      radial-gradient(120% 90% at 82% 12%,#1A2452 0%,#0C1130 34%,#05060F 70%,#030409 100%)"></div>
+
+    <!-- 银河 -->
+    <div style="position:absolute;left:34cqw;top:-18cqw;width:96cqw;height:30cqw;transform:rotate(-26deg);
+      background:radial-gradient(closest-side,rgba(143,196,232,.22),rgba(46,107,230,.10) 46%,rgba(19,27,62,0) 78%);
+      filter:blur(1.6cqw)"></div>
+    <div style="position:absolute;left:28cqw;top:-6cqw;width:70cqw;height:9cqw;transform:rotate(-26deg);
+      background:radial-gradient(closest-side,rgba(242,193,78,.16),rgba(242,193,78,0) 72%);filter:blur(2cqw)"></div>
+
+    <!-- 星点三层 -->
+    <div class="star1 starC"></div>
+    <div class="star1 starA"></div>
+    <div class="star1 starB"></div>
+    <!-- 几颗亮星 -->
+    <div class="gl" style="left:78cqw;top:9cqw;width:.34cqw;height:.34cqw;background:#fff;
+      box-shadow:0 0 1.4cqw .2cqw rgba(180,215,255,.9)"></div>
+    <div class="gl" style="left:64cqw;top:19cqw;width:.26cqw;height:.26cqw;background:#DCEBFF;
+      box-shadow:0 0 1cqw .14cqw rgba(143,196,232,.8)"></div>
+    <div class="gl" style="left:88cqw;top:26cqw;width:.2cqw;height:.2cqw;background:#fff;
+      box-shadow:0 0 0.8cqw .1cqw rgba(255,255,255,.75)"></div>
+    <div class="gl" style="left:70cqw;top:4cqw;width:.18cqw;height:.18cqw;background:#F2C14E;
+      box-shadow:0 0 1cqw .12cqw rgba(242,193,78,.7)"></div>
+
+    <!-- 地球：从右下顶进来，只露一道弧 -->
+    <div style="position:absolute;left:40cqw;top:10.6cqw;width:104cqw;height:104cqw;border-radius:50%;
+      background:radial-gradient(circle at 24% 16%,#5AA8EE 0%,#3378C8 15%,#1D4E96 30%,#123068 48%,#0A1A3C 66%,#050C20 84%,#02040A 100%)"></div>
+    <!-- 云层（都堆在亮侧） -->
+    <div style="position:absolute;left:40cqw;top:10.6cqw;width:104cqw;height:104cqw;border-radius:50%;overflow:hidden">
+      <div style="position:absolute;left:6%;top:22%;width:16%;height:5.4%;border-radius:50%;
+        background:rgba(232,244,255,.34);filter:blur(.7cqw);transform:rotate(-16deg)"></div>
+      <div style="position:absolute;left:2%;top:36%;width:12%;height:4.4%;border-radius:50%;
+        background:rgba(232,244,255,.26);filter:blur(.6cqw);transform:rotate(-10deg)"></div>
+      <div style="position:absolute;left:11%;top:46%;width:14%;height:3.8%;border-radius:50%;
+        background:rgba(200,226,255,.20);filter:blur(.8cqw);transform:rotate(-20deg)"></div>
+      <div style="position:absolute;left:20%;top:31%;width:8%;height:3.2%;border-radius:50%;
+        background:rgba(232,244,255,.24);filter:blur(.5cqw);transform:rotate(-12deg)"></div>
+      <div style="position:absolute;left:14%;top:14%;width:9%;height:3%;border-radius:50%;
+        background:rgba(232,244,255,.18);filter:blur(.55cqw);transform:rotate(-22deg)"></div>
+      <!-- 夜面压暗 -->
+      <div style="position:absolute;inset:0;
+        background:radial-gradient(circle at 18% 12%,rgba(3,6,16,0) 24%,rgba(3,6,16,.55) 46%,rgba(3,6,16,.92) 70%)"></div>
+    </div>
+    <!-- 大气亮边：只留在朝光的左上侧（inset 阴影沿真实圆边） -->
+    <div style="position:absolute;left:40cqw;top:10.6cqw;width:104cqw;height:104cqw;border-radius:50%;
+      box-shadow:inset 2.8cqw 3cqw 3.2cqw -1.6cqw rgba(240,250,255,.95),
+                 inset 5.6cqw 6cqw 6cqw -3cqw rgba(120,180,255,.45);
+      -webkit-mask:linear-gradient(126deg,#000 8%,rgba(0,0,0,.55) 42%,rgba(0,0,0,0) 62%)"></div>
+    <!-- 外层大气辉（更细更淡） -->
+    <div style="position:absolute;left:38.9cqw;top:9.5cqw;width:106.2cqw;height:106.2cqw;border-radius:50%;
+      box-shadow:0 0 2.6cqw .5cqw rgba(120,180,255,.26)"></div>
+    <div style="position:absolute;left:39.6cqw;top:10.2cqw;width:104.8cqw;height:104.8cqw;border-radius:50%;
+      border:.14cqw solid rgba(190,224,255,.30)"></div>
+
+    <!-- 城市灯（贴着晨昏线） -->
+    <div style="position:absolute;inset:0;pointer-events:none;opacity:.95">
+      <i style="position:absolute;left:56.4cqw;top:45.6cqw;width:.24cqw;height:.24cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.8cqw rgba(242,193,78,.95)"></i>
+      <i style="position:absolute;left:59.6cqw;top:42.2cqw;width:.16cqw;height:.16cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.6cqw rgba(242,193,78,.8)"></i>
+      <i style="position:absolute;left:62.2cqw;top:38.4cqw;width:.14cqw;height:.14cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.5cqw rgba(242,193,78,.7)"></i>
+      <i style="position:absolute;left:64.8cqw;top:34.6cqw;width:.18cqw;height:.18cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.6cqw rgba(242,193,78,.85)"></i>
+      <i style="position:absolute;left:54cqw;top:49.4cqw;width:.13cqw;height:.13cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.5cqw rgba(242,193,78,.7)"></i>
+      <i style="position:absolute;left:67.6cqw;top:30.2cqw;width:.15cqw;height:.15cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.5cqw rgba(242,193,78,.75)"></i>
+    </div>
+
+    <!-- 顶部宇宙日历 -->
+    <div class="tl" style="left:5cqw;top:5.6cqw;width:62cqw"></div>
+    <div class="tk" style="left:5cqw;top:5.1cqw;height:1cqw"></div>
+    <div class="tk" style="left:20.4cqw;top:5.1cqw;height:1cqw"></div>
+    <div class="tk" style="left:35.8cqw;top:5.1cqw;height:1cqw"></div>
+    <div class="tk" style="left:51.2cqw;top:5.1cqw;height:1cqw"></div>
+    <div class="tk" style="left:66.6cqw;top:5.1cqw;height:1cqw;background:#F2C14E"></div>
+    <div style="position:absolute;left:5cqw;top:6.8cqw;font-family:var(--f-mono);font-size:.78cqw;
+      letter-spacing:.16em;color:rgba(143,196,232,.65)">—138 亿年</div>
+    <div style="position:absolute;left:30cqw;top:6.8cqw;font-family:var(--f-mono);font-size:.78cqw;
+      letter-spacing:.16em;color:rgba(143,196,232,.55)">46 亿年</div>
+    <div style="position:absolute;left:56.6cqw;top:6.8cqw;font-family:var(--f-mono);font-size:.78cqw;
+      letter-spacing:.16em;color:rgba(143,196,232,.5)">20 万年</div>
+    <div style="position:absolute;left:63.8cqw;top:6.8cqw;font-family:var(--f-mono);font-size:.78cqw;
+      letter-spacing:.16em;color:#F2C14E">现在</div>
+    <!-- 现在的时间游标 -->
+    <div style="position:absolute;left:66.6cqw;top:2.6cqw;width:.12cqw;height:3.2cqw;background:#F2C14E;
+      box-shadow:0 0 .8cqw rgba(242,193,78,.8)"></div>
+    <div style="position:absolute;left:66.6cqw;top:2cqw;width:1.6cqw;height:.2cqw;margin-left:-.8cqw;background:#F2C14E"></div>
+
+    <!-- 主歌词（窄体大字） -->
+    <div style="position:absolute;left:6cqw;top:16.4cqw;z-index:12;white-space:nowrap">
+      <div class="nar" style="font-size:6.2cqw;line-height:1.04;color:#fff;text-shadow:0 0 2cqw rgba(5,10,30,.95)">我们只是</div>
+      <div class="nar" style="font-size:6.2cqw;line-height:1.04;color:#F2C14E;text-shadow:0 0 2.4cqw rgba(242,193,78,.4)">一瞬</div>
+    </div>
+    <div style="position:absolute;left:6.4cqw;top:32.6cqw;width:24cqw;height:.1cqw;background:rgba(143,196,232,.45)"></div>
+    <div style="position:absolute;left:6.4cqw;top:34cqw;font-family:var(--f-mono);font-size:.78cqw;
+      letter-spacing:.14em;color:rgba(143,196,232,.6)">138 亿年 : 80 年</div>
+
+    <!-- 右上数据栏 -->
+    <div style="position:absolute;right:4.4cqw;top:2.6cqw;text-align:right;font-family:var(--f-mono);
+      font-size:.76cqw;line-height:1.9;letter-spacing:.1em;color:rgba(143,196,232,.6)">
+      直径 12,742 km · 自转 23h56m<br>
+      大气 78% N₂ / 21% O₂<br>
+      亮边 ≤ 8% 周长<br>暗面保留城市灯</div>
+    <!-- 暗角与颗粒 -->
+    <div style="position:absolute;inset:0;pointer-events:none;background:
+      radial-gradient(76% 70% at 60% 40%,rgba(3,4,9,0) 40%,rgba(3,4,9,.75) 100%)"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>亮边只占一小段</b>天体靠明暗体积，不靠整圈发光。太阳只有一个方向，所以圆弧上只有一侧能亮，其余边缘必须暗下去——整圈发光的球会立刻变成平面圆。</div>
+    <div><b>暗面要留信息</b>背光那半球不要糊成纯黑：保留地形纹理的微亮和一小串城市灯，观众才相信它有表面。</div>
+    <div><b>三层星点定深度</b>大而虚＝近，小而锐＝远。再叠一条斜向的银河带（低对比、强模糊），深度就不靠透视也能读出来。</div>
+    <div><b>文字压在天体上</b>窄体白色大字直接叠在星体前方，金只给一个关键词。顶部留一条极小的时间刻度，让"宏大"有可读的单位。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向：发光天体与大气边缘（局部亮边）、星点与速度轨迹（放射拖线）、宇宙日历版式（全宽，时间刻度＋巨幅窄体歌词）。</p>
+
+  <div class="subs">
+
+    <!-- 1. 发光天体与大气边缘 -->
+    <section class="sub">
+      <div class="frame ca1" id="f-rim">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(120% 120% at 8% 30%,#101A3C 0%,#080C1E 46%,#04060E 100%)"></div>
+        <div class="star1 starC"></div>
+        <div class="star1 starA"></div>
+
+        <!-- 球体（占据左侧，右侧留注解）：光从左侧来 -->
+        <div style="position:absolute;left:12cqw;top:3cqw;width:48cqw;height:48cqw;border-radius:50%;
+          background:radial-gradient(circle at 14% 46%,#75BAF4 0%,#3D84D2 13%,#21569E 28%,#13326E 46%,#0A1A3E 66%,#050B1C 84%,#03060F 100%)"></div>
+        <!-- 表面纹理 + 夜面 -->
+        <div style="position:absolute;left:12cqw;top:3cqw;width:48cqw;height:48cqw;border-radius:50%;overflow:hidden">
+          <div style="position:absolute;left:2%;top:24%;width:16%;height:5%;border-radius:50%;
+            background:rgba(232,244,255,.30);filter:blur(.35cqw);transform:rotate(-16deg)"></div>
+          <div style="position:absolute;left:6%;top:40%;width:20%;height:4.4%;border-radius:50%;
+            background:rgba(232,244,255,.22);filter:blur(.4cqw);transform:rotate(-8deg)"></div>
+          <div style="position:absolute;left:4%;top:56%;width:12%;height:3.6%;border-radius:50%;
+            background:rgba(200,226,255,.16);filter:blur(.34cqw);transform:rotate(-18deg)"></div>
+          <div style="position:absolute;left:18%;top:33%;width:9%;height:3%;border-radius:50%;
+            background:rgba(232,244,255,.16);filter:blur(.3cqw);transform:rotate(-10deg)"></div>
+          <!-- 夜面：从晨昏线向右压到近黑 -->
+          <div style="position:absolute;inset:0;
+            background:linear-gradient(90deg,rgba(4,7,18,0) 36%,rgba(4,7,18,.72) 56%,rgba(4,7,18,.95) 78%,#03060F 100%)"></div>
+        </div>
+        <!-- 亮边：只留在朝光的左缘（inset 阴影沿真实圆边，再线性遮到左半） -->
+        <div style="position:absolute;left:12cqw;top:3cqw;width:48cqw;height:48cqw;border-radius:50%;
+          box-shadow:inset 2.4cqw 0 3cqw -1.1cqw rgba(244,252,255,.95),
+                     inset 4.6cqw 0 5cqw -2.6cqw rgba(120,180,255,.5);
+          -webkit-mask:linear-gradient(90deg,#000 16%,rgba(0,0,0,.6) 36%,rgba(0,0,0,0) 50%)"></div>
+        <!-- 大气层外薄环 -->
+        <div style="position:absolute;left:11.1cqw;top:2.1cqw;width:49.8cqw;height:49.8cqw;border-radius:50%;
+          border:.2cqw solid rgba(143,196,232,.30);box-shadow:0 0 1.4cqw rgba(46,107,230,.45)"></div>
+        <!-- 夜面城市灯 -->
+        <i style="position:absolute;left:34.6cqw;top:27.4cqw;width:.22cqw;height:.22cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 .7cqw rgba(242,193,78,.9)"></i>
+        <i style="position:absolute;left:37.2cqw;top:30.6cqw;width:.15cqw;height:.15cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 .5cqw rgba(242,193,78,.8)"></i>
+        <i style="position:absolute;left:39.4cqw;top:34.2cqw;width:.13cqw;height:.13cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 .45cqw rgba(242,193,78,.75)"></i>
+        <i style="position:absolute;left:33.2cqw;top:35.6cqw;width:.11cqw;height:.11cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 .4cqw rgba(242,193,78,.7)"></i>
+
+        <!-- 注解 -->
+        <div style="position:absolute;left:63cqw;top:7.6cqw;width:34cqw">
+          <div style="font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.12em;color:rgba(143,196,232,.8)">
+            亮边 ≤ 8% 周长</div>
+          <div style="margin-top:.6cqw;font-size:1.28cqw;line-height:1.6;color:rgba(232,238,249,.72)">
+            只有朝光的一侧收窄成月牙，向内两格就衰减到暗。</div>
+        </div>
+        <div style="position:absolute;left:63cqw;top:22cqw;width:34cqw">
+          <div style="font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.12em;color:rgba(143,196,232,.8)">
+            大气层 ≈ 0.6% 半径</div>
+          <div style="margin-top:.6cqw;font-size:1.28cqw;line-height:1.6;color:rgba(232,238,249,.72)">
+            外侧一圈比球体亮一档的细环，越细越像大气，越粗越像灯罩。</div>
+        </div>
+        <div style="position:absolute;left:63cqw;top:36cqw;width:34cqw">
+          <div style="font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.12em;color:rgba(242,193,78,.85)">
+            暗面：不要糊成纯黑</div>
+          <div style="margin-top:.6cqw;font-size:1.28cqw;line-height:1.6;color:rgba(232,238,249,.72)">
+            保留一档地形微亮和一串城市灯，球才有表面。</div>
+        </div>
+
+        <!-- 刻度弧：证明亮边只占一小段 -->
+        <svg viewBox="0 0 578 325" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
+          <circle cx="173.4" cy="162.4" r="150" fill="none" stroke="rgba(143,196,232,.22)" stroke-width="1" stroke-dasharray="3 6"></circle>
+        </svg>
+        <div style="position:absolute;left:8cqw;bottom:2.4cqw;font-family:var(--f-mono);font-size:1.05cqw;
+          letter-spacing:.12em;color:rgba(143,196,232,.5)">光源单一方向 · 其余边缘必须暗</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>发光天体与大气边缘<small>Glowing Bodies &amp; Atmospheric Rims</small></h3>
+        <p>球体不是"发光的圆"。先按单一光源做出明暗体积，再把亮边收成贴着轮廓的一道月牙，向内两格就衰减干净；外侧再补一圈细环当作大气。这三步的顺序不能颠倒——先画整圈发光，后面怎么改都回不到实体感。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">单一光源</span><span class="tag">月牙亮边</span>
+          <span class="tag">细大气环</span><span class="tag">暗面纹理</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 星点与速度轨迹 -->
+    <section class="sub">
+      <div class="frame ca2" id="f-trail">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(70% 70% at 46% 47%,#111A3C 0%,#0A1028 34%,#05070F 72%,#030409 100%)"></div>
+
+        <!-- 放射轨迹：conic 生成辐条，再用径向蒙版收成速度线 -->
+        <div style="position:absolute;inset:-10%;background:repeating-conic-gradient(from 0deg at 46% 47%,
+          rgba(232,238,249,.40) 0 .26deg,rgba(232,238,249,0) .26deg 2.4deg);
+          -webkit-mask:radial-gradient(circle at 46% 47%,transparent 0 15%,#000 30%,rgba(0,0,0,.85) 60%,rgba(0,0,0,0) 94%)"></div>
+        <div style="position:absolute;inset:-10%;background:repeating-conic-gradient(from 1.2deg at 46% 47%,
+          rgba(143,196,232,.28) 0 .46deg,rgba(143,196,232,0) .46deg 5.6deg);
+          -webkit-mask:radial-gradient(circle at 46% 47%,transparent 0 26%,#000 48%,rgba(0,0,0,0) 96%)"></div>
+
+        <!-- 中心亮核 -->
+        <div style="position:absolute;left:46cqw;top:26cqw;width:7cqw;height:7cqw;margin-left:-3.5cqw;margin-top:-3.5cqw;
+          border-radius:50%;background:radial-gradient(closest-side,#fff,rgba(190,224,255,.55) 38%,rgba(46,107,230,0) 76%)"></div>
+        <div style="position:absolute;left:46cqw;top:26cqw;width:.45cqw;height:.45cqw;margin-left:-.22cqw;margin-top:-.22cqw;
+          border-radius:50%;background:#fff;box-shadow:0 0 2cqw .5cqw rgba(190,224,255,.9)"></div>
+
+        <!-- 三层粒子：近大虚 / 中 / 远小锐 -->
+        <i style="position:absolute;left:6cqw;top:8cqw;width:1.5cqw;height:1.5cqw;border-radius:50%;background:#fff;filter:blur(.5cqw);opacity:.8"></i>
+        <i style="position:absolute;left:78cqw;top:64cqw;width:2cqw;height:2cqw;border-radius:50%;background:#DCEBFF;filter:blur(.6cqw);opacity:.7"></i>
+        <i style="position:absolute;left:84cqw;top:12cqw;width:.7cqw;height:.7cqw;border-radius:50%;background:#fff;opacity:.85"></i>
+        <i style="position:absolute;left:22cqw;top:70cqw;width:.55cqw;height:.55cqw;border-radius:50%;background:#fff;opacity:.8"></i>
+        <i style="position:absolute;left:62cqw;top:22cqw;width:.35cqw;height:.35cqw;border-radius:50%;background:#F2C14E;opacity:.9"></i>
+        <div class="star1 starB" style="opacity:.7"></div>
+
+        <!-- 标注：三层 -->
+        <div style="position:absolute;left:4.4cqw;bottom:2.2cqw;font-family:var(--f-mono);font-size:1.05cqw;
+          line-height:1.9;letter-spacing:.1em;color:rgba(232,238,249,.6)">
+          近 · 大而虚（1.5–2.0 cqw，blur .5）<br>
+          中 · 0.5–0.7 cqw，无模糊<br>
+          远 · ≤0.35 cqw，锐点</div>
+        <div style="position:absolute;right:4cqw;top:3cqw;text-align:right;font-family:var(--f-mono);
+          font-size:1.05cqw;letter-spacing:.1em;color:rgba(143,196,232,.55)">
+          辐条 150 条<br>蒙版 17% → 34% → 96%</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>星点与速度轨迹<small>Star Fields &amp; Motion Trails</small></h3>
+        <p>加速感来自"所有线都指向同一个消失点"，而不是把星星拉长。用放射状辐条（每 2.4° 一条）＋径向蒙版，中心留一块干净的暗，线才不像掉在玻璃上的划痕。粒子分三层：近处大而虚、远处小而锐，靠这个差异就能在没有透视的画面里读出前后。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">共消失点</span><span class="tag">径向蒙版</span>
+          <span class="tag">三层粒子</span><span class="tag">中心留暗</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 宇宙日历版式（全宽） -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame ca3" id="f-cal">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(120% 120% at 20% 10%,#121B42 0%,#0A0F26 40%,#05070F 76%,#030409 100%)"></div>
+        <div class="star1 starC"></div>
+        <div class="star1 starA"></div>
+        <div class="star1 starB" style="opacity:.8"></div>
+
+        <!-- 底部地球弧 -->
+        <div style="position:absolute;left:-28cqw;bottom:-138cqw;width:150cqw;height:150cqw;border-radius:50%;
+          background:radial-gradient(circle at 56% 4%,#55A0E2 0%,#2E6BB6 14%,#1B4A8C 30%,#112A5C 50%,#0A1634 70%,#060C1E 88%);
+          box-shadow:0 0 5cqw 1cqw rgba(46,107,230,.28)"></div>
+        <div style="position:absolute;left:-28cqw;bottom:-138cqw;width:150cqw;height:150cqw;border-radius:50%;
+          box-shadow:inset 0 2.2cqw 3cqw -1.4cqw rgba(214,238,255,.9)"></div>
+        <!-- 地球上的云与灯 -->
+        <div style="position:absolute;left:44cqw;bottom:10.6cqw;width:20cqw;height:2.2cqw;border-radius:50%;
+          background:rgba(226,238,255,.22);filter:blur(1cqw)"></div>
+        <div style="position:absolute;left:64cqw;bottom:8.4cqw;width:14cqw;height:1.6cqw;border-radius:50%;
+          background:rgba(226,238,255,.16);filter:blur(.9cqw)"></div>
+        <div style="position:absolute;left:80cqw;bottom:11.4cqw;width:10cqw;height:1.4cqw;border-radius:50%;
+          background:rgba(226,238,255,.12);filter:blur(.8cqw)"></div>
+        <i style="position:absolute;left:58cqw;bottom:12.6cqw;width:.3cqw;height:.3cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 1cqw rgba(242,193,78,.9)"></i>
+        <i style="position:absolute;left:61cqw;bottom:11.4cqw;width:.2cqw;height:.2cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.7cqw rgba(242,193,78,.8)"></i>
+        <i style="position:absolute;left:64.4cqw;bottom:13cqw;width:.24cqw;height:.24cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.8cqw rgba(242,193,78,.8)"></i>
+        <i style="position:absolute;left:72cqw;bottom:10.2cqw;width:.18cqw;height:.18cqw;background:#F2C14E;border-radius:50%;box-shadow:0 0 0.6cqw rgba(242,193,78,.7)"></i>
+
+        <!-- 顶部时间轴 -->
+        <div class="tl" style="left:6cqw;top:9.4cqw;width:88cqw;height:.12cqw;background:rgba(143,196,232,.35)"></div>
+        <div class="tk" style="left:6cqw;top:8.6cqw;height:1.6cqw"></div>
+        <div class="tk" style="left:23.6cqw;top:8.6cqw;height:1.6cqw"></div>
+        <div class="tk" style="left:41.2cqw;top:8.6cqw;height:1.6cqw"></div>
+        <div class="tk" style="left:58.8cqw;top:8.6cqw;height:1.6cqw"></div>
+        <div class="tk" style="left:76.4cqw;top:8.6cqw;height:1.6cqw"></div>
+        <div class="tk" style="left:94cqw;top:8cqw;height:2.8cqw;width:.16cqw;background:#F2C14E"></div>
+        <div style="position:absolute;left:6cqw;top:5.6cqw;font-family:var(--f-mono);font-size:.82cqw;
+          letter-spacing:.14em;color:rgba(143,196,232,.6)">-13,800,000,000</div>
+        <div style="position:absolute;left:41.2cqw;top:5.6cqw;font-family:var(--f-mono);font-size:.82cqw;
+          letter-spacing:.14em;color:rgba(143,196,232,.6)">-4,600,000,000</div>
+        <div style="position:absolute;left:76.4cqw;top:5.6cqw;font-family:var(--f-mono);font-size:.82cqw;
+          letter-spacing:.14em;color:rgba(143,196,232,.6)">-300,000</div>
+        <div style="position:absolute;left:91.2cqw;top:5.6cqw;font-family:var(--f-mono);font-size:.82cqw;
+          letter-spacing:.14em;color:#F2C14E">NOW</div>
+        <div style="position:absolute;left:6cqw;top:11.4cqw;font-family:var(--f-mono);font-size:.8cqw;
+          letter-spacing:.2em;color:rgba(143,196,232,.42)">大爆炸 · 太阳系形成 · 智人出现 · 今晚</div>
+
+        <!-- 巨幅窄体歌词 -->
+        <div style="position:absolute;left:6cqw;top:15cqw;z-index:10">
+          <div class="nar" style="font-size:12.4cqw;color:#fff;text-shadow:0 0 4cqw rgba(6,10,26,.85)">138 亿年</div>
+          <div class="nar" style="font-size:12.4cqw;color:#F2C14E;text-shadow:0 0 5cqw rgba(242,193,78,.35)">换你一次</div>
+        </div>
+        <div style="position:absolute;right:6cqw;top:17cqw;text-align:right;font-family:var(--f-mono);font-size:.86cqw;
+          line-height:2;letter-spacing:.1em;color:rgba(232,238,249,.55)">
+          时间信息克制<br>主词句占视觉焦点<br>
+          <span style="color:rgba(242,193,78,.8)">比例 13.8e9 : 1</span></div>
+        <div style="position:absolute;left:6cqw;bottom:3.6cqw;font-family:var(--f-mono);font-size:.84cqw;
+          letter-spacing:.16em;color:rgba(143,196,232,.55)">
+          刻度是均匀的，时间不是——最后一格压缩了整个人类史</div>
+
+        <div style="position:absolute;inset:0;pointer-events:none;background:
+          radial-gradient(80% 74% at 50% 44%,rgba(3,4,9,0) 42%,rgba(3,4,9,.7) 100%)"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>宇宙日历版式<small>Cosmic Calendar Layout</small></h3>
+        <p>时间线永远在顶部、永远很细，字号小到只有靠近才读得清；主词句反而大到出血，中间不留任何过渡。这样"138 亿年"与"今晚"就在同一张画里被并置。刻度是均匀的，时间不是——把最后一格压进人类史，是这个版式最有效的一击。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">顶部细时间轴</span><span class="tag">巨幅窄体</span>
+          <span class="tag">金只给一词</span><span class="tag">尺度并置</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>深黑蓝为底，天体留体积</b>背景压到 #05060F 附近，星体的明暗必须来自一个方向的光。不要用整圈外发光代替体积，那是霓虹灯不是星球。</div>
+    <div><b>冷光勾轮廓，白与金写字</b>大气边光用冰蓝（#8FC4E8）到大气蓝（#2E6BE6），文字用纯白，关键词才用恒星金（#F2C14E）。三类颜色各司其职，不要混用。</div>
+    <div><b>尺度靠切镜头交代</b>同一支片里要有三种尺度：整颗行星、贴着大气层的局部、以及没有天体的纯星空。观众对"宏大"的判断来自并置，不来自单幅画面。</div>
+    <div><b>每个画面一个读数</b>顶部时间轴、直径、亮边占比——任选一个，极小字号放在边缘。信息越克制，宇宙才越显得大。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>宇宙太空美学（Cosmic / Space Art Aesthetics）音乐短片：深黑蓝星空、具有纹理与明暗体积的地球与恒星、蓝色大气边缘光、金色粒子与银河。镜头在行星全景、星体局部与广阔宇宙之间切换，星点与放射轨迹表现速度。白色窄体大字与金色重点歌词叠加在天体前方，顶部保留小号宇宙日历时间线，画面宏大而有单一清晰焦点。</div>
+
+  <footer>样例说明：本页星点、银河、地球弧、大气亮边、放射轨迹与全部文字，均为 HTML / CSS / SVG 现场绘制（多重径向渐变、inset 阴影、repeating-conic-gradient 辐条、径向蒙版），未使用外部图片或来源视频画面。子风格依据 <code>styles/宇宙太空美学.md</code>。</footer>
+</div>
+</body>
+</html>

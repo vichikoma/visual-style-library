@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>复古版画拼贴（Vintage Engraving Collage）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --p-paper:#F2EADB; --p-paper2:#F8F2E4;
+  --violet:#3D2B56; --violet2:#6B4C8A;
+  --navy:#1D2233; --ochre:#B08A4A; --ink:#191420;
+}
+.pe,.pg1,.pd2,.pc3{background:var(--p-paper)}
+.pe,.pc3{color:var(--violet)}
+.pg1{color:var(--navy)}
+.pd2{color:var(--violet)}
+
+/* ---------- 纸面与印刷 ---------- */
+.grain{position:absolute;inset:0;filter:url(#pgr);opacity:.26;mix-blend-mode:multiply;
+  pointer-events:none;z-index:44}
+.vig{position:absolute;inset:0;pointer-events:none;z-index:43;
+  box-shadow:inset 0 0 5cqw rgba(90,68,36,.15)}
+.cm{position:absolute;width:1.9cqw;height:1.9cqw;opacity:.5;z-index:42}
+.cm.tl{left:1.5cqw;top:1.5cqw;border-left:.1cqw solid currentColor;border-top:.1cqw solid currentColor}
+.cm.tr{right:1.5cqw;top:1.5cqw;border-right:.1cqw solid currentColor;border-top:.1cqw solid currentColor}
+.cm.bl{left:1.5cqw;bottom:1.5cqw;border-left:.1cqw solid currentColor;border-bottom:.1cqw solid currentColor}
+.cm.br{right:1.5cqw;bottom:1.5cqw;border-right:.1cqw solid currentColor;border-bottom:.1cqw solid currentColor}
+.mono{font-family:var(--f-mono);letter-spacing:.12em}
+
+/* ---------- 主视觉 ---------- */
+.pe .hdr{position:absolute;left:3.4cqw;top:2.4cqw;display:flex;gap:5cqw;
+  font-family:var(--f-mono);font-size:1cqw;letter-spacing:.24em;color:#5b4478;z-index:9}
+.pe .d1{position:absolute;left:-1.6cqw;top:4.8cqw;font-family:var(--f-serif);font-weight:700;
+  font-size:17cqw;line-height:.94;color:var(--violet);white-space:nowrap;z-index:6}
+.pe .d2{position:absolute;left:4.6cqw;top:22cqw;font-family:var(--f-serif);font-weight:700;
+  font-size:17cqw;line-height:.94;color:var(--violet);white-space:nowrap;z-index:6}
+.pe .d3{position:absolute;left:5cqw;top:39.4cqw;font-family:var(--f-serif);font-size:2.3cqw;
+  letter-spacing:.32em;color:var(--violet2);white-space:nowrap;z-index:6}
+
+.pe .vrule{position:absolute;left:58.2cqw;top:3.4cqw;width:0;height:48.6cqw;
+  border-left:.08cqw solid rgba(61,43,86,.38);z-index:5}
+.pe .vrule i{position:absolute;left:-.22cqw;width:.5cqw;height:.08cqw;
+  background:rgba(61,43,86,.5)}
+.pe .hl{position:absolute;left:-2cqw;top:44.1cqw;width:60.2cqw;height:.11cqw;
+  background:var(--violet);opacity:.5;z-index:5}
+.pe .col{position:absolute;left:5cqw;top:45.9cqw;width:50cqw;font-family:var(--f-mono);
+  font-size:.95cqw;line-height:1.95;letter-spacing:.1em;color:#4c3a66;z-index:6}
+.pe .col b{color:var(--violet);font-weight:700}
+.pe .sc{position:absolute;left:44cqw;top:45.4cqw;width:12cqw;height:0;
+  border-top:.09cqw solid rgba(61,43,86,.6);z-index:6}
+.pe .sc i{position:absolute;top:-.5cqw;width:.09cqw;height:1.1cqw;background:rgba(61,43,86,.6)}
+.pe .sc b{position:absolute;top:.9cqw;transform:translateX(-50%);font-family:var(--f-mono);
+  font-size:.85cqw;font-weight:400;letter-spacing:.08em;color:#5b4478;white-space:nowrap}
+
+.pe .plate{position:absolute;right:-1.6cqw;top:-2.2cqw;width:35cqw;height:41.4cqw;
+  border:.13cqw solid var(--violet);background:var(--p-paper2);z-index:7;
+  box-shadow:0 0 0 .3cqw rgba(61,43,86,.05)}
+.pe .plate .in{position:absolute;inset:1.4cqw;border:.07cqw solid rgba(61,43,86,.45);
+  overflow:hidden}
+.pe .plate svg{width:100%;height:100%;display:block}
+.pe .plcap{position:absolute;right:2.6cqw;top:40.2cqw;text-align:right;
+  font-family:var(--f-mono);font-size:.9cqw;line-height:1.9;letter-spacing:.12em;
+  color:#5b4478;z-index:8}
+
+/* ---------- 子帧通用 ---------- */
+.lb{position:absolute;left:3.2cqw;top:2.5cqw;font-family:var(--f-mono);font-size:1.3cqw;
+  letter-spacing:.18em;color:#6b5a44;z-index:9}
+.lbr{position:absolute;right:3.2cqw;top:2.5cqw;font-family:var(--f-mono);font-size:1.3cqw;
+  letter-spacing:.16em;color:#8a7a5e;z-index:9}
+.hair{position:absolute;height:.07cqw;background:currentColor;opacity:.35;z-index:6}
+.chip{display:inline-block;width:1.5cqw;height:1.5cqw;border:.08cqw solid rgba(0,0,0,.35);
+  vertical-align:-.28cqw;margin-right:.5cqw}
+
+/* 1 图谱式版画 */
+.pg1 .plate{position:absolute;left:3.2cqw;top:7.4cqw;width:44cqw;height:33.6cqw;
+  border:.1cqw solid rgba(29,34,51,.55);background:var(--p-paper2);z-index:7}
+.pg1 .plate .in{position:absolute;inset:1.2cqw;overflow:hidden}
+.pg1 .plate svg{width:100%;height:100%;display:block}
+.pg1 .num{position:absolute;font-family:var(--f-mono);font-size:1.15cqw;color:var(--navy);
+  z-index:10;background:var(--p-paper);padding:0 .18cqw;line-height:1.5}
+.pg1 .lead{position:absolute;height:.07cqw;background:rgba(29,34,51,.55);z-index:9}
+.pg1 h4{position:absolute;left:50.6cqw;top:7.4cqw;font-family:var(--f-serif);font-size:2.5cqw;
+  font-weight:700;color:var(--navy);white-space:nowrap;z-index:8}
+.pg1 h4 em{display:block;font-family:var(--f-mono);font-size:1.15cqw;font-style:normal;
+  letter-spacing:.16em;color:#6b5a44;margin-top:.45cqw}
+.pg1 .spec{position:absolute;left:50.6cqw;top:19.4cqw;width:45cqw;font-family:var(--f-mono);
+  font-size:1.3cqw;line-height:2.1;letter-spacing:.06em;color:#33294a;z-index:8}
+.pg1 .spec s{color:#8a7a5e;text-decoration:none;display:inline-block;width:11.4cqw}
+.pg1 .note{position:absolute;left:3.2cqw;top:41.4cqw;width:94cqw;font-family:var(--f-serif);
+  font-size:1.75cqw;letter-spacing:.06em;color:#3f3350;z-index:8}
+.pg1 .scale{position:absolute;left:50.6cqw;top:33.2cqw;width:44cqw;height:.07cqw;
+  background:rgba(29,34,51,.5);z-index:8}
+.pg1 .scale i{position:absolute;top:-.3cqw;width:.07cqw;height:1.5cqw;
+  background:rgba(29,34,51,.5)}
+.pg1 .scale span{position:absolute;top:1.5cqw;font-family:var(--f-mono);font-size:1.05cqw;
+  letter-spacing:.1em;color:#6b5a44;transform:translateX(-50%)}
+
+/* 2 高对比双色 */
+.pd2 .p{position:absolute;top:8.4cqw;width:27.4cqw;height:29.4cqw;z-index:7;
+  border:.08cqw solid rgba(61,43,86,.35)}
+.pd2 .p .in{position:absolute;inset:.9cqw;overflow:hidden}
+.pd2 .p svg{width:100%;height:100%;display:block}
+.pd2 .cap{position:absolute;width:27.4cqw;font-family:var(--f-mono);font-size:1.25cqw;
+  line-height:1.95;letter-spacing:.06em;color:#4c3a66;z-index:8}
+.pd2 .cap b{display:block;font-family:var(--f-serif);font-size:1.75cqw;letter-spacing:.12em;
+  color:#33294a;font-weight:700}
+.pd2 .note{position:absolute;left:3.2cqw;top:47.2cqw;width:93cqw;font-family:var(--f-serif);
+  font-size:1.75cqw;letter-spacing:.06em;color:#3f3350;z-index:8}
+.pd2 .tick{position:absolute;top:4.9cqw;height:2.2cqw;width:.07cqw;background:rgba(61,43,86,.45);z-index:8}
+
+/* 3 越界衬线 */
+.pc3 .d1{position:absolute;left:-1.8cqw;top:4.4cqw;font-family:var(--f-serif);font-weight:700;
+  font-size:17cqw;line-height:.94;color:var(--violet);white-space:nowrap;z-index:6}
+.pc3 .d2{position:absolute;left:21.4cqw;top:21cqw;font-family:var(--f-serif);font-weight:700;
+  font-size:17cqw;line-height:.94;color:var(--violet);white-space:nowrap;z-index:6}
+.pc3 .d3{position:absolute;left:-2cqw;top:35.6cqw;font-family:var(--f-serif);font-weight:700;
+  font-size:24cqw;line-height:.9;color:var(--violet);white-space:nowrap;z-index:6}
+.pc3 .plate{position:absolute;right:-2.4cqw;top:-1.6cqw;width:37cqw;height:44cqw;
+  border:.13cqw solid var(--violet);background:var(--p-paper2);z-index:7}
+.pc3 .plate .in{position:absolute;inset:1.3cqw;border:.07cqw solid rgba(61,43,86,.4);
+  overflow:hidden}
+.pc3 .plate svg{width:100%;height:100%;display:block}
+.pc3 .note{position:absolute;right:4.2cqw;top:44.6cqw;width:34cqw;text-align:right;
+  font-family:var(--f-mono);font-size:1.15cqw;line-height:1.95;letter-spacing:.1em;
+  color:#5b4478;z-index:9}
+.pc3 .spec{position:absolute;left:4cqw;top:2.1cqw;font-family:var(--f-mono);font-size:1.1cqw;
+  line-height:2;letter-spacing:.16em;color:#6b5a8a;z-index:9}
+.pc3 .guide{position:absolute;left:0;top:33.2cqw;width:100%;height:0;
+  border-top:.07cqw dashed rgba(61,43,86,.45);z-index:8}
+.pc3 .marker{position:absolute;font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.14em;
+  color:#8a6a4a;z-index:9}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>09 / 25</span>
+    <span class="right"><a href="朋克杂志拼贴.html">← 上一条</a><a href="极简主义书刊排版.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>复古版画拼贴<small>Vintage Engraving Collage</small></h1>
+    <p class="lead">把旧式解剖图、博物学插图和密集排线的版画图像裁切重组，与现代大字、双色印刷及局部技术标注并置。辨识度来自历史图像的线性肌理与当代平面版式之间的关系——版画是可见外观，不代表真的使用了铜版或木刻。</p>
+    <div class="meta">
+      <div><b>风格定位</b>复古版画拼贴（Vintage Engraving Collage），版画材料语言与数字拼贴的描述性组合</div>
+      <div><b>视觉媒介</b>二维数字拼贴（Digital Collage）＋双色化处理（Duotone Treatment）＋动态排版（Kinetic Typography）</div>
+      <div><b>典型母体</b>博物学与解剖图谱、实验性书刊与海报、技术注释与文献标签</div>
+    </div>
+    <div class="tags">
+      <span class="tag">版画（Engraving）</span><span class="tag">数字拼贴（Digital Collage）</span><span class="tag">双色印刷（Duotone）</span>
+      <span class="tag">衬线字体（Serif Typeface）</span><span class="tag">博物学插图</span>
+      <span class="tag w">技术隐喻</span><span class="tag w">不安</span><span class="tag w">历史与未来并置</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#F2EADB"></i>纸白<br><code>#F2EADB</code></div>
+      <div class="sw"><i style="background:#3D2B56"></i>版画紫<br><code>#3D2B56</code></div>
+      <div class="sw"><i style="background:#6B4C8A"></i>紫灰<br><code>#6B4C8A</code></div>
+      <div class="sw"><i style="background:#1D2233"></i>墨蓝<br><code>#1D2233</code></div>
+      <div class="sw"><i style="background:#B08A4A"></i>赭黄<br><code>#B08A4A</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">紫白双色的线刻人像被当作一页图版钉在右侧，左侧是宋体的歌词与文献式小字。全画面只有一组双色，靠排线的疏密制造明暗，靠字与图的尺度差制造张力。</p>
+
+  <div class="frame pe" id="f-master">
+    <div class="hdr"><span>PLATE IX · 线刻图版 / ENGRAVING</span><span>单色印刷 · 纸白即高光</span></div>
+
+    <div class="d1">每一张</div>
+    <div class="d2">都一样</div>
+    <div class="d3">刻一次，印一万次</div>
+
+    <div class="vrule"><i style="top:0"></i><i style="top:16cqw"></i><i style="top:32cqw"></i><i style="top:48.5cqw"></i></div>
+    <div class="hl"></div>
+
+    <div class="col">
+      <div><b>铜版 · 线宽 0.3MM</b> · 单色紫，纸白即高光</div>
+      <div>图版说明 ① 发丝排线 ② 下颌阴影 ③ 衣领斜线</div>
+      <div>同版印一万张，纹路不差分毫 —— 差别只在纸</div>
+    </div>
+
+    <div class="sc">
+      <i style="left:0"></i><i style="left:6cqw"></i><i style="left:12cqw"></i>
+      <b style="left:0">0</b><b style="left:6cqw">2</b><b style="left:12cqw">4 CM</b>
+    </div>
+    <div class="plcap" style="right:auto;left:44cqw;top:48.6cqw;text-align:left;font-size:.85cqw">比例尺 1:1 · 纸面 142×80</div>
+
+    <div class="plate">
+      <div class="in">
+        <svg viewBox="0 0 300 360" preserveAspectRatio="xMidYMid meet"><use href="#eng-portrait"/></svg>
+      </div>
+    </div>
+    <div class="plcap">PL. IX — 反复者<br>线刻 · 紫白双色 · 1:1</div>
+
+    <div class="cm tl"></div><div class="cm tr"></div><div class="cm bl"></div><div class="cm br"></div>
+    <div class="grain"></div>
+    <div class="vig"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>线刻与排线</b>所有明暗由线条密度承担，亮部直接留白；线条沿形体转向，不平铺。</div>
+    <div><b>双色分段</b>紫白、蓝白、黄黑各自成段，一屏只用一组，换段才换色。</div>
+    <div><b>越界衬线标题</b>宋体大字跑到画幅之外，只留一半笔画，尺度感来自被裁掉的部分。</div>
+    <div><b>技术注释</b>细线框、编号、比例尺与小号标注，把旧图像接回当代语境。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向分别对应图谱图像、双色版式与越界标题，可与主风格组合使用。</p>
+
+  <div class="subs">
+
+    <!-- 1. 图谱式版画图像 -->
+    <section class="sub">
+      <div class="frame pg1" id="f-plate">
+        <div class="lb">PLATE IV · LEPIDOPTERA</div>
+        <div class="lbr">FIG. 1 — 17</div>
+
+        <div class="plate">
+          <div class="in">
+            <svg viewBox="0 0 200 140" style="color:#1D2233"><use href="#eng-moth"/></svg>
+          </div>
+        </div>
+
+        <div class="num" style="left:15.2cqw;top:13.2cqw">①</div>
+        <div class="num" style="left:40.4cqw;top:15.4cqw">②</div>
+        <div class="num" style="left:35.6cqw;top:33.2cqw">③</div>
+        <div class="num" style="left:28cqw;top:25.4cqw">④</div>
+
+        <h4>标本的线<em>THE LINE OF A PLATE</em></h4>
+        <div class="spec">
+          <div><s>排线</s>随形体转向，不画满</div>
+          <div><s>线宽</s>0.6—1.6，同图不变</div>
+          <div><s>明暗</s>只靠疏密，不用灰阶</div>
+          <div><s>背景</s>留纸，不加投影</div>
+        </div>
+
+        <div class="hair" style="left:50.6cqw;top:33cqw;width:44cqw"></div>
+        <div class="scale">
+          <i style="left:0"></i><i style="left:22cqw"></i><i style="left:44cqw"></i>
+          <span style="left:0">0</span><span style="left:22cqw">5</span><span style="left:44cqw">10</span>
+        </div>
+
+        <div class="spec" style="top:40.4cqw">
+          <div><i class="chip" style="background:#1D2233"></i>墨蓝 #1D2233　<i class="chip" style="background:#F2EADB"></i>纸白 #F2EADB</div>
+        </div>
+
+        <div class="note">细密排线取代明暗，空白处就是高光。</div>
+        <div class="lbr" style="top:46.4cqw;left:3.2cqw;right:auto;font-size:1.05cqw">① 触角　② 前翅　③ 后翅　④ 胸节</div>
+        <div class="lbr" style="top:49.2cqw;left:3.2cqw;right:auto;font-size:1.05cqw">FIG. 2 — 同一块版，线越密，色越沉</div>
+
+        <div class="cm tl"></div><div class="cm br"></div>
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>图谱式版画图像<small>Natural-history Engraving Imagery</small></h3>
+        <p>动物、骨骼与生物组织通过排线和密集轮廓形成细节。保留源图的方向性线条，减少写实柔光对线刻肌理的覆盖——亮部不画线，暗部加密，中间调交给线的角度。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">方向性排线</span><span class="tag">留白即高光</span>
+          <span class="tag">编号引线</span><span class="tag">图版边框</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 高对比双色版式 -->
+    <section class="sub">
+      <div class="frame pd2" id="f-duotone">
+        <div class="lb">DUOTONE / 分段双色</div>
+        <div class="lbr">SEG. 01 — 03</div>
+
+        <div class="tick" style="left:4cqw"></div>
+        <div class="tick" style="left:36.3cqw"></div>
+        <div class="tick" style="left:68.6cqw"></div>
+
+        <div class="p" style="left:4cqw;background:#F8F2E4">
+          <div class="in"><svg viewBox="0 0 200 120" style="color:#3D2B56"><use href="#eng-fish"/></svg></div>
+        </div>
+        <div class="p" style="left:36.3cqw;background:#F8F2E4">
+          <div class="in"><svg viewBox="0 0 200 120" style="color:#1D2233"><use href="#eng-fish"/></svg></div>
+        </div>
+        <div class="p" style="left:68.6cqw;background:#1D2233">
+          <div class="in"><svg viewBox="0 0 200 120" style="color:#B08A4A"><use href="#eng-fish"/></svg></div>
+        </div>
+
+        <div class="cap" style="left:4cqw;top:39cqw">
+          <b>紫 · 白</b>#3D2B56 / #F2EADB
+        </div>
+        <div class="cap" style="left:36.3cqw;top:39cqw">
+          <b>蓝 · 白</b>#1D2233 / #F2EADB
+        </div>
+        <div class="cap" style="left:68.6cqw;top:39cqw">
+          <b>赭 · 黑</b>#B08A4A / #1D2233
+        </div>
+
+        <div class="hair" style="left:3.2cqw;top:45.2cqw;width:93.6cqw"></div>
+        <div class="note">同一张图，三种双色；每段只用一组。</div>
+        <div class="lbr" style="top:51.2cqw;font-size:1.05cqw">换段才换色 / 画面内不分主次</div>
+
+        <div class="cm tl"></div><div class="cm br"></div>
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>高对比双色版式<small>High-contrast Duotone Layout</small></h3>
+        <p>紫白、蓝白、赭黑为不同图像赋予统一色彩。双色是分段规则：可以随段落变化，但同一画面里只维持一组主次，多余的第三色只做记号，不参与构图。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">双色分段</span><span class="tag">同图换色</span>
+          <span class="tag">纸底反白</span><span class="tag">单一强调</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 越界衬线标题 -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame pc3" id="f-crop">
+        <div class="spec">CROPPED SERIF / 越界标题</div>
+
+        <div class="d1">裁掉</div>
+        <div class="d2">一半</div>
+        <div class="d3">大</div>
+
+        <div class="plate">
+          <div class="in">
+            <svg viewBox="0 0 300 360" preserveAspectRatio="xMidYMid meet"><use href="#eng-portrait"/></svg>
+          </div>
+        </div>
+
+        <div class="note">字形越过画幅，剩下的部分反而更大。<br>CROP 9% 是保住可读性的上限。图中的图版同样从上方与右侧出框。</div>
+
+        <div class="marker" style="left:24.4cqw;top:43.4cqw">笔画被裁掉 9%，仍可辨认</div>
+        <div class="marker" style="left:24.4cqw;top:46.2cqw">CROP BOTTOM ↙</div>
+
+        <div class="cm tr"></div><div class="cm bl"></div>
+        <div class="grain"></div>
+        <div class="vig"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>越界衬线标题<small>Cropped Serif Typography，排版手法</small></h3>
+        <p>巨大衬线字与动物图像交叠或被画幅裁切，小号标注保持精细；尺度差形成视觉张力。字被裁掉的部分不要多于十分之一，剩下的笔画仍要认得出是什么字。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">宋体大字</span><span class="tag">出框裁切</span>
+          <span class="tag">图字交叠</span><span class="tag">小号标注对比</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>线刻优先</b>优先使用线刻、排线和图谱形态，保留细节方向；明暗由线的疏密决定，不用灰阶和柔光。</div>
+    <div><b>双色分段</b>每段采用两种主色与少量强调，紫白、蓝白或赭黑；避免多种饱和色互相争夺。</div>
+    <div><b>尺度差</b>用超大衬线标题与小号标注制造对比，图像与文字互相裁切、叠放和移动重组。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>复古版画拼贴（Vintage Engraving Collage）动态图形，以旧式博物学动物、骨骼和生物组织线刻图像为主材料，保留细密排线。各段采用紫白、蓝白或赭黑双色，结合超大宋体歌词、小号文献标注、细线框和编号。让图像跨越画幅边缘，文字与图谱交叠，以分层位移、遮罩裁切和尺度切换推动节奏。</div>
+
+  <footer>样例说明：本页所有线刻人像、蛾类标本、鱼类图版与排版元素均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/复古版画拼贴.md</code>。</footer>
+</div>
+
+<!-- 共用图形：线刻人像 / 蛾 / 鱼 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="pgr">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer>
+    </filter>
+
+    <pattern id="ph-paper" width="3.4" height="3.4" patternUnits="userSpaceOnUse"
+      patternTransform="rotate(60)">
+      <rect width="3.4" height="3.4" fill="#3D2B56"/>
+      <line x1="0" y1="0" x2="0" y2="3.4" stroke="#F2EADB" stroke-width="1.1"/>
+    </pattern>
+    <pattern id="ph-hair" width="3" height="3" patternUnits="userSpaceOnUse"
+      patternTransform="rotate(78)">
+      <line x1="0" y1="0" x2="0" y2="3" stroke="#F2EADB" stroke-width=".9" opacity=".85"/>
+    </pattern>
+    <pattern id="ph-hatch" width="4.2" height="4.2" patternUnits="userSpaceOnUse"
+      patternTransform="rotate(34)">
+      <line x1="0" y1="0" x2="0" y2="4.2" stroke="#3D2B56" stroke-width="1.05"/>
+    </pattern>
+
+    <!-- 线刻人像 -->
+    <symbol id="eng-portrait" viewBox="0 0 300 360">
+      <!-- 衣 -->
+      <path d="M16,360 C22,306 56,276 100,262 L200,262 C244,276 278,306 284,360 Z"
+        fill="url(#ph-paper)"/>
+      <path d="M16,360 C22,306 56,276 100,262 M200,262 C244,276 278,306 284,360"
+        fill="none" stroke="#3D2B56" stroke-width="2.2"/>
+      <!-- 颈 -->
+      <path d="M120,200 L180,200 L180,268 L120,268 Z" fill="#F2EADB"/>
+      <path d="M121,210 L121,264 M179,210 L179,264 M126,214 L126,246 M174,214 L174,246"
+        stroke="#3D2B56" stroke-width="1" opacity=".5" fill="none"/>
+      <!-- 发 -->
+      <path d="M150,24 C96,24 72,62 76,104 C78,130 68,152 58,180 C66,170 78,168 84,174
+        C78,150 86,132 92,124 C90,162 116,188 150,188 C184,188 210,162 208,124
+        C214,132 222,150 216,174 C222,168 234,170 242,180 C232,152 222,130 224,104
+        C228,62 204,24 150,24 Z"
+        fill="#3D2B56" stroke="#3D2B56" stroke-width="1.6"/>
+      <path d="M150,24 C96,24 72,62 76,104 C78,130 68,152 58,180 C66,170 78,168 84,174
+        C78,150 86,132 92,124 C90,162 116,188 150,188 C184,188 210,162 208,124
+        C214,132 222,150 216,174 C222,168 234,170 242,180 C232,152 222,130 224,104
+        C228,62 204,24 150,24 Z"
+        fill="url(#ph-hair)"/>
+      <!-- 脸 -->
+      <path d="M150,56 C186,56 208,86 208,124 C208,162 182,192 150,192 C118,192 92,162 92,124
+        C92,86 114,56 150,56 Z" fill="#F2EADB" stroke="#3D2B56" stroke-width="2.4"/>
+      <!-- 右下颤部压几道短线，脸面保持干净 -->
+      <g fill="none" stroke="#3D2B56" stroke-width="1" opacity=".45" stroke-linecap="round">
+        <path d="M202,124 C199,150 190,170 172,181"/>
+        <path d="M200,138 C194,160 182,175 166,183"/>
+        <path d="M195,152 C188,167 178,177 165,184"/>
+      </g>
+      <!-- 发丝高光（刻出来的白线） -->
+      <path d="M106,42 C96,62 94,88 99,112 M132,32 C120,48 118,72 120,90
+        M150,30 L150,58 M170,34 C182,48 184,70 182,88"
+        fill="none" stroke="#F2EADB" stroke-width="1.2" opacity=".3" stroke-linecap="round"/>
+      <path d="M84,118 C80,146 72,166 64,180 M214,118 C218,146 226,166 234,180"
+        fill="none" stroke="#F2EADB" stroke-width="1.1" opacity=".35" stroke-linecap="round"/>
+      <!-- 刘海 -->
+      <path d="M92,124 C94,84 116,56 150,56 C184,56 206,84 208,124 C194,100 174,88 150,88
+        C126,88 106,100 92,124 Z" fill="#3D2B56"/>
+      <path d="M92,124 C94,84 116,56 150,56 C184,56 206,84 208,124 C194,100 174,88 150,88
+        C126,88 106,100 92,124 Z" fill="url(#ph-hair)"/>
+      <!-- 下颌：只用两道细弧，不用整块阴影 -->
+      <path d="M128,183 C138,193 162,193 172,183 M133,189 C141,197 159,197 167,189"
+        fill="none" stroke="#3D2B56" stroke-width="1.1" opacity=".4"/>
+      <path d="M138,178 C144,181 156,181 162,178" fill="none" stroke="#3D2B56"
+        stroke-width="1" opacity=".35"/>
+      <!-- 眉与眼 -->
+      <path d="M104,116 C114,107 132,107 141,114" fill="none" stroke="#3D2B56" stroke-width="2"
+        stroke-linecap="round"/>
+      <path d="M159,114 C168,107 186,107 196,116" fill="none" stroke="#3D2B56" stroke-width="2"
+        stroke-linecap="round"/>
+      <path d="M110,131 C117,123 131,123 138,131 C131,138 117,138 110,131 Z" fill="#F2EADB"
+        stroke="#3D2B56" stroke-width="1.7"/>
+      <path d="M162,131 C169,123 183,123 190,131 C183,138 169,138 162,131 Z" fill="#F2EADB"
+        stroke="#3D2B56" stroke-width="1.7"/>
+      <circle cx="124" cy="131" r="5.2" fill="#3D2B56"/>
+      <circle cx="176" cy="131" r="5.2" fill="#3D2B56"/>
+      <circle cx="122.3" cy="129.4" r="1.3" fill="#F2EADB"/>
+      <circle cx="174.3" cy="129.4" r="1.3" fill="#F2EADB"/>
+      <path d="M110,131 C117,122 131,122 138,131" fill="none" stroke="#3D2B56" stroke-width="2.2"
+        stroke-linecap="round"/>
+      <path d="M162,131 C169,122 183,122 190,131" fill="none" stroke="#3D2B56" stroke-width="2.2"
+        stroke-linecap="round"/>
+      <path d="M112,131 C118,126 130,126 136,131 C130,128 118,128 112,131 Z" fill="#3D2B56"
+        opacity=".3"/>
+      <path d="M164,131 C170,126 182,126 188,131 C182,128 170,128 164,131 Z" fill="#3D2B56"
+        opacity=".3"/>
+      <!-- 鼻与口 -->
+      <path d="M150,134 C149,146 146,153 141,157" fill="none" stroke="#3D2B56" stroke-width="1.8"
+        stroke-linecap="round"/>
+      <path d="M141,157 L136,160 M141,157 L146,161" stroke="#3D2B56" stroke-width="1.4"
+        stroke-linecap="round"/>
+      <path d="M132,168 C142,175 158,175 168,168" fill="none" stroke="#3D2B56" stroke-width="2.2"
+        stroke-linecap="round"/>
+      <path d="M136,176 C144,180 156,180 164,176" fill="none" stroke="#3D2B56" stroke-width="1.5"
+        stroke-linecap="round"/>
+      <!-- 左颊轮廓排线 -->
+      <path d="M98,140 C100,150 104,158 110,164 M96,148 C98,158 103,166 108,171
+        M100,132 C101,138 103,144 106,148" stroke="#3D2B56" stroke-width="1.1" fill="none"
+        opacity=".55" stroke-linecap="round"/>
+      <!-- 衣领 -->
+      <path d="M114,258 C132,276 168,276 186,258" fill="none" stroke="#F2EADB" stroke-width="3"/>
+      <path d="M114,258 C132,276 168,276 186,258" fill="none" stroke="#3D2B56"
+        stroke-width="1.1" stroke-dasharray="3 3.5" opacity=".65"/>
+    </symbol>
+
+    <!-- 蛾（半身，右侧；左侧镜像） -->
+    <g id="mothhalf">
+      <path d="M106,50 C118,28 148,18 172,26 C188,32 191,47 178,59 C162,73 130,79 108,72 Z"
+        fill="none" stroke="currentColor" stroke-width="2.1"/>
+      <path d="M112,56 C126,36 152,27 170,33 C182,38 184,48 174,57 C160,69 132,74 114,69 Z"
+        fill="none" stroke="currentColor" stroke-width=".8" opacity=".7"/>
+      <path d="M106,82 C122,84 143,92 149,107 C153,121 141,131 126,124 C112,118 104,102 104,90 Z"
+        fill="none" stroke="currentColor" stroke-width="2.1"/>
+      <path d="M110,86 C124,89 140,97 145,109 C147,118 139,124 128,119 C117,113 110,101 110,92 Z"
+        fill="none" stroke="currentColor" stroke-width=".8" opacity=".7"/>
+      <g fill="none" stroke="currentColor" stroke-width=".9">
+        <path d="M108,58 C126,46 148,38 168,34"/>
+        <path d="M108,63 C128,55 150,48 172,44"/>
+        <path d="M109,68 C130,63 152,57 174,54"/>
+        <path d="M110,91 C120,96 132,103 140,111"/>
+        <path d="M111,97 C120,102 128,109 134,116"/>
+      </g>
+      <path d="M108,54 C104,62 104,68 106,74 C112,78 118,79 122,77" fill="none"
+        stroke="currentColor" stroke-width=".7" opacity=".45"/>
+      <path d="M98,46 C86,32 74,22 62,16" stroke="currentColor" stroke-width="1.6" fill="none"/>
+      <path d="M93,38 L89,29 M86,32 L81,23 M79,26 L75,17" stroke="currentColor"
+        stroke-width=".75" fill="none" opacity=".7"/>
+    </g>
+
+    <symbol id="eng-moth" viewBox="0 0 200 140">
+      <use href="#mothhalf"/>
+      <g transform="translate(200,0) scale(-1,1)"><use href="#mothhalf"/></g>
+      <path d="M100,46 C104,54 105,72 104,92 C103,104 101,110 100,112
+        C99,110 97,104 96,92 C95,72 96,54 100,46 Z"
+        fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="100" cy="56" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M96,74 H104 M95,82 H105 M95,90 H105 M96,98 H104 M98,105 H102" stroke="currentColor"
+        stroke-width=".9" fill="none"/>
+      <circle cx="96" cy="51" r="1.6" fill="currentColor"/>
+      <circle cx="104" cy="51" r="1.6" fill="currentColor"/>
+    </symbol>
+
+    <!-- 鱼 -->
+    <symbol id="eng-fish" viewBox="0 0 200 120">
+      <path d="M26,62 C42,34 82,22 118,30 C148,37 166,50 172,60 C166,70 148,83 118,90
+        C82,98 42,86 26,62 Z"
+        fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="2.6"/>
+      <path d="M172,60 C180,46 190,36 196,32 C194,48 194,66 196,86 C190,80 180,70 172,60 Z"
+        fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M176,58 L192,40 M176,62 L193,60 M176,66 L192,80" stroke="currentColor"
+        stroke-width=".9" fill="none"/>
+      <path d="M92,26 C104,14 126,10 140,16 C128,20 116,24 106,28" fill="currentColor"
+        fill-opacity=".1" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M110,88 C118,98 130,102 140,100 C132,94 124,90 118,86" fill="currentColor"
+        fill-opacity=".1" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M98,72 C106,84 118,90 128,90" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M120,32 C114,48 114,70 120,88" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M64,46 C58,56 58,66 64,78 M78,42 C72,54 72,68 78,82 M92,38 C86,52 86,70 92,84"
+        fill="none" stroke="currentColor" stroke-width="1"/>
+      <path d="M40,62 C80,56 130,56 168,60" fill="none" stroke="currentColor" stroke-width="1"
+        stroke-dasharray="3 3"/>
+      <circle cx="46" cy="56" r="5.6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="46" cy="56" r="2.4" fill="currentColor"/>
+      <path d="M26,62 C30,67 34,69 38,69" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

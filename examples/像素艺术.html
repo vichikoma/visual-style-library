@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>像素艺术 · 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{--px-night:#12102b;--px-violet:#5a3e8c;--px-sun:#f2a65a;--px-cyan:#7ed0c4;--px-paper:#f6ede3}
+
+.pxwrap{position:relative;overflow:hidden;background:#0b0a18}
+.pxwrap canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges;display:block}
+.pxwrap .hud{position:absolute;z-index:5;font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.14em;color:#fff;
+  text-shadow:.2cqw .2cqw 0 #000, -.15cqw -.15cqw 0 #000}
+.pxwrap .hud.tl{left:3cqw;top:2.6cqw}
+.pxwrap .hud.tr{right:3cqw;top:2.6cqw;text-align:right;color:#ffe6a8}
+.pxwrap .hud.bl{left:3cqw;bottom:2.6cqw;color:#c8f5ff}
+
+/* 标题字：像素化硬边 */
+.px-master .title{position:absolute;left:3cqw;bottom:4.6cqw;z-index:6;font-family:var(--f-display);
+  font-size:5.2cqw;line-height:1;color:#fff;letter-spacing:.02em;
+  text-shadow:.45cqw .45cqw 0 #2b1b46, .9cqw .9cqw 0 rgba(0,0,0,.35)}
+.px-master .title small{display:block;font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.34em;color:#ffe6a8;
+  text-shadow:none;margin-top:1cqw}
+
+/* 精灵表 */
+.sheetbox{position:relative;aspect-ratio:216/72;container-type:inline-size;overflow:hidden;background:#141026;
+  border-radius:6px;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.sheetbox canvas{position:absolute;left:0;top:0;width:100%;height:auto;image-rendering:pixelated;display:block}
+.sheetbox .lbl{position:absolute;left:2cqw;right:2cqw;bottom:2.4cqw;display:grid;grid-template-columns:repeat(6,1fr);
+  font-family:var(--f-mono);font-size:1.05cqw;color:#8b86a6;letter-spacing:.1em;text-align:center}
+.sheetbox .cap{position:absolute;left:2cqw;top:1.6cqw;font-family:var(--f-mono);font-size:1cqw;color:#7ed0c4;letter-spacing:.2em}
+
+/* 昼夜对比 */
+.dn .tag{position:absolute;z-index:5;font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.24em;padding:.4cqw .9cqw}
+.dn .tag.d{left:2.6cqw;top:2.6cqw;background:#fff6e0;color:#6b4a2a}
+.dn .tag.n{right:2.6cqw;top:2.6cqw;background:#12102b;color:#c8f5ff;border:.2cqw solid #7ed0c4}
+.dn .divider{position:absolute;left:50%;top:0;bottom:0;width:.3cqw;background:#fff;z-index:4;opacity:.8}
+.dn .pal{position:absolute;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:repeat(6,1fr);height:2.6cqw}
+.dn .pal i{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>05 / 25</span>
+    <span class="right"><a href="动漫数字拼贴.html">← 上一条</a><a href="绘画质感动画.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>像素艺术<small>Pixel Art</small></h1>
+    <p class="lead">像素艺术指画面按网格栅格绘制、每个方块即最小视觉单位的图形语言。它既承载复古游戏、横向卷轴与关卡玩法，也承载城市生活、日常物件、昼夜调色与天气等题材，是高度依赖网格和调色能力的形式。</p>
+    <div class="meta">
+      <div><b>风格定位</b>像素艺术（Pixel Art），以栅格方块与有限调色板为基础，可跨题材与媒介使用</div>
+      <div><b>视觉媒介</b>低分辨率画布放大显示（nearest-neighbor）、有限色板、抖动过渡（dithering）</div>
+      <div><b>典型母体</b>横向卷轴关卡、像素城市街景、昼夜调色对比、精灵动作表、像素天气</div>
+    </div>
+    <div class="tags">
+      <span class="tag">像素艺术（Pixel Art）</span><span class="tag">横向卷轴（Side-scroller）</span><span class="tag">精灵图（Sprite）</span>
+      <span class="tag">有限调色板</span><span class="tag">抖动过渡</span><span class="tag">关卡 HUD</span>
+      <span class="tag w">复古游戏</span><span class="tag w">可探索世界</span><span class="tag w">像素叙事</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#12102b"></i>夜色蓝紫<br><code>#12102B</code></div>
+      <div class="sw"><i style="background:#5a3e8c"></i>暮色紫<br><code>#5A3E8C</code></div>
+      <div class="sw"><i style="background:#f2a65a"></i>夕照橙<br><code>#F2A65A</code></div>
+      <div class="sw"><i style="background:#7ed0c4"></i>青绿<br><code>#7ED0C4</code></div>
+      <div class="sw"><i style="background:#f6ede3"></i>纸白<br><code>#F6EDE3</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">画面以 192×108 的栅格绘制后放大显示：所有边缘都落在同一套像素格上，色相过渡靠“抖动”而非渐变，HUD 用等宽字模拟游戏界面。</p>
+
+  <div class="frame px-master pxwrap" id="f-master">
+    <canvas id="c-master" width="192" height="108"></canvas>
+    <div class="hud tl">STAGE 1-2 · 河岸</div>
+    <div class="hud tr">SCORE 048200<br>♥ ♥ ♥</div>
+    <div class="hud bl">1UP  ×03</div>
+    <div class="title">出发之前<small>BEFORE WE GO · 16-BIT</small></div>
+  </div>
+
+  <div class="legend">
+    <div><b>栅格统一</b>人物、地形、云、HUD 落在同一套像素格上，放大不插值，边缘保持硬角。</div>
+    <div><b>有限色板</b>整帧控制在十几个颜色内，明暗靠色相偏移与抖动点阵，不使用平滑渐变。</div>
+    <div><b>视差分层</b>远景山、中景丘陵、近景地面各占一层，移动时速度不同，制造纵深。</div>
+    <div><b>游戏语法</b>关卡编号、分数、生命值与提示字直接借自游戏界面，是像素艺术的叙事外壳。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 4</span></h2>
+  <p class="h2note">每条用一个方向说明像素语言如何承载城市、时间、动作与天气。画面均由 canvas 按栅格实时绘制。</p>
+
+  <div class="subs">
+
+    <!-- 1. 像素城市生活 -->
+    <section class="sub">
+      <div class="frame pxwrap" id="f-city">
+        <canvas id="c-city" width="192" height="108"></canvas>
+        <div class="hud tl" style="color:#ffe6a8">23:40 · 便利店</div>
+        <div class="hud bl">NOODLE · 24H</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>像素城市生活<small>Pixel Urban Life</small></h3>
+        <p>用建筑轮廓、窗格灯光、招牌与街具组织一条可辨认的街道，把“城市”压缩成低分辨率也能读出的形状。细节依赖重复与变体：窗格阵列、灯泡交替、店铺配色。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">窗格阵列</span><span class="tag">霓虹招牌</span>
+          <span class="tag">街具剪影</span><span class="tag">点亮的窗</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 昼夜调色 -->
+    <section class="sub">
+      <div class="frame pxwrap dn" id="f-dn">
+        <canvas id="c-dn" width="384" height="216"></canvas>
+        <div class="tag d">DAY · 12:00</div>
+        <div class="tag n">NIGHT · 00:00</div>
+        <div class="divider"></div>
+        <div class="pal">
+          <i style="background:#bfe3f2"></i><i style="background:#8ec6b8"></i><i style="background:#5f9e7a"></i>
+          <i style="background:#161233"></i><i style="background:#2b3a6b"></i><i style="background:#f2a65a"></i>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>昼夜调色<small>Day / Night Palette Shifting</small></h3>
+        <p>同一场景在两套调色板下呈现不同时间与情绪，是像素艺术最经济的世界表达方式。结构不变、只换色板与窗灯，就能完成从白天到深夜的切换。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">同构图换色板</span><span class="tag">冷／暖偏移</span>
+          <span class="tag">窗灯点亮</span><span class="tag">地平线补色</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 精灵动作表 -->
+    <section class="sub">
+      <div class="sheetbox" id="f-sprite">
+        <div class="cap">WALK CYCLE · 6 FRAMES · 12×16</div>
+        <canvas id="c-sprite" width="216" height="72"></canvas>
+        <div class="lbl"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>精灵动作表<small>Sprite Sheet &amp; Animation</small></h3>
+        <p>把动作拆成若干帧并排排布，每帧只改动几个像素，靠人眼补出连续运动。动作表同时是制作文档：帧数、尺寸、循环点一目了然。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">分解帧</span><span class="tag">逐帧微调</span>
+          <span class="tag">循环节拍</span><span class="tag">尺寸标注</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 像素天气 -->
+    <section class="sub">
+      <div class="frame pxwrap" id="f-snow">
+        <canvas id="c-snow" width="192" height="108"></canvas>
+        <div class="hud tl" style="color:#e8f4ff">-2°C · 雪</div>
+        <div class="hud bl" style="color:#c8f5ff">路滑，慢一点</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">04</span>像素天气<small>Pixel Weather &amp; Atmosphere</small></h3>
+        <p>用少量重复像素（雪点、雨线、雾带、闪电）叠加在场景之上，快速改变画面气氛与节奏。颗粒本身即动效单元，密度与速度决定情绪强弱。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">雪点／雨线</span><span class="tag">密度控制</span>
+          <span class="tag">冷暖压色</span><span class="tag">光晕叠层</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>栅格与分辨率</b>先确定基准栅格（如 192×108 或 320×180），所有元素对齐到同一格；放大时使用最近邻插值，禁止模糊边缘。</div>
+    <div><b>调色与明暗</b>限定色板（12–20 色），明暗通过色相／明度阶梯与抖动点阵实现；避免抗锯齿、柔光与真实渐变。</div>
+    <div><b>构图与叙事</b>用 HUD、关卡编号、精灵表等游戏语法建立语境；场景靠视差分层与重复变体获得信息密度。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>16 位像素艺术画面，192×108 基准栅格放大的硬边像素方块，限定 16 色复古调色板，抖动过渡与视差分层；横向卷轴河岸关卡场景，远景山峦、中景丘陵、近景草地与方块云，像素小人角色站在画面中下部，左上角关卡编号 HUD、右上角分数与生命值；整体冷暖对比明确，像素边缘锐利无模糊。</div>
+
+  <footer>样例说明：所有画面由 canvas 在页面内按栅格实时绘制，未使用任何游戏素材或视频截图；角色精灵为原创造型，尺寸 12×16 像素。子风格依据 <code>styles/像素艺术.md</code>。</footer>
+</div>
+
+<script>
+(function(){
+  const P=(c,x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x|0,y|0,w|0,h|0)};
+  const ctxOf=id=>{const cv=document.getElementById(id);const c=cv.getContext('2d');c.imageSmoothingEnabled=false;return c};
+
+  /* ---------- 主图：河岸关卡 ---------- */
+  function master(){
+    const c=ctxOf('c-master');
+    const sky=['#241a44','#2c2050','#3a2860','#4e2e6b','#6b3a6d','#8d4a66','#b45f5f','#d57a56','#e99a5e','#f2b06a'];
+    sky.forEach((col,i)=>P(c,0,Math.round(i*4.2),192,5,col));
+    // 星
+    [[18,8],[42,5],[70,11],[120,6],[160,10],[178,4]].forEach(([x,y])=>P(c,x,y,1,1,'#ffe6a8'));
+    // 太阳（方块圆）
+    for(let y=-8;y<=8;y++){const w=Math.round(Math.sqrt(64-y*y));P(c,148-w,22+y,w*2,1,'#ffe6a8')}
+    for(let y=-5;y<=5;y++){const w=Math.round(Math.sqrt(25-y*y));P(c,148-w,22+y,w*2,1,'#fff4cf')}
+    // 远山
+    for(let x=0;x<192;x++){
+      const h1=16+Math.round(8*Math.sin(x*0.045)+5*Math.sin(x*0.11));
+      P(c,x,66-h1,1,h1,'#3a2a5e');
+      const h2=10+Math.round(6*Math.sin(x*0.07+2)+3*Math.sin(x*0.19));
+      P(c,x,68-h2,1,h2,'#4a3068');
+    }
+    // 云
+    const cloud=(cx,cy,s)=>{P(c,cx,cy,s*3,s,'#f6ede3');P(c,cx+s,cy-s,s*2,s*2,'#f6ede3');P(c,cx+s*2,cy,s*2,s,'#f6ede3');
+      P(c,cx+s,cy+s,s*3,1/1,'#f6ede3')};
+    cloud(20,24,3);cloud(96,16,2);cloud(168,30,2);
+    // 中景丘陵
+    for(let x=0;x<192;x++){
+      const h=9+Math.round(4*Math.sin(x*0.05+1.2));
+      P(c,x,80-h,1,h,'#2f6b58');
+      P(c,x,80-h,1,1,'#4f9c7a');
+    }
+    // 草地
+    P(c,0,80,192,28,'#3f8a63');
+    P(c,0,80,192,3,'#5cb083');
+    for(let x=0;x<192;x+=4){P(c,x,86+((x/4)%2)*2,2,1,'#357a58');P(c,x+2,92+((x/4)%3),2,1,'#357a58')}
+    // 河水
+    P(c,0,98,192,10,'#2b4a7a');
+    for(let x=0;x<192;x+=6){P(c,x,100+(x%12?0:2),4,1,'#4a7ab0')}
+    // 道路
+    P(c,0,104,192,4,'#c8a878');
+    for(let x=2;x<192;x+=12){P(c,x,106,6,1,'#8a6a44')}
+    // 角色
+    const hero=[
+      "....hhhh....",
+      "...hhhhhh...",
+      "...hssssh...",
+      "...hseseh...",
+      "...hssssh...",
+      "....ssss....",
+      "...cccccc...",
+      "..cccccccc..",
+      ".sccccccccs.",
+      ".sccccccccs.",
+      "..cCCccccC..",
+      "..cccccccc..",
+      "...cccccc...",
+      "...cc..cc...",
+      "...bb..bb...",
+      "...bb..bb..."
+    ];
+    const pal={h:'#26203f',s:'#f2c9a0',e:'#12102b',c:'#d9553f',C:'#a8382c',b:'#33405e'};
+    const draw=(sx,sy,rows,sc)=>{rows.forEach((row,y)=>{[...row].forEach((ch,x)=>{if(pal[ch])P(c,sx+x*sc,sy+y*sc,sc,sc,pal[ch])})})};
+    draw(112,56,hero,2);
+    // 影子
+    P(c,110,88,28,2,'#2f6b52');P(c,114,86,18,2,'#357a58');
+    // 前景草
+    for(let x=0;x<192;x+=9){P(c,x,107,2,1,'#2f6b52')}
+  }
+
+  /* ---------- 像素城市 ---------- */
+  function city(){
+    const c=ctxOf('c-city');
+    P(c,0,0,192,108,'#12102b');
+    P(c,0,0,192,30,'#1a1740');
+    // 月
+    for(let y=-5;y<=5;y++){const w=Math.round(Math.sqrt(25-y*y));P(c,164-w,14+y,w*2,1,'#f6ede3')}
+    P(c,160,10,3,3,'#d8d2c4');
+    // 远楼
+    const far=[[0,44,26],[26,52,20],[46,38,30],[76,48,18],[94,42,26],[120,50,22],[142,40,28],[170,46,22]];
+    far.forEach(([x,y,w])=>{P(c,x,y,w,108-y,'#1e1a44')});
+    // 主楼（带窗）
+    const bld=[[4,30,40,78,'#2b2456'],[52,18,34,90,'#332a63'],[92,36,44,72,'#282050'],[140,24,44,84,'#2e2659']];
+    bld.forEach(([x,y,w,h,col])=>{
+      P(c,x,y,w,h,col);
+      P(c,x,y,w,1,'#463a7a');
+      for(let wy=y+5;wy<y+h-4;wy+=6){
+        for(let wx=x+4;wx<x+w-4;wx+=6){
+          const r=((wx*7+wy*13)%11);
+          const lit=r>4;
+          P(c,wx,wy,3,3,lit?(r>7?'#ffd98a':'#7ed0c4'):'#1a1640');
+        }
+      }
+    });
+    // 招牌
+    P(c,58,40,4,26,'#ff5a5f');P(c,58,40,4,3,'#ffd98a');
+    P(c,66,52,3,14,'#7ed0c4');
+    P(c,100,50,18,3,'#ffd98a');P(c,100,56,12,2,'#ff9a5a');
+    // 地面与路
+    P(c,0,98,192,10,'#1a1740');
+    P(c,0,100,192,6,'#241f4a');
+    for(let x=4;x<192;x+=16){P(c,x,103,8,1,'#4a4280')}
+    // 街灯
+    P(c,84,72,1,26,'#4a4280');P(c,80,70,9,2,'#4a4280');
+    P(c,80,72,9,8,'rgba(255,230,168,.16)');
+    P(c,83,72,3,2,'#ffe6a8');
+    // 小店
+    P(c,110,86,40,12,'#f2e6cf');
+    P(c,110,84,40,3,'#d9553f');
+    for(let x=113;x<148;x+=6){P(c,x,90,4,6,'#ffe6a8')}
+    P(c,126,96,8,2,'#8b86a6');
+    // 猫
+    P(c,72,94,6,4,'#0d0c1c');P(c,72,92,3,3,'#0d0c1c');P(c,72,90,1,2,'#0d0c1c');P(c,74,90,1,2,'#0d0c1c');
+    P(c,77,94,1,1,'#0d0c1c');P(c,73,94,1,1,'#7ed0c4');P(c,75,94,1,1,'#7ed0c4');
+    // 电线
+    for(let x=0;x<192;x+=1){const y=22+Math.round(3*Math.sin(x*0.04));P(c,x,y,1,1,'#3a3260')}
+  }
+
+  /* ---------- 昼夜 ---------- */
+  function daynight(){
+    const c=ctxOf('c-dn');
+    const half=(dx,pal)=>{
+      c.save();c.translate(dx,0);c.scale(2,2);
+      // 天空
+      for(let i=0;i<12;i++)P(c,0,i*9,96,9,pal.sky[i]);
+      // 太阳 / 月亮
+      const cx=70, cy=26;
+      for(let y=-6;y<=6;y++){const hw=Math.round(Math.sqrt(36-y*y));P(c,cx-hw,cy+y,hw*2,1,pal.orb)}
+      // 楼群
+      const bl=[[0,50,13],[14,42,11],[26,56,15],[42,36,12],[55,44,16],[72,52,10],[83,40,12]];
+      bl.forEach(([X,Y,W])=>{
+        P(c,X,Y,W,108-Y,pal.bld);
+        P(c,X,Y,W,1,pal.bldTop);
+        for(let wy=Y+4;wy<92;wy+=6){
+          for(let wx=X+3;wx<X+W-3;wx+=4){
+            const r=(wx*5+wy*9)%9;
+            P(c,wx,wy,2,3, r>3?pal.win:pal.winOff);
+          }
+        }
+      });
+      // 地面
+      P(c,0,92,96,16,pal.ground);
+      P(c,0,92,96,1,pal.groundTop);
+      // 树（阶梯树冠）
+      P(c,45,84,2,8,pal.trunk);
+      P(c,42,78,8,5,pal.tree);
+      P(c,43,74,6,4,pal.tree);
+      P(c,45,71,2,3,pal.tree);
+      // 人
+      P(c,60,82,3,8,pal.person);
+      P(c,60,78,3,4,pal.person2);
+      P(c,60,90,1,2,pal.person);
+      P(c,62,90,1,2,pal.person);
+      // 路灯
+      P(c,70,68,1,24,pal.bld);
+      P(c,67,66,7,1,pal.bld);
+      P(c,69,67,3,2,pal.orb);
+      // 车
+      P(c,20,86,12,4,pal.car);
+      P(c,22,83,7,3,pal.car);
+      P(c,22,84,3,2,pal.win);
+      P(c,23,90,2,2,pal.bld);P(c,28,90,2,2,pal.bld);
+      c.restore();
+    };
+    half(0,{sky:['#a8d8ea','#b6dfef','#c4e6f3','#d1ecf6','#ddf1f8','#e7f5fa','#eff9fc','#f6fbfd','#fafdfe','#fdfeff','#fdfeff','#fdfeff'],
+      orb:'#fff3cf',bld:'#8fb4c4',bldTop:'#cfe4ec',win:'#eaf6fa',winOff:'#a8c8d4',
+      ground:'#7fa887',groundTop:'#9dc0a2',tree:'#5f9e7a',trunk:'#7a5a3a',person:'#4a6b8a',person2:'#f2c9a0',car:'#d9a15e'});
+    half(192,{sky:['#161233','#1a1540','#1e1848','#221b4e','#271f56','#2c235c','#322962','#382f68','#3f356d','#463a72','#4d4076','#54457a'],
+      orb:'#f6ede3',bld:'#221c4a',bldTop:'#3a3270',win:'#ffd98a',winOff:'#2b2456',
+      ground:'#2a2350',groundTop:'#3a3170',tree:'#2f4a52',trunk:'#241c33',person:'#7ed0c4',person2:'#f2c9a0',car:'#c05a4a'});
+  }
+
+  /* ---------- 精灵表 ---------- */
+  function sprite(){
+    const c=ctxOf('c-sprite');
+    P(c,0,0,216,72,'#141026');
+    // 网格
+    for(let x=0;x<216;x+=18)P(c,x,0,1,72,'rgba(126,208,196,.07)');
+    for(let y=0;y<72;y+=18)P(c,0,y,216,1,'rgba(126,208,196,.07)');
+    const pal={h:'#26203f',s:'#f2c9a0',e:'#12102b',c:'#7ed0c4',C:'#4a9c96',b:'#33405e'};
+    const base=[
+      "....hhhh....",
+      "...hhhhhh...",
+      "...hssssh...",
+      "...hseseh...",
+      "...hssssh...",
+      "....ssss....",
+      "...cccccc...",
+      "..cccccccc..",
+      ".sccccccccs.",
+      "..cccccccc..",
+      "..cccccccc..",
+      "...cccccc..."
+    ];
+    // 六帧：腿部与手臂的微调
+    const legs=[
+      ["...cc..cc...","..bb....bb..","..bb....bb.."],
+      ["...cc..cc...","...bb..bb...","..bb....bb.."],
+      ["...cccc.....","...bb.bb....","...bb.bb...."],
+      ["...cccc.....","...bbbb.....","...bb.bb...."],
+      ["...cccc.....","....bbbb....","...bb.bb...."],
+      ["...cc..cc...","...bb..bb...","..bb....bb.."]
+    ];
+    const armShift=[0,1,1,0,-1,-1];
+    legs.forEach((lg,i)=>{
+      const ox=6+i*36, oy=10, sc=2;
+      base.concat(lg).forEach((row,y)=>{
+        [...row].forEach((ch,x)=>{
+          if(!pal[ch])return;
+          let px=ox+x*sc, py=oy+y*sc;
+          if(y>=8&&y<=9&&(ch==='s'))px+=armShift[i]*sc;
+          P(c,px,py,sc,sc,pal[ch]);
+        });
+      });
+      P(c,ox,oy+32,24,1,'rgba(255,255,255,.10)');
+    });
+  }
+
+  /* ---------- 雪 ---------- */
+  function snow(){
+    const c=ctxOf('c-snow');
+    // 冷色调夜景
+    for(let i=0;i<10;i++)P(c,0,i*6,192,6,['#1b2340','#1e2746','#222b4c','#263052','#2a3558','#2e3a5e','#323f64','#36446a','#3a4970','#3e4e76'][i]);
+    // 树剪影
+    const pine=(x,y,s)=>{for(let i=0;i<4;i++){P(c,x-i*s*0.8,y+i*s*1.1,s*1.6+i*s*1.6,s*1.1,'#16203a')}};
+    pine(24,34,4);pine(150,28,5);pine(70,40,3);
+    // 地面
+    P(c,0,84,192,24,'#3a4a6e');
+    P(c,0,84,192,3,'#e8f4ff');
+    P(c,0,86,192,6,'#4a5c82');
+    // 小路
+    P(c,20,92,150,8,'#5a6c92');
+    for(let x=24;x<168;x+=10)P(c,x,95,5,1,'#6e80a6');
+    // 小屋
+    P(c,118,60,34,24,'#2e2233');
+    P(c,114,58,42,4,'#e8f4ff');
+    P(c,112,52,46,6,'#8a4a3c');
+    P(c,126,68,7,7,'#ffd98a');
+    P(c,140,68,7,7,'#ffd98a');
+    P(c,133,74,6,10,'#4a3020');
+    P(c,118,60,34,2,'#3a2a40');
+    // 灯
+    P(c,100,70,1,22,'#c8d8f0');P(c,96,68,9,1,'#c8d8f0');
+    for(let y=0;y<10;y++)P(c,97+y*0.3,69+y,7-y*0.5,1,'rgba(255,230,168,.10)');
+    P(c,99,69,3,3,'#ffe6a8');
+    // 雪堆
+    for(let x=0;x<192;x+=7){P(c,x,83,4,2,'#e8f4ff')}
+    // 雪点
+    let seed=7;
+    const rnd=()=>{seed=(seed*1103515245+12345)%2147483647;return seed/2147483647};
+    for(let i=0;i<130;i++){
+      const x=Math.round(rnd()*192), y=Math.round(rnd()*108), s=rnd()>0.7?2:1;
+      P(c,x,y,s,s,rnd()>0.4?'#e8f4ff':'#b8ccea');
+    }
+    // 雾带
+    for(let y=50;y<76;y+=2){P(c,0,y,192,1,'rgba(200,220,255,.05)')}
+  }
+
+  master();city();daynight();sprite();snow();
+
+  /* 轻微动效：雪与角色呼吸（可关闭） */
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){
+    const cv=document.getElementById('c-snow');const c=cv.getContext('2d');
+    const img=c.getImageData(0,0,192,108);
+    const flakes=[];
+    for(let i=0;i<90;i++)flakes.push({x:Math.random()*192,y:Math.random()*108,s:Math.random()>0.7?2:1,v:0.25+Math.random()*0.5});
+    const buf=document.createElement('canvas');buf.width=192;buf.height=108;buf.getContext('2d').putImageData(img,0,0);
+    function loop(){
+      c.clearRect(0,0,192,108);c.drawImage(buf,0,0);
+      c.fillStyle='#e8f4ff';
+      flakes.forEach(f=>{f.y+=f.v;if(f.y>108){f.y=-2;f.x=Math.random()*192}f.fillRect(f.x|0,f.y|0,f.s,f.s)});
+      requestAnimationFrame(loop);
+    }
+    loop();
+  }
+})();
+</script>
+<script src="_assets/base.js"></script>
+</body>
+</html>

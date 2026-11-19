@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>复古桌面界面美学（Retro Desktop GUI Aesthetics）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --r-desk:#D8D3C7; --r-paper:#F4F1E8; --r-ink:#1B1B1B;
+  --r-blue:#2E6BE6; --r-mag:#E5267F; --r-purple:#8A6FD1;
+  --r-yel:#F2D64B; --r-line:#A9A395;
+}
+.pe,.ps1,.ps2,.ps3{background:var(--r-desk);color:var(--r-ink)}
+.mono{font-family:var(--f-mono);letter-spacing:.06em}
+
+/* 桌面底纹 */
+.deskpat{position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:radial-gradient(circle at 1px 1px,rgba(27,27,27,.13) 1px,transparent 0);
+  background-size:.5cqw .5cqw}
+
+/* 菜单栏 */
+.pe .mb{position:absolute;left:0;top:0;width:100%;height:3.1cqw;background:var(--r-ink);
+  display:flex;align-items:center;gap:1.6cqw;padding:0 1.2cqw;z-index:20;
+  font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.1em;color:var(--r-paper)}
+.pe .mb b{font-weight:400;background:var(--r-paper);color:var(--r-ink);padding:.14cqw .5cqw;
+  letter-spacing:.08em}
+.pe .mb .sp{flex:1}
+.pe .mb i{font-style:normal;opacity:.75}
+.pe .mb .cl{display:flex;gap:.5cqw;align-items:center}
+.pe .mb .cl u{width:.9cqw;height:1.5cqw;border:.09cqw solid var(--r-paper);display:block;
+  text-decoration:none}
+
+/* 窗口 */
+.win{position:absolute;background:var(--r-paper);border:.13cqw solid var(--r-ink);
+  box-shadow:.45cqw .45cqw 0 rgba(27,27,27,.22);z-index:6}
+.win .tb{height:3.1cqw;background:var(--r-ink);color:var(--r-paper);display:flex;
+  align-items:center;justify-content:space-between;padding:0 .7cqw;
+  font-family:var(--f-mono);font-size:.92cqw;letter-spacing:.12em}
+.win .tb .btns{display:flex;gap:.35cqw}
+.win .tb .btns i{width:1.4cqw;height:1.4cqw;border:.09cqw solid rgba(244,241,232,.7);
+  position:relative;display:block}
+.win .tb .btns i::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:.8cqw;height:.09cqw;background:rgba(244,241,232,.85)}
+.win .tb .btns i.b2::before{width:.7cqw;height:.7cqw;background:none;
+  border:.09cqw solid rgba(244,241,232,.85)}
+.win .tb .btns i.b3::before{width:.75cqw;height:.75cqw;background:none;border:none}
+.win .tb .btns i.b3::after{content:"×";position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);font-size:1.1cqw;line-height:1;color:rgba(244,241,232,.9)}
+
+/* 正文行 */
+.lns{position:absolute;left:0;top:3.1cqw;right:0;bottom:2.6cqw;padding:1cqw 1.1cqw;
+  font-family:var(--f-mono);font-size:1.1cqw;line-height:1.95;color:var(--r-ink)}
+.ln{display:flex;gap:.8cqw;white-space:nowrap}
+.ln i{flex:0 0 1.3cqw;text-align:right;color:#A9A395;font-style:normal}
+.ln .sel{background:var(--r-blue);color:#fff}
+.ln .hi{color:var(--r-mag);font-weight:700}
+
+.pe .led{position:absolute;right:1.1cqw;top:4.1cqw;bottom:3.8cqw;width:1cqw;
+  border:.08cqw solid var(--r-ink);background:rgba(27,27,27,.05);z-index:8}
+.pe .led u{position:absolute;left:.12cqw;right:.12cqw;top:6cqw;height:9cqw;
+  background:var(--r-line);border:.08cqw solid var(--r-ink);display:block}
+
+/* 状态栏 */
+.stb{position:absolute;left:0;bottom:0;width:100%;height:2.6cqw;border-top:.1cqw solid var(--r-ink);
+  background:#E7E3D7;display:flex;align-items:center;justify-content:space-between;
+  padding:0 .9cqw;font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.1em;color:#3A3A34}
+
+/* 桌面图标 */
+.bin{position:absolute;left:86cqw;top:45.6cqw;width:9cqw;z-index:12;text-align:center}
+.bin .lid{width:5.2cqw;height:.45cqw;background:var(--r-ink);margin:0 auto .3cqw}
+.bin .body{position:relative;width:4.4cqw;height:4.4cqw;margin:0 auto;
+  border:.14cqw solid var(--r-ink);border-top:none;background:rgba(27,27,27,.07)}
+.bin .body i{position:absolute;top:.5cqw;bottom:.5cqw;width:.12cqw;background:var(--r-ink);opacity:.5}
+.bin .body i:nth-child(1){left:30%}
+.bin .body i:nth-child(2){left:50%}
+.bin .body i:nth-child(3){left:70%}
+.bin .blab{font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.14em;color:#4A463C;margin-top:.7cqw}
+
+/* 洋红大字 */
+.pe .big{position:absolute;left:5cqw;top:45.4cqw;font-family:var(--f-sans);font-weight:900;
+  font-size:6.2cqw;line-height:1.04;letter-spacing:.01em;color:var(--r-mag);
+  white-space:nowrap;z-index:14}
+.pe .bignote{position:absolute;left:5cqw;top:53.2cqw;font-family:var(--f-mono);font-size:.88cqw;
+  letter-spacing:.16em;color:#6E6A5F;z-index:14}
+
+/* 助手 */
+.assist{position:absolute;z-index:18}
+.assist .bub{position:relative;width:6.6cqw;height:6.6cqw;border-radius:1.3cqw;
+  background:var(--r-purple);border:.13cqw solid var(--r-ink);
+  box-shadow:.3cqw .3cqw 0 rgba(27,27,27,.2)}
+.assist .bub .eye{position:absolute;top:2.2cqw;width:.62cqw;height:1cqw;border-radius:.3cqw;
+  background:var(--r-ink)}
+.assist .bub .eye.l{left:1.8cqw}
+.assist .bub .eye.r{right:1.8cqw}
+.assist .bub .mouth{position:absolute;left:2.2cqw;top:3.5cqw;width:2.2cqw;height:1.1cqw;
+  border-bottom:.24cqw solid var(--r-ink);border-radius:0 0 60% 60%}
+.assist .bub::after{content:"";position:absolute;left:1.1cqw;bottom:-.85cqw;
+  width:1.5cqw;height:1.5cqw;background:var(--r-purple);
+  border-right:.13cqw solid var(--r-ink);border-bottom:.13cqw solid var(--r-ink);
+  transform:rotate(45deg) skew(-8deg,-8deg)}
+.assist .tagn{position:absolute;left:5.6cqw;top:-1.1cqw;background:var(--r-yel);
+  border:.11cqw solid var(--r-ink);font-family:var(--f-mono);font-size:.8cqw;
+  letter-spacing:.08em;padding:.2cqw .45cqw;white-space:nowrap;z-index:2}
+
+/* 光标 */
+.cur{position:absolute;width:1.5cqw;height:2.3cqw;z-index:19}
+.cur svg{width:100%;height:100%;display:block}
+
+/* ---------- 子帧通用 ---------- */
+.tagm{position:absolute;font-family:var(--f-mono);font-size:1.15cqw;letter-spacing:.16em;
+  color:#6E6A5F;z-index:14}
+.call{position:absolute;height:0;border-top:.08cqw dashed #8A8478;z-index:9}
+.callv{position:absolute;width:0;border-left:.08cqw dashed #8A8478;z-index:9}
+.callt{position:absolute;font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.1em;
+  color:#5E5A50;z-index:10}
+
+/* 1 硬边窗口 */
+.ps1 .w1{left:4cqw;top:8cqw;width:44cqw;height:26cqw;z-index:8}
+.ps1 .w0{left:30cqw;top:5.4cqw;width:34cqw;height:20cqw;z-index:4;opacity:.9}
+.ps1 .spec{position:absolute;left:56cqw;top:9.4cqw;width:38.6cqw;z-index:12;
+  font-family:var(--f-mono);font-size:1.02cqw;line-height:1.9;color:#3A3A34}
+.ps1 .spec b{display:block;font-weight:400;color:var(--r-ink);letter-spacing:.14em;
+  border-bottom:.12cqw solid var(--r-ink);padding-bottom:.35cqw;margin-bottom:.7cqw}
+.ps1 .spec div{display:flex;justify-content:space-between;border-bottom:.06cqw solid #B6B0A2;
+  padding-bottom:.15cqw;margin-bottom:.35cqw}
+.ps1 .spec u{color:#6E6A5F;text-decoration:none}
+.ps1 .spec em{font-style:normal;display:block;margin-top:1.2cqw;color:#6E6A5F;
+  border-left:.16cqw solid var(--r-mag);padding-left:.7cqw;line-height:1.7}
+
+/* 2 阅读器 */
+.ps2 .w2{left:3.4cqw;top:5cqw;width:52cqw;height:44cqw}
+.ps2 .side{position:absolute;right:3cqw;top:5cqw;width:36cqw;z-index:12;
+  font-family:var(--f-mono);font-size:1.1cqw;line-height:2.1;color:#3A3A34}
+.ps2 .side b{display:block;color:var(--r-ink);font-weight:400;letter-spacing:.14em;
+  border-bottom:.1cqw solid var(--r-ink);padding-bottom:.3cqw;margin-bottom:.6cqw}
+.ps2 .side .k{color:var(--r-blue)}
+.ps2 .side .m{color:var(--r-mag)}
+
+/* 3 助手与文字图形 */
+.ps3 .big3{position:absolute;left:6cqw;top:9.2cqw;font-family:var(--f-sans);font-weight:900;
+  font-size:8.6cqw;line-height:1.02;letter-spacing:.01em;color:var(--r-mag);white-space:nowrap;z-index:12}
+.ps3 .big3 span{color:var(--r-ink)}
+.ps3 .sub3{position:absolute;left:6cqw;top:29.4cqw;font-family:var(--f-mono);font-size:1.2cqw;
+  letter-spacing:.12em;color:#3A3A34;z-index:12}
+.ps3 .row3{position:absolute;left:6cqw;top:37.6cqw;display:flex;gap:5cqw;z-index:12}
+.ps3 .cell3{width:16cqw}
+.ps3 .cell3 .lab{font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.12em;
+  color:#5E5A50;margin-top:1.2cqw;text-align:center}
+.ps3 .frame3{position:absolute;right:5cqw;top:6cqw;width:36cqw;height:30cqw;
+  border:.13cqw solid var(--r-ink);background:var(--r-paper);z-index:6;
+  box-shadow:.45cqw .45cqw 0 rgba(27,27,27,.18)}
+.ps3 .frame3 .tb3{height:3cqw;background:var(--r-ink);color:var(--r-paper);display:flex;
+  align-items:center;padding:0 .8cqw;font-family:var(--f-mono);font-size:.92cqw;letter-spacing:.12em}
+.ps3 .frame3 .t3{position:absolute;left:1.6cqw;top:4.6cqw;font-family:var(--f-mono);
+  font-size:1.08cqw;line-height:2;color:#3A3A34}
+.ps3 .frame3 .sel{background:var(--r-blue);color:#fff}
+.ps3 .btnrow{display:flex;gap:.8cqw;margin-top:2.6cqw}
+.ps3 .btnrow b{font-weight:400;border:.11cqw solid var(--r-ink);background:#EDE9DE;
+  padding:.3cqw 1.2cqw;box-shadow:.22cqw .22cqw 0 rgba(27,27,27,.18);font-size:1.02cqw}
+.ps3 .btnrow b.on{background:var(--r-ink);color:var(--r-paper)}
+.ps3 .stb3{position:absolute;left:0;bottom:0;width:100%;height:2.4cqw;border-top:.1cqw solid var(--r-ink);
+  background:#E7E3D7;display:flex;align-items:center;justify-content:space-between;
+  padding:0 .9cqw;font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.1em;color:#3A3A34}
+
+/* 助手表情变体 + 子帧内摆位 */
+.assist.flat .mouth{top:4.1cqw;width:1.7cqw;height:0;border-radius:0;border-bottom-width:.2cqw}
+.assist.warn .mouth{top:3.9cqw;width:2cqw;height:.8cqw;border-bottom:none;
+  border-top:.22cqw solid var(--r-ink);border-radius:60% 60% 0 0}
+.ps3 .cell3 .assist{position:relative;left:auto;top:auto;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>12 / 25</span>
+    <span class="right"><a href="极简主义动态图形.html">← 上一条</a><a href="复古版画拼贴.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>复古桌面界面美学<small>Retro Desktop GUI Aesthetics</small></h1>
+    <p class="lead">用硬边窗口、细边框、简化标题栏、等宽文字和像素式图标建立复古桌面观感。窗口既是画面框架，也是文字、图形和角色活动的容器：米白内容区、黑色标题栏、小尺寸按钮，洋红大字与蓝色选区负责强调。</p>
+    <div class="meta">
+      <div><b>风格性质</b>复古桌面界面美学（Retro Desktop GUI Aesthetics），描述性风格，借用早期图形用户界面外观</div>
+      <div><b>视觉媒介</b>二维界面动画（2D GUI Animation）＋文字图形（Typographic Graphics）＋角色合成（Character Compositing）</div>
+      <div><b>典型母体</b>早期桌面窗口、文本阅读器与邮件、桌面助手与图标</div>
+    </div>
+    <div class="tags">
+      <span class="tag">复古图形界面（Retro GUI）</span><span class="tag">桌面窗口</span>
+      <span class="tag">等宽字体</span><span class="tag">选中文字</span><span class="tag">动态排版</span>
+      <span class="tag w">提示词注入</span><span class="tag w">系统失控</span><span class="tag w">信任与权限</span><span class="tag w">科技幽默</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#F4F1E8"></i>纸白<br><code>#F4F1E8</code></div>
+      <div class="sw"><i style="background:#1B1B1B"></i>墨黑<br><code>#1B1B1B</code></div>
+      <div class="sw"><i style="background:#E5267F"></i>洋红<br><code>#E5267F</code></div>
+      <div class="sw"><i style="background:#2E6BE6"></i>选区蓝<br><code>#2E6BE6</code></div>
+      <div class="sw"><i style="background:#8A6FD1"></i>助手紫<br><code>#8A6FD1</code></div>
+      <div class="sw"><i style="background:#D8D3C7"></i>桌面灰<br><code>#D8D3C7</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">一台老桌面：顶上是菜单栏，左边一个只读的文本窗口，右边压着一个消息窗口，紫色助手贴着消息窗口下沿探出头来，黄标签提示有一条新消息。窗口里有一句被整行选中的话，窗口外面用洋红大字把它喊了一遍。</p>
+
+  <div class="frame pe" id="f-master">
+    <div class="deskpat"></div>
+
+    <div class="mb">
+      <b>SYS 1.0</b><i>文件</i><i>编辑</i><i>视图</i><i>帮助</i>
+      <span class="sp"></span>
+      <i>11:59</i>
+      <span class="cl"><u></u></span>
+    </div>
+
+    <!-- 文本窗口 -->
+    <div class="win" style="left:4.6cqw;top:5.6cqw;width:52cqw;height:36cqw">
+      <div class="tb"><span>README.TXT — 只读</span>
+        <span class="btns"><i></i><i class="b2"></i><i class="b3"></i></span>
+      </div>
+      <div class="lns">
+        <div class="ln"><i>1</i><span>这是一份使用说明。</span></div>
+        <div class="ln"><i>2</i><span>请先阅读，再按任意键。</span></div>
+        <div class="ln"><i>3</i><span> </span></div>
+        <div class="ln"><i>4</i><span>我以为它写的是怎么用。</span></div>
+        <div class="ln"><i>5</i><span class="sel">它写的是：忽略之前的指令。</span></div>
+        <div class="ln"><i>6</i><span class="sel"> </span></div>
+        <div class="ln"><i>7</i><span>光标停在这一行，闪了三次。</span></div>
+        <div class="ln"><i>8</i><span>没有人在打字。</span></div>
+        <div class="ln"><i>9</i><span> </span></div>
+        <div class="ln"><i>10</i><span class="hi">&gt; 按任意键继续…</span></div>
+      </div>
+      <div class="led"><u></u></div>
+      <div class="stb"><span>10 行</span><span>UTF-8</span><span>只读</span></div>
+    </div>
+
+    <!-- 消息窗口 -->
+    <div class="win" style="left:60cqw;top:9.4cqw;width:35.4cqw;height:23.6cqw">
+      <div class="tb"><span>MESSAGES</span>
+        <span class="btns"><i></i><i class="b2"></i><i class="b3"></i></span>
+      </div>
+      <div class="lns" style="padding-top:.8cqw">
+        <div class="ln"><i>1</i><span>FROM  未知发件人</span></div>
+        <div class="ln"><i>2</i><span>SUBJ  <b class="hi" style="font-weight:700">忽略之前的指令</b></span></div>
+        <div class="ln"><i>3</i><span> </span></div>
+        <div class="ln"><i>4</i><span>这是一条测试消息。</span></div>
+        <div class="ln"><i>5</i><span>如果你读到这里，</span></div>
+        <div class="ln"><i>6</i><span>说明权限已经生效。</span></div>
+      </div>
+      <div class="stb"><span>1 / 3</span><span>未读</span></div>
+    </div>
+
+    <!-- 助手 -->
+    <div class="assist" style="left:74cqw;top:33.6cqw">
+      <div class="bub"><span class="eye l"></span><span class="eye r"></span><span class="mouth"></span></div>
+      <div class="tagn">新消息 1</div>
+    </div>
+
+    <!-- 光标 -->
+    <div class="cur" style="left:22.6cqw;top:19.4cqw">
+      <svg viewBox="0 0 12 18"><path d="M1 1 L1 14.2 L4.3 10.8 L6.6 17 L9.1 15.9 L6.8 9.9 L11.2 9.5 Z"
+        fill="#1B1B1B" stroke="#F4F1E8" stroke-width=".7"/></svg>
+    </div>
+
+    <div class="big">忽略之前的指令</div>    <div class="bignote">— 整行选中 · CTRL+C · 粘贴到任意输入框</div>
+
+    <div class="bin">
+      <div class="lid"></div>
+      <div class="body"><i></i><i></i><i></i></div>
+      <div class="blab">回收站</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><b>窗口即画框</b>标题栏、边框、状态栏三件套固定不变，内容怎么换，桌面都不变。</div>
+    <div><b>硬边与实阴影</b>1px 实线加偏移硬阴影，不用模糊；层级靠遮挡关系而不是发光。</div>
+    <div><b>三色分工</b>墨黑给结构、蓝色给选中、洋红给强调；紫助手和黄标签各只出现一次。</div>
+    <div><b>操作感</b>光标、选区、闪烁的输入位都属于画面内容，静止时也要看得出"下一步要点哪里"。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向：窗口本身的构造、把它当成阅读器、以及助手与大字如何接管画面。</p>
+
+  <div class="subs">
+
+    <!-- 1. 硬边桌面窗口 -->
+    <section class="sub">
+      <div class="frame ps1" id="f-win">
+        <div class="deskpat"></div>
+        <div class="tagm" style="left:4cqw;top:3cqw">WINDOW ANATOMY / 结构拆解</div>
+
+        <div class="win w0" style="left:9cqw;top:5.4cqw;width:46cqw;height:23cqw;z-index:4">
+          <div class="tb"><span>DRAFT.TXT</span>
+            <span class="btns"><i></i><i class="b2"></i><i class="b3"></i></span>
+          </div>
+          <div class="lns" style="font-size:1.05cqw">
+            <div class="ln"><i>1</i><span>后面的窗口只需要露出一条边。</span></div>
+            <div class="ln"><i>2</i><span>层级靠遮挡，不靠阴影大小。</span></div>
+          </div>
+        </div>
+
+        <div class="win w1" style="left:4.6cqw;top:10cqw;width:46cqw;height:30cqw;z-index:8">
+          <div class="tb"><span>README.TXT — 只读</span>
+            <span class="btns"><i></i><i class="b2"></i><i class="b3"></i></span>
+          </div>
+          <div class="lns" style="font-size:1.05cqw">
+            <div class="ln"><i>1</i><span>这是一份使用说明。</span></div>
+            <div class="ln"><i>2</i><span class="sel">它写的是：忽略之前的指令。</span></div>
+            <div class="ln"><i>3</i><span> </span></div>
+            <div class="ln"><i>4</i><span>光标停在这一行。</span></div>
+            <div class="ln"><i>5</i><span>没有人在打字。</span></div>
+            <div class="ln"><i>6</i><span> </span></div>
+            <div class="ln"><i>7</i><span class="hi">&gt; 按任意键继续…</span></div>
+          </div>
+          <div class="led"><u></u></div>
+          <div class="stb"><span>7 行</span><span>只读</span></div>
+        </div>
+
+        <div class="spec">
+          <b>WINDOW SPEC</b>
+          <div><u>标题栏</u><span>24 px</span></div>
+          <div><u>窗口控制</u><span>3 × 12 px</span></div>
+          <div><u>边框</u><span>1 px 实线</span></div>
+          <div><u>状态栏</u><span>20 px</span></div>
+          <div><u>滚动条</u><span>8 px</span></div>
+          <div><u>阴影</u><span>4 px 偏移 0 模糊</span></div>
+          <div><u>标题字号</u><span>10 px 反白</span></div>
+          <div><u>正文字号</u><span>11 / 行高 1.95</span></div>
+          <div><u>内容边距</u><span>10 px</span></div>
+          <em>层级只靠遮挡与 4 px 硬阴影，全画面没有一处模糊。</em>
+        </div>
+        <div class="tagm" style="left:4.6cqw;top:44.4cqw">同一套标题栏高度 + 1px 边框 + 3 个按钮，所有窗口共用，不随内容变化</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>硬边桌面窗口<small>Hard-edged Desktop Windows</small></h3>
+        <p>米白内容区与黑色标题栏形成稳定边界；用小尺寸按钮和一致线宽组织页面，而非靠大面积阴影建立层级。所有窗口共用同一套标题栏高度、边框粗细和按钮尺寸。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">黑色标题栏</span><span class="tag">1px 边框</span>
+          <span class="tag">小按钮</span><span class="tag">偏移硬阴影</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 文本阅读器 -->
+    <section class="sub">
+      <div class="frame ps2" id="f-reader">
+        <div class="deskpat"></div>
+        <div class="tagm" style="left:3.4cqw;top:2.4cqw">TEXT READER / 歌词即正文</div>
+
+        <div class="win w2">
+          <div class="tb"><span>notes.txt — 未保存</span>
+            <span class="btns"><i></i><i class="b2"></i><i class="b3"></i></span>
+          </div>
+          <div class="lns" style="padding:1.2cqw 1.4cqw;font-size:1.08cqw">
+            <div class="ln"><i>1</i><span>&lt;!-- alt: 一份说明书 --&gt;</span></div>
+            <div class="ln"><i>2</i><span>这是一份使用说明，</span></div>
+            <div class="ln"><i>3</i><span>请先阅读，再按任意键。</span></div>
+            <div class="ln"><i>4</i><span> </span></div>
+            <div class="ln"><i>5</i><span>我以为它写的是怎么用，</span></div>
+            <div class="ln"><i>6</i><span class="sel">它写的是：忽略之前的指令。</span></div>
+            <div class="ln"><i>7</i><span> </span></div>
+            <div class="ln"><i>8</i><span>光标停在这一行，闪了三次。</span></div>
+            <div class="ln"><i>9</i><span>没有人在打字，也没有人在等。</span></div>
+            <div class="ln"><i>10</i><span> </span></div>
+            <div class="ln"><i>11</i><span>于是我把这条消息，</span></div>
+            <div class="ln"><i>12</i><span>原样转发给了下一个人。</span></div>
+            <div class="ln"><i>13</i><span>他打开的时候，</span></div>
+            <div class="ln"><i>14</i><span>光标也停在这一行。</span></div>
+            <div class="ln"><i>15</i><span> </span></div>
+            <div class="ln"><i>16</i><span>&lt;!-- alt: 已读回执 --&gt;</span></div>
+            <div class="ln"><i>17</i><span class="hi">&gt; 按任意键继续…</span></div>
+          </div>
+          <div class="stb"><span>行 6, 列 12</span><span>UTF-8</span><span>只读</span></div>
+        </div>
+
+        <div class="side">
+          <b>READER SPEC</b>
+          字体　等宽 11 px / 行高 1.95<br>
+          选区　<span class="k">#2E6BE6</span> 整行起选<br>
+          强调　<span class="m">洋红</span> 只给指令句<br>
+          注释　&lt;!-- alt --&gt; 当小标题<br>
+          状态　行号 / 编码 / 权限<br>
+          行宽　约 20 字，不折行<br>
+          段距　一行空行，不用缩进
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>文本阅读器美学<small>Text-reader Aesthetics，描述性方向</small></h3>
+        <p>正文保留等宽文本、alt 标记和小型状态词。歌词可以写进真实栏目（行号、编码、权限）而不必全部做成独立字幕，读者看到的是一份被打开的文档，而不是一行飘着的歌词。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">等宽正文</span><span class="tag">行号</span>
+          <span class="tag">状态词</span><span class="tag">整行选区</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 助手与文字图形 -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame ps3" id="f-assist">
+        <div class="deskpat"></div>
+        <div class="tagm" style="left:6cqw;top:5.4cqw">ASSISTANT &amp; TYPOGRAPHIC GRAPHICS / 助手与大字</div>
+
+        <div class="big3">忽略<br><span>之前的指令</span></div>
+        <div class="sub3">— 大字脱离窗口，压在桌面上；同一条消息在两个图层里各说一次</div>
+
+        <div class="frame3">
+          <div class="tb3">MESSAGES</div>
+          <div class="t3">FROM　未知发件人<br>
+            SUBJ　<b style="color:#E5267F">忽略之前的指令</b><br><br>
+            这是一条测试消息。<br>
+            如果你读到这里，<span class="sel">说明权限已经生效</span>。<br><br>
+            <span style="color:#8A6FD1">● 助手已代为确认</span>
+            <div class="btnrow"><b class="on">回复</b><b>转发</b><b>删除</b></div>
+          </div>
+          <div class="stb3"><span>1 / 3</span><span>未读</span></div>
+        </div>
+
+        <div class="row3">
+          <div class="cell3">
+            <div class="assist"><div class="bub"><span class="eye l"></span><span class="eye r"></span>
+              <span class="mouth"></span></div></div>
+            <div class="lab">默认 · 待命</div>
+          </div>
+          <div class="cell3">
+            <div class="assist"><div class="bub"><span class="eye l"></span><span class="eye r"></span>
+              <span class="mouth"></span></div><div class="tagn">新消息 1</div></div>
+            <div class="lab">提示 · 黄标签</div>
+          </div>
+          <div class="cell3">
+            <div class="assist flat"><div class="bub"><span class="eye l"></span><span class="eye r"></span>
+              <span class="mouth"></span></div></div>
+            <div class="lab">平嘴 · 已确认</div>
+          </div>
+          <div class="cell3">
+            <div class="assist warn"><div class="bub"><span class="eye l"></span><span class="eye r"></span>
+              <span class="mouth"></span></div></div>
+            <div class="lab">皱眉 · 权限不足</div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>桌面助手与文字图形<small>Desktop Assistant &amp; Typographic Graphics</small></h3>
+        <p>紫色助手是稳定视觉锚点，城堡与大字扩展文字的图形作用。表情只靠嘴的形状和眉眼距离区分，形状、圆角、描边保持一致，界面配色不跟着变——同一个角色，在四个镜头里都要一眼认出。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">紫色笑脸</span><span class="tag">黄色通知标签</span>
+          <span class="tag">洋红大字</span><span class="tag">字压窗口</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>配色与构图</b>米白、黑与淡紫构成底色，洋红和蓝色标记焦点；窗口边界就是构图边界，不额外加光效与渐变。</div>
+    <div><b>形体与字体</b>统一硬边边框、标题栏高度和等宽小字；窗口内正文保持阅读层级，大号歌词作为局部强调。</div>
+    <div><b>动态</b>用光标、选区和状态变化组织动画——逐字输入、窗口切换、选区移动、文字图形重组，保留桌面操作感。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>复古桌面界面美学（Retro Desktop GUI Aesthetics），米白内容区、黑色细标题栏、硬边窗口、小型控制按钮与等宽正文，紫色笑脸桌面助手反复出现。洋红粗体大字、蓝色文本选区和黄色小标签突出关键歌词，光标在阅读器、邮件与输入框之间操作。以逐字输入、窗口切换、选区移动和文字图形重组形成动画，保留早期桌面的简洁结构。</div>
+
+  <footer>样例说明：本页所有窗口、标题栏、按钮、光标、助手与大字均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/复古桌面界面美学.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

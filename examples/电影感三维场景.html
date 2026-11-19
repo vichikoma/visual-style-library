@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>电影感三维场景（Cinematic 3D Environments）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --ci-void:#1A1A20; --ci-slate:#3E4650; --ci-sand:#C9B49A;
+  --ci-bone:#F0E6D8; --ci-amber:#E8A45C;
+  --ci-sky1:#1B2436; --ci-sky2:#4A4A63; --ci-sky3:#C97A46;
+}
+.ci,.ca1,.ca2,.ca3{color:var(--ci-bone)}
+.mono{font-family:var(--f-mono);letter-spacing:.08em}
+
+/* 房间盒体：一点透视，灭点在 (50, 30cqw) */
+.rm{position:absolute;inset:0}
+.ceil{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,#20232B 0%,#2A2E38 100%);
+  clip-path:polygon(0 0,100% 0,74% 10.667%,26% 10.667%)}
+.wallL{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,#3A2C21 0%,#5C452F 42%,#6E543A 78%,#7A5E42 100%);
+  clip-path:polygon(0 0,26% 10.667%,26% 53.333%,0 100%)}
+.wallR{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(260deg,#171A20 0%,#252A33 46%,#343A45 100%);
+  clip-path:polygon(100% 0,74% 10.667%,74% 53.333%,100% 100%)}
+.wallB{position:absolute;left:26cqw;top:6cqw;width:48cqw;height:24cqw;z-index:1;
+  background:linear-gradient(180deg,#33384400 0%,#2E333C 100%),#3A3F49}
+
+/* 窗 */
+.win{position:absolute;left:27.4cqw;top:6.4cqw;width:22cqw;height:23.4cqw;z-index:2;overflow:hidden;
+  box-shadow:0 0 3.2cqw 1.2cqw rgba(200,220,255,.22)}
+.sky{position:absolute;inset:0;background:linear-gradient(178deg,#1B2436 0%,#2C3350 34%,#5E5468 62%,#A9714F 84%,#C97A46 100%)}
+.blg{position:absolute;bottom:0;background:#12151C}
+.mul{position:absolute;background:#20242C}
+
+/* 地板 */
+.flr{position:absolute;inset:0;z-index:3;
+  clip-path:polygon(26% 53.333%,74% 53.333%,100% 100%,0 100%)}
+.flr-bg{position:absolute;inset:0;background:linear-gradient(178deg,#6E6A64 0%,#9C948A 26%,#B9AFA0 62%,#C6BCAC 100%)}
+
+/* 家具 */
+.sofa{position:absolute;z-index:8}
+.sofa i{position:absolute;display:block}
+.topp{position:absolute;z-index:9}
+.ring{position:absolute;border-radius:50%;border:.5cqw solid rgba(232,164,92,.85);
+  box-shadow:0 0 2.6cqw .5cqw rgba(232,164,92,.5),inset 0 0 1.4cqw rgba(232,164,92,.55);
+  background:radial-gradient(closest-side,rgba(232,164,92,.16),rgba(232,164,92,0))}
+
+/* 人物：简化造型，逆光剪影 + 左侧轮廓光 */
+.fig{position:absolute;z-index:9}
+.fig i{position:absolute;display:block}
+.fig .hd{border-radius:48% 48% 44% 44%;
+  background:linear-gradient(100deg,#E8CFA8 0%,#8A7761 26%,#39352F 62%,#26241F 100%)}
+.fig .nk{background:linear-gradient(100deg,#C9A87E,#3A342C)}
+.fig .tr{border-radius:1.2cqw 1.2cqw .5cqw .5cqw;
+  background:linear-gradient(100deg,#B9936A 0%,#5E5A54 22%,#2E3238 58%,#1B1F24 100%)}
+.fig .lg{border-radius:.4cqw;
+  background:linear-gradient(100deg,#8A7A63 0%,#33383E 30%,#171B21 100%)}
+.fig .ar{border-radius:99px;
+  background:linear-gradient(100deg,#C4A178 0%,#4E545B 26%,#22272E 64%,#14181D 100%)}
+
+/* 屏 */
+.scr{position:absolute;z-index:7;background:#0E1116;overflow:hidden}
+.scr::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(122deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 42%)}
+.scan{position:absolute;inset:0;opacity:.35;background-image:
+  repeating-linear-gradient(0deg,rgba(0,0,0,.5) 0,rgba(0,0,0,.5) .09cqw,transparent .09cqw,transparent .28cqw)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>18 / 25</span>
+    <span class="right"><a href="手工立体绘本美学.html">← 上一条</a><a href="黑色电影式漫画视觉.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>电影感三维场景<small>Cinematic 3D Environments</small></h1>
+    <p class="lead">用有实体感的室内外环境、反射材质、明确光源与景深建立电影式空间，再用简化人物与图形化文字承载叙事。重点是可进入的三维场所、镜头调度与场景光影——环境比角色更写实，人物只需要保留比例与轮廓。</p>
+    <div class="meta">
+      <div><b>风格性质</b>描述性风格，限定场景、材质与光影，不是独立历史流派</div>
+      <div><b>视觉媒介</b>风格化三维场景动画＋屏幕合成＋场景内文字（Diegetic Typography）</div>
+      <div><b>典型母体</b>现代室内与住宅、舞台与演出现场、软件与显示设备</div>
+    </div>
+    <div class="tags">
+      <span class="tag">电影感三维</span><span class="tag">环境叙事</span><span class="tag">景深</span>
+      <span class="tag">实体材质</span><span class="tag">简化人物</span>
+      <span class="tag w">技术替代</span><span class="tag w">观看与创作</span><span class="tag w">失落</span><span class="tag w">反思</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#1A1A20"></i>暗部<br><code>#1A1A20</code></div>
+      <div class="sw"><i style="background:#3E4650"></i>布面灰<br><code>#3E4650</code></div>
+      <div class="sw"><i style="background:#C9B49A"></i>石灰<br><code>#C9B49A</code></div>
+      <div class="sw"><i style="background:#F0E6D8"></i>骨白<br><code>#F0E6D8</code></div>
+      <div class="sw"><i style="background:#E8A45C"></i>灯暖<br><code>#E8A45C</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">黄昏的客厅，一点透视：尽头的落地窗把城市的天光带进来，右墙上挂着一块亮着的屏，顶上一圈环形吊灯。地面上有窗的光带、屏的暖斑和一小片人的倒影；前景是一张虚化的茶几，右侧沙发压住画角。人物只是剪影，站在窗前。</p>
+
+  <div class="frame ci" id="f-master">
+    <div style="position:absolute;inset:0;background:#12141A"></div>
+
+    <!-- 盒体 -->
+    <div class="ceil"></div>
+    <div class="wallL"></div>
+    <div class="wallR"></div>
+    <div class="wallB"></div>
+
+    <!-- 左墙木饰面竖缝 -->
+    <div style="position:absolute;inset:0;z-index:2;clip-path:polygon(0 0,26% 10.667%,26% 53.333%,0 100%);
+      background-image:repeating-linear-gradient(74deg,rgba(30,20,12,.30) 0,rgba(30,20,12,.30) .07cqw,transparent .07cqw,transparent 5.2cqw)"></div>
+    <!-- 右墙竖向灯带 -->
+    <div style="position:absolute;left:92cqw;top:12cqw;width:.35cqw;height:22cqw;z-index:3;
+      background:linear-gradient(180deg,rgba(232,164,92,0),rgba(232,164,92,.55) 40%,rgba(232,164,92,.15));
+      filter:blur(.12cqw)"></div>
+
+    <!-- 落地窗 -->
+    <div class="win">
+      <div class="sky"></div>
+      <div class="blg" style="left:0;width:2.6cqw;height:8.2cqw"></div>
+      <div class="blg" style="left:2.9cqw;width:3.4cqw;height:5.4cqw"></div>
+      <div class="blg" style="left:6.8cqw;width:2.2cqw;height:9.6cqw"></div>
+      <div class="blg" style="left:9.4cqw;width:4.2cqw;height:4.4cqw"></div>
+      <div class="blg" style="left:14.2cqw;width:2.8cqw;height:7.4cqw"></div>
+      <div class="blg" style="left:17.4cqw;width:3.6cqw;height:6cqw"></div>
+      <div style="position:absolute;left:0;right:0;bottom:8.2cqw;height:5.4cqw;
+        background:linear-gradient(0deg,rgba(201,122,70,.55),rgba(201,122,70,0))"></div>
+      <!-- 窗棂 -->
+      <div class="mul" style="left:33%;top:0;width:.5%;height:100%"></div>
+      <div class="mul" style="left:66%;top:0;width:.5%;height:100%"></div>
+      <div class="mul" style="left:0;top:38%;width:100%;height:.5%"></div>
+      <div style="position:absolute;inset:0;box-shadow:inset 0 0 2.4cqw rgba(255,238,214,.35)"></div>
+    </div>
+
+    <!-- 右墙挂屏 -->
+    <div class="scr" style="left:53.4cqw;top:9.2cqw;width:17.6cqw;height:10.6cqw;box-shadow:
+      0 0 2.4cqw .4cqw rgba(232,164,92,.28),0 .4cqw 1.2cqw rgba(0,0,0,.6)">
+      <div style="position:absolute;inset:0;background:linear-gradient(160deg,#1C2029 0%,#12151B 100%)"></div>
+      <div class="scan"></div>
+      <div style="position:absolute;left:1.2cqw;top:1cqw;font-family:var(--f-mono);font-size:.62cqw;
+        letter-spacing:.2em;color:rgba(232,164,92,.75)">SESSION · 04:12</div>
+      <div style="position:absolute;left:1.2cqw;top:2.4cqw;font-family:var(--f-serif);font-size:1.16cqw;
+        line-height:1.7;color:#EFE2CC">我再唱一遍<br><span style="color:#8FA0B5">这一遍是给你的</span></div>
+      <div style="position:absolute;left:1.2cqw;bottom:1.1cqw;right:1.2cqw;height:.5cqw;
+        background:linear-gradient(90deg,rgba(232,164,92,.9) 42%,rgba(232,164,92,.22) 42%)"></div>
+      <div style="position:absolute;right:1.1cqw;bottom:.7cqw;font-family:var(--f-mono);font-size:.56cqw;
+        color:rgba(240,230,216,.5)">42%</div>
+    </div>
+
+    <!-- 地板 -->
+    <div class="flr">
+      <div class="flr-bg"></div>
+      <svg viewBox="0 0 100 26.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+        <g stroke="#5E5347" stroke-opacity=".62" stroke-width=".11" fill="none">
+          <path d="M50 0 L-24 26.25 M50 0 L-6 26.25 M50 0 L12 26.25 M50 0 L30 26.25 M50 0 L50 26.25
+                   M50 0 L70 26.25 M50 0 L88 26.25 M50 0 L106 26.25 M50 0 L124 26.25"></path>
+        </g>
+        <g stroke="#746757" stroke-opacity=".55" stroke-width=".1" fill="none">
+          <path d="M0 .55 H100 M0 1.5 H100 M0 3.1 H100 M0 5.6 H100 M0 9.4 H100 M0 15.2 H100 M0 22.6 H100"></path>
+        </g>
+      </svg>
+      <!-- 窗光带 -->
+      <div style="position:absolute;inset:0;clip-path:polygon(27.4% 0,49.4% 0,66% 100%,4% 100%);
+        background:linear-gradient(180deg,rgba(198,218,255,.28) 0%,rgba(198,218,255,.10) 42%,rgba(198,218,255,.02) 100%)"></div>
+      <!-- 窗的倒影（贴窗下方，更亮一条） -->
+      <div style="position:absolute;inset:0;clip-path:polygon(28.6% 0,48.2% 0,52.4% 26%,23.4% 26%);
+        background:linear-gradient(180deg,rgba(226,238,255,.42) 0%,rgba(226,238,255,.08) 62%,rgba(226,238,255,0) 100%);filter:blur(.28cqw)"></div>
+      <!-- 地面前景压暗 -->
+      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(16,14,12,.55) 0%,rgba(16,14,12,.12) 34%,rgba(16,14,12,0) 62%)"></div>
+      <!-- 屏暖斑 -->
+      <div style="position:absolute;inset:0;clip-path:polygon(56% 0,100% 0,100% 78%,44% 78%);
+        background:linear-gradient(180deg,rgba(232,164,92,.30) 0%,rgba(232,164,92,.05) 62%,rgba(232,164,92,0) 100%)"></div>
+      <!-- 倒影：人 -->
+      <div style="position:absolute;left:36.4%;top:0;width:8.4%;height:62%;filter:blur(.6cqw);
+        background:linear-gradient(180deg,rgba(20,18,16,.55) 0%,rgba(20,18,16,.16) 62%,rgba(20,18,16,0) 100%)"></div>
+      <!-- 倒影：屏 -->
+      <div style="position:absolute;left:58%;top:0;width:17%;height:44%;filter:blur(.9cqw);
+        background:linear-gradient(180deg,rgba(232,164,92,.34) 0%,rgba(232,164,92,0) 100%)"></div>
+    </div>
+
+    <!-- 环形吊灯 -->
+    <div class="ring" style="left:42.4cqw;top:1.2cqw;width:15.2cqw;height:2.9cqw;z-index:6"></div>
+    <div style="position:absolute;left:44cqw;top:2.2cqw;width:12cqw;height:1.2cqw;z-index:5;
+      filter:blur(1.2cqw);background:radial-gradient(closest-side,rgba(232,164,92,.55),rgba(232,164,92,0))"></div>
+
+    <!-- 人物（简化造型） -->
+    <div class="fig" style="left:42.6cqw;top:17.4cqw;width:7.4cqw;height:13.4cqw">
+      <i class="hd" style="left:50%;top:0;width:2.5cqw;height:2.7cqw;margin-left:-1.25cqw"></i>
+      <i class="nk" style="left:50%;top:2.5cqw;width:.9cqw;height:.8cqw;margin-left:-.45cqw"></i>
+      <i class="tr" style="left:50%;top:3.1cqw;width:4cqw;height:6.3cqw;margin-left:-2cqw"></i>
+      <i class="ar" style="left:-.2cqw;top:3.5cqw;width:1.15cqw;height:5.6cqw;transform:rotate(4deg)"></i>
+      <i class="ar" style="right:-.2cqw;top:3.5cqw;width:1.15cqw;height:5.6cqw;transform:rotate(-4deg)"></i>
+      <i class="lg" style="left:1.5cqw;top:9.2cqw;width:1.5cqw;height:4.2cqw"></i>
+      <i class="lg" style="right:1.5cqw;top:9.2cqw;width:1.5cqw;height:4.2cqw"></i>
+    </div>
+    <!-- 轮廓光（贴人物左缘） -->
+    <div style="position:absolute;left:42.4cqw;top:17.6cqw;width:.55cqw;height:12.6cqw;z-index:10;
+      filter:blur(.22cqw);background:linear-gradient(180deg,rgba(255,240,214,.55),rgba(255,240,214,.10))"></div>
+
+    <!-- 人物脚下的接触阴影 -->
+    <div style="position:absolute;left:41.6cqw;top:29.6cqw;width:8.4cqw;height:1.6cqw;z-index:8;border-radius:50%;
+      background:radial-gradient(closest-side,rgba(24,18,14,.55),rgba(24,18,14,0))"></div>
+
+    <!-- 右侧植物 -->
+    <div style="position:absolute;left:74.8cqw;top:19.2cqw;width:9cqw;height:11.4cqw;z-index:8;filter:blur(.06cqw)">
+      <div style="position:absolute;left:0;top:2cqw;width:2.6cqw;height:6.4cqw;border-radius:50%;
+        background:linear-gradient(120deg,#3E4A3E,#222A24);transform:rotate(-18deg)"></div>
+      <div style="position:absolute;left:1.4cqw;top:0;width:2.4cqw;height:6.6cqw;border-radius:50%;
+        background:linear-gradient(120deg,#46543F,#242C24);transform:rotate(-6deg)"></div>
+      <div style="position:absolute;left:3.4cqw;top:.4cqw;width:2.4cqw;height:6.4cqw;border-radius:50%;
+        background:linear-gradient(120deg,#4E5C46,#262E26);transform:rotate(8deg)"></div>
+      <div style="position:absolute;left:5.2cqw;top:2.4cqw;width:2.2cqw;height:5.8cqw;border-radius:50%;
+        background:linear-gradient(120deg,#3A4638,#20281F);transform:rotate(22deg)"></div>
+      <div style="position:absolute;left:1.8cqw;bottom:0;width:5.4cqw;height:5.2cqw;
+        clip-path:polygon(0 0,100% 0,86% 100%,14% 100%);
+        background:linear-gradient(160deg,#6E6255,#3A332B)"></div>
+      <div style="position:absolute;left:1.8cqw;bottom:4.9cqw;width:5.4cqw;height:.5cqw;
+        background:rgba(232,164,92,.35)"></div>
+    </div>
+
+    <!-- 沙发 -->
+    <div class="sofa" style="left:52cqw;top:37cqw;width:47cqw;height:17cqw">
+      <!-- 靠背 -->
+      <i style="left:0;right:0;top:0;height:8.6cqw;border-radius:.7cqw .7cqw .3cqw .3cqw;
+        background:linear-gradient(180deg,#4E575F 0%,#333A43 54%,#262C34 100%)"></i>
+      <i style="left:1.2cqw;right:1.2cqw;top:.5cqw;height:.32cqw;background:rgba(232,164,92,.62);filter:blur(.12cqw)"></i>
+      <!-- 坐面（受光更亮） -->
+      <i style="left:1.2cqw;right:1.2cqw;top:7.4cqw;height:3.4cqw;border-radius:.5cqw;
+        background:linear-gradient(180deg,#7C878F 0%,#5A646E 56%,#454E58 100%)"></i>
+      <!-- 坐垫缝线 -->
+      <i style="left:16cqw;top:7.6cqw;width:.16cqw;height:3cqw;background:rgba(20,24,30,.45)"></i>
+      <i style="left:31cqw;top:7.6cqw;width:.16cqw;height:3cqw;background:rgba(20,24,30,.45)"></i>
+      <!-- 扶手 -->
+      <i style="left:0;top:3.4cqw;width:7cqw;height:10.4cqw;border-radius:.7cqw .7cqw .3cqw .3cqw;
+        background:linear-gradient(160deg,#616B74 0%,#3E464F 52%,#2A3038 100%)"></i>
+      <i style="right:0;top:3.4cqw;width:7cqw;height:10.4cqw;border-radius:.7cqw .7cqw .3cqw .3cqw;
+        background:linear-gradient(150deg,#4A535C 0%,#333A43 56%,#252B32 100%)"></i>
+      <i style="left:.5cqw;top:3.6cqw;width:.26cqw;height:9.6cqw;background:rgba(232,164,92,.4);filter:blur(.1cqw)"></i>
+      <!-- 底裙 -->
+      <i style="left:6cqw;right:6cqw;top:10.6cqw;height:4.4cqw;
+        background:linear-gradient(180deg,#2E353D 0%,#1E242A 100%)"></i>
+      <!-- 腿 -->
+      <i style="left:7.4cqw;top:14.6cqw;width:1.5cqw;height:2.4cqw;background:#15181D"></i>
+      <i style="right:7.4cqw;top:14.6cqw;width:1.5cqw;height:2.4cqw;background:#15181D"></i>
+      <!-- 抱枕 -->
+      <i style="left:3.4cqw;top:4.2cqw;width:5.2cqw;height:5.2cqw;border-radius:.7cqw;
+        background:linear-gradient(150deg,#C46A48 0%,#8E4430 60%,#6E3022 100%);transform:rotate(-8deg);
+        box-shadow:.2cqw .4cqw .9cqw rgba(0,0,0,.45)"></i>
+      <i style="right:5cqw;top:5cqw;width:4.4cqw;height:4.4cqw;border-radius:.6cqw;
+        background:linear-gradient(150deg,#C9B49A 0%,#9A8468 62%,#7A6650 100%);transform:rotate(7deg);
+        box-shadow:.2cqw .4cqw .9cqw rgba(0,0,0,.45)"></i>
+    </div>
+
+    <!-- 前景茶几（浅景深） -->
+    <div class="topp" style="left:-4cqw;top:43.4cqw;width:38cqw;height:14cqw;filter:blur(.42cqw)">
+      <div style="position:absolute;left:0;right:0;top:2.6cqw;height:2.4cqw;border-radius:.4cqw;
+        background:linear-gradient(180deg,#7C6248,#4A3626)"></div>
+      <div style="position:absolute;left:0;right:0;top:0;height:3.2cqw;border-radius:.5cqw;
+        background:linear-gradient(180deg,#A8825C,#6E5238)"></div>
+      <div style="position:absolute;left:4cqw;bottom:.4cqw;width:2.2cqw;height:4.4cqw;
+        background:linear-gradient(180deg,#5C442E,#3A2A1C)"></div>
+      <div style="position:absolute;right:6cqw;bottom:.4cqw;width:2.2cqw;height:4.4cqw;
+        background:linear-gradient(180deg,#5C442E,#3A2A1C)"></div>
+      <!-- 杯子 -->
+      <div style="position:absolute;left:9cqw;top:-2.4cqw;width:3.8cqw;height:3.6cqw;border-radius:.4cqw .4cqw .8cqw .8cqw;
+        background:linear-gradient(150deg,#EFE3D0,#B9A88E)"></div>
+      <div style="position:absolute;left:12.2cqw;top:-1.6cqw;width:1.5cqw;height:2cqw;border:.32cqw solid #E2D4BE;
+        border-left:none;border-radius:0 .8cqw .8cqw 0"></div>
+      <!-- 打开的笔记本 -->
+      <div style="position:absolute;left:18cqw;top:-1.2cqw;width:11cqw;height:5.6cqw;
+        background:linear-gradient(168deg,#2A3038,#171B21);transform:rotate(-4deg);border-radius:.3cqw;
+        box-shadow:0 .5cqw 1cqw rgba(0,0,0,.45)"></div>
+      <div style="position:absolute;left:18.8cqw;top:-.7cqw;width:9.4cqw;height:4.4cqw;
+        background:linear-gradient(168deg,#5E7C8C,#2E4A5A);transform:rotate(-4deg);border-radius:.2cqw;
+        box-shadow:0 0 1.6cqw rgba(120,190,220,.4)"></div>
+    </div>
+
+    <!-- 暗角 -->
+    <div style="position:absolute;inset:0;z-index:14;pointer-events:none;background:
+      radial-gradient(78% 70% at 46% 46%,rgba(10,8,6,0) 46%,rgba(10,8,6,.62) 100%)"></div>
+
+    <!-- 文字 -->
+    <div style="position:absolute;left:4.4cqw;top:3.4cqw;width:27cqw;z-index:16">
+      <div class="mono" style="font-size:.92cqw;letter-spacing:.26em;color:rgba(232,164,92,.9)">CINEMATIC · 客厅 · 黄昏</div>
+      <div style="font-family:var(--f-serif);font-weight:700;font-size:3.6cqw;line-height:1.22;
+        color:#F6EEDF;margin-top:1.2cqw;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.65)">
+        灯还亮着，<br>人已经<span style="color:#E8A45C">走了</span></div>
+    </div>
+    <div style="position:absolute;right:4cqw;bottom:2.6cqw;text-align:right;z-index:16">
+      <div class="mono" style="font-size:.8cqw;letter-spacing:.14em;color:rgba(240,230,216,.42)">主光 · 窗 5000K</div>
+      <div class="mono" style="font-size:.8cqw;letter-spacing:.14em;color:rgba(240,230,216,.32);margin-top:.35cqw">辅光 · 屏 2700K / 顶灯 2400K</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><b>先定主光，再摆家具</b>窗光给方向（从左后方斜进）、顶灯给氛围（暖、从上方压）、屏幕给局部（冷白或暖斑）。三盏灯各管一层，别互相打平。</div>
+    <div><b>材质靠反射区分</b>浅色地砖要能映出窗和人的倒影，木饰面只在斜掠时反光，布面不反光只吃柔光。同一个画面里反射强弱要有梯度。</div>
+    <div><b>环境写实，人物简化</b>墙、地、家具都做足细节，人物的头就是一颗圆，五官省略，靠轮廓光和比例读出来——观众不会觉得假，只会觉得"像动画片里的人进了实景"。</div>
+    <div><b>屏幕是画面里的灯</b>歌词写在显示器、挂屏、手机上，跟着透视变形，并让它在场景里真的照亮一片地面或人脸；叠字只留给关键句。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向：实体室内光影（材质与反射的静物）、风格化人物与写实环境（人物尺度与轮廓光）、场景内屏幕与文字（全宽，四块屏各说一句）。</p>
+
+  <div class="subs">
+
+    <!-- 1. 实体室内光影 -->
+    <section class="sub">
+      <div class="frame ca1" id="f-mat">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(70% 60% at 26% 30%,#2C313A 0%,#191C22 56%,#0D0F13 100%)"></div>
+
+        <!-- 窗光（斜切进来的一块） -->
+        <div style="position:absolute;inset:0;clip-path:polygon(0 6%,30% 0,52% 100%,0 100%);
+          background:linear-gradient(128deg,rgba(226,236,255,.20) 0%,rgba(226,236,255,.05) 60%,rgba(226,236,255,0) 100%)"></div>
+
+        <!-- 石台面 -->
+        <div style="position:absolute;left:0;right:0;top:24cqw;bottom:0;
+          background:linear-gradient(180deg,#5E594F 0%,#8E8879 14%,#A8A08E 52%,#8A8272 82%,#615A4C 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:24cqw;height:.28cqw;
+          background:linear-gradient(180deg,rgba(255,248,232,.55),rgba(255,248,232,0))"></div>
+        <!-- 台面上的窗光 -->
+        <div style="position:absolute;inset:0;clip-path:polygon(0 42.6%,30% 42.6%,56% 100%,0 100%);
+          background:linear-gradient(150deg,rgba(232,238,255,.30) 0%,rgba(232,238,255,.08) 62%,rgba(232,238,255,0) 100%)"></div>
+        <!-- 台面前沿压暗 -->
+        <div style="position:absolute;left:0;right:0;bottom:0;height:14cqw;
+          background:linear-gradient(0deg,rgba(14,12,10,.62),rgba(14,12,10,0))"></div>
+
+        <!-- 陶杯（哑光） -->
+        <div style="position:absolute;left:5.2cqw;top:27.6cqw;width:9.6cqw;height:11.6cqw;z-index:6">
+          <div style="position:absolute;left:0;right:0;bottom:0;height:9.4cqw;border-radius:.4cqw .4cqw 1.8cqw 1.8cqw;
+            background:linear-gradient(100deg,#CBBDA4 0%,#A2947C 44%,#6E6553 100%)"></div>
+          <div style="position:absolute;left:-.3cqw;right:-.3cqw;top:1.1cqw;height:1.7cqw;border-radius:50%;
+            background:linear-gradient(180deg,#DFD2B8,#AEA189)"></div>
+          <div style="position:absolute;left:1.6cqw;right:1.6cqw;top:1.6cqw;height:1cqw;border-radius:50%;
+            background:#403A2E"></div>
+          <div style="position:absolute;left:.7cqw;top:3.2cqw;width:.55cqw;height:5.4cqw;border-radius:99px;
+            background:rgba(255,248,236,.20)"></div>
+        </div>
+        <div style="position:absolute;left:4.2cqw;top:38.4cqw;width:12cqw;height:2.6cqw;z-index:5;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(20,16,12,.5),rgba(20,16,12,0))"></div>
+
+        <!-- 玻璃杯（强反射 + 焦散） -->
+        <div style="position:absolute;left:20cqw;top:14cqw;width:12.4cqw;height:29.6cqw;z-index:8">
+          <div style="position:absolute;left:0;right:5%;bottom:0;top:1.2cqw;
+            clip-path:polygon(8% 0,92% 0,84% 100%,16% 100%);
+            background:linear-gradient(100deg,rgba(226,238,255,.30) 0%,rgba(226,238,255,.08) 26%,rgba(226,238,255,.26) 58%,rgba(226,238,255,.06) 100%)"></div>
+          <div style="position:absolute;left:10%;right:16%;bottom:0;height:15cqw;
+            clip-path:polygon(0 0,100% 0,88% 100%,12% 100%);
+            background:linear-gradient(180deg,rgba(140,175,205,.26) 0%,rgba(110,155,190,.44) 100%)"></div>
+          <div style="position:absolute;left:-.5cqw;right:3%;top:0;height:1.7cqw;border-radius:50%;
+            border:.3cqw solid rgba(226,238,255,.6);background:rgba(226,238,255,.10)"></div>
+          <div style="position:absolute;left:1.8cqw;top:3.4cqw;width:.5cqw;height:20cqw;border-radius:99px;
+            background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.10))"></div>
+          <div style="position:absolute;right:2.6cqw;top:6cqw;width:.32cqw;height:15cqw;border-radius:99px;
+            background:rgba(255,255,255,.28)"></div>
+        </div>
+        <div style="position:absolute;left:18cqw;top:41.4cqw;width:16cqw;height:6cqw;z-index:7;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(240,248,255,.55),rgba(240,248,255,.12) 52%,rgba(240,248,255,0));
+          filter:blur(.18cqw)"></div>
+
+        <!-- 黄铜灯（镜面反射） -->
+        <div style="position:absolute;left:36.4cqw;top:7cqw;width:16cqw;height:37cqw;z-index:8">
+          <div style="position:absolute;left:1.4cqw;right:1.4cqw;top:0;height:10cqw;
+            border-radius:50% 50% 6% 6%;
+            background:linear-gradient(100deg,#FBE6B8 0%,#D9AC60 20%,#966C34 44%,#CE9F54 62%,#7A5624 84%,#B98C46 100%)"></div>
+          <div style="position:absolute;left:1.4cqw;right:1.4cqw;top:9.4cqw;height:1.2cqw;border-radius:50%;
+            background:linear-gradient(180deg,#8A6228,#E6C282 60%,#6E4E22)"></div>
+          <div style="position:absolute;left:3cqw;top:1.6cqw;width:3cqw;height:5.4cqw;border-radius:50%;
+            background:linear-gradient(120deg,rgba(255,252,236,.9),rgba(255,252,236,0));filter:blur(.14cqw)"></div>
+          <div style="position:absolute;left:50%;top:10.4cqw;width:1.2cqw;height:24cqw;margin-left:-.6cqw;
+            background:linear-gradient(90deg,#8A6228,#E6C282 40%,#9A7034 74%,#6E4E22)"></div>
+          <div style="position:absolute;left:50%;bottom:1.4cqw;width:9cqw;height:2cqw;margin-left:-4.5cqw;border-radius:50%;
+            background:linear-gradient(180deg,#D9AC60,#7A5624)"></div>
+          <div style="position:absolute;left:50%;bottom:0;width:11cqw;height:3cqw;margin-left:-5.5cqw;border-radius:50%;
+            background:radial-gradient(closest-side,rgba(240,212,154,.4),rgba(240,212,154,0));filter:blur(.2cqw)"></div>
+        </div>
+        <!-- 灯在台面的倒影 -->
+        <div style="position:absolute;left:38.4cqw;top:44cqw;width:12cqw;height:11cqw;z-index:6;
+          background:linear-gradient(180deg,rgba(217,172,96,.30) 0%,rgba(217,172,96,0) 100%);filter:blur(.5cqw);
+          border-radius:0 0 50% 50%"></div>
+
+        <!-- 棉布（不反光） -->
+        <div style="position:absolute;left:64cqw;top:38.4cqw;width:28cqw;height:8cqw;z-index:7">
+          <div style="position:absolute;left:1cqw;right:1cqw;bottom:0;height:3.4cqw;border-radius:.5cqw;
+            background:linear-gradient(170deg,#5E4C3A,#3E3225)"></div>
+          <div style="position:absolute;left:2cqw;right:2.4cqw;bottom:2.8cqw;height:3.2cqw;border-radius:.5cqw;
+            background:linear-gradient(170deg,#7C6549,#584634);transform:rotate(-1.6deg)"></div>
+          <div style="position:absolute;left:3.4cqw;right:4cqw;bottom:5.4cqw;height:2.8cqw;border-radius:.5cqw;
+            background:linear-gradient(170deg,#96805E,#6A5540);transform:rotate(1.4deg)"></div>
+          <div style="position:absolute;left:4.4cqw;bottom:6.2cqw;width:9cqw;height:1.4cqw;border-radius:99px;
+            background:linear-gradient(90deg,rgba(255,240,214,.22),rgba(255,240,214,0))"></div>
+          <div style="position:absolute;left:5.4cqw;bottom:3.4cqw;width:14cqw;height:.16cqw;
+            background:rgba(20,14,8,.35)"></div>
+        </div>
+        <div style="position:absolute;left:63cqw;top:46cqw;width:30cqw;height:3.4cqw;z-index:6;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(20,16,12,.45),rgba(20,16,12,0))"></div>
+
+        <!-- 标注 -->
+        <div style="position:absolute;left:3.2cqw;top:4.6cqw;width:24cqw;z-index:12">
+          <div class="mono" style="font-size:1.02cqw;letter-spacing:.2em;color:rgba(232,164,92,.9)">INTERIOR · 材质</div>
+          <div style="font-family:var(--f-sans);font-weight:800;font-size:2.1cqw;line-height:1.24;
+            color:#F4EBDC;margin-top:.6cqw">反射强弱<br>就是材质</div>
+        </div>
+        <div style="position:absolute;right:3.2cqw;top:4.4cqw;width:21cqw;z-index:12">
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.8cqw;
+            color:#B7AA96;padding:.4cqw 0;border-bottom:.06cqw solid rgba(201,180,154,.22)">
+            <span>玻璃</span><span style="color:#F0E6D8">反射 0.92</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.8cqw;
+            color:#B7AA96;padding:.4cqw 0;border-bottom:.06cqw solid rgba(201,180,154,.22)">
+            <span>黄铜</span><span style="color:#F0E6D8">反射 0.75</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.8cqw;
+            color:#B7AA96;padding:.4cqw 0;border-bottom:.06cqw solid rgba(201,180,154,.22)">
+            <span>陶</span><span style="color:#F0E6D8">反射 0.18</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.8cqw;
+            color:#B7AA96;padding:.4cqw 0">
+            <span>棉布</span><span style="color:#F0E6D8">反射 0.03</span></div>
+        </div>
+        <div style="position:absolute;left:3.2cqw;bottom:2.2cqw;font-family:var(--f-mono);font-size:.78cqw;
+          letter-spacing:.12em;color:rgba(240,230,216,.45);z-index:12">主光 · 窗 5000K / 补光 · 台面反弹 4300K</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>实体室内光影<small>Interior Lighting &amp; Material Realism</small></h3>
+        <p>先定主光方向，再用反射和阴影把家具连起来。同一种白天的光落在四种表面上会给出四种回光：玻璃给出锐利高光与焦散，黄铜把光染成金色，陶只留一条柔边，棉布几乎不回光。材质的可信度来自这个梯度，而不是纹理贴图的细节量。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">单一主光</span><span class="tag">反射梯度</span>
+          <span class="tag">焦散</span><span class="tag">接触阴影</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 风格化人物与写实环境 -->
+    <section class="sub">
+      <div class="frame ca2" id="f-char">
+        <div style="position:absolute;inset:0;background:
+          linear-gradient(178deg,#262A31 0%,#1C2026 54%,#14171C 100%)"></div>
+        <!-- 墙 / 地 -->
+        <div style="position:absolute;left:0;right:0;top:0;height:40cqw;
+          background:linear-gradient(180deg,#343A42 0%,#2A2F37 62%,#22262D 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:40cqw;bottom:0;
+          background:linear-gradient(180deg,#6E685D 0%,#8C8577 34%,#5E594F 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:40cqw;height:.3cqw;
+          background:rgba(255,248,232,.45)"></div>
+        <!-- 窗光斜切 -->
+        <div style="position:absolute;inset:0;clip-path:polygon(0 0,17% 0,44% 100%,8% 100%);
+          background:linear-gradient(118deg,rgba(214,228,255,.20) 0%,rgba(214,228,255,.05) 56%,rgba(214,228,255,0) 100%)"></div>
+        <div style="position:absolute;inset:0;clip-path:polygon(6% 100%,44% 100%,52% 100%,14% 100%);
+          background:none"></div>
+
+        <!-- 人物：站在地板上，脚踩 y=40（与 2.8 m 墙高同标尺） -->
+        <div style="position:absolute;left:21.4cqw;top:16cqw;width:14.6cqw;height:24cqw;z-index:7">
+          <!-- 头（球体，无五官） -->
+          <div style="position:absolute;left:50%;top:0;width:3.8cqw;height:4.1cqw;margin-left:-1.9cqw;
+            border-radius:48% 48% 45% 45%;
+            background:linear-gradient(102deg,#F6E2C0 0%,#DCBF95 32%,#AE9068 68%,#6E5A42 100%)"></div>
+          <!-- 脖子 -->
+          <div style="position:absolute;left:50%;top:3.6cqw;width:1.5cqw;height:1.4cqw;margin-left:-.75cqw;
+            background:linear-gradient(102deg,#DCC0A0,#8A7458)"></div>
+          <!-- 上身：毛衣 -->
+          <div style="position:absolute;left:50%;top:4.5cqw;width:8.2cqw;height:11.1cqw;margin-left:-4.1cqw;
+            border-radius:1.3cqw 1.3cqw .5cqw .5cqw;
+            background:linear-gradient(102deg,#D2C7A6 0%,#A39C86 30%,#6E6A5B 68%,#42423A 100%)">
+            <div style="position:absolute;left:10%;right:10%;top:12%;bottom:10%;
+              background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.12) 0,rgba(0,0,0,.12) .09cqw,transparent .09cqw,transparent .5cqw)"></div>
+          </div>
+          <!-- 手臂 -->
+          <div style="position:absolute;left:.9cqw;top:5.4cqw;width:2.3cqw;height:10.2cqw;border-radius:99px;
+            background:linear-gradient(102deg,#C6BC9C 0%,#8A8674 34%,#4C4C44 100%);transform:rotate(5deg)"></div>
+          <div style="position:absolute;right:.9cqw;top:5.4cqw;width:2.3cqw;height:10.2cqw;border-radius:99px;
+            background:linear-gradient(102deg,#DCD2B2 0%,#9E9884 34%,#56564C 100%);transform:rotate(-5deg)"></div>
+          <!-- 腿 -->
+          <div style="position:absolute;left:3.5cqw;top:15.2cqw;width:3.1cqw;height:8.4cqw;border-radius:.5cqw;
+            background:linear-gradient(102deg,#6A6A64 0%,#3E3E3A 54%,#262624 100%)"></div>
+          <div style="position:absolute;right:3.5cqw;top:15.2cqw;width:3.1cqw;height:8.4cqw;border-radius:.5cqw;
+            background:linear-gradient(102deg,#7A7A72 0%,#47473F 54%,#2C2C29 100%)"></div>
+          <!-- 鞋 -->
+          <div style="position:absolute;left:3.1cqw;top:23.1cqw;width:3.8cqw;height:1.4cqw;border-radius:.5cqw .9cqw .4cqw .4cqw;
+            background:#1E1E1C"></div>
+          <div style="position:absolute;right:3.1cqw;top:23.1cqw;width:3.8cqw;height:1.4cqw;border-radius:.9cqw .5cqw .4cqw .4cqw;
+            background:#222220"></div>
+        </div>
+        <!-- 轮廓光 -->
+        <div style="position:absolute;left:21.2cqw;top:16.2cqw;width:.45cqw;height:23.4cqw;z-index:8;
+          filter:blur(.18cqw);background:linear-gradient(180deg,rgba(226,236,255,.55),rgba(226,236,255,.05))"></div>
+        <!-- 落地阴影 -->
+        <div style="position:absolute;left:20cqw;top:38.8cqw;width:17cqw;height:3cqw;z-index:6;border-radius:50%;
+          background:radial-gradient(closest-side,rgba(16,14,12,.55),rgba(16,14,12,0))"></div>
+
+        <!-- 前景沙发（压角 + 虚化） -->
+        <div style="position:absolute;left:38cqw;top:43.4cqw;width:66cqw;height:16cqw;z-index:9;filter:blur(.3cqw)">
+          <div style="position:absolute;left:0;right:0;top:0;height:7.6cqw;border-radius:.8cqw .8cqw .2cqw .2cqw;
+            background:linear-gradient(175deg,#4A525B 0%,#333A43 58%,#262C33 100%)"></div>
+          <div style="position:absolute;left:1.4cqw;right:1.4cqw;top:6.4cqw;height:4.4cqw;border-radius:.5cqw;
+            background:linear-gradient(180deg,#727C84 0%,#4E565E 100%)"></div>
+          <div style="position:absolute;left:0;top:10.4cqw;width:9cqw;height:5.6cqw;border-radius:.8cqw;
+            background:linear-gradient(160deg,#565F69,#333A43)"></div>
+          <div style="position:absolute;left:2cqw;top:.5cqw;right:2cqw;height:.3cqw;
+            background:rgba(232,164,92,.55)"></div>
+        </div>
+
+        <!-- 尺度线 1.7 m -->
+        <div style="position:absolute;left:37.4cqw;top:16cqw;width:.14cqw;height:24cqw;z-index:10;
+          background:rgba(232,164,92,.6)"></div>
+        <div style="position:absolute;left:36.4cqw;top:16cqw;width:2.2cqw;height:.14cqw;background:rgba(232,164,92,.6)"></div>
+        <div style="position:absolute;left:36.4cqw;top:39.86cqw;width:2.2cqw;height:.14cqw;background:rgba(232,164,92,.6)"></div>
+        <div style="position:absolute;left:37.8cqw;top:27cqw;font-family:var(--f-mono);font-size:.82cqw;
+          color:#E8A45C;z-index:10">1.7 m</div>
+
+        <!-- 尺度线 2.8 m（墙高） -->
+        <div style="position:absolute;left:60.4cqw;top:0;width:.14cqw;height:40cqw;z-index:10;
+          background:rgba(201,180,154,.34)"></div>
+        <div style="position:absolute;left:59.4cqw;top:0;width:2.2cqw;height:.14cqw;background:rgba(201,180,154,.34)"></div>
+        <div style="position:absolute;left:59.4cqw;top:39.86cqw;width:2.2cqw;height:.14cqw;background:rgba(201,180,154,.34)"></div>
+        <div style="position:absolute;left:61cqw;top:18.4cqw;font-family:var(--f-mono);font-size:.82cqw;
+          color:rgba(201,180,154,.85);z-index:10">墙 2.8 m</div>
+
+        <!-- 说明 -->
+        <div style="position:absolute;right:3.4cqw;top:3.6cqw;width:26cqw;text-align:right;z-index:12">
+          <div class="mono" style="font-size:.95cqw;letter-spacing:.2em;color:rgba(232,164,92,.9)">CHARACTER · 简化</div>
+          <div style="font-family:var(--f-sans);font-weight:800;font-size:1.95cqw;line-height:1.26;
+            color:#F4EBDC;margin-top:.5cqw">头是一颗球，<br>衣服要认得出</div>
+        </div>
+        <div style="position:absolute;right:3.4cqw;top:30cqw;width:24cqw;z-index:12">
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.78cqw;
+            color:#A79C8C;padding:.34cqw 0;border-bottom:.06cqw solid rgba(201,180,154,.18)">
+            <span>头部</span><span style="color:#F0E6D8">球体 · 无五官</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.78cqw;
+            color:#A79C8C;padding:.34cqw 0;border-bottom:.06cqw solid rgba(201,180,154,.18)">
+            <span>比例</span><span style="color:#F0E6D8">6 头身</span></div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.78cqw;
+            color:#A79C8C;padding:.34cqw 0">
+            <span>材质</span><span style="color:#F0E6D8">毛衣针织</span></div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>风格化人物与写实环境<small>Stylized Characters in Realistic Environments</small></h3>
+        <p>人物以简化的头部和轮廓融入更具体的室内。做法是"减法只做在脸上"：头是一颗球、五官留白，但肩线、坐姿、毛衣的针织纹理、裤子的褶皱全部保留，比例按 6.5 头身卡住。观众读得懂这是谁、在做什么，也不会觉得画面在糊弄。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">球体头</span><span class="tag">无五官</span>
+          <span class="tag">服装识别</span><span class="tag">轮廓光</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 场景内屏幕与文字（全宽） -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame ca3" id="f-screens">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(60% 62% at 22% 34%,#242A33 0%,#161A20 54%,#0C0E12 100%)"></div>
+
+        <!-- 桌面 -->
+        <div style="position:absolute;left:0;right:0;top:43cqw;bottom:0;z-index:8;
+          background:linear-gradient(180deg,#4E4E48 0%,#3A3A34 18%,#2A2A25 54%,#17170F 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:43cqw;height:.3cqw;z-index:9;
+          background:linear-gradient(180deg,rgba(240,230,216,.34),rgba(240,230,216,0))"></div>
+        <div style="position:absolute;left:44cqw;right:0;top:43.2cqw;height:6cqw;z-index:9;pointer-events:none;
+          background:linear-gradient(180deg,rgba(120,170,210,.22) 0%,rgba(120,170,210,0) 100%)"></div>
+
+        <!-- 左墙壁挂大屏 -->
+        <div style="position:absolute;left:3.4cqw;top:7.2cqw;width:31cqw;height:30cqw;z-index:4;
+          background:#0B0E13;border-radius:.3cqw;box-shadow:0 0 5cqw 1.4cqw rgba(120,170,210,.16),0 .6cqw 1.6cqw rgba(0,0,0,.7)">
+          <div style="position:absolute;inset:.5cqw;background:linear-gradient(150deg,#16222E 0%,#0E1720 62%,#0A1017 100%);overflow:hidden">
+            <div style="position:absolute;inset:0;opacity:.3;background-image:
+              repeating-linear-gradient(0deg,rgba(0,0,0,.55) 0,rgba(0,0,0,.55) .1cqw,transparent .1cqw,transparent .34cqw)"></div>
+            <div style="position:absolute;left:2.2cqw;top:2cqw;font-family:var(--f-mono);font-size:.72cqw;
+              letter-spacing:.22em;color:rgba(143,160,181,.85)">MASTER · TAKE 04</div>
+            <div style="position:absolute;left:2.2cqw;top:4.6cqw;right:2.2cqw;font-family:var(--f-serif);
+              font-size:2.6cqw;line-height:1.5;color:#EFE6D4">我唱到<br>第三遍</div>
+            <div style="position:absolute;left:2.2cqw;bottom:3.4cqw;right:2.2cqw;height:.34cqw;
+              background:rgba(143,160,181,.20)">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:58%;
+                background:linear-gradient(90deg,rgba(232,164,92,.9),rgba(232,164,92,.5))"></div>
+            </div>
+            <div style="position:absolute;left:2.2cqw;bottom:1.6cqw;font-family:var(--f-mono);font-size:.66cqw;
+              letter-spacing:.14em;color:rgba(232,164,92,.7)">03:12 · 58%</div>
+            <div style="position:absolute;right:2.2cqw;bottom:1.6cqw;font-family:var(--f-mono);font-size:.66cqw;
+              letter-spacing:.14em;color:rgba(143,160,181,.55)">给谁听</div>
+          </div>
+        </div>
+        <!-- 大屏在墙上的光晕 -->
+        <div style="position:absolute;left:-2cqw;top:2cqw;width:44cqw;height:42cqw;z-index:3;pointer-events:none;
+          background:radial-gradient(closest-side,rgba(120,170,210,.20),rgba(120,170,210,0))"></div>
+
+        <!-- 椅子背（托住坐姿的人） -->
+        <div style="position:absolute;left:32.4cqw;top:32.4cqw;width:22cqw;height:15cqw;z-index:5;
+          border-radius:2.4cqw 2.4cqw .6cqw .6cqw;
+          background:linear-gradient(170deg,#262B33 0%,#181C22 62%,#101318 100%);
+          box-shadow:inset 0 .2cqw .6cqw rgba(150,200,235,.10)"></div>
+
+        <!-- 坐着的人（背对，剪影） -->
+        <div style="position:absolute;left:36.6cqw;top:23.6cqw;width:13cqw;height:22cqw;z-index:6">
+          <div style="position:absolute;left:50%;top:0;width:5.6cqw;height:6cqw;margin-left:-2.8cqw;border-radius:48% 48% 46% 46%;
+            background:linear-gradient(100deg,#2E3440 0%,#20242C 62%,#15181D 100%)"></div>
+          <div style="position:absolute;left:50%;top:5.2cqw;width:1.6cqw;height:1.8cqw;margin-left:-.8cqw;
+            background:linear-gradient(100deg,#262C36,#171B21)"></div>
+          <div style="position:absolute;left:50%;top:6.6cqw;width:9.4cqw;height:11.4cqw;margin-left:-4.7cqw;
+            border-radius:1.6cqw 1.6cqw .6cqw .6cqw;
+            background:linear-gradient(100deg,#3A414E 0%,#262C36 54%,#171B21 100%)"></div>
+          <div style="position:absolute;left:1.2cqw;top:7.6cqw;width:2.6cqw;height:10cqw;border-radius:99px;
+            background:linear-gradient(100deg,#333A46,#1C2129);transform:rotate(6deg)"></div>
+          <div style="position:absolute;right:1.2cqw;top:7.6cqw;width:2.6cqw;height:10cqw;border-radius:99px;
+            background:linear-gradient(100deg,#3A4250,#1E242C);transform:rotate(-6deg)"></div>
+        </div>
+        <!-- 人的轮廓光（来自右侧屏） -->
+        <div style="position:absolute;left:49.4cqw;top:23.8cqw;width:.5cqw;height:20cqw;z-index:7;
+          filter:blur(.2cqw);background:linear-gradient(180deg,rgba(150,200,235,.6),rgba(150,200,235,.05))"></div>
+
+        <!-- 显示器 -->
+        <div style="position:absolute;left:54cqw;top:16cqw;width:21cqw;height:22cqw;z-index:5">
+          <div style="position:absolute;left:0;right:0;top:0;height:19.2cqw;background:#0A0D12;border-radius:.3cqw;
+            box-shadow:0 0 3.4cqw .8cqw rgba(120,170,210,.14),0 .5cqw 1.2cqw rgba(0,0,0,.6)">
+            <div style="position:absolute;inset:.4cqw;background:linear-gradient(160deg,#121A24,#0A1017);overflow:hidden">
+              <div style="position:absolute;left:.8cqw;top:.7cqw;right:.8cqw;height:.9cqw;
+                background:rgba(143,160,181,.10);border-radius:.15cqw"></div>
+              <div style="position:absolute;left:.8cqw;top:2.1cqw;width:5.4cqw;height:.5cqw;background:rgba(143,160,181,.5)"></div>
+              <div style="position:absolute;left:.8cqw;top:3.1cqw;width:8.4cqw;height:.42cqw;background:rgba(143,160,181,.28)"></div>
+              <div style="position:absolute;left:.8cqw;top:4.1cqw;width:6.6cqw;height:.42cqw;background:rgba(232,164,92,.5)"></div>
+              <svg viewBox="0 0 100 34" preserveAspectRatio="none" style="position:absolute;left:2%;right:2%;bottom:1.2cqw;width:96%;height:8.4cqw">
+                <path d="M2 34V18 M5.7 34V10 M9.4 34V22 M13.1 34V6 M16.8 34V14 M20.5 34V24
+                         M24.2 34V9 M27.9 34V19 M31.6 34V12 M35.3 34V26 M39 34V8 M42.7 34V16
+                         M46.4 34V23 M50.1 34V10 M53.8 34V20 M57.5 34V13 M61.2 34V25 M64.9 34V9
+                         M68.6 34V17 M72.3 34V11 M76 34V22 M79.7 34V14 M83.4 34V8 M87.1 34V21
+                         M90.8 34V13 M94.5 34V18 M98 34V15"
+                  stroke="#7FA0BC" stroke-opacity=".75" stroke-width="1.5"></path>
+              </svg>
+              <div style="position:absolute;left:0;right:0;bottom:0;height:1.4cqw;
+                background:rgba(232,164,92,.16);border-top:.1cqw solid rgba(232,164,92,.45)"></div>
+            </div>
+          </div>
+          <div style="position:absolute;left:50%;top:19.2cqw;width:1.6cqw;height:2.4cqw;margin-left:-.8cqw;
+            background:linear-gradient(180deg,#2A3038,#15181D)"></div>
+          <div style="position:absolute;left:50%;top:21.4cqw;width:6.4cqw;height:.7cqw;margin-left:-3.2cqw;border-radius:.2cqw;
+            background:linear-gradient(180deg,#333A44,#1E232A)"></div>
+        </div>
+
+        <!-- 笔记本 -->
+        <div style="position:absolute;left:79cqw;top:35.4cqw;width:19cqw;height:11.2cqw;z-index:11">
+          <div style="position:absolute;left:0;right:0;top:0;height:8.6cqw;border-radius:.3cqw .3cqw 0 0;
+            background:linear-gradient(170deg,#22282F,#12161B);box-shadow:0 0 2.4cqw .5cqw rgba(120,170,210,.10)">
+            <div style="position:absolute;inset:.4cqw;background:linear-gradient(150deg,#16202A,#0B1118)">
+              <div style="position:absolute;left:1cqw;top:1.1cqw;font-family:var(--f-mono);font-size:.66cqw;
+                letter-spacing:.16em;color:rgba(143,160,181,.7)">DRAFT 12</div>
+              <div style="position:absolute;left:1cqw;top:2.4cqw;font-family:var(--f-sans);font-size:1.28cqw;
+                font-weight:700;color:#EFE6D4">这里没有人</div>
+            </div>
+          </div>
+          <div style="position:absolute;left:-.6cqw;right:-.6cqw;top:8.4cqw;height:2.8cqw;
+            clip-path:polygon(2% 0,98% 0,100% 100%,0 100%);
+            background:linear-gradient(180deg,#333A43,#1A1E24)"></div>
+        </div>
+
+        <!-- 手机 -->
+        <div style="position:absolute;left:31.4cqw;top:45.2cqw;width:7.6cqw;height:9.6cqw;z-index:11;transform:rotate(-6deg)">
+          <div style="position:absolute;inset:0;border-radius:1cqw;background:linear-gradient(160deg,#2A2F36,#14171B);
+            box-shadow:0 .5cqw 1cqw rgba(0,0,0,.6)"></div>
+          <div style="position:absolute;inset:.42cqw;border-radius:.7cqw;background:linear-gradient(160deg,#1A2430,#0C1117);overflow:hidden">
+            <div style="position:absolute;left:.8cqw;top:.7cqw;font-family:var(--f-mono);font-size:.56cqw;
+              letter-spacing:.1em;color:rgba(143,160,181,.75)">23:41</div>
+            <div style="position:absolute;left:.8cqw;top:2.4cqw;right:.8cqw;font-family:var(--f-sans);
+              font-size:.86cqw;line-height:1.5;color:#EFE6D4">1 条<br>未读</div>
+            <div style="position:absolute;left:.8cqw;bottom:.7cqw;width:1.1cqw;height:1.1cqw;border-radius:50%;
+              background:rgba(232,164,92,.85)"></div>
+          </div>
+        </div>
+
+        <!-- 桌面上的杯子 -->
+        <div style="position:absolute;left:63cqw;top:41.6cqw;width:4.6cqw;height:5.8cqw;z-index:11">
+          <div style="position:absolute;left:0;right:0;bottom:0;height:4.4cqw;border-radius:.3cqw .3cqw .9cqw .9cqw;
+            background:linear-gradient(100deg,#8E8471 0%,#6A6252 52%,#464034 100%)"></div>
+          <div style="position:absolute;left:-.2cqw;right:-.2cqw;top:.8cqw;height:.9cqw;border-radius:50%;
+            background:linear-gradient(180deg,#A79C84,#6E6656)"></div>
+          <div style="position:absolute;left:-.5cqw;bottom:-.5cqw;width:4.4cqw;height:1.8cqw;z-index:12;border-radius:50%;
+            background:radial-gradient(closest-side,rgba(16,14,10,.55),rgba(16,14,10,0));filter:blur(.12cqw)"></div>
+        </div>
+
+        <!-- 光斑：屏落在桌面上 -->
+        <div style="position:absolute;left:48cqw;top:43cqw;width:36cqw;height:6cqw;z-index:2;pointer-events:none;
+          filter:blur(1.2cqw);background:radial-gradient(closest-side,rgba(120,170,210,.24),rgba(120,170,210,0))"></div>
+        <div style="position:absolute;left:76cqw;top:43cqw;width:28cqw;height:5cqw;z-index:2;pointer-events:none;
+          filter:blur(1.2cqw);background:radial-gradient(closest-side,rgba(120,170,210,.18),rgba(120,170,210,0))"></div>
+
+        <!-- 暗角 -->
+        <div style="position:absolute;inset:0;z-index:13;pointer-events:none;background:
+          radial-gradient(76% 74% at 46% 44%,rgba(6,6,8,0) 50%,rgba(6,6,8,.66) 100%)"></div>
+
+        <!-- 文字 -->
+        <div style="position:absolute;left:3.4cqw;bottom:2.6cqw;z-index:15">
+          <div class="mono" style="font-size:.86cqw;letter-spacing:.2em;color:rgba(232,164,92,.85)">DIEGETIC TYPOGRAPHY</div>
+          <div style="font-family:var(--f-serif);font-size:1.5cqw;color:#EFE6D4;margin-top:.5cqw">
+            四块屏，四句歌词</div>
+          <div style="font-size:.86cqw;line-height:1.7;color:rgba(240,230,216,.5);margin-top:.4cqw">
+            挂屏 / 显示器 / 笔记本 / 手机，各说一句，叠字只留给最后那一句。</div>
+        </div>
+        <div style="position:absolute;right:3.6cqw;top:3cqw;text-align:right;z-index:15">
+          <div class="mono" style="font-size:.78cqw;letter-spacing:.16em;color:rgba(240,230,216,.42)">主光 · 屏 6500K</div>
+          <div class="mono" style="font-size:.78cqw;letter-spacing:.16em;color:rgba(240,230,216,.3);margin-top:.3cqw">环境 · 12 lx</div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>场景内屏幕与文字<small>Diegetic Screens &amp; Typography</small></h3>
+        <p>桌面软件和住宅大屏承担歌词与剧情：文字必须服从屏幕的透视、分辨率和镜头距离——大屏可以放整句，手机只放得下两个字。关键是让屏幕在场景里"发光"，在地面、人脸和桌面上留下可见的光斑，它才不是一个贴上去的白色图层。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">场景内屏幕</span><span class="tag">透视文字</span>
+          <span class="tag">屏幕光斑</span><span class="tag">关键句叠字</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>三层光</b>室内主光（窗或顶灯）定方向，屏幕光给局部与色彩，反射光把家具连起来。明暗随场景变化，但必须能指出"这盏光从哪来"。</div>
+    <div><b>材质与人物</b>保留木、玻璃、地砖、针织等明确材料，反射等级拉开梯度；人物只做简化造型，比例、服装、姿态保留识别度，五官可以完全省略。</div>
+    <div><b>空间先于特写</b>稳定的一点透视、适量景深：先让观众看清场所，再推近屏幕或人物。前景允许虚化压角，但地平线、灭点和窗框必须对得上。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>电影感三维场景（Cinematic 3D Environments）音乐短片，简化人物置于具有实体材质和完整光影的现代室内：木质工作桌、玻璃、反光浅色地砖、落地窗与环形顶灯。用窗光、屏幕光和局部灯具组织空间，适量景深，镜头在桌面设备、公共演出与宽敞住宅间推进。歌词融入显示器和场景大屏，关键句用清晰叠字突出。</div>
+
+  <footer>样例说明：本页房间透视、落地窗与城市剪影、地板透视网格与倒影、环形吊灯、沙发、前景茶几、玻璃杯与黄铜灯、简化人物、四块屏幕及其中文字，均为 HTML / CSS / SVG 现场绘制（clip-path、渐变、模糊与投影模拟材质与景深），未使用外部图片或来源视频画面；角色与文案为示意内容。子风格依据 <code>styles/电影感三维场景.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

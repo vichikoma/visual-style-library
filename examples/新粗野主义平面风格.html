@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新粗野主义平面风格（Neo-Brutalism）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --nb-ink:#111111; --nb-cream:#FFF7E6; --nb-yellow:#FFD84D;
+  --nb-orange:#FF5A3C; --nb-blue:#2E5BFF; --nb-mint:#57E2B2; --nb-white:#FFFFFF;
+}
+/* 通用：画框内的定位元素都挂前缀，避免影响 .frame 自身 */
+.nb,.cmp,.pos,.pat{background:var(--nb-cream);color:#111}
+
+/* ---------- 组件语言 ---------- */
+.win{background:var(--nb-white);border:.45cqw solid var(--nb-ink);border-radius:.55cqw;
+  box-shadow:.85cqw .85cqw 0 var(--nb-ink);overflow:hidden}
+.win .bar{height:3.2cqw;background:var(--nb-mint);border-bottom:.45cqw solid var(--nb-ink);
+  display:flex;align-items:center;justify-content:space-between;padding:0 1.1cqw;
+  font-family:var(--f-mono);font-size:1.05cqw;font-weight:700;letter-spacing:.16em;color:#0d0d0d}
+.win .bar .dots{display:flex;gap:.45cqw}
+.win .bar .dots i{width:.9cqw;height:.9cqw;border:.22cqw solid var(--nb-ink);border-radius:50%;display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5cqw;
+  border:.35cqw solid var(--nb-ink);border-radius:.45cqw;box-shadow:.5cqw .5cqw 0 var(--nb-ink);
+  font-weight:900;font-size:1.25cqw;padding:.7cqw 1.4cqw;letter-spacing:.04em;color:#0d0d0d}
+.btn.mint{background:var(--nb-mint)}
+.btn.blue{background:var(--nb-blue);color:#fff}
+.btn.orange{background:var(--nb-orange);color:#fff}
+.btn.ghost{background:#fff}
+.ck{width:1.5cqw;height:1.5cqw;border:.3cqw solid var(--nb-ink);border-radius:.25cqw;
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.ck.on{background:var(--nb-mint)}
+.ck svg{width:.9cqw;height:.9cqw}
+.hl{background:var(--nb-yellow);box-shadow:0 .6cqw 0 var(--nb-yellow)}
+.hl-o{background:var(--nb-orange);color:#fff}
+.mono{font-family:var(--f-mono);letter-spacing:.16em;font-size:1cqw}
+.ckpattern{background-image:
+  linear-gradient(45deg,var(--nb-ink) 25%,transparent 25%,transparent 75%,var(--nb-ink) 75%),
+  linear-gradient(45deg,var(--nb-ink) 25%,transparent 25%,transparent 75%,var(--nb-ink) 75%);
+  background-size:2.4cqw 2.4cqw;background-position:0 0,1.2cqw 1.2cqw;background-color:#fff}
+
+/* ---------- 主视觉 ---------- */
+.nb .ckstrip{position:absolute;left:0;top:0;bottom:0;width:2.4cqw;
+  background-image:linear-gradient(45deg,#111 25%,transparent 25%,transparent 75%,#111 75%),
+                   linear-gradient(45deg,#111 25%,transparent 25%,transparent 75%,#111 75%);
+  background-size:2.4cqw 2.4cqw;background-position:0 0,1.2cqw 1.2cqw;background-color:#FFF7E6}
+.nb .vt{position:absolute;right:.55cqw;top:6cqw;writing-mode:vertical-rl;font-family:var(--f-mono);
+  font-size:1cqw;letter-spacing:.42em;color:#111;opacity:.55}
+.nb .tagline{position:absolute;left:5.4cqw;top:3.4cqw;display:flex;align-items:center;gap:1cqw}
+.nb .tagline .pill{background:#111;color:#FFD84D;font-family:var(--f-mono);font-size:1.05cqw;
+  letter-spacing:.2em;padding:.5cqw 1.1cqw;border-radius:.3cqw}
+.nb .tagline .pill2{font-family:var(--f-mono);font-size:1cqw;letter-spacing:.24em;color:#111;opacity:.7}
+
+.nb .headline{position:absolute;left:5cqw;top:9.8cqw;width:56cqw;font-family:var(--f-sans);
+  font-size:7.3cqw;font-weight:900;line-height:1.04;letter-spacing:-.02em;color:#111}
+.nb .headline .row{display:flex;align-items:center;gap:.8cqw;margin-bottom:.5cqw}
+.nb .headline .box{background:var(--nb-orange);color:#fff;padding:.2cqw 1cqw .8cqw;
+  border:.4cqw solid #111;box-shadow:.7cqw .7cqw 0 #111}
+.nb .sub2{position:absolute;left:5.4cqw;top:38.4cqw;max-width:33cqw;font-size:1.3cqw;line-height:1.95;color:#2a2a2a}
+.nb .sub2 b{background:var(--nb-yellow);padding:0 .3cqw;white-space:nowrap}
+
+.nb .todo{position:absolute;right:6.5cqw;top:6.5cqw;width:33cqw;z-index:6}
+.nb .todo .body{padding:1.3cqw 1.4cqw 1.5cqw}
+.nb .todo .row{display:flex;align-items:center;gap:.9cqw;padding:.75cqw 0;border-bottom:.2cqw dashed #c9c3b2}
+.nb .todo .row:last-of-type{border-bottom:0}
+.nb .todo .row span{font-size:1.2cqw;font-weight:700;color:#1a1a1a}
+.nb .todo .row span.done{color:#7c7668;text-decoration:line-through}
+.nb .todo .foot{display:flex;justify-content:space-between;align-items:center;margin-top:1cqw}
+
+.nb .perm{position:absolute;right:14cqw;bottom:9cqw;width:29cqw;z-index:8}
+.nb .perm .bar{background:var(--nb-yellow)}
+.nb .perm .body{padding:1.4cqw}
+.nb .perm .t{font-size:1.75cqw;font-weight:900;line-height:1.4;color:#111}
+.nb .perm .d{font-size:1.1cqw;color:#4a4a44;margin-top:.5cqw;line-height:1.75}
+.nb .perm .acts{display:flex;gap:.9cqw;margin-top:1.3cqw}
+.nb .perm .acts .btn{flex:1;font-size:1.15cqw}
+
+.nb .burst{position:absolute;right:1.2cqw;bottom:9.4cqw;width:10.4cqw;height:10.4cqw;z-index:9;
+  transform:rotate(-9deg);filter:drop-shadow(.6cqw .6cqw 0 #111)}
+.nb .burst svg{width:100%;height:100%;display:block}
+.nb .cursor{position:absolute;left:51.2cqw;top:41.4cqw;width:4.4cqw;z-index:12;
+  transform:scaleX(-1);filter:drop-shadow(-.32cqw .32cqw 0 rgba(0,0,0,.22))}
+.nb .fig{position:absolute;left:5.4cqw;top:46.6cqw;font-family:var(--f-mono);font-size:.95cqw;
+  letter-spacing:.22em;color:#6b6555}
+
+.nb .ticker{position:absolute;left:0;right:0;bottom:0;height:6.4cqw;background:var(--nb-blue);
+  border-top:.45cqw solid #111;display:flex;align-items:center;overflow:hidden;z-index:10}
+.nb .ticker .run{display:flex;gap:2.4cqw;white-space:nowrap;padding-left:1cqw;
+  font-family:var(--f-sans);font-weight:900;font-size:2.4cqw;color:#fff;letter-spacing:.02em;
+  animation:nbRun 26s linear infinite}
+@keyframes nbRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.nb .ticker .run{animation:none}}
+.nb .ticker .run i{font-style:normal;color:#FFD84D}
+
+/* ---------- 组件对照 ---------- */
+.cmp .gridbg{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(17,17,17,.10) .14cqw,transparent .14cqw),
+                   linear-gradient(90deg,rgba(17,17,17,.10) .14cqw,transparent .14cqw);
+  background-size:2.6cqw 2.6cqw}
+.cmp .ttl{position:absolute;left:4cqw;top:3.2cqw}
+.cmp .ttl b{display:block;font-size:3.2cqw;font-weight:900;letter-spacing:-.01em;color:#111;line-height:1.2}
+.cmp .ttl span{display:block;font-family:var(--f-mono);font-size:1cqw;letter-spacing:.24em;color:#5a5445;margin-top:.5cqw}
+.cmp .stage{position:absolute;left:4cqw;top:12.6cqw;right:37cqw;bottom:4.4cqw;
+  display:flex;flex-direction:column;justify-content:space-between}
+.cmp .row1{display:flex;gap:1.1cqw;align-items:center}
+.cmp .row1 .mono{font-size:.9cqw;color:#5a5445}
+.cmp .bubbles{display:flex;justify-content:space-between;align-items:flex-start;padding-top:1.2cqw}
+.cmp .bubble{position:relative;background:#fff;border:.4cqw solid #111;border-radius:.8cqw;
+  box-shadow:.7cqw .7cqw 0 #111;padding:.8cqw 1.4cqw;font-weight:900;font-size:1.35cqw;color:#111}
+.cmp .bubble::after{content:"";position:absolute;left:2cqw;bottom:-1.3cqw;width:1.4cqw;height:1.4cqw;
+  background:#fff;border-right:.4cqw solid #111;border-bottom:.4cqw solid #111;transform:rotate(45deg)}
+.cmp .bubble.r::after{left:auto;right:2cqw}
+.cmp .cards{display:flex;gap:1.1cqw}
+.cmp .mini{flex:1;background:#fff;border:.35cqw solid #111;border-radius:.5cqw;
+  box-shadow:.5cqw .5cqw 0 #111;padding:.7cqw .9cqw;display:flex;align-items:center;
+  justify-content:space-between;gap:.7cqw;font-weight:900;font-size:1cqw;color:#111}
+.cmp .tg{width:3cqw;height:1.5cqw;border:.26cqw solid #111;border-radius:1cqw;
+  background:var(--nb-mint);position:relative;flex:0 0 auto}
+.cmp .tg i{position:absolute;right:.18cqw;top:.14cqw;width:1cqw;height:1cqw;border-radius:50%;
+  background:#fff;border:.2cqw solid #111;display:block}
+.cmp .win2 .body{padding:1cqw 1.3cqw;display:flex;align-items:center;justify-content:space-between;gap:1cqw}
+.cmp .win2 .txt{font-size:1.15cqw;font-weight:700;color:#1a1a1a}
+.cmp .win2 .txt small{display:block;font-family:var(--f-mono);font-size:.9cqw;color:#6b6555;font-weight:400;letter-spacing:.1em;margin-top:.3cqw}
+.cmp .detail{position:absolute;right:4cqw;top:12.6cqw;width:29cqw;bottom:4.4cqw;
+  background:#fff;border:.45cqw solid #111;box-shadow:.85cqw .85cqw 0 #111;overflow:hidden}
+.cmp .detail .cap2{height:2.6cqw;background:#111;color:#fff;font-family:var(--f-mono);font-size:.9cqw;
+  letter-spacing:.18em;display:flex;align-items:center;padding:0 1cqw}
+.cmp .detail .zoom{position:absolute;left:0;right:0;top:2.6cqw;bottom:0;background:var(--nb-cream)}
+.cmp .detail .corner{position:absolute;left:3.6cqw;top:3.4cqw;width:18cqw;height:9.4cqw;background:#fff;
+  border:.42cqw solid #111;border-radius:.5cqw;box-shadow:.75cqw .75cqw 0 #111}
+.cmp .detail .spec{position:absolute;left:3.6cqw;top:15.2cqw;font-family:var(--f-mono);
+  font-size:.88cqw;letter-spacing:.08em;color:#111;line-height:1.95}
+.cmp .detail .spec i{display:inline-block;width:.62cqw;height:.62cqw;background:#111;margin-right:.5cqw}
+.cmp .detail .rep{position:absolute;left:3.6cqw;right:3.6cqw;top:21.8cqw;display:flex;
+  align-items:flex-end;gap:1cqw}
+.cmp .detail .rp{background:#fff;border:.35cqw solid #111;border-radius:.4cqw;
+  box-shadow:.42cqw .42cqw 0 #111;flex:0 0 auto}
+.cmp .detail .rp:nth-child(1){width:3.4cqw;height:2.6cqw}
+.cmp .detail .rp:nth-child(2){width:4.6cqw;height:3.4cqw}
+.cmp .detail .rp:nth-child(3){width:5.8cqw;height:4.2cqw}
+.cmp .detail .rp:nth-child(4){width:7cqw;height:5cqw}
+.cmp .detail .replab{position:absolute;left:3.6cqw;top:28.4cqw;font-family:var(--f-mono);
+  font-size:.82cqw;letter-spacing:.14em;color:#5a5445}
+
+/* ---------- 粗体海报 ---------- */
+.pos{background:var(--nb-yellow)}
+.pos .rays{position:absolute;inset:0;
+  background:repeating-conic-gradient(from 0deg at 50% 42%,rgba(17,17,17,.07) 0 .8deg,transparent .8deg 6deg)}
+.pos .frame2{position:absolute;inset:2.2cqw;border:.45cqw solid #111}
+.pos .kicker2{position:absolute;left:4cqw;top:4cqw;font-family:var(--f-mono);font-size:1.05cqw;
+  letter-spacing:.3em;color:#111}
+.pos .big{position:absolute;left:4.2cqw;top:7.6cqw;font-weight:900;color:#111;
+  font-size:9cqw;line-height:1.14;letter-spacing:-.03em}
+.pos .big em{font-style:normal;display:inline-block;background:#111;color:#FFD84D;padding:.1cqw 1.2cqw .5cqw}
+.pos .big .o{color:var(--nb-orange);text-shadow:.45cqw .45cqw 0 #111}
+.pos .quote{position:absolute;left:4.4cqw;bottom:6cqw;max-width:42cqw;font-family:var(--f-serif);
+  font-size:1.55cqw;line-height:1.95;color:#1c1c1c}
+.pos .quote::before{content:"“";font-family:var(--f-display);font-size:5cqw;line-height:0;
+  vertical-align:-1.2cqw;color:var(--nb-orange);margin-right:.2cqw}
+.pos .stamp{position:absolute;right:6cqw;bottom:8.4cqw;width:12.4cqw;height:12.4cqw;transform:rotate(8deg)}
+.pos .stamp svg{width:100%;height:100%}
+.pos .barcode{position:absolute;right:5.6cqw;bottom:23.6cqw;width:12.6cqw;background:#fff;
+  border:.35cqw solid #111;padding:.55cqw .7cqw .45cqw;box-shadow:.55cqw .55cqw 0 #111;transform:rotate(-3deg)}
+.pos .barcode .bars{height:2.5cqw;background:repeating-linear-gradient(90deg,
+  #111 0 .26cqw,transparent .26cqw .52cqw,#111 .52cqw .64cqw,transparent .64cqw .92cqw)}
+.pos .barcode .bc-lab{font-family:var(--f-mono);font-size:.72cqw;letter-spacing:.14em;margin-top:.4cqw;color:#111}
+.pos .stars{position:absolute;left:4.6cqw;bottom:4.2cqw;font-size:1.15cqw;letter-spacing:.5em;color:var(--nb-orange)}
+.pos .edge{position:absolute;left:0;right:0;bottom:0;height:2.4cqw;background:#111;
+  background-image:repeating-linear-gradient(90deg,#FFD84D 0 2.4cqw,transparent 2.4cqw 4.8cqw);
+  border-top:.3cqw solid #111}
+
+/* ---------- 图案背景 ---------- */
+.pat .quad{position:absolute;width:50%;height:50%}
+.pat .q1{left:0;top:0;background:var(--nb-orange)}
+.pat .q2{right:0;top:0;background:var(--nb-blue)}
+.pat .q3{left:0;bottom:0;background:var(--nb-mint)}
+.pat .q4{right:0;bottom:0;background:var(--nb-yellow)}
+.pat .lines{position:absolute;left:-20%;top:-20%;width:140%;height:140%;
+  background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(17,17,17,.12) 0 .7deg,transparent .7deg 5deg);
+  mix-blend-mode:multiply;opacity:.5}
+.pat .w{position:absolute;z-index:5}
+.pat .w.a{left:4cqw;top:5cqw;width:26cqw}
+.pat .w.b{right:5cqw;top:21cqw;width:23cqw}
+.pat .w.c{left:9cqw;bottom:5.5cqw;width:24cqw}
+.pat .badge{position:absolute;left:50%;top:50%;width:13cqw;height:13cqw;z-index:6;
+  transform:translate(-50%,-50%) rotate(-7deg)}
+.pat .badge svg{width:100%;height:100%;filter:drop-shadow(.6cqw .6cqw 0 #111)}
+.pat .strip{position:absolute;left:0;right:0;top:0;height:1.8cqw;
+  background-image:linear-gradient(45deg,#111 25%,transparent 25%,transparent 75%,#111 75%),
+                   linear-gradient(45deg,#111 25%,transparent 25%,transparent 75%,#111 75%);
+  background-size:1.8cqw 1.8cqw;background-position:0 0,.9cqw .9cqw;background-color:#fff;
+  border-bottom:.3cqw solid #111;z-index:4}
+.pat .qtag{position:absolute;z-index:5;font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.18em;
+  color:#111;background:rgba(255,255,255,.86);border:.22cqw solid #111;padding:.25cqw .7cqw;border-radius:.25cqw}
+.pat .patnote{position:absolute;right:5cqw;bottom:5cqw;z-index:5;font-family:var(--f-mono);
+  font-size:1cqw;letter-spacing:.12em;color:#111;background:rgba(255,255,255,.9);
+  border:.22cqw solid #111;padding:.4cqw .9cqw;box-shadow:.4cqw .4cqw 0 #111}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>07 / 25</span>
+    <span class="right"><a href="绘画质感动画.html">← 上一条</a><a href="朋克杂志拼贴.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>新粗野主义平面风格<small>Neo-Brutalism</small></h1>
+    <p class="lead">以直露边框、强对比色块、醒目粗体、偏移硬阴影和简洁组件建立直接鲜明的视觉。布局可以保留网格与留白，画面重点是结构与图形的清楚对比；它有别于建筑粗野主义的混凝土空间，指向当代平面与界面外观。</p>
+    <div class="meta">
+      <div><b>风格定位</b>新粗野主义平面风格（Neo-Brutalism），以边框、影块与粗体为主的当代平面语言</div>
+      <div><b>视觉媒介</b>二维图形与界面动画（2D Graphics &amp; UI Animation）＋动态排版（Kinetic Typography）</div>
+      <div><b>典型母体</b>软件窗口与权限弹窗、醒目商业海报、平面广告背景</div>
+    </div>
+    <div class="tags">
+      <span class="tag">新粗野主义（Neo-Brutalism）</span><span class="tag">硬阴影（Hard Shadow）</span><span class="tag">粗黑边框</span>
+      <span class="tag">粗体无衬线（Bold Sans Serif）</span><span class="tag">鲜色色块</span>
+      <span class="tag w">广告式表达</span><span class="tag w">喜剧</span><span class="tag w">依赖与选择</span><span class="tag w">技术服务</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#FFF7E6"></i>奶油底<br><code>#FFF7E6</code></div>
+      <div class="sw"><i style="background:#111111"></i>墨黑<br><code>#111111</code></div>
+      <div class="sw"><i style="background:#FF5A3C"></i>橙红<br><code>#FF5A3C</code></div>
+      <div class="sw"><i style="background:#FFD84D"></i>奶油黄<br><code>#FFD84D</code></div>
+      <div class="sw"><i style="background:#2E5BFF"></i>鲜蓝<br><code>#2E5BFF</code></div>
+      <div class="sw"><i style="background:#57E2B2"></i>薄荷绿<br><code>#57E2B2</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">边框、影块、底色和粗体四件套同时出现才算这条风格：所有组件用同一档描边和同一方向的偏移影块，文字按“主视觉／组件／注释”三级排布。</p>
+
+  <div class="frame nb" id="f-master">
+    <div class="ckstrip"></div>
+    <div class="vt">NEO-BRUTALISM</div>
+
+    <div class="tagline">
+      <span class="pill">SV-07</span>
+      <span class="pill2">NEO-BRUTALISM / 2D + KINETIC TYPE</span>
+    </div>
+
+    <div class="headline">
+      <div class="row"><span>别再问我</span></div>
+      <div class="row"><span class="box">要不要</span><span>开始</span></div>
+      <div class="row"><span>我只会</span><span class="hl">回答</span></div>
+    </div>
+
+    <div class="sub2">把选择写成一张卡片，把情绪写成一条广播。<b>粗边框和硬阴影</b>负责态度，颜色负责节奏。</div>
+    <div class="fig">FIG.01 · 决策界面 / DECISION UI</div>
+
+    <!-- 待办卡 -->
+    <div class="win todo">
+      <div class="bar"><span>TODO.TXT</span><span class="dots"><i></i><i></i><i></i></span></div>
+      <div class="body">
+        <div class="row">
+          <span class="ck on"><svg viewBox="0 0 12 12"><path d="M2 6.4 L4.8 9.2 L10 3.2" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="done">承认自己只是一段程序</span>
+        </div>
+        <div class="row">
+          <span class="ck on"><svg viewBox="0 0 12 12"><path d="M2 6.4 L4.8 9.2 L10 3.2" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="done">把犹豫写进注释</span>
+        </div>
+        <div class="row">
+          <span class="ck"></span>
+          <span>按下“开始”</span>
+        </div>
+        <div class="foot">
+          <span class="mono" style="font-size:.95cqw;color:#6b6555">3 ITEMS · 2 DONE</span>
+          <span class="btn orange">现在开始</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 权限弹窗 -->
+    <div class="win perm">
+      <div class="bar"><span>需要你的授权</span><span class="dots"><i></i><i></i></span></div>
+      <div class="body">
+        <div class="t">要让我继续吗？</div>
+        <div class="d">允许后我会替你把剩下的按钮都按一遍。你随时可以收回。</div>
+        <div class="acts">
+          <span class="btn mint">允许</span>
+          <span class="btn ghost">再想想</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="burst">
+      <svg viewBox="0 0 100 100">
+        <polygon points="50,2 58,16 72,8 73,24 88,22 82,37 97,42 85,53 97,63 82,68 88,83 73,81 72,97 58,89 50,99 42,89 27,97 27,81 12,83 18,68 3,63 15,53 3,42 18,37 12,22 27,24 28,8 42,16"
+          fill="#FF5A3C" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+        <text x="50" y="46" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="17" fill="#111">NEW</text>
+        <text x="50" y="64" text-anchor="middle" font-family="Consolas,monospace" font-size="9" fill="#111" letter-spacing="1">VOL.7</text>
+      </svg>
+    </div>
+
+    <div class="cursor">
+      <svg viewBox="0 0 40 56">
+        <path d="M4 3 L4 44 L14 34 L21 50 L29 46 L22 30 L36 30 Z" fill="#fff" stroke="#111" stroke-width="3.4" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="ticker">
+      <div class="run">
+        <span>这不是一个按钮</span><i>★</i><span>这是一个决定</span><i>★</i>
+        <span>按下之后就不能撤回</span><i>★</i><span>你确定吗</span><i>★</i>
+        <span>这不是一个按钮</span><i>★</i><span>这是一个决定</span><i>★</i>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><b>统一轮廓</b>窗口、按钮、气泡共用同一档描边（约 4px）与同一半径，整套组件看起来像同一个零件库。</div>
+    <div><b>偏移硬阴影</b>影块不模糊、只朝右下偏移，所有组件方向一致；影块本身就是黑色实心块。</div>
+    <div><b>粗体层级</b>主视觉用超大粗体，组件文字中等，注释用等宽小字——三级就够，不再细分。</div>
+    <div><b>鲜色分段</b>每幅控制在 3–4 个主色，按区块切换底色，靠色块切分节奏而不是靠渐变。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向分别对应组件语言、海报排版与图案背景，可与主风格组合使用。</p>
+
+  <div class="subs">
+
+    <!-- 1. 粗边框与硬阴影 -->
+    <section class="sub">
+      <div class="frame cmp" id="f-comp">
+        <div class="gridbg"></div>
+        <div class="ttl">
+          <b>一套零件，一个方向</b>
+          <span>BOLD OUTLINES &amp; HARD SHADOWS</span>
+        </div>
+
+        <div class="stage">
+          <div class="row1">
+            <span class="btn mint">允许</span>
+            <span class="btn blue">继续</span>
+            <span class="btn ghost">再想想</span>
+            <span class="mono" style="font-size:.82cqw;margin-left:.6cqw">3 种按钮 · 同档描边</span>
+          </div>
+          <div class="bubbles">
+            <span class="bubble">我还没说完</span>
+            <span class="bubble r">那我先按了</span>
+          </div>
+          <div class="cards">
+            <div class="mini"><span>自动继续</span><span class="tg"><i></i></span></div>
+            <div class="mini"><span class="ck on"><svg viewBox="0 0 12 12"><path d="M2 6.4 L4.8 9.2 L10 3.2" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>已同意</span></div>
+          </div>
+
+          <div class="win win2">
+            <div class="bar"><span>DIALOG · 04</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="body">
+              <div class="txt">同一条边框，同一个影块方向<small>BORDER 4PX → SHADOW 8PX → OFFSET X+8 / Y+8</small></div>
+              <span class="btn blue" style="flex:0 0 auto">好</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail">
+          <div class="cap2">DETAIL · 转角构造</div>
+          <div class="zoom">
+            <div class="corner"></div>
+            <div class="spec">
+              <div><i></i>描边 4PX · 实心 #111</div>
+              <div><i></i>影块 8PX · 不模糊</div>
+              <div><i></i>偏移 +8 / +8 · 同方向</div>
+            </div>
+            <div class="rep"><div class="rp"></div><div class="rp"></div><div class="rp"></div><div class="rp"></div></div>
+            <div class="replab">描边不随尺寸变化</div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>粗边框与硬阴影<small>Bold Outlines &amp; Hard Shadows</small></h3>
+        <p>窗口与气泡有清晰黑色轮廓及偏移影块；使用一致的阴影方向和描边比例，确保整套组件统一。判断是不是这条风格，先看边框和影块是否成体系，而不只看颜色鲜不鲜艳。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">统一描边</span><span class="tag">偏移硬阴影</span>
+          <span class="tag">同方向</span><span class="tag">组件同构</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 粗体海报排版 -->
+    <section class="sub">
+      <div class="frame pos" id="f-poster">
+        <div class="rays"></div>
+        <div class="frame2"></div>
+        <div class="kicker2">POSTER · 2026 / VOL.07</div>
+        <div class="big">
+          <div>我不会</div>
+          <div><em>替你</em></div>
+          <div><span class="o">按下去</span></div>
+        </div>
+        <div class="quote">你可以让我写、让我改、让我一遍遍重来；<br>但最后那一下，得你自己按。</div>
+        <div class="stamp">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#111" stroke-width="4"/>
+            <circle cx="50" cy="50" r="38" fill="#FF5A3C" stroke="#111" stroke-width="3"/>
+            <text x="50" y="46" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="15" fill="#111">START</text>
+            <text x="50" y="62" text-anchor="middle" font-family="Consolas,monospace" font-size="10" fill="#111">NOW</text>
+          </svg>
+        </div>
+        <div class="edge"></div>
+        <div class="barcode">
+          <div class="bars"></div>
+          <div class="bc-lab">NO.07 · SIDE B · 2026</div>
+        </div>
+        <div class="stars">★ ★ ★</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>粗体海报排版<small>Bold Poster Typography</small></h3>
+        <p>大号歌词结合星爆和黄色底条，构图依靠大小与位置变化。关键句优先占主视觉，其余信息缩小；黑白底色反转与印章式徽标负责收口，整体像一张贴在街头的商业海报。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">超大粗体</span><span class="tag">反白字块</span>
+          <span class="tag">星爆／圆章</span><span class="tag">口号式短句</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 鲜色组件与图案背景 -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame pat" id="f-pattern">
+        <div class="quad q1"></div><div class="quad q2"></div><div class="quad q3"></div><div class="quad q4"></div>
+        <div class="lines"></div>
+        <div class="strip"></div>
+        <div class="qtag" style="left:3cqw;top:22.4cqw">01 橙红 #FF5A3C</div>
+        <div class="qtag" style="right:3cqw;top:2.6cqw">02 鲜蓝 #2E5BFF</div>
+        <div class="qtag" style="left:3cqw;bottom:2.2cqw">03 薄荷绿 #57E2B2</div>
+        <div class="qtag" style="right:3cqw;top:33cqw">04 奶油黄 #FFD84D</div>
+        <div class="patnote">背景图案对比 &lt; 主体文字</div>
+
+        <div class="win w a">
+          <div class="bar"><span>01 / 选择</span><span class="dots"><i></i><i></i></span></div>
+          <div class="body" style="padding:1.2cqw">
+            <div class="t" style="font-size:1.5cqw;font-weight:900;line-height:1.5">先选一个<br>你相信的答案</div>
+            <div style="display:flex;gap:.7cqw;margin-top:1cqw">
+              <span class="btn mint" style="font-size:1.05cqw;flex:1">A</span>
+              <span class="btn ghost" style="font-size:1.05cqw;flex:1">B</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="win w b">
+          <div class="bar" style="background:#FFD84D"><span>02 / 确认</span><span class="dots"><i></i><i></i></span></div>
+          <div class="body" style="padding:1.2cqw">
+            <div style="font-size:1.2cqw;font-weight:700;color:#333">这个操作会改变之后的一切。</div>
+            <div style="display:flex;align-items:center;gap:.7cqw;margin-top:.9cqw">
+              <span class="ck"></span><span style="font-size:1.05cqw">我知道了</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="win w c">
+          <div class="bar" style="background:#2E5BFF;color:#fff"><span>03 / 广播</span><span class="dots"><i></i><i></i></span></div>
+          <div class="body" style="padding:1.2cqw;font-size:1.15cqw;font-weight:700;line-height:1.7">
+            已发送给 12 个人<br><span style="font-family:var(--f-mono);font-size:.95cqw;color:#6b6555;font-weight:400">12 / 12 DELIVERED</span>
+          </div>
+        </div>
+
+        <div class="badge">
+          <svg viewBox="0 0 100 100">
+            <polygon points="50,2 58,16 72,8 73,24 88,22 82,37 97,42 85,53 97,63 82,68 88,83 73,81 72,97 58,89 50,99 42,89 27,97 27,81 12,83 18,68 3,63 15,53 3,42 18,37 12,22 27,24 28,8 42,16"
+              fill="#FFF7E6" stroke="#111" stroke-width="3.4" stroke-linejoin="round"/>
+            <text x="50" y="47" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="19" fill="#111">4</text>
+            <text x="50" y="66" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#111">COLORS</text>
+          </svg>
+        </div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>鲜色组件与图案背景<small>Bright Components &amp; Patterned Backgrounds</small></h3>
+        <p>棋盘格、放射线和鲜色窗口交替出现；背景图案的对比应低于主体文字。做法是把背景切成纯色区块，再叠加低透明度的线纹或方格，让组件浮在上层而不抢文字。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">纯色分区</span><span class="tag">棋盘格边条</span>
+          <span class="tag">放射线</span><span class="tag">背景低对比</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>边框与影块</b>统一粗黑边框和向一侧偏移的硬阴影，方向、粗细、圆角三处必须全片一致。</div>
+    <div><b>配色与分段</b>用蓝、橙红、薄荷绿与奶油黄分段，每幅控制主色数量；背景图案对比低于主体文字。</div>
+    <div><b>文字与节奏</b>粗重无衬线标题配少量衬线口语引文，文字层级明确；组件动画使用短促位移、弹出和缩放。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>新粗野主义（Neo-Brutalism）二维音乐图形，粗黑边框、偏移硬阴影、鲜明蓝橙红薄荷绿与奶油黄，粗重无衬线大标题。界面窗口、权限弹窗、按钮与气泡拥有统一轮廓和影块，辅以棋盘格、放射线、星爆标牌和大光标。歌词成为卡片正文与海报口号，以短促弹出、缩放、逐词强调和按钮反馈形成节奏。</div>
+
+  <footer>样例说明：本页所有窗口、组件、图案与文字排版均为 HTML / CSS / SVG 原创搭建，未使用来源视频画面；界面文案为示意内容。子风格依据 <code>styles/新粗野主义平面风格.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

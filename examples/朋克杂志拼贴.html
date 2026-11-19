@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>朋克杂志拼贴（Punk Zine Collage）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --z-paper:#E7E2D3; --z-paper2:#F3F0E6; --z-ink:#111111;
+  --z-magenta:#E8206E; --z-yellow:#F2E14C; --z-blue:#2FA8C9;
+}
+.zi,.zt2,.zc,.zd{background:var(--z-paper);color:var(--z-ink)}
+
+/* ---------- 纸张与印刷材质 ---------- */
+.grain{position:absolute;inset:0;filter:url(#zgrain);opacity:.3;mix-blend-mode:multiply;pointer-events:none}
+.vig{position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 6cqw rgba(90,72,40,.16)}
+.htd{background-image:radial-gradient(circle,#111 1.1px,transparent 1.3px);
+  background-size:6px 6px}
+.htd-b{background-image:radial-gradient(circle,#111 2.1px,transparent 2.3px);
+  background-size:10px 10px}
+.htd-s{background-image:radial-gradient(circle,#111 .7px,transparent .9px);
+  background-size:4px 4px}
+.tape{position:absolute;background:rgba(255,255,255,.52);
+  border-left:.08cqw solid rgba(255,255,255,.7);border-right:.08cqw solid rgba(0,0,0,.06);
+  box-shadow:0 0 .5cqw rgba(60,50,30,.18);backdrop-filter:blur(.02cqw);z-index:8}
+.tape::after{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 .12cqw,transparent .12cqw .5cqw)}
+.clip{position:absolute;z-index:7}
+.torn-a{clip-path:polygon(0 7%,4% 1%,13% 6%,29% 0,48% 5%,68% 1%,88% 6%,100% 2%,
+  99% 38%,100% 72%,96% 96%,79% 100%,58% 95%,36% 100%,15% 96%,1% 100%,0 62%)}
+.torn-b{clip-path:polygon(1% 4%,14% 0,31% 5%,52% 1%,71% 6%,90% 1%,100% 5%,
+  99% 44%,100% 80%,95% 99%,73% 96%,50% 100%,28% 95%,9% 100%,0 92%,1% 50%)}
+.torn-c{clip-path:polygon(0 10%,6% 2%,20% 8%,40% 3%,62% 8%,82% 2%,98% 7%,100% 30%,
+  99% 66%,100% 92%,86% 100%,64% 94%,42% 99%,22% 93%,4% 99%,0 70%)}
+
+/* ---------- 主视觉 ---------- */
+.zi .mono-top{position:absolute;left:4cqw;top:2.4cqw;right:4cqw;display:flex;
+  justify-content:space-between;align-items:center;font-family:var(--f-mono);
+  font-size:1.05cqw;letter-spacing:.26em;color:#4b4436}
+.zi .mono-top .dot{display:inline-block;width:.9cqw;height:.9cqw;background:var(--z-magenta);
+  border-radius:50%;margin-right:.8cqw;vertical-align:-.06cqw}
+
+.zi .t1{position:absolute;left:4cqw;top:8.2cqw;background:#111;color:#F3F0E6;
+  font-family:var(--f-sans);font-weight:900;font-size:7.1cqw;line-height:1;
+  padding:.5cqw 1.2cqw .9cqw;letter-spacing:.02em;transform:rotate(-2.2deg);z-index:6}
+.zi .swipe{position:absolute;left:3.4cqw;top:20cqw;width:47cqw;height:12.4cqw;
+  background:var(--z-yellow);transform:rotate(1.2deg);z-index:5}
+.zi .misprint{position:absolute;left:3.4cqw;top:7.4cqw;width:31cqw;height:10.8cqw;
+  background:var(--z-magenta);transform:rotate(-2.6deg);z-index:5;opacity:.95}
+.zi .t2{position:absolute;left:5.6cqw;top:21.2cqw;background:var(--z-magenta);color:#fff;
+  font-family:var(--f-sans);font-weight:900;font-size:8.3cqw;line-height:1;
+  padding:.45cqw 1.3cqw .8cqw;letter-spacing:.02em;transform:rotate(1.4deg);z-index:6}
+.zi .t3{position:absolute;left:4.4cqw;top:35cqw;background:var(--z-paper2);color:#111;
+  font-family:var(--f-sans);font-weight:900;font-size:4.4cqw;line-height:1;
+  padding:.7cqw 1.2cqw .9cqw;transform:rotate(-1.6deg);
+  box-shadow:.45cqw .45cqw 0 rgba(17,17,17,.92);z-index:6}
+
+.zi .note{position:absolute;left:35cqw;top:36.6cqw;font-family:var(--f-hand);font-size:1.85cqw;
+  line-height:1.6;color:#1d2b6b;transform:rotate(-5deg);z-index:9}
+.zi .arrow{position:absolute;left:21.4cqw;top:37.4cqw;width:12.4cqw;z-index:8;transform:rotate(-2deg)}
+
+.zi .sub{position:absolute;left:4cqw;top:47.4cqw;width:58cqw;height:4.6cqw;background:#111;
+  display:flex;align-items:center;padding:0 1.4cqw;z-index:6}
+.zi .sub span{font-family:var(--f-mono);font-size:1.4cqw;letter-spacing:.14em;color:#F3F0E6;
+  white-space:nowrap}
+.zi .sub b{color:var(--z-yellow);font-weight:400}
+
+.zi .disc{position:absolute;right:7.5cqw;top:8cqw;width:29cqw;height:29cqw;border-radius:50%;
+  background:var(--z-magenta);z-index:4}
+.zi .disc::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.5;
+  background-image:radial-gradient(circle,#0a0a0a .17cqw,transparent .18cqw);
+  background-size:1.05cqw 1.05cqw;mix-blend-mode:multiply}
+.zi .portrait{position:absolute;right:8.4cqw;top:6.2cqw;width:28cqw;height:33cqw;z-index:6}
+.zi .portrait svg{width:100%;height:100%;display:block;
+  filter:drop-shadow(.45cqw .45cqw 0 #111) grayscale(1) contrast(1.45)}
+
+.zi .doc{position:absolute;right:3.2cqw;top:31.5cqw;width:26cqw;background:var(--z-paper2);
+  border:.22cqw solid #111;padding:1cqw 1.1cqw 1.2cqw;transform:rotate(2.6deg);z-index:9;
+  box-shadow:.45cqw .5cqw 0 rgba(17,17,17,.85)}
+.zi .doc h4{margin:0 0 .8cqw;font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.18em;
+  border-bottom:.16cqw solid #111;padding-bottom:.5cqw}
+.zi .doc .r{display:flex;align-items:center;gap:.6cqw;font-size:.95cqw;line-height:2.1;color:#1a1a1a}
+.zi .doc .r i{width:.85cqw;height:.85cqw;border:.16cqw solid #111;display:inline-block;flex:0 0 auto}
+.zi .doc .r.on i{background:#111}
+.zi .doc .red{display:inline-block;background:#111;height:.85cqw;width:6.2cqw;vertical-align:-.05cqw}
+.zi .doc .hl{background:var(--z-yellow);padding:0 .2cqw}
+
+/* ---------- 剪贴字块字板 ---------- */
+.zt2 .lbl{position:absolute;left:3.4cqw;top:2.6cqw;font-family:var(--f-mono);font-size:1.5cqw;
+  letter-spacing:.18em;color:#5a5344}
+.zt2 .w{position:absolute;font-family:var(--f-sans);font-weight:900;line-height:1;
+  white-space:nowrap;z-index:5}
+.zt2 .w.big{font-size:8.2cqw;background:#111;color:#F3F0E6;padding:.4cqw 1cqw .7cqw;
+  left:3.4cqw;top:7.2cqw;transform:rotate(-2deg)}
+.zt2 .w.mid{font-size:5.4cqw;background:var(--z-magenta);color:#fff;padding:.35cqw .9cqw .55cqw;
+  left:3.4cqw;top:18.6cqw;transform:rotate(1.6deg)}
+.zt2 .w.sm{font-size:3.2cqw;background:var(--z-paper2);color:#111;
+  padding:.5cqw .8cqw .6cqw;left:3.4cqw;top:27.2cqw;transform:rotate(-1.2deg);
+  box-shadow:.3cqw .3cqw 0 #111}
+.zt2 .w.yel{font-size:4.2cqw;background:var(--z-yellow);color:#111;padding:.3cqw .8cqw .5cqw;
+  left:3.4cqw;top:33.2cqw;transform:rotate(2.4deg)}
+.zt2 .hand{position:absolute;font-family:var(--f-hand);font-size:2.1cqw;color:#1d2b6b;
+  transform:rotate(-3deg);z-index:6}
+.zt2 .num{position:absolute;font-family:var(--f-mono);font-size:1.5cqw;letter-spacing:.1em;
+  color:#6a6350;z-index:6}
+.zt2 .cut{position:absolute;left:44.4cqw;top:5cqw;bottom:5cqw;width:0;
+  border-left:.14cqw dashed #b8ae94;z-index:3}
+.zt2 .scissor{position:absolute;left:42.2cqw;top:2.2cqw;font-size:2cqw;color:#6a6350;
+  transform:rotate(90deg);z-index:4}
+.zt2 .snip{position:absolute;left:47cqw;top:6.4cqw;width:35cqw;background:var(--z-paper2);
+  transform:rotate(-1.6deg);box-shadow:.4cqw .45cqw 0 rgba(17,17,17,.85);
+  padding:1.1cqw 1.3cqw 1.5cqw;z-index:5}
+.zt2 .snip p{margin:0;font-family:var(--f-mono);font-size:1.4cqw;line-height:2.05;
+  letter-spacing:.04em;color:#1a1a1a}
+.zt2 .snip .hl2{background:var(--z-yellow);padding:0 .2cqw}
+.zt2 .chips{position:absolute;left:47cqw;top:21.4cqw;display:flex;gap:1.3cqw;z-index:6}
+.zt2 .chipc{width:5.4cqw;height:5.4cqw;background:var(--z-paper2);border:.2cqw solid #111;
+  display:flex;align-items:center;justify-content:center;font-family:var(--f-sans);
+  font-weight:900;font-size:2.7cqw;color:#111;box-shadow:.3cqw .3cqw 0 #111}
+.zt2 .snip2{position:absolute;left:47cqw;top:29.6cqw;background:var(--z-yellow);
+  font-family:var(--f-hand);font-size:1.9cqw;color:#111;padding:.6cqw 1.1cqw;
+  transform:rotate(1.8deg);z-index:6;clip-path:polygon(0 12%,7% 2%,24% 8%,45% 3%,68% 9%,86% 2%,100% 9%,98% 60%,100% 92%,80% 99%,56% 94%,32% 100%,10% 95%,0 88%)}
+.zt2 .note2{position:absolute;left:47cqw;top:39cqw;width:36cqw;background:var(--z-paper2);
+  border:.16cqw solid #111;padding:.9cqw 1.1cqw;transform:rotate(-.8deg);z-index:5;
+  box-shadow:.3cqw .35cqw 0 rgba(17,17,17,.8)}
+.zt2 .note2 div{font-family:var(--f-mono);font-size:1.35cqw;line-height:1.95;color:#3a362c;letter-spacing:.04em}
+.zt2 .note2 b{color:#111}
+
+/* ---------- 复印与半调 ---------- */
+.zc .sw{position:absolute;left:3.4cqw;width:41cqw;height:9.6cqw;overflow:hidden;
+  border:.18cqw solid #111;z-index:4}
+.zc .sw .ht{position:absolute;inset:0}
+.zc .sw.a{top:9.4cqw} .zc .sw.b{top:21.4cqw} .zc .sw.c{top:33.4cqw}
+.zc .sw .lb{position:absolute;left:.7cqw;bottom:.7cqw;font-family:var(--f-mono);
+  font-size:1.45cqw;letter-spacing:.1em;background:#111;color:#F3F0E6;padding:.22cqw .55cqw}
+.zc .sw .sp{position:absolute;right:.7cqw;top:.7cqw;font-family:var(--f-mono);
+  font-size:1.35cqw;letter-spacing:.08em;color:#111;background:rgba(243,240,230,.92);
+  border:.12cqw solid #111;padding:.18cqw .45cqw}
+.zc .copies{position:absolute;left:46.6cqw;top:10.6cqw;width:50cqw;height:16cqw;z-index:5}
+.zc .cp{position:absolute;top:0;width:14.4cqw;background:var(--z-paper2);border:.18cqw solid #111;
+  padding:.45cqw;box-shadow:.28cqw .28cqw 0 rgba(17,17,17,.75)}
+.zc .cp svg{display:block;width:100%;height:auto;position:relative;z-index:3}
+.zc .cp.a{left:0;transform:rotate(-2deg)}
+.zc .cp.b{left:15.9cqw;transform:rotate(1.4deg)}
+.zc .cp.c{left:31.8cqw;transform:rotate(-1deg)}
+.zc .cp .ghost{position:absolute;inset:.45cqw;z-index:2;transform:translate(.45cqw,.45cqw)}
+.zc .cp .ghost svg{width:100%;height:auto}
+.zc .cp .ghost svg *{fill:#E8206E!important;stroke:#E8206E!important}
+.zc .cp .ov{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:.5;
+  mix-blend-mode:multiply;background-image:radial-gradient(circle,#111 1.4px,transparent 1.6px);
+  background-size:7px 7px}
+.zc .caps{position:absolute;left:46.6cqw;top:27.4cqw;width:50cqw;display:flex;gap:1.5cqw;z-index:6}
+.zc .caps div{width:14.4cqw;font-family:var(--f-mono);font-size:1.25cqw;letter-spacing:.04em;
+  color:#3a362c;text-align:center;line-height:1.75}
+.zc .caps b{display:block;font-size:1.4cqw;color:#111;letter-spacing:.14em;margin-bottom:.1cqw}
+.zc .stampbox{position:absolute;left:3.4cqw;bottom:3.4cqw;font-family:var(--f-mono);
+  font-size:1.4cqw;letter-spacing:.16em;color:#111;border:.18cqw solid #111;padding:.32cqw .7cqw;
+  transform:rotate(-2deg);z-index:8}
+.zc .reg{position:absolute;left:5.4cqw;top:44.4cqw;width:6.6cqw;height:6.6cqw;z-index:6}
+.zc .reg svg{width:100%;height:100%}
+.zc .note3{position:absolute;left:13.6cqw;top:44.8cqw;font-family:var(--f-mono);font-size:1.35cqw;
+  line-height:1.95;letter-spacing:.04em;color:#3a362c;z-index:6}
+.zc .note3 b{color:#111}
+.zc .handstrip{position:absolute;left:47cqw;top:34.4cqw;background:var(--z-yellow);
+  font-family:var(--f-hand);font-size:1.85cqw;color:#111;padding:.5cqw 1cqw;
+  transform:rotate(-1.6deg);z-index:6;clip-path:polygon(0 10%,8% 2%,26% 9%,50% 3%,74% 8%,92% 2%,100% 10%,98% 62%,100% 94%,78% 100%,52% 94%,28% 99%,6% 94%,0 86%)}
+
+/* ---------- 鲜色文件拼贴 ---------- */
+.zd .sheet{position:absolute;left:4.6cqw;top:4.6cqw;width:56cqw;height:45cqw;
+  background:var(--z-paper2);border:.22cqw solid #111;transform:rotate(-1.2deg);z-index:4;
+  box-shadow:.6cqw .7cqw 0 rgba(17,17,17,.8);padding:1.9cqw 2.1cqw}
+.zd .sheet h3{margin:0;font-family:var(--f-sans);font-weight:900;font-size:2.3cqw;
+  letter-spacing:.02em;color:#111;line-height:1.25}
+.zd .sheet .sig{margin-top:1.5cqw;border-top:.14cqw dashed #b8ae94;padding-top:1.2cqw}
+.zd .sigrow{display:flex;align-items:flex-end;gap:.8cqw;font-family:var(--f-mono);
+  font-size:.82cqw;letter-spacing:.1em;color:#3a362c;margin-bottom:.9cqw}
+.zd .sigrow i{flex:1;border-bottom:.1cqw solid #8a8270;height:.9cqw}
+.zd .stamp2{position:absolute;right:2.4cqw;bottom:2.4cqw;border:.3cqw solid var(--z-magenta);
+  color:var(--z-magenta);font-family:var(--f-mono);font-weight:700;font-size:1.3cqw;
+  letter-spacing:.2em;padding:.45cqw 1cqw;transform:rotate(-8deg);opacity:.8}
+.zd .sheet .meta2{font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.16em;color:#5a5344;
+  margin-top:.5cqw;border-bottom:.16cqw solid #111;padding-bottom:.8cqw}
+.zd .sheet .lines{margin-top:1.2cqw}
+.zd .sheet .lines div{height:1.05cqw;background:#cfc9b8;margin-bottom:.85cqw;border-radius:.1cqw}
+.zd .sheet .lines div:nth-child(2){width:92%}
+.zd .sheet .lines div:nth-child(3){width:78%}
+.zd .sheet .lines div:nth-child(5){width:88%}
+.zd .sheet .lines div:nth-child(7){width:64%}
+.zd .mark{position:absolute;background:var(--z-yellow);z-index:5;mix-blend-mode:multiply}
+.zd .redact{position:absolute;background:#111;z-index:6}
+.zd .pink{position:absolute;background:var(--z-magenta);z-index:7}
+.zd .cy{position:absolute;background:var(--z-blue);z-index:7}
+.zd .bigword{position:absolute;font-family:var(--f-sans);font-weight:900;color:#fff;
+  font-size:5.4cqw;line-height:1;letter-spacing:.02em;z-index:8;white-space:nowrap}
+.zd .hand2{position:absolute;font-family:var(--f-hand);font-size:1.7cqw;color:#1d2b6b;
+  z-index:9;transform:rotate(-4deg)}
+.zd .chip{position:absolute;font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.14em;
+  background:#111;color:#F3F0E6;padding:.3cqw .7cqw;z-index:9}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>08 / 25</span>
+    <span class="right"><a href="新粗野主义平面风格.html">← 上一条</a><a href="复古版画拼贴.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>朋克杂志拼贴<small>Punk Zine Collage</small></h1>
+    <p class="lead">以剪贴文字、撕纸、胶带、复印颗粒和半调网点构成粗粝而醒目的平面画面。黑白纸面与少量荧光色交替，手工痕迹和不规则排列构成主要辨识度；朋克在此指视觉传统，不代表歌曲流派或立场。</p>
+    <div class="meta">
+      <div><b>风格定位</b>朋克杂志拼贴（Punk Zine Collage），纸面合成与剪贴排版主导的二维图形</div>
+      <div><b>视觉媒介</b>二维数字剪贴动画（Digital Cut-and-paste Animation）＋纸面合成（Paper Compositing）＋动态排版（Kinetic Typography）</div>
+      <div><b>典型母体</b>独立小刊（Zine）、复印文件与档案、剪贴漫画与海报</div>
+    </div>
+    <div class="tags">
+      <span class="tag">朋克小刊（Punk Zine）</span><span class="tag">剪贴（Cut-and-paste）</span><span class="tag">半调网点（Halftone）</span>
+      <span class="tag">复印质感（Photocopy Texture）</span><span class="tag">拼贴排版</span>
+      <span class="tag w">技术讽刺</span><span class="tag w">风险</span><span class="tag w">反复强调</span><span class="tag w">荒诞</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#E7E2D3"></i>米白旧纸<br><code>#E7E2D3</code></div>
+      <div class="sw"><i style="background:#111111"></i>复印黑<br><code>#111111</code></div>
+      <div class="sw"><i style="background:#E8206E"></i>洋红<br><code>#E8206E</code></div>
+      <div class="sw"><i style="background:#F2E14C"></i>荧光黄<br><code>#F2E14C</code></div>
+      <div class="sw"><i style="background:#2FA8C9"></i>影印蓝<br><code>#2FA8C9</code></div>
+      <div class="sw"><i style="background:#1D2B6B"></i>手写蓝<br><code>#1D2B6B</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">纸、字、图、批注四层叠在一起：撕边字块负责主句，荧光色片负责强调，复印人像负责图像，手写与黑底纸条负责旁白。所有元素允许轻微歪斜，但阅读顺序不能乱。</p>
+
+  <div class="frame zi" id="f-master">
+    <div class="mono-top"><span><i class="dot"></i>ZINE 08 · PHOTOCOPY / NO.24</span><span>PAGE 03 OF 12</span></div>
+
+    <div class="swipe torn-b"></div>
+    <div class="misprint torn-a"></div>
+    <div class="t1 torn-a">我不会</div>
+    <div class="t2 torn-b">再说一遍</div>
+    <div class="t3 torn-c">第三遍了</div>
+
+    <div class="note">它还是会断<br>—— 每次都断</div>
+    <svg class="arrow" viewBox="0 0 110 60" fill="none">
+      <path d="M106 12 C76 4 42 24 16 34" stroke="#1d2b6b" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M16 34 L34 22 M16 34 L36 40" stroke="#1d2b6b" stroke-width="2.6" stroke-linecap="round"/>
+    </svg>
+
+    <div class="disc"></div>
+    <div class="portrait">
+      <svg viewBox="0 0 200 240">
+        <!-- 肩与颈 -->
+        <path d="M14 240 C24 186 58 168 100 168 C142 168 176 186 186 240 Z" fill="#111"/>
+        <rect x="86" y="126" width="28" height="46" fill="#111"/>
+        <!-- 头发（洋红 + 网点） -->
+        <path id="hair" d="M100 14 C54 14 38 46 41 84 C42 101 36 114 31 128 C36 121 44 119 48 124
+          C45 108 50 96 55 90 C54 132 74 156 100 156 C126 156 146 132 145 90
+          C150 96 155 108 152 124 C156 119 164 121 169 128 C164 114 158 101 159 84
+          C162 46 146 14 100 14 Z" fill="#E8206E" stroke="#111" stroke-width="3.4"/>
+        <path d="M100 14 C54 14 38 46 41 84 C42 101 36 114 31 128 C36 121 44 119 48 124
+          C45 108 50 96 55 90 C54 132 74 156 100 156 C126 156 146 132 145 90
+          C150 96 155 108 152 124 C156 119 164 121 169 128 C164 114 158 101 159 84
+          C162 46 146 14 100 14 Z" fill="url(#zht)" opacity=".55"/>
+        <!-- 脸 -->
+        <path d="M100 40 C128 40 144 62 144 92 C144 122 124 146 100 146 C76 146 56 122 56 92
+          C56 62 72 40 100 40 Z" fill="#F3F0E6" stroke="#111" stroke-width="5"/>
+        <!-- 刘海投影 -->
+        <path d="M56 88 C58 60 76 40 100 40 C124 40 142 60 144 88 C132 72 118 64 100 64
+          C82 64 68 72 56 88 Z" fill="#111"/>
+        <!-- 眼与嘴 -->
+        <ellipse cx="80" cy="96" rx="7" ry="5" fill="#111"/>
+        <ellipse cx="120" cy="96" rx="7" ry="5" fill="#111"/>
+        <path d="M74 82 L90 85" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+        <path d="M110 85 L126 82" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+        <path d="M92 124 C97 129 103 129 108 124" stroke="#111" stroke-width="4.5"
+          stroke-linecap="round" fill="none"/>
+        <!-- 网点阴影 -->
+        <path d="M100 146 C76 146 56 122 56 92 C56 118 66 140 86 152 Z" fill="url(#zht)" opacity=".5"/>
+        <!-- 衣领高光 -->
+        <path d="M76 176 L100 208 L124 176" stroke="#F3F0E6" stroke-width="4" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="tape" style="left:38cqw;top:9.6cqw;width:11cqw;height:2.6cqw;transform:rotate(-24deg)"></div>
+    <div class="tape" style="right:5cqw;top:33.6cqw;width:9.4cqw;height:2.4cqw;transform:rotate(-38deg)"></div>
+    <div class="tape" style="right:30cqw;bottom:6.2cqw;width:8.6cqw;height:2.2cqw;transform:rotate(12deg)"></div>
+
+    <div class="doc">
+      <h4>TASK LIST / RUN 03</h4>
+      <div class="r on"><i></i>检查依赖</div>
+      <div class="r on"><i></i>重新生成</div>
+      <div class="r"><i></i><span class="red"></span></div>
+      <div class="r"><i></i><span class="hl">又开始报错</span></div>
+    </div>
+
+    <div class="sub"><span>重来一遍 / <b>直到它不再断掉</b></span></div>
+
+    <div class="grain"></div>
+    <div class="vig"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>纸面分层</b>底纸、色片、字块、复印件、手写五层叠放，每层都有独立的小角度倾斜与投影。</div>
+    <div><b>撕边与胶带</b>边缘用不规则剪切代替整齐的圆角，胶带压住接缝，交接处才可信。</div>
+    <div><b>复印与网点</b>图像去色后拉高反差，网点尺度全片统一；颗粒不能盖住正文。</div>
+    <div><b>鲜色强调</b>米白与黑做底，每段只允许一个荧光主色抢眼，其余回到纸色。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向分别对应字块排版、复印纹理与文件重构，可与主风格组合使用。</p>
+
+  <div class="subs">
+
+    <!-- 1. 剪贴字块与纸面排版 -->
+    <section class="sub">
+      <div class="frame zt2" id="f-type">
+        <div class="lbl">CUT-OUT TYPE / 三级字块</div>
+
+        <div class="w big torn-a">别再问</div>
+        <div class="num" style="left:33cqw;top:10.4cqw">① 主句 8.2cqw · 黑底反白</div>
+        <div class="num" style="left:33cqw;top:13.4cqw;color:#9a937e">最大、最黑、最先读</div>
+
+        <div class="w mid torn-b">我很快</div>
+        <div class="num" style="left:22.6cqw;top:21.4cqw">② 副句 5.4cqw · 洋红</div>
+
+        <div class="w sm torn-c">就好</div>
+        <div class="num" style="left:13.6cqw;top:29.8cqw">③ 补充 3.2cqw · 纸底投影</div>
+
+        <div class="w yel torn-b">真的</div>
+        <div class="num" style="left:15.8cqw;top:36cqw">④ 强调 4.2cqw · 荧光黄</div>
+
+        <div class="hand" style="left:4cqw;top:41.4cqw">从上往下读，顺序别乱</div>
+        <div class="hand" style="left:4cqw;top:45.6cqw;font-size:1.2cqw;color:#6a6350;transform:rotate(-1deg)">歪一点点就好，不要歪成事故</div>
+
+        <div class="cut"></div>
+        <div class="scissor">✂</div>
+
+        <div class="snip">
+          <p>把一句话拆成三块，<br>贴在不同高度，<br><span class="hl2">读起来就像被打断</span>。</p>
+        </div>
+
+        <div class="chips">
+          <div class="chipc" style="transform:rotate(-4deg)">断</div>
+          <div class="chipc" style="transform:rotate(3deg)">了</div>
+          <div class="chipc" style="transform:rotate(-2deg)">还</div>
+          <div class="chipc" style="transform:rotate(5deg)">来</div>
+        </div>
+
+        <div class="snip2">剪下来的字，边缘要留着</div>
+
+        <div class="note2">
+          <div><b>手写</b>：楷体，偏蓝黑，不描边</div>
+          <div><b>纸条</b>：黑底白字，字号比正文小</div>
+          <div><b>倾斜</b>：控制在 ±4° 以内</div>
+        </div>
+
+        <div class="tape" style="left:70cqw;top:5.2cqw;width:8cqw;height:2.1cqw;transform:rotate(-32deg)"></div>
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>剪贴字块与纸面排版<small>Cut-out Typography &amp; Paper Layout</small></h3>
+        <p>字块、纸条与手写标记形成节奏。保留轻微歪斜和材料边缘，重点词的尺寸、色块与位置要有主次——主句最大且反白，副句换色，补充句缩小加描边，三档就够。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">撕边字块</span><span class="tag">三档字级</span>
+          <span class="tag">轻微歪斜</span><span class="tag">手写批注</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 复印与半调纹理 -->
+    <section class="sub">
+      <div class="frame zc" id="f-copy">
+        <div class="lbl" style="position:absolute;left:3.4cqw;top:6.2cqw;font-family:var(--f-mono);font-size:1.4cqw;letter-spacing:.16em;color:#5a5344">PHOTOCOPY TEST / 网点尺度</div>
+        <div class="sw a"><div class="ht htd-s"></div><span class="lb">网点 · 极细</span><span class="sp">0.7px / 4px</span></div>
+        <div class="sw b"><div class="ht htd"></div><span class="lb">网点 · 中</span><span class="sp">1.1px / 6px</span></div>
+        <div class="sw c"><div class="ht htd-b"></div><span class="lb">网点 · 粗</span><span class="sp">2.1px / 10px</span></div>
+
+        <div class="copies">
+          <div class="cp a">
+            <svg viewBox="0 0 200 150">
+              <rect x="52" y="54" width="96" height="72" rx="6" fill="#111"/>
+              <rect x="70" y="74" width="18" height="18" fill="#F3F0E6"/>
+              <rect x="112" y="74" width="18" height="18" fill="#F3F0E6"/>
+              <rect x="84" y="104" width="32" height="6" fill="#F3F0E6"/>
+              <rect x="96" y="30" width="8" height="24" fill="#111"/>
+              <circle cx="100" cy="26" r="7" fill="#111"/>
+            </svg>
+          </div>
+          <div class="cp b">
+            <div class="ov"></div>
+            <svg viewBox="0 0 200 150">
+              <rect x="52" y="54" width="96" height="72" rx="6" fill="#111"/>
+              <rect x="70" y="74" width="18" height="18" fill="#F3F0E6"/>
+              <rect x="112" y="74" width="18" height="18" fill="#F3F0E6"/>
+              <rect x="84" y="104" width="32" height="6" fill="#F3F0E6"/>
+              <rect x="96" y="30" width="8" height="24" fill="#111"/>
+              <circle cx="100" cy="26" r="7" fill="#111"/>
+            </svg>
+            <div class="mis" style="clip-path:polygon(0 0,100% 0,100% 100%,0 100%)"></div>
+          </div>
+          <div class="cp c">
+            <div class="ghost">
+              <svg viewBox="0 0 200 150">
+                <rect x="52" y="54" width="96" height="72" rx="6" fill="#E8206E"/>
+                <rect x="70" y="74" width="18" height="18" fill="#E8206E"/>
+                <rect x="112" y="74" width="18" height="18" fill="#E8206E"/>
+                <rect x="84" y="104" width="32" height="6" fill="#E8206E"/>
+                <rect x="96" y="30" width="8" height="24" fill="#E8206E"/>
+                <circle cx="100" cy="26" r="7" fill="#E8206E"/>
+              </svg>
+            </div>
+            <svg viewBox="0 0 200 150">
+              <rect x="52" y="54" width="96" height="72" rx="6" fill="#111"/>
+              <rect x="70" y="74" width="18" height="18" fill="#F3F0E6"/>
+              <rect x="112" y="74" width="18" height="18" fill="#F3F0E6"/>
+              <rect x="84" y="104" width="32" height="6" fill="#F3F0E6"/>
+              <rect x="96" y="30" width="8" height="24" fill="#111"/>
+              <circle cx="100" cy="26" r="7" fill="#111"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="caps">
+          <div><b>原稿</b>灰度 · 反差 2.0</div>
+          <div><b>加网点</b>暗部上缀 7px</div>
+          <div><b>影印错位</b>洋红偏移 3px</div>
+        </div>
+
+        <div class="handstrip">网点只出现在暗部，亮部留白</div>
+
+        <div class="reg">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="30" fill="none" stroke="#E8206E" stroke-width="3" transform="translate(3,3)"/>
+            <circle cx="50" cy="50" r="30" fill="none" stroke="#111" stroke-width="3.4"/>
+            <path d="M50 8 V92 M8 50 H92" stroke="#111" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M50 22 V40 M50 60 V78 M22 50 H40 M60 50 H78" stroke="#F3F0E6" stroke-width="4"/>
+          </svg>
+        </div>
+        <div class="note3"><b>REG. 十字标</b>用于对位<br>错位控制在 3px 以内</div>
+
+        <div class="stampbox" style="left:auto;right:5cqw;bottom:5.6cqw">COPY 03 / 网点 24L</div>
+        <div class="grain"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>复印与半调纹理<small>Photocopy &amp; Halftone Textures</small></h3>
+        <p>黄色底与清单上有明显网点和复印式高反差。以稳定纹理尺度统一素材，避免颗粒遮住正文；图像先转灰度再拉反差，网点只出现在暗部。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">灰度高反差</span><span class="tag">半调网点</span>
+          <span class="tag">统一网点尺度</span><span class="tag">影印错位</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 鲜色文件拼贴 -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame zd" id="f-doc">
+        <div class="sheet">
+          <h3>关于再次尝试的说明</h3>
+          <div class="meta2">FILE 24-08 · 第 3 版 · 未通过</div>
+          <div class="lines">
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+          <div class="sig">
+            <div class="sigrow"><span>批注</span><i></i></div>
+            <div class="sigrow"><span>签字</span><i></i></div>
+          </div>
+          <div class="stamp2">REJECTED</div>
+        </div>
+
+        <div class="mark" style="left:7.4cqw;top:16.6cqw;width:17cqw;height:2.2cqw;transform:rotate(-.6deg)"></div>
+        <div class="mark" style="left:26cqw;top:24.4cqw;width:12cqw;height:2.2cqw;transform:rotate(.4deg)"></div>
+        <div class="redact" style="left:12cqw;top:20.2cqw;width:15cqw;height:1.3cqw;transform:rotate(-.4deg)"></div>
+        <div class="redact" style="left:31cqw;top:28.6cqw;width:10cqw;height:1.3cqw;transform:rotate(.5deg)"></div>
+
+        <div class="pink torn-b" style="left:42cqw;top:5.2cqw;width:34cqw;height:26cqw;transform:rotate(2deg)"></div>
+        <div class="bigword" style="left:44.6cqw;top:9.4cqw;transform:rotate(2deg)">再试一次</div>
+        <div class="bigword" style="left:45.2cqw;top:19.4cqw;transform:rotate(2deg);font-size:3.4cqw;">反正它还会断</div>
+
+        <div class="cy torn-a" style="left:75cqw;top:26cqw;width:20cqw;height:16cqw;transform:rotate(-3.6deg)"></div>
+        <div class="chip" style="left:77.4cqw;top:30cqw;transform:rotate(-3.6deg)">APPROVED?</div>
+        <div class="hand2" style="left:77.6cqw;top:34.4cqw;transform:rotate(-4deg);color:#0b2233">没通过</div>
+
+        <div class="hand2" style="left:29cqw;top:19.2cqw;font-size:1.7cqw;transform:rotate(-2deg)">← 划掉</div>
+        <div class="hand2" style="left:38cqw;top:40.6cqw;font-size:1.6cqw;transform:rotate(-1.5deg)">—— 批注：不同意</div>
+
+        <div class="tape" style="left:3.4cqw;top:4.2cqw;width:11cqw;height:2.6cqw;transform:rotate(-42deg)"></div>
+        <div class="tape" style="left:56cqw;top:3.6cqw;width:10cqw;height:2.4cqw;transform:rotate(38deg)"></div>
+        <div class="tape" style="left:88cqw;top:41cqw;width:9cqw;height:2.2cqw;transform:rotate(28deg)"></div>
+
+        <div class="grain"></div>
+        <div class="vig"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>鲜色文件拼贴<small>Bright-color Document Collage，样本方向</small></h3>
+        <p>法案、表格与图纸被鲜色纸片和批注重组；文件提供信息框架，荧光色负责选择性强调。遮盖条与高亮条是最省力的两种介入方式：一个删信息，一个加注意力。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">表格底稿</span><span class="tag">遮盖条</span>
+          <span class="tag">荧光高亮</span><span class="tag">手写批注</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>基础配色</b>米白与黑为基础，洋红或荧光黄作为每段主要强调，一屏只留一个抢眼色。</div>
+    <div><b>材质统一</b>加入撕边、胶带、复印噪点与半调网点，统一纹理尺度，颗粒不压正文。</div>
+    <div><b>文字与节奏</b>歌词拆成不同大小的剪贴字块与黑底纸条，保持阅读顺序；用短促贴入、盖章、翻页与堆叠组织动态。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>朋克杂志拼贴（Punk Zine Collage）动态图形，米白旧纸、黑白复印图像、撕边纸片和胶带，局部洋红与荧光黄。歌词拆成粗体剪贴字块、黑底窄纸条与手写批注，文件、聊天记录、任务清单和卡通机器人覆盖半调网点（Halftone）。通过短促贴入、盖章、纸片堆叠和翻页形成音乐节奏，保留粗粝印刷感与清晰阅读顺序。</div>
+
+  <footer>样例说明：本页所有纸片、字块、网点、复印件与人像均为 HTML / CSS / SVG 现场绘制，噪点由 SVG 滤镜生成，未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/朋克杂志拼贴.md</code>。</footer>
+</div>
+
+<!-- 共用滤镜与网点图案 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="zgrain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".55"/></feComponentTransfer>
+    </filter>
+    <pattern id="zht" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <circle cx="3.5" cy="3.5" r="1.9" fill="#111"/>
+    </pattern>
+  </defs>
+</svg>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

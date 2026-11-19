@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>玩具感三维（Toy-like 3D Aesthetics）· 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --toy-cream:#F6D9B8; --toy-orange:#EA7A3C; --toy-teal:#7EC8C0;
+  --toy-dark:#2B2B38; --toy-white:#FFFFFF;
+  --toy-wood:#8A5A38; --toy-wood-dark:#4A2C1B; --toy-ink:#2A1A17;
+}
+.toy,.tp1,.tp2,.tp3{color:var(--toy-cream)}
+.mono{font-family:var(--f-mono);letter-spacing:.08em}
+
+/* 背景：暗墙 + 木桌 */
+.wallbg{position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(46% 38% at 8% -6%,rgba(255,186,110,.55) 0%,rgba(255,186,110,0) 62%),
+    radial-gradient(40% 42% at 98% 26%,rgba(126,200,192,.30) 0%,rgba(126,200,192,0) 60%),
+    linear-gradient(180deg,#2E1C18 0%,#241513 40%,#1B0F0E 100%)}
+.table{position:absolute;left:0;right:0;bottom:0;height:37.3cqw;z-index:1;
+  background:
+    radial-gradient(46% 60% at 48% 8%,rgba(255,196,140,.30) 0%,rgba(255,196,140,0) 64%),
+    linear-gradient(180deg,#A87246 0%,#93613C 16%,#734828 56%,#4A2C19 100%)}
+.table::after{content:"";position:absolute;inset:0;opacity:.85;
+  background-image:
+    repeating-linear-gradient(91deg,rgba(48,24,10,.30) 0,.1cqw,transparent .1cqw,1.6cqw),
+    repeating-linear-gradient(91deg,rgba(40,20,8,.22) 0,.14cqw,transparent .14cqw,6.2cqw),
+    repeating-linear-gradient(89deg,rgba(255,220,180,.10) 0,.07cqw,transparent .07cqw,3.4cqw)}
+.edge{position:absolute;left:0;right:0;top:18.9cqw;height:.5cqw;z-index:2;
+  background:linear-gradient(180deg,rgba(255,205,150,.55),rgba(255,205,150,0))}
+.vig{position:absolute;inset:0;z-index:14;pointer-events:none;
+  background:
+    radial-gradient(72% 62% at 46% 44%,rgba(10,5,3,0) 38%,rgba(10,5,3,.62) 100%),
+    linear-gradient(0deg,rgba(14,7,4,.5) 0%,rgba(14,7,4,0) 22%)}
+
+/* 文字 */
+.tx{position:absolute;left:4.4cqw;top:3.2cqw;width:26cqw;z-index:16}
+.kick{font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.24em;color:#C9A98F}
+.h1t{font-family:var(--f-sans);font-weight:800;font-size:4.2cqw;line-height:1.12;
+  letter-spacing:-.02em;color:#FFF3E4;margin-top:1.5cqw;text-shadow:0 .4cqw 1.4cqw rgba(0,0,0,.45)}
+.h1t em{font-style:normal;color:#FFA95C}
+.subt{font-size:1.1cqw;line-height:1.7;color:#C4A489;margin-top:1.2cqw}
+.subt b{color:#FFD9AE;font-weight:700}
+
+/* 玻璃罐 */
+.jar{position:absolute;left:34cqw;top:5.4cqw;width:30cqw;height:41cqw;z-index:6;
+  border-radius:2.5cqw 2.5cqw 2.8cqw 2.8cqw;
+  border:.14cqw solid rgba(255,255,255,.42);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.34) 0 1.6%,rgba(255,255,255,.10) 5%,
+      rgba(180,230,228,.10) 34%,rgba(255,255,255,.04) 58%,
+      rgba(180,230,228,.10) 78%,rgba(255,255,255,.30) 97% 100%),
+    radial-gradient(52% 26% at 22% 9%,rgba(255,255,255,.55),rgba(255,255,255,0) 70%),
+    linear-gradient(180deg,rgba(255,255,255,.14) 0%,rgba(150,215,210,.08) 62%,rgba(255,255,255,.20) 100%);
+  box-shadow:inset 0 0 1.6cqw rgba(255,255,255,.35),inset 0 -1.2cqw 1.6cqw rgba(255,255,255,.25),
+    inset 0 1.4cqw 2cqw rgba(126,200,192,.22),0 1.4cqw 3cqw rgba(0,0,0,.35);
+  backdrop-filter:blur(.06cqw)}
+.jar::before{content:"";position:absolute;left:8%;top:2%;width:7%;height:60%;
+  border-radius:99px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.05));
+  filter:blur(.12cqw);opacity:.75}
+.jar::after{content:"";position:absolute;right:11%;top:34%;width:3.4%;height:34%;
+  border-radius:99px;background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.04));
+  filter:blur(.1cqw)}
+.rim{position:absolute;left:-2.5%;top:-2.4%;width:105%;height:4.6%;border-radius:50%;
+  border:.12cqw solid rgba(255,255,255,.5);
+  background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.20),rgba(255,255,255,.42) 70%,rgba(255,255,255,.10));
+  box-shadow:0 .3cqw .7cqw rgba(0,0,0,.3)}
+.lid{position:absolute;left:5%;top:-6.6%;width:90%;height:6.6%;border-radius:50%;
+  background:linear-gradient(180deg,#C6A583,#8A6647 60%,#6B4A31);
+  box-shadow:inset 0 .2cqw .4cqw rgba(255,255,255,.4),0 .5cqw 1cqw rgba(0,0,0,.4)}
+.sample{position:absolute;left:6%;bottom:2.6%;transform:none;
+  font-family:var(--f-mono);font-size:.78cqw;letter-spacing:.18em;color:rgba(84,44,22,.5);z-index:8}
+
+/* 橙色方块机器人 */
+.bot{position:absolute;z-index:7}
+.bot .bd{position:absolute;inset:0;border-radius:2.6cqw;
+  background:
+    radial-gradient(48% 34% at 30% 16%,rgba(255,255,255,.62),rgba(255,255,255,0) 68%),
+    linear-gradient(160deg,#FFB169 0%,#F08A3E 38%,#D2661F 74%,#A9490F 100%);
+  box-shadow:inset -.5cqw -.7cqw 1.4cqw rgba(120,45,0,.45),
+    inset .4cqw .5cqw 1.1cqw rgba(255,214,170,.55),
+    0 1.2cqw 2.4cqw rgba(0,0,0,.4)}
+.bot .seam{position:absolute;left:9%;right:9%;top:30%;height:.1cqw;
+  background:rgba(140,55,10,.35)}
+.bot .seam2{position:absolute;left:22%;top:6%;bottom:6%;width:.1cqw;background:rgba(255,220,180,.28)}
+.bot .eye{position:absolute;top:34%;width:1.5cqw;height:1.5cqw;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#4A4650,#141216 70%);
+  box-shadow:inset 0 -.14cqw .3cqw rgba(255,255,255,.18),0 .1cqw .2cqw rgba(0,0,0,.4)}
+.bot .eye::after{content:"";position:absolute;left:22%;top:16%;width:.42cqw;height:.42cqw;
+  border-radius:50%;background:rgba(255,255,255,.92);filter:blur(.02cqw)}
+.bot .arm{position:absolute;width:2.1cqw;height:5.6cqw;border-radius:1.1cqw;top:36%;
+  background:linear-gradient(160deg,#F08A3E,#B95216);
+  box-shadow:inset .2cqw .3cqw .6cqw rgba(255,200,160,.4),0 .4cqw .8cqw rgba(0,0,0,.35)}
+.bot .foot{position:absolute;bottom:-1.5cqw;width:4.2cqw;height:2cqw;border-radius:1cqw;
+  background:linear-gradient(180deg,#C25C1C,#8E3F0C);box-shadow:0 .3cqw .6cqw rgba(0,0,0,.4)}
+.bot .ant{position:absolute;left:50%;top:-2.4cqw;width:.14cqw;height:2.2cqw;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.15))}
+.bot .ant::after{content:"";position:absolute;left:-.42cqw;top:-1.1cqw;width:1cqw;height:1cqw;
+  border-radius:50%;background:radial-gradient(circle at 32% 28%,#FFD9A8,#E9782C);
+  box-shadow:0 0 1cqw rgba(255,170,90,.7)}
+
+/* 研究员人偶 */
+.fig{position:absolute;z-index:7}
+.fig .hd{position:absolute;left:50%;top:0;width:2.5cqw;height:2.5cqw;margin-left:-1.25cqw;
+  border-radius:50%;background:radial-gradient(circle at 34% 28%,#FFE9D2,#E0BC98 70%,#B98D68);
+  box-shadow:0 .2cqw .4cqw rgba(0,0,0,.35)}
+.fig .hair{position:absolute;left:50%;top:-.2cqw;width:2.5cqw;height:1.2cqw;margin-left:-1.25cqw;
+  border-radius:1.3cqw 1.3cqw 0 0;background:linear-gradient(180deg,#3B2A22,#20150F)}
+.fig .torso{position:absolute;left:50%;top:2.4cqw;width:2.9cqw;height:4.4cqw;margin-left:-1.45cqw;
+  border-radius:.9cqw;background:linear-gradient(160deg,#FFFDF8,#D9CFC2 70%,#B3A695);
+  box-shadow:inset -.2cqw -.3cqw .5cqw rgba(120,100,80,.3),0 .3cqw .6cqw rgba(0,0,0,.3)}
+.fig .lg{position:absolute;top:6.6cqw;width:.9cqw;height:3.2cqw;border-radius:.4cqw;
+  background:linear-gradient(180deg,#4A3F52,#241C2C)}
+.fig .fa{position:absolute;width:.8cqw;height:3.4cqw;border-radius:.4cqw;
+  background:linear-gradient(160deg,#FFFDF8,#C8BBA9)}
+
+/* 台钟 */
+.clk{position:absolute;z-index:5;filter:blur(.05cqw)}
+.clk .fc{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 32% 24%,#FFFBEE,#E8DCC2 62%,#B8A783);
+  box-shadow:inset 0 0 0 .35cqw #C7B48C,inset 0 0 0 .8cqw #7C6350,
+    0 1cqw 2cqw rgba(0,0,0,.45)}
+.clk .bel{position:absolute;top:-.9cqw;width:2.4cqw;height:1.6cqw;border-radius:50%;
+  background:linear-gradient(160deg,#E9C87F,#A8813E)}
+.clk .ft{position:absolute;bottom:-1.2cqw;width:1.1cqw;height:1.4cqw;border-radius:.3cqw;
+  background:#6B4A31}
+
+/* 笔记本边缘（冷光） */
+.lap{position:absolute;right:-1.4cqw;top:15cqw;width:17cqw;height:24cqw;z-index:4;
+  border-radius:1.4cqw;background:linear-gradient(150deg,#3B3546,#221D2B);
+  box-shadow:0 2cqw 4cqw rgba(0,0,0,.5)}
+.lap .scr{position:absolute;left:6%;top:6%;right:6%;height:62%;border-radius:.6cqw;
+  background:linear-gradient(160deg,#2C4E5A,#16303C);
+  box-shadow:inset 0 0 2cqw rgba(126,200,192,.45)}
+.lap .glow{position:absolute;left:-30%;top:8%;width:130%;height:76%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(126,200,192,.28),rgba(126,200,192,0));filter:blur(1.2cqw)}
+
+/* 阴影与尘埃 */
+.sh{position:absolute;border-radius:50%;z-index:3;
+  background:radial-gradient(closest-side,rgba(20,8,4,.62),rgba(20,8,4,0))}
+.dust{position:absolute;border-radius:50%;background:rgba(255,226,190,.75);z-index:8;
+  box-shadow:0 0 1cqw rgba(255,210,160,.7)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>16 / 25</span>
+    <span class="right"><a href="现代商业界面风格.html">← 上一条</a><a href="手工立体绘本美学.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>玩具感三维<small>Toy-like 3D Aesthetics</small></h1>
+    <p class="lead">用圆角几何角色、塑料或树脂般的硬质表面和微缩道具建立玩具世界。材质高光、接触阴影与浅景深让简化造型具有实体触感——橙色方块、按钮式黑眼睛、木纹桌面和一只玻璃罐，组成一套可以拿在手里的尺度。</p>
+    <div class="meta">
+      <div><b>风格性质</b>玩具感三维（描述性风格），以玩具造型、硬质表面和微缩尺度限定三维外观</div>
+      <div><b>视觉媒介</b>三维角色与桌面场景动画＋景深与粒子效果</div>
+      <div><b>典型母体</b>桌面玩具摄影、玩具机器人与机关、玻璃罐与实验装置</div>
+    </div>
+    <div class="tags">
+      <span class="tag">玩具感三维</span><span class="tag">微缩场景</span><span class="tag">圆角几何</span>
+      <span class="tag">硬质高光</span><span class="tag">浅景深</span>
+      <span class="tag w">可爱与危险反差</span><span class="tag w">技术隐喻</span><span class="tag w">实验</span><span class="tag w">失控</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#F6D9B8"></i>奶油米<br><code>#F6D9B8</code></div>
+      <div class="sw"><i style="background:#EA7A3C"></i>玩具橙<br><code>#EA7A3C</code></div>
+      <div class="sw"><i style="background:#7EC8C0"></i>玻璃青<br><code>#7EC8C0</code></div>
+      <div class="sw"><i style="background:#2B2B38"></i>暗部灰<br><code>#2B2B38</code></div>
+      <div class="sw"><i style="background:#FFFFFF"></i>高光白<br><code>#FFFFFF</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">一张木桌上的微缩布景：橙色圆角方块机器人被装进玻璃罐，罐壁有反射与厚度；左边一个研究员人偶仰头看它，右边是一台旧台钟和亮着冷光的笔记本。暖台灯从左上打过来，空气里有细小的尘埃。</p>
+
+  <div class="frame toy" id="f-master">
+    <div class="wallbg"></div>
+    <div style="position:absolute;left:26cqw;top:2cqw;width:48cqw;height:22cqw;z-index:0;
+      background:radial-gradient(closest-side,rgba(255,180,110,.22),rgba(255,180,110,0) 72%);
+      filter:blur(1cqw)"></div>
+    <div class="table"></div>
+    <div class="edge"></div>
+
+    <!-- 冷光溢出 -->
+    <div class="lap">
+      <div class="glow"></div>
+      <div class="scr">
+        <div style="position:absolute;left:10%;top:16%;width:46%;height:.5cqw;background:rgba(126,200,192,.5)"></div>
+        <div style="position:absolute;left:10%;top:30%;width:66%;height:.4cqw;background:rgba(126,200,192,.3)"></div>
+        <div style="position:absolute;left:10%;top:42%;width:54%;height:.4cqw;background:rgba(126,200,192,.26)"></div>
+        <div style="position:absolute;left:10%;top:54%;width:34%;height:.4cqw;background:rgba(255,180,120,.4)"></div>
+        <div style="position:absolute;left:10%;top:70%;width:22%;height:.4cqw;background:rgba(126,200,192,.55)"></div>
+      </div>
+      <div style="position:absolute;left:-8%;right:0;bottom:-1.4cqw;height:2.2cqw;border-radius:.4cqw;
+        background:linear-gradient(180deg,#4C4557,#2A2433);box-shadow:0 .6cqw 1.2cqw rgba(0,0,0,.5)"></div>
+    </div>
+
+    <!-- 阴影 -->
+    <div class="sh" style="left:31cqw;top:44.8cqw;width:36cqw;height:4.6cqw;background:radial-gradient(closest-side,rgba(20,8,4,.78),rgba(20,8,4,0)) "></div>
+    <div class="sh" style="left:14.6cqw;top:43.2cqw;width:14cqw;height:2.6cqw"></div>
+    <div class="sh" style="left:70cqw;top:37.4cqw;width:16cqw;height:3cqw"></div>
+
+    <!-- 台钟 -->
+    <div class="clk" style="left:67.4cqw;top:26.4cqw;width:10.4cqw;height:10.4cqw">
+      <div class="bel" style="left:.6cqw"></div>
+      <div class="bel" style="right:.6cqw"></div>
+      <div class="ft" style="left:2.6cqw"></div>
+      <div class="ft" style="right:2.6cqw"></div>
+      <div class="fc">
+        <div style="position:absolute;left:50%;top:50%;width:.16cqw;height:3.2cqw;background:#4A3A2E;
+          transform-origin:bottom;transform:translate(-50%,-100%) rotate(38deg)"></div>
+        <div style="position:absolute;left:50%;top:50%;width:.14cqw;height:2.2cqw;background:#6B5540;
+          transform-origin:bottom;transform:translate(-50%,-100%) rotate(-64deg)"></div>
+        <div style="position:absolute;left:50%;top:50%;width:.6cqw;height:.6cqw;margin:-.3cqw 0 0 -.3cqw;
+          border-radius:50%;background:#5B4636"></div>
+      </div>
+    </div>
+
+    <!-- 研究员人偶 -->
+    <div class="fig" style="left:17cqw;top:33.4cqw;width:9.6cqw;height:11cqw">
+      <div class="lg" style="left:2.9cqw"></div>
+      <div class="lg" style="right:2.9cqw"></div>
+      <div class="torso"></div>
+      <div class="hd"></div>
+      <div class="hair"></div>
+      <div class="fa" style="left:5.4cqw;top:2.6cqw;transform:rotate(-32deg)"></div>
+      <div class="fa" style="left:1.4cqw;top:3.4cqw;transform:rotate(16deg)"></div>
+    </div>
+
+    <!-- 玻璃罐 + 机器人 -->
+    <div class="jar">
+      <div class="lid"></div>
+      <div class="rim"></div>
+      <div class="bot" style="left:22%;top:44%;width:56%;height:44%">
+        <div class="bd"></div>
+        <div class="seam"></div>
+        <div class="seam2"></div>
+        <div class="eye" style="left:23%;width:2.4cqw;height:2.4cqw;top:32%"></div>
+        <div class="eye" style="right:23%;width:2.4cqw;height:2.4cqw;top:32%"></div>
+        <div class="arm" style="left:-9%;top:40%;width:2.2cqw;height:4.2cqw;border-radius:1.1cqw"></div>
+        <div class="arm" style="right:-9%;top:40%;width:2.2cqw;height:4.2cqw;border-radius:1.1cqw"></div>
+        <div class="foot" style="left:13%;width:5cqw;height:2cqw;bottom:-1.6cqw"></div>
+        <div class="foot" style="right:13%;width:5cqw;height:2cqw;bottom:-1.6cqw"></div>
+        <div class="ant"></div>
+      </div>
+      <div class="sample">SPECIMEN 01</div>
+    </div>
+
+    <!-- 尘埃 -->
+    <div class="dust" style="left:12cqw;top:9cqw;width:.5cqw;height:.5cqw"></div>
+    <div class="dust" style="left:19cqw;top:13.6cqw;width:.34cqw;height:.34cqw;opacity:.6"></div>
+    <div class="dust" style="left:7.4cqw;top:16cqw;width:.28cqw;height:.28cqw;opacity:.45"></div>
+    <div class="dust" style="left:24cqw;top:7.2cqw;width:.4cqw;height:.4cqw;opacity:.55"></div>
+    <div class="dust" style="left:30.4cqw;top:15.4cqw;width:.3cqw;height:.3cqw;opacity:.4"></div>
+    <div class="dust" style="left:68cqw;top:11cqw;width:.34cqw;height:.34cqw;opacity:.4"></div>
+
+    <div class="tx">
+      <div class="kick">TABLE 01 · 微缩布景</div>
+      <div class="h1t">世界小了<em>一号</em></div>
+      <div class="subt">半径 4 厘米，重量 82 克。<br><b>他还没有意识到。</b></div>
+    </div>
+    <div class="vig"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>先给尺度，再给角色</b>木纹、台钟、键盘和台灯是尺度的锚点；没有这些参照，方块就只是一个方块。</div>
+    <div><b>高光服从体积</b>硬壳上的高光都沿着圆角走，一条主高光加一条边缘反光就够，堆多了会变塑料玩具渲染图。</div>
+    <div><b>接触阴影不能省</b>每个物件底下压一枚柔和的椭圆阴影，人偶才"贴"在桌面上，而不是浮着。</div>
+    <div><b>暖对上冷</b>台灯给暖橙，屏幕给冷青；两种光在同一个画面里分工，材质差异（木头 / 塑料 / 玻璃）才立得住。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向：硬壳玩具造型（角色设定图）、桌面微缩布景（俯视桌面）、玻璃与局部光效（全宽特写）。</p>
+
+  <div class="subs">
+
+    <!-- 1. 硬壳玩具造型 -->
+    <section class="sub">
+      <div class="frame up1" id="f-hard" style="color:#2A1A17">
+        <div style="position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 8%,#FBEFDC 0%,#F0D6B4 62%,#E3C4A0 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:0;height:9cqw;
+          background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0))"></div>
+
+        <div style="position:absolute;left:4cqw;top:2.6cqw;z-index:9">
+          <div style="font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.2em;color:#9C7A55">CHARACTER SHEET · BOT-01</div>
+          <div style="font-family:var(--f-sans);font-weight:800;font-size:2.5cqw;letter-spacing:-.02em;
+            color:#2A1A17;margin-top:.5cqw">圆角硬壳</div>
+        </div>
+        <div style="position:absolute;right:4cqw;top:3cqw;font-family:var(--f-mono);font-size:.95cqw;
+          letter-spacing:.1em;color:#9C7A55;text-align:right;z-index:9">三视图 · 90 mm<br>REV 04</div>
+
+        <!-- 正视图 -->
+
+        <div class="bot" style="left:6.4cqw;top:9.4cqw;width:15.4cqw;height:16.6cqw">
+
+          <div class="bd"></div><div class="seam"></div><div class="seam2"></div>
+
+          <div class="eye" style="left:24%"></div><div class="eye" style="right:24%"></div>
+
+          <div class="arm" style="left:-13%"></div><div class="arm" style="right:-13%"></div>
+
+          <div class="foot" style="left:12%"></div><div class="foot" style="right:12%"></div>
+
+          <div class="ant"></div>
+
+        </div>
+
+        <div style="position:absolute;left:6.4cqw;top:28.2cqw;width:15.4cqw;text-align:center;
+
+          font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.14em;color:#8A6A48">前视 · FRONT</div>
+
+
+
+        <!-- 侧视图 -->
+
+        <div class="bot" style="left:24.4cqw;top:9.4cqw;width:7.8cqw;height:16.6cqw">
+
+          <div class="bd" style="border-radius:1.5cqw"></div>
+
+          <div style="position:absolute;left:26%;top:6%;bottom:6%;width:.09cqw;background:rgba(255,220,180,.35)"></div>
+
+          <div class="seam" style="left:12%;right:12%"></div>
+
+          <div class="arm" style="left:44%;width:1.7cqw;height:4.2cqw;top:34%"></div>
+
+          <div class="foot" style="left:22%;width:2.8cqw"></div>
+
+        </div>
+
+        <div style="position:absolute;left:20.4cqw;top:28.2cqw;width:15.8cqw;text-align:center;
+
+          font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.14em;color:#8A6A48">侧视 · SIDE</div>
+
+
+
+        <!-- 俯视图 -->
+
+        <div style="position:absolute;left:38.6cqw;top:10.4cqw;width:17.6cqw;height:14.6cqw;border-radius:2.4cqw;
+
+          background:radial-gradient(70% 60% at 34% 24%,#FFC98E,#EE8339 52%,#C05C1A 100%);
+
+          box-shadow:inset -.4cqw -.5cqw 1cqw rgba(120,45,0,.35),inset .3cqw .3cqw .7cqw rgba(255,220,180,.5),
+
+            0 .8cqw 1.6cqw rgba(90,50,20,.28)">
+
+          <div style="position:absolute;left:14%;right:14%;top:50%;height:.09cqw;background:rgba(140,55,10,.3)"></div>
+
+          <div style="position:absolute;left:50%;top:14%;bottom:14%;width:.09cqw;background:rgba(140,55,10,.3)"></div>
+
+          <div style="position:absolute;left:22%;top:22%;width:2.8cqw;height:2.8cqw;border-radius:50%;
+
+            border:.09cqw solid rgba(255,255,255,.62)"></div>
+
+        </div>
+
+        <div style="position:absolute;left:38.6cqw;top:28.2cqw;width:17.6cqw;text-align:center;
+
+          font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.14em;color:#8A6A48">俯视 · TOP</div>
+
+
+
+        <!-- 尺寸线 -->
+
+        <div style="position:absolute;left:6.4cqw;top:31cqw;width:15.4cqw;height:.06cqw;background:#B08A60"></div>
+
+        <div style="position:absolute;left:6.4cqw;top:30.4cqw;width:.06cqw;height:1.2cqw;background:#B08A60"></div>
+
+        <div style="position:absolute;left:21.74cqw;top:30.4cqw;width:.06cqw;height:1.2cqw;background:#B08A60"></div>
+
+        <div style="position:absolute;left:6.4cqw;top:32.1cqw;width:15.4cqw;text-align:center;
+
+          font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.1em;color:#7E5C3C">86 mm</div>
+
+
+
+        <!-- 右侧标注 -->
+
+        <div style="position:absolute;left:60cqw;top:9.4cqw;width:36cqw;z-index:9">
+
+          <div style="display:flex;gap:.8cqw;align-items:flex-start;margin-bottom:1.5cqw">
+
+            <div style="width:1.3cqw;height:1.3cqw;border-radius:50%;border:.06cqw solid #B08A60;margin-top:.15cqw"></div>
+
+            <div>
+
+              <div style="font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.1em;color:#3A2618">圆角 R 4 mm</div>
+
+              <div style="font-size:.86cqw;color:#8A6A48;margin-top:.1cqw">单一半径，全件统一</div>
+
+            </div>
+
+          </div>
+
+          <div style="display:flex;gap:.8cqw;align-items:flex-start;margin-bottom:1.5cqw">
+
+            <div style="width:1.3cqw;height:1.3cqw;border-radius:.2cqw;border:.06cqw solid #B08A60;margin-top:.15cqw;
+
+              background:linear-gradient(90deg,transparent 44%,#C08A5A 44%,#C08A5A 56%,transparent 56%)"></div>
+
+            <div>
+
+              <div style="font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.1em;color:#3A2618">分件线 × 2</div>
+
+              <div style="font-size:.86cqw;color:#8A6A48;margin-top:.1cqw">凹 0.6 mm，不上色</div>
+
+            </div>
+
+          </div>
+
+          <div style="display:flex;gap:.8cqw;align-items:flex-start">
+
+            <div style="width:1.3cqw;height:1.3cqw;border-radius:50%;background:#221E24;margin-top:.15cqw"></div>
+
+            <div>
+
+              <div style="font-family:var(--f-mono);font-size:.95cqw;letter-spacing:.1em;color:#3A2618">眼睛 Ø 6 mm</div>
+
+              <div style="font-size:.86cqw;color:#8A6A48;margin-top:.1cqw">按钮式，内嵌 1 mm</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 规格表 -->
+
+        <div style="position:absolute;left:4cqw;right:4cqw;top:34.4cqw;
+
+          display:grid;grid-template-columns:repeat(4,1fr);gap:.06cqw;background:rgba(176,138,96,.4);
+
+          border:.06cqw solid rgba(176,138,96,.5);z-index:9">
+
+          <div style="background:#F9EBD9;padding:.7cqw .9cqw">
+
+            <div style="font-family:var(--f-mono);font-size:.78cqw;letter-spacing:.12em;color:#A08462">材质</div>
+
+            <div style="font-size:1cqw;color:#3A2618;margin-top:.15cqw">ABS 磨砂</div></div>
+
+          <div style="background:#F9EBD9;padding:.7cqw .9cqw">
+
+            <div style="font-family:var(--f-mono);font-size:.78cqw;letter-spacing:.12em;color:#A08462">尺寸</div>
+
+            <div style="font-size:1cqw;color:#3A2618;margin-top:.15cqw">86 × 74 × 70</div></div>
+
+          <div style="background:#F9EBD9;padding:.7cqw .9cqw">
+
+            <div style="font-family:var(--f-mono);font-size:.78cqw;letter-spacing:.12em;color:#A08462">重心</div>
+
+            <div style="font-size:1cqw;color:#3A2618;margin-top:.15cqw">底部 32 mm</div></div>
+
+          <div style="background:#F9EBD9;padding:.7cqw .9cqw">
+
+            <div style="font-family:var(--f-mono);font-size:.78cqw;letter-spacing:.12em;color:#A08462">高光</div>
+
+            <div style="font-size:1cqw;color:#3A2618;margin-top:.15cqw">主光 + 边缘</div></div>
+
+        </div>
+
+
+
+        <!-- 三种打光 -->
+
+        <div style="position:absolute;left:4cqw;top:41.6cqw;font-family:var(--f-mono);font-size:.8cqw;
+
+          letter-spacing:.16em;color:#A08462">同一材质 · 三种打光</div>
+
+        <div style="position:absolute;left:4cqw;right:4cqw;top:43.6cqw;display:flex;gap:2.4cqw">
+
+          <div style="flex:1;display:flex;gap:1.2cqw;align-items:center">
+
+            <div style="width:7.6cqw;height:7.6cqw;border-radius:1.4cqw;flex:0 0 auto;
+
+              background:radial-gradient(46% 34% at 34% 22%,rgba(255,255,255,.7),rgba(255,255,255,0) 66%),
+
+                linear-gradient(165deg,#FFB472,#EE8339 42%,#BA5313);
+
+              box-shadow:inset -.3cqw -.4cqw .9cqw rgba(120,45,0,.35),0 .4cqw 1cqw rgba(90,50,20,.25)"></div>
+
+            <div>
+
+              <div style="font-size:.92cqw;color:#3A2618">正面主光</div>
+
+              <div style="font-family:var(--f-mono);font-size:.75cqw;color:#9C7A55;margin-top:.15cqw">高光居中偏上</div>
+
+            </div>
+
+          </div>
+
+          <div style="flex:1;display:flex;gap:1.2cqw;align-items:center">
+
+            <div style="width:7.6cqw;height:7.6cqw;border-radius:1.4cqw;flex:0 0 auto;
+
+              background:radial-gradient(34% 30% at 84% 30%,rgba(255,235,210,.85),rgba(255,235,210,0) 62%),
+
+                linear-gradient(200deg,#F59A50,#D4691F 48%,#8E3E0B);
+
+              box-shadow:inset .4cqw -.3cqw .9cqw rgba(90,35,0,.4),0 .4cqw 1cqw rgba(90,50,20,.25)"></div>
+
+            <div>
+
+              <div style="font-size:.92cqw;color:#3A2618">侧逆光</div>
+
+              <div style="font-family:var(--f-mono);font-size:.75cqw;color:#9C7A55;margin-top:.15cqw">右缘一条亮线</div>
+
+            </div>
+
+          </div>
+
+          <div style="flex:1;display:flex;gap:1.2cqw;align-items:center">
+
+            <div style="width:7.6cqw;height:7.6cqw;border-radius:1.4cqw;flex:0 0 auto;
+
+              background:radial-gradient(50% 26% at 50% 6%,rgba(255,245,225,.8),rgba(255,245,225,0) 62%),
+
+                linear-gradient(180deg,#FFB070,#DB6C20 52%,#8B3B09);
+
+              box-shadow:inset 0 -.5cqw 1cqw rgba(90,35,0,.45),0 .4cqw 1cqw rgba(90,50,20,.25)"></div>
+
+            <div>
+
+              <div style="font-size:.92cqw;color:#3A2618">顶光</div>
+
+              <div style="font-family:var(--f-mono);font-size:.75cqw;color:#9C7A55;margin-top:.15cqw">下沿压暗</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="body">
+        <h3><span class="idx">01</span>硬壳玩具造型<small>Hard-surface Toy Design</small></h3>
+        <p>橙色方块靠三件事变成角色：一个统一的大圆角、两三条淡淡的分件凹线、两颗按钮式的黑眼睛。高光只留一条主光加一条边缘反光，光泽服从体积而不遮盖表情——多加一层镜面反射，它就从角色退化成产品渲染图。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">统一圆角</span><span class="tag">按钮眼</span>
+          <span class="tag">分件凹线</span><span class="tag">单主高光</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 桌面微缩布景 -->
+    <section class="sub">
+      <div class="frame up2" id="f-desk" style="color:#2A1A17">
+
+        <div style="position:absolute;inset:0;background:
+
+          radial-gradient(80% 70% at 46% 36%,#AE7A50 0%,#8C5B39 52%,#5A3720 100%)"></div>
+
+        <div style="position:absolute;inset:0;opacity:.9;background-image:
+
+          repeating-linear-gradient(88deg,rgba(48,24,10,.26) 0,.1cqw,transparent .1cqw,1.3cqw),
+
+          repeating-linear-gradient(88deg,rgba(40,20,8,.18) 0,.16cqw,transparent .16cqw,5.4cqw),
+
+          repeating-linear-gradient(92deg,rgba(255,220,180,.08) 0,.07cqw,transparent .07cqw,2.6cqw)"></div>
+
+        <div style="position:absolute;inset:0;z-index:12;pointer-events:none;
+
+          background:radial-gradient(66% 60% at 48% 42%,rgba(10,5,3,0) 40%,rgba(10,5,3,.5) 100%)"></div>
+
+
+
+        <!-- 键盘（俯视） -->
+
+        <svg viewBox="0 0 200 78" style="position:absolute;left:5.6cqw;top:4.4cqw;width:36cqw;
+
+          transform:rotate(-4deg);filter:drop-shadow(0 .5cqw .9cqw rgba(0,0,0,.5))">
+
+          <rect x="0" y="0" width="200" height="78" rx="7" fill="#3A3543"/>
+
+          <rect x="0" y="0" width="200" height="78" rx="7" fill="none" stroke="#565064" stroke-width="1"/>
+
+          <rect x="6" y="6" width="188" height="66" rx="4" fill="#2A2532"/>
+
+          <g fill="#4E4859">
+
+            <g id="krow">
+
+              <rect x="10" y="10" width="10.4" height="10.4" rx="2"/><rect x="22" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="34" y="10" width="10.4" height="10.4" rx="2"/><rect x="46" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="58" y="10" width="10.4" height="10.4" rx="2"/><rect x="70" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="82" y="10" width="10.4" height="10.4" rx="2"/><rect x="94" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="106" y="10" width="10.4" height="10.4" rx="2"/><rect x="118" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="130" y="10" width="10.4" height="10.4" rx="2"/><rect x="142" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="154" y="10" width="10.4" height="10.4" rx="2"/><rect x="166" y="10" width="24" height="10.4" rx="2"/>
+
+            </g>
+
+            <g transform="translate(0,13)">
+
+              <rect x="11" y="10" width="12" height="10.4" rx="2"/><rect x="25" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="37" y="10" width="10.4" height="10.4" rx="2"/><rect x="49" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="61" y="10" width="10.4" height="10.4" rx="2"/><rect x="73" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="85" y="10" width="10.4" height="10.4" rx="2"/><rect x="97" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="109" y="10" width="10.4" height="10.4" rx="2"/><rect x="121" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="133" y="10" width="10.4" height="10.4" rx="2"/><rect x="145" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="157" y="10" width="20" height="10.4" rx="2"/><rect x="179" y="10" width="11" height="10.4" rx="2"/>
+
+            </g>
+
+            <g transform="translate(0,26)">
+
+              <rect x="11" y="10" width="14" height="10.4" rx="2"/><rect x="27" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="39" y="10" width="10.4" height="10.4" rx="2"/><rect x="51" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="63" y="10" width="10.4" height="10.4" rx="2"/><rect x="75" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="87" y="10" width="10.4" height="10.4" rx="2"/><rect x="99" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="111" y="10" width="10.4" height="10.4" rx="2"/><rect x="123" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="135" y="10" width="10.4" height="10.4" rx="2"/><rect x="147" y="10" width="31" height="10.4" rx="2"/>
+
+              <rect x="180" y="10" width="10" height="10.4" rx="2"/>
+
+            </g>
+
+            <g transform="translate(0,39)">
+
+              <rect x="11" y="10" width="17" height="10.4" rx="2"/><rect x="30" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="42" y="10" width="10.4" height="10.4" rx="2"/><rect x="54" y="10" width="82" height="10.4" rx="2"/>
+
+              <rect x="138" y="10" width="10.4" height="10.4" rx="2"/><rect x="150" y="10" width="10.4" height="10.4" rx="2"/>
+
+              <rect x="162" y="10" width="10.4" height="10.4" rx="2"/><rect x="174" y="10" width="16" height="10.4" rx="2"/>
+
+            </g>
+
+          </g>
+
+        </svg>
+
+
+
+        <!-- 马克杯（俯视） -->
+
+        <div style="position:absolute;left:45cqw;top:3.4cqw;width:11.6cqw;height:11.6cqw;border-radius:50%;
+
+          background:radial-gradient(circle at 34% 28%,#FFFDF6,#EFE6D4 62%,#CBBCA2);
+
+          box-shadow:0 1.1cqw 2cqw rgba(0,0,0,.45),inset 0 0 .6cqw rgba(255,255,255,.8)">
+
+          <div style="position:absolute;left:13%;top:13%;right:13%;bottom:13%;border-radius:50%;
+
+            background:radial-gradient(circle at 38% 32%,#6B3F22,#331B0E 78%);
+
+            box-shadow:inset 0 0 .6cqw rgba(0,0,0,.6)"></div>
+
+          <div style="position:absolute;right:-1.5cqw;top:34%;width:3.2cqw;height:3.6cqw;border-radius:50%;
+
+            border:.85cqw solid #EFE6D4;border-left-color:transparent"></div>
+
+        </div>
+
+
+
+        <!-- 便签 -->
+
+        <div style="position:absolute;left:6.4cqw;top:23.6cqw;width:14cqw;height:10.4cqw;
+
+          background:linear-gradient(160deg,#FFEDB4,#F3CB74);transform:rotate(6deg);
+
+          box-shadow:0 .8cqw 1.5cqw rgba(0,0,0,.4)">
+
+          <div style="position:absolute;left:1.2cqw;top:1.1cqw;font-family:var(--f-mono);
+
+            font-size:.88cqw;line-height:1.65;color:#6B5220">90 mm · 82 g<br>ABS 磨砂<br>不要摇它</div>
+
+          <div style="position:absolute;left:0;top:0;width:100%;height:1.1cqw;
+
+            background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,0))"></div>
+
+        </div>
+
+
+
+        <!-- 人偶 A -->
+
+        <div class="fig" style="left:29.6cqw;top:23.4cqw;width:8cqw;height:10.2cqw">
+
+          <div class="lg" style="left:2.3cqw;height:2.8cqw"></div>
+
+          <div class="lg" style="right:2.3cqw;height:2.8cqw"></div>
+
+          <div class="torso" style="height:3.9cqw;top:2.2cqw"></div>
+
+          <div class="hd" style="width:2.1cqw;height:2.1cqw;margin-left:-1.05cqw"></div>
+
+          <div class="hair" style="width:2.1cqw;margin-left:-1.05cqw;height:1.05cqw"></div>
+
+          <div class="fa" style="left:5.5cqw;top:2.6cqw;width:.7cqw;height:3cqw;transform:rotate(-22deg)"></div>
+
+          <div class="fa" style="left:1.4cqw;top:2.8cqw;width:.7cqw;height:3cqw;transform:rotate(14deg)"></div>
+
+        </div>
+
+        <div style="position:absolute;left:28.6cqw;top:33.8cqw;width:9.8cqw;text-align:center;
+
+          font-family:var(--f-mono);font-size:.82cqw;letter-spacing:.1em;color:rgba(255,232,205,.8)">研究员 · 164 mm</div>
+
+
+
+        <!-- 玻璃盖俯视 + 方块 -->
+
+        <div style="position:absolute;left:62cqw;top:17.4cqw;width:21cqw;height:21cqw;border-radius:50%;
+
+          border:.16cqw solid rgba(255,255,255,.62);
+
+          background:
+
+            radial-gradient(circle at 34% 26%,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 32%),
+
+            radial-gradient(closest-side,rgba(126,200,192,.20) 0%,rgba(126,200,192,.10) 62%,rgba(255,255,255,.30) 100%);
+
+          box-shadow:0 1.2cqw 2.4cqw rgba(0,0,0,.42),inset 0 0 1.4cqw rgba(255,255,255,.55),
+
+            inset 0 -.6cqw 1.2cqw rgba(126,200,192,.35)">
+
+          <div style="position:absolute;left:9%;top:9%;right:9%;bottom:9%;border-radius:50%;
+
+            border:.09cqw solid rgba(255,255,255,.5)"></div>
+
+          <div class="bot" style="left:33%;top:34%;width:34%;height:32%">
+
+            <div class="bd"></div><div class="seam"></div>
+
+            <div class="eye" style="left:22%"></div><div class="eye" style="right:22%"></div>
+
+            <div class="arm" style="left:-11%;width:1.5cqw;height:2.6cqw;top:38%"></div>
+
+            <div class="arm" style="right:-11%;width:1.5cqw;height:2.6cqw;top:38%"></div>
+
+          </div>
+
+        </div>
+
+        <div style="position:absolute;left:62cqw;top:38.8cqw;font-family:var(--f-mono);font-size:.82cqw;
+
+          letter-spacing:.1em;color:rgba(255,232,205,.72)">Ø 210 · 罐盖俯视</div>
+
+
+
+        <!-- 铅笔 -->
+
+        <div style="position:absolute;left:17cqw;top:41.4cqw;width:19cqw;height:1.5cqw;transform:rotate(-9deg);
+
+          filter:drop-shadow(0 .35cqw .5cqw rgba(0,0,0,.45))">
+
+          <div style="position:absolute;left:.9cqw;right:2.4cqw;top:0;height:100%;
+
+            background:linear-gradient(180deg,#F0C24A,#C9901F)"></div>
+
+          <div style="position:absolute;left:0;top:0;width:1cqw;height:100%;border-radius:.2cqw 0 0 .2cqw;
+
+            background:#E2543F"></div>
+
+          <div style="position:absolute;right:1.2cqw;top:0;width:1.4cqw;height:100%;
+
+            background:linear-gradient(90deg,#E8D6BE,#BFA684);
+
+            clip-path:polygon(0 0,100% 50%,0 100%)"></div>
+
+          <div style="position:absolute;right:0;top:32%;width:.6cqw;height:36%;background:#3A3A42"></div>
+
+        </div>
+
+
+
+        <!-- 直尺 -->
+
+        <svg viewBox="0 0 300 46" style="position:absolute;left:3.4cqw;bottom:2.2cqw;width:31cqw;
+
+          transform:rotate(-1.6deg);filter:drop-shadow(0 .4cqw .7cqw rgba(0,0,0,.45))">
+
+          <defs>
+
+            <pattern id="tt" width="9.6" height="46" patternUnits="userSpaceOnUse">
+
+              <rect x="0" y="0" width="0.9" height="11" fill="#6E5432"/>
+
+            </pattern>
+
+            <pattern id="tl" width="48" height="46" patternUnits="userSpaceOnUse">
+
+              <rect x="0" y="0" width="1.2" height="18" fill="#4E3A1E"/>
+
+            </pattern>
+
+          </defs>
+
+          <rect x="0" y="0" width="300" height="46" rx="2" fill="#E8D5B2"/>
+
+          <rect x="0" y="0" width="300" height="46" rx="2" fill="none" stroke="#B89C6E" stroke-width="1"/>
+
+          <rect x="4" y="0" width="292" height="46" fill="url(#tt)"/>
+
+          <rect x="4" y="0" width="292" height="46" fill="url(#tl)"/>
+
+          <g fill="#5A4326" font-family="monospace" font-size="9">
+
+            <text x="3" y="36">0</text><text x="48" y="36">25</text><text x="96" y="36">50</text>
+
+            <text x="144" y="36">75</text><text x="192" y="36">100</text><text x="246" y="36">125</text>
+
+          </g>
+
+        </svg>
+
+
+
+        <!-- 人偶 B -->
+
+        <div class="fig" style="left:53.4cqw;top:30.4cqw;width:6.4cqw;height:8.2cqw">
+
+          <div class="lg" style="left:1.9cqw;height:2.2cqw"></div>
+
+          <div class="lg" style="right:1.9cqw;height:2.2cqw"></div>
+
+          <div class="torso" style="height:3.1cqw;top:1.8cqw;width:2.4cqw;margin-left:-1.2cqw"></div>
+
+          <div class="hd" style="width:1.7cqw;height:1.7cqw;margin-left:-.85cqw"></div>
+
+          <div class="hair" style="width:1.7cqw;margin-left:-.85cqw;height:.85cqw"></div>
+
+          <div class="fa" style="left:4.4cqw;top:2.1cqw;width:.55cqw;height:2.4cqw;transform:rotate(-38deg)"></div>
+
+        </div>
+
+        <div style="position:absolute;right:3.6cqw;bottom:3cqw;font-family:var(--f-mono);font-size:.92cqw;
+
+          letter-spacing:.14em;color:rgba(255,232,205,.7);z-index:13;text-align:right;
+
+          line-height:1.7">SCALE 1 : 1<br><span style="opacity:.7">俯视 15° · 28 mm 等效</span></div>
+
+      </div>
+
+      <div class="body">
+        <h3><span class="idx">02</span>桌面微缩布景<small>Tabletop Miniature Staging</small></h3>
+        <p>钟表、键盘、马克杯和一张便签负责给出尺度：同样是橙色方块，放在杯垫上就是玩具，放大到占满画面就是威胁。俯视 15° 的机位让"人偶站在桌上"这件事一眼可读，比例尺放在角落，把微缩关系钉死。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">木纹桌面</span><span class="tag">生活道具</span>
+          <span class="tag">俯视角</span><span class="tag">比例参照</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 玻璃与局部光效（全宽） -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame up3" id="f-glass" style="color:#F6D9B8">
+        <div style="position:absolute;inset:0;z-index:0;background:
+          radial-gradient(38% 60% at 2% 2%,rgba(255,176,92,.42) 0%,rgba(255,176,92,0) 60%),
+          radial-gradient(46% 50% at 100% 56%,rgba(126,200,192,.24) 0%,rgba(126,200,192,0) 62%),
+          linear-gradient(168deg,#2C1915 0%,#1D110E 58%,#130A08 100%)"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:23cqw;z-index:1;background:
+          radial-gradient(50% 70% at 78% 6%,rgba(255,196,140,.26) 0%,rgba(255,196,140,0) 66%),
+          linear-gradient(180deg,#8A5634 0%,#6E4324 38%,#3E2413 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:33.2cqw;height:.4cqw;z-index:2;
+          background:linear-gradient(180deg,rgba(255,200,150,.5),transparent)"></div>
+
+        <!-- 台灯光束 -->
+        <div style="position:absolute;left:-8cqw;top:-12cqw;width:54cqw;height:74cqw;z-index:3;
+          background:linear-gradient(124deg,rgba(255,196,124,.30),rgba(255,196,124,0) 56%);
+          filter:blur(1.8cqw);transform:rotate(7deg)"></div>
+
+        <!-- 玻璃球 -->
+        <div style="position:absolute;left:52cqw;top:11.4cqw;width:40cqw;height:40cqw;border-radius:50%;z-index:6;
+          border:.16cqw solid rgba(255,255,255,.42);
+          box-shadow:0 2.4cqw 5cqw rgba(0,0,0,.55),inset 0 0 .4cqw rgba(255,255,255,.5)">
+          <!-- 折射体：把背景糊掉 -->
+          <div style="position:absolute;inset:.6cqw;border-radius:50%;z-index:1;
+            backdrop-filter:blur(.5cqw) saturate(1.15) brightness(1.06);
+            background:
+              radial-gradient(closest-side at 30% 22%,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 40%),
+              radial-gradient(closest-side at 74% 84%,rgba(126,200,192,.26) 0%,rgba(126,200,192,0) 52%),
+              radial-gradient(closest-side,rgba(255,246,232,.05) 52%,rgba(255,246,232,.20) 86%,rgba(255,255,255,.34) 97%,rgba(255,255,255,.05) 100%)"></div>
+          <!-- 球内的机器人 -->
+          <div class="bot" style="left:34%;top:41%;width:34%;height:34%;z-index:2;filter:blur(.03cqw)">
+            <div class="bd"></div><div class="seam"></div><div class="seam2"></div>
+            <div class="eye" style="left:23%;width:1.9cqw;height:1.9cqw;top:30%"></div>
+            <div class="eye" style="right:23%;width:1.9cqw;height:1.9cqw;top:30%"></div>
+            <div class="arm" style="left:-10%;top:38%;width:1.8cqw;height:3.4cqw;border-radius:1cqw"></div>
+            <div class="arm" style="right:-10%;top:38%;width:1.8cqw;height:3.4cqw;border-radius:1cqw"></div>
+            <div class="ant"></div>
+          </div>
+          <!-- 高光与边缘 -->
+          <div style="position:absolute;left:19%;top:11%;width:2cqw;height:2cqw;border-radius:50%;z-index:3;
+            background:rgba(255,255,255,.92);filter:blur(.14cqw)"></div>
+          <div style="position:absolute;left:25%;top:15.6%;width:1.2cqw;height:.8cqw;border-radius:50%;z-index:3;
+            background:rgba(255,255,255,.62);filter:blur(.12cqw)"></div>
+          <div style="position:absolute;left:8%;right:8%;bottom:2%;height:16%;border-radius:50%;z-index:3;
+            background:radial-gradient(closest-side,rgba(255,244,226,.55),rgba(255,244,226,0) 72%);
+            filter:blur(.5cqw)"></div>
+          <div style="position:absolute;right:6%;top:22%;width:1.1cqw;height:26%;border-radius:99px;z-index:3;
+            background:linear-gradient(180deg,rgba(126,200,192,.55),rgba(126,200,192,.05));filter:blur(.25cqw)"></div>
+        </div>
+
+        <!-- 焦散与投影 -->
+        <div style="position:absolute;left:78cqw;top:49.4cqw;width:24cqw;height:6.4cqw;z-index:5;
+          background:radial-gradient(closest-side,rgba(200,250,244,.62),rgba(126,200,192,0) 70%);
+          filter:blur(1.2cqw)"></div>
+        <div style="position:absolute;left:50cqw;top:48.6cqw;width:44cqw;height:6.4cqw;z-index:4;
+          background:radial-gradient(closest-side,rgba(8,4,2,.72),rgba(8,4,2,0) 74%);filter:blur(1cqw)"></div>
+
+        <!-- 左侧文字 -->
+        <div style="position:absolute;left:5.6cqw;top:8.6cqw;width:40cqw;z-index:9">
+          <div style="font-family:var(--f-mono);font-size:1cqw;letter-spacing:.22em;color:#C99A72">GLASS &amp; LIGHT · 折射</div>
+          <div style="font-family:var(--f-sans);font-weight:800;font-size:4.2cqw;line-height:1.14;
+            letter-spacing:-.02em;color:#FFF0DC;margin-top:1.4cqw;text-shadow:0 .5cqw 1.6cqw rgba(0,0,0,.5)">
+            光穿过它<br>才成为<em style="font-style:normal;color:#8FD9D0">证据</em></div>
+          <div style="font-size:1.08cqw;line-height:1.9;color:#C0A184;margin-top:1.4cqw;width:31cqw">
+            玻璃的厚度、边缘的亮线、桌面上那圈焦散，是"里面真的有东西"的全部证明。
+            罐壁越清楚，罐子里的人偶才越像一个被困住的活物。</div>
+          <div style="display:flex;gap:1.6cqw;margin-top:2.2cqw">
+            <div style="font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.1em;color:#E0BE9A">
+              <span style="display:inline-block;width:.7cqw;height:.7cqw;border-radius:50%;
+                background:#FFB05C;margin-right:.5cqw"></span>台灯 3200 K</div>
+            <div style="font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.1em;color:#A9DED8">
+              <span style="display:inline-block;width:.7cqw;height:.7cqw;border-radius:50%;
+                background:#7EC8C0;margin-right:.5cqw"></span>屏幕 6500 K</div>
+            <div style="font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.1em;color:#D9CFC2">
+              <span style="display:inline-block;width:.7cqw;height:.7cqw;border-radius:50%;
+                background:#FFFFFF;margin-right:.5cqw"></span>玻璃 3 mm</div>
+          </div>
+          <div style="margin-top:2.4cqw;padding-top:1.4cqw;border-top:.06cqw solid rgba(246,217,184,.22);
+            width:31cqw;display:flex;justify-content:space-between;font-family:var(--f-mono);
+            font-size:.84cqw;letter-spacing:.1em;color:#8E7256">
+            <span>折射率 1.48</span><span>透光 91%</span><span>边缘 3 mm</span></div>
+        </div>
+
+        <div style="position:absolute;left:5.6cqw;bottom:2.4cqw;font-family:var(--f-mono);font-size:.9cqw;
+          letter-spacing:.14em;color:rgba(246,217,184,.5);z-index:9">CLOSE-UP · 100 mm 微距 · f/2.0 · 瓶身 210 mm</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>玻璃与局部光效<small>Glass &amp; Local Lighting</small></h3>
+        <p>透明容器的反射、折射与内部角色共同构图：罐口的一圈亮线、罐壁的一抹竖向高光、桌面上被折射聚出来的焦散，三样东西就把"隔着玻璃"讲清楚了。暖灯照桌面、冷光来自屏幕，两种色温在一张画面里分工，玻璃的厚度才有得比。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">透明折射</span><span class="tag">边缘亮线</span>
+          <span class="tag">焦散光斑</span><span class="tag">暖冷对打</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>造型与比例</b>圆角方块、短肢体、按钮式眼睛；圆角半径统一，分件线只留凹线不画贴图。玩具比例优先于真实比例——头身比压扁，动作幅度放大。</div>
+    <div><b>材质与光</b>硬壳一条主高光加一条边缘反光，木桌保留纹理与哑光，玻璃给厚度、反射和焦散。暖台灯（3200 K）与冷屏幕（6500 K）对打，接触阴影贴紧桌面。</div>
+    <div><b>尺度与镜头</b>用钟表、键盘、马克杯、比例尺锚定微缩关系；浅景深只虚化背景道具，主体边缘保持锐利。镜头高度与桌面齐平或略高 15°，别用俯瞰。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>玩具感三维（Toy-like 3D Aesthetics）动画，橙色圆角方块机器人、黑色按钮眼睛和小型研究员人偶，置于木纹工作桌、电脑、台灯与老式钟表之间。角色使用光滑塑料或树脂般硬壳，保留机械分件与简洁高光；玻璃罐和实验道具具有清楚厚度与反射。暖色台灯对比冷色屏幕，接触阴影和适度浅景深强调微缩比例，通过人偶动作、装置变化和近景切换推进情节。</div>
+
+  <footer>样例说明：本页玻璃罐、方块机器人、研究员人偶、台钟、键盘、马克杯与桌面木纹均为 HTML / CSS 现场绘制（渐变、内阴影与模糊模拟体积和景深），未使用外部图片或来源视频画面；文案为示意内容。子风格依据 <code>styles/玩具感三维.md</code>。</footer>
+</div>
+
+<script src="_assets/base.js"></script>
+</body>
+</html>

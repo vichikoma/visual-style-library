@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>古典奢华视觉 · 风格样例</title>
+<link rel="stylesheet" href="_assets/base.css">
+<style>
+:root{
+  --cl-dark:#14100E; --cl-wood:#2A1F1A; --cl-gold:#C9A227;
+  --cl-cream:#F0E4CC; --cl-wine:#7A2B33;
+}
+.cl,.cc1,.cc2,.cc3{color:var(--cl-cream)}
+.serifit{font-family:var(--f-serif);font-style:italic;letter-spacing:.02em}
+.candle{position:absolute}
+.flame{position:absolute;left:50%;width:.7cqw;height:2.2cqw;margin-left:-.35cqw;
+  background:radial-gradient(60% 60% at 50% 62%,#FFF6DC 0%,#F5D07A 45%,#E8952F 78%,rgba(232,149,47,0) 100%);
+  border-radius:50% 50% 46% 46%/62% 62% 38% 38%;filter:blur(.04cqw)}
+.glow{position:absolute;border-radius:50%;pointer-events:none}
+.glass{position:absolute}
+.glass i{position:absolute;display:block}
+.goldframe{background:linear-gradient(135deg,#E6C766 0%,#A87D1E 26%,#F2E0A8 48%,#8E6A19 72%,#D9BA5C 100%)}
+.bokeh{position:absolute;border-radius:50%;background:radial-gradient(circle,#F7DCA0 0%,rgba(247,220,160,.55) 42%,rgba(247,220,160,0) 72%);
+  filter:blur(.5cqw)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="volnav">
+    <a href="index.html">← 风格库索引</a><span class="sep">/</span><span>24 / 25</span>
+    <span class="right"><a href="装饰艺术.html">← 上一条</a><a href="新中式视觉.html">下一条 →</a></span>
+  </nav>
+
+  <header>
+    <div class="kicker">VISUAL STYLE LIBRARY · STATIC SAMPLE</div>
+    <h1>古典奢华视觉<small>Classical Luxury Aesthetics</small></h1>
+    <p class="lead">以暖金属、奶油色纸张、深色织物、烛光和精致器物构成华丽而私密的空间。衬线与书法式字体、印章、丝带和对称陈列共同建立仪式感——这套风格的奢侈感来自<strong>材料的分层</strong>与<strong>光只落在少数器物上</strong>，而不是把画面刷成金色。</p>
+    <div class="meta">
+      <div><b>术语性质</b>描述性风格，以古典装饰、珠宝材质与奢侈品广告式陈列限定外观</div>
+      <div><b>视觉媒介</b>三维道具与室内陈列＋肖像拼贴＋场景内排版</div>
+      <div><b>典型母体</b>奢华宴席与卧室、婚约与高档纸品、珠宝与产品广告</div>
+    </div>
+    <div class="tags">
+      <span class="tag">奢华视觉</span><span class="tag">暖金配色</span><span class="tag">烛光</span>
+      <span class="tag">书法字体</span><span class="tag">产品陈列</span>
+      <span class="tag w">亲密关系</span><span class="tag w">契约讽刺</span><span class="tag w">仪式感</span>
+    </div>
+    <div class="palette">
+      <div class="sw"><i style="background:#14100E"></i>深棕黑<br><code>#14100E</code></div>
+      <div class="sw"><i style="background:#2A1F1A"></i>木褐<br><code>#2A1F1A</code></div>
+      <div class="sw"><i style="background:#C9A227"></i>暖金<br><code>#C9A227</code></div>
+      <div class="sw"><i style="background:#F0E4CC"></i>奶油纸<br><code>#F0E4CC</code></div>
+      <div class="sw"><i style="background:#7A2B33"></i>酒红<br><code>#7A2B33</code></div>
+    </div>
+  </header>
+
+  <h2>主风格综合帧 <span>MASTER FRAME · 16:9</span></h2>
+  <p class="h2note">宴席正面机位：深色帷幕、金框肖像、三支烛台与两只酒杯对称陈列，前景压一张金边契约纸。所有高光只给金框、杯口、烛焰和印章——其余部分退到暗里。</p>
+
+  <div class="frame cl" id="f-master">
+    <!-- 背景：帷幕 -->
+    <div style="position:absolute;inset:0;background:
+      radial-gradient(64% 56% at 50% 34%,#3A2A22 0%,#241A17 42%,#140F0D 78%,#0C0908 100%)"></div>
+    <div style="position:absolute;inset:0;
+      background:repeating-linear-gradient(90deg,rgba(0,0,0,.42) 0 2.2cqw,rgba(0,0,0,0) 2.2cqw 3.4cqw,
+        rgba(122,43,51,.22) 3.4cqw 4.6cqw,rgba(0,0,0,.34) 4.6cqw 7cqw);opacity:.85"></div>
+    <div style="position:absolute;inset:0;background:
+      radial-gradient(40% 34% at 50% 22%,rgba(201,162,39,.16),rgba(201,162,39,0) 70%)"></div>
+
+    <!-- 暖色散景 -->
+    <div class="bokeh" style="left:8cqw;top:28cqw;width:5cqw;height:5cqw;opacity:.5"></div>
+    <div class="bokeh" style="left:14cqw;top:35cqw;width:2.6cqw;height:2.6cqw;opacity:.35"></div>
+    <div class="bokeh" style="right:9cqw;top:26cqw;width:6cqw;height:6cqw;opacity:.45"></div>
+    <div class="bokeh" style="right:17cqw;top:33cqw;width:3cqw;height:3cqw;opacity:.32"></div>
+
+    <!-- 金框肖像（保留平面边缘的拼贴） -->
+    <div style="position:absolute;left:38cqw;top:2.6cqw;width:24cqw;height:28cqw;z-index:4;
+      box-shadow:0 1.6cqw 4cqw rgba(0,0,0,.55)">
+      <div class="goldframe" style="position:absolute;inset:0;border-radius:.2cqw"></div>
+      <div style="position:absolute;inset:1.1cqw;background:linear-gradient(160deg,#3E2E24 0%,#241812 52%,#150F0C 100%)"></div>
+      <div style="position:absolute;inset:1.1cqw;overflow:hidden">
+        <div style="position:absolute;left:0;right:0;bottom:0;height:52%;
+          background:radial-gradient(90% 120% at 50% 100%,rgba(122,43,51,.55),rgba(122,43,51,0) 70%)"></div>
+        <!-- 剪影半身 -->
+        <div style="position:absolute;left:50%;top:24%;width:5.6cqw;height:6.8cqw;margin-left:-2.8cqw;
+          border-radius:50% 50% 46% 46%;background:#120D0B"></div>
+        <div style="position:absolute;left:50%;top:44%;width:11.4cqw;height:12cqw;margin-left:-5.7cqw;
+          border-radius:50% 50% 0 0/70% 70% 0 0;background:#120D0B"></div>
+        <!-- 肖像上的暖边光 -->
+        <div style="position:absolute;left:50%;top:24%;width:5.6cqw;height:6.8cqw;margin-left:-2.8cqw;
+          border-radius:50%;box-shadow:inset .5cqw -.2cqw 0 rgba(201,162,39,.5)"></div>
+        <div style="position:absolute;right:0;top:0;bottom:0;width:3cqw;
+          background:linear-gradient(270deg,rgba(201,162,39,.22),rgba(201,162,39,0))"></div>
+      </div>
+    </div>
+    <!-- 框顶小挂饰 -->
+    <div style="position:absolute;left:50%;top:.4cqw;width:1.4cqw;height:1.4cqw;margin-left:-.7cqw;
+      border:.14cqw solid #C9A227;transform:rotate(45deg);z-index:5"></div>
+
+    <!-- 长桌：木面 -->
+    <div style="position:absolute;left:0;right:0;top:34cqw;bottom:0;
+      background:linear-gradient(180deg,#3A2A20 0%,#1A1310 34%,#0E0A09 100%)"></div>
+    <!-- 桌布：后窄前宽的梯形 -->
+    <div style="position:absolute;left:0;right:0;top:36.6cqw;bottom:0;
+      background:linear-gradient(180deg,#C9B491 0%,#E7D8BA 22%,#EADCC0 52%,#D6C1A0 78%,#B49C7A 100%);
+      clip-path:polygon(26% 0,74% 0,100% 100%,0 100%)"></div>
+    <!-- 烛光光池 -->
+    <div style="position:absolute;left:50%;top:40cqw;width:64cqw;height:15cqw;margin-left:-32cqw;
+      background:radial-gradient(closest-side,rgba(255,236,190,.42),rgba(255,236,190,0) 72%)"></div>
+    <!-- 远端阴影（靠墙一侧压暗） -->
+    <div style="position:absolute;left:0;right:0;top:36.6cqw;height:5.4cqw;
+      background:linear-gradient(180deg,rgba(70,52,34,.55),rgba(70,52,34,0));
+      clip-path:polygon(26% 0,74% 0,86% 100%,13% 100%)"></div>
+    <!-- 桌布横向褶皱 -->
+    <div style="position:absolute;left:0;right:0;top:36.6cqw;bottom:0;opacity:.55;
+      background:repeating-linear-gradient(180deg,rgba(120,96,68,.13) 0 .35cqw,rgba(0,0,0,0) .35cqw 3.2cqw);
+      clip-path:polygon(26% 0,74% 0,100% 100%,0 100%)"></div>
+    <!-- 桌上透视线（向灭点收敛） -->
+    <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+      <line x1="26" y1="36.6" x2="0" y2="56.25" stroke="rgba(120,96,68,.28)" stroke-width=".1"></line>
+      <line x1="74" y1="36.6" x2="100" y2="56.25" stroke="rgba(120,96,68,.28)" stroke-width=".1"></line>
+      <line x1="50" y1="36.6" x2="50" y2="56.25" stroke="rgba(120,96,68,.14)" stroke-width=".08"></line>
+    </svg>
+    <!-- 近边垂布 -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:4.6cqw;
+      background:linear-gradient(180deg,#CBB594,#A98F6C 62%,#866E50 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:4.6cqw;opacity:.6;
+      background:repeating-linear-gradient(90deg,rgba(70,52,34,.28) 0 .4cqw,rgba(0,0,0,0) .4cqw 5.2cqw)"></div>
+    <!-- 桌沿高光 -->
+    <div style="position:absolute;left:0;right:0;bottom:4.6cqw;height:.16cqw;background:rgba(255,246,220,.75)"></div>
+
+    <!-- 接地阴影 -->
+    <div style="position:absolute;left:29.9cqw;bottom:18.2cqw;width:3.4cqw;height:.9cqw;
+      background:radial-gradient(closest-side,rgba(60,42,26,.55),rgba(60,42,26,0))"></div>
+    <div style="position:absolute;right:29.9cqw;bottom:18.2cqw;width:3.4cqw;height:.9cqw;
+      background:radial-gradient(closest-side,rgba(60,42,26,.55),rgba(60,42,26,0))"></div>
+    <div style="position:absolute;left:48.6cqw;bottom:19.2cqw;width:3cqw;height:.8cqw;
+      background:radial-gradient(closest-side,rgba(60,42,26,.5),rgba(60,42,26,0))"></div>
+    <div style="position:absolute;left:38.2cqw;bottom:17.6cqw;width:3.4cqw;height:.8cqw;
+      background:radial-gradient(closest-side,rgba(60,42,26,.45),rgba(60,42,26,0))"></div>
+    <div style="position:absolute;right:38.2cqw;bottom:17.6cqw;width:3.4cqw;height:.8cqw;
+      background:radial-gradient(closest-side,rgba(60,42,26,.45),rgba(60,42,26,0))"></div>
+
+    <!-- 银器与烛台 -->
+    <!-- 左烛台 -->
+    <div class="candle" style="left:30.6cqw;bottom:18.8cqw;z-index:7;width:2cqw;height:13cqw">
+      <div style="position:absolute;left:50%;bottom:0;width:1.8cqw;height:.5cqw;margin-left:-.9cqw;
+        background:linear-gradient(180deg,#E9D6A6,#9A7A3A);border-radius:50%"></div>
+      <div style="position:absolute;left:50%;bottom:.4cqw;width:.22cqw;height:2.4cqw;margin-left:-.11cqw;background:#B08C3E"></div>
+      <div style="position:absolute;left:50%;bottom:2.6cqw;width:.9cqw;height:7cqw;margin-left:-.45cqw;
+        background:linear-gradient(90deg,#CDB287,#F3E7CB 40%,#FFFCF0 52%,#DCC49A 72%,#A98B5C 100%)"></div>
+      <div class="flame" style="bottom:9.7cqw"></div>
+    </div>
+    <div class="glow" style="left:29.6cqw;bottom:25cqw;width:12cqw;height:12cqw;
+      background:radial-gradient(circle,rgba(247,208,122,.30),rgba(247,208,122,0) 68%);z-index:3"></div>
+
+    <!-- 右烛台 -->    <div class="candle" style="right:30.6cqw;bottom:18.8cqw;z-index:7;width:2cqw;height:13cqw">
+      <div style="position:absolute;left:50%;bottom:0;width:1.8cqw;height:.5cqw;margin-left:-.9cqw;
+        background:linear-gradient(180deg,#E9D6A6,#9A7A3A);border-radius:50%"></div>
+      <div style="position:absolute;left:50%;bottom:.4cqw;width:.22cqw;height:2.4cqw;margin-left:-.11cqw;background:#B08C3E"></div>
+      <div style="position:absolute;left:50%;bottom:2.6cqw;width:.9cqw;height:7cqw;margin-left:-.45cqw;
+        background:linear-gradient(90deg,#CDB287,#F3E7CB 40%,#FFFCF0 52%,#DCC49A 72%,#A98B5C 100%)"></div>
+      <div class="flame" style="bottom:9.7cqw"></div>
+    </div>
+    <div class="glow" style="right:29.6cqw;bottom:25cqw;width:12cqw;height:12cqw;
+      background:radial-gradient(circle,rgba(247,208,122,.30),rgba(247,208,122,0) 68%);z-index:3"></div>
+
+    <!-- 中间烛台（略靠后，稍小） -->
+    <div class="candle" style="left:49.2cqw;bottom:19.6cqw;z-index:9;width:1.8cqw;height:10.6cqw">
+      <div style="position:absolute;left:50%;bottom:0;width:1.5cqw;height:.4cqw;margin-left:-.75cqw;
+        background:linear-gradient(180deg,#E9D6A6,#9A7A3A);border-radius:50%"></div>
+      <div style="position:absolute;left:50%;bottom:.36cqw;width:.2cqw;height:2cqw;margin-left:-.1cqw;background:#B08C3E"></div>
+      <div style="position:absolute;left:50%;bottom:2.2cqw;width:.75cqw;height:5.2cqw;margin-left:-.375cqw;
+        background:linear-gradient(90deg,#CDB287,#F3E7CB 42%,#FFFCF0 54%,#DCC49A 74%,#A98B5C 100%)"></div>
+      <div class="flame" style="bottom:7.5cqw"></div>
+    </div>
+
+    <!-- 左酒杯 -->
+    <div class="glass" style="left:39.6cqw;bottom:17.8cqw;z-index:8">
+      <i style="left:0;bottom:0;width:2.2cqw;height:.28cqw;background:#E6DCC4;border-radius:50%;opacity:.75"></i>
+      <i style="left:50%;bottom:.2cqw;width:.16cqw;height:2.4cqw;margin-left:-.08cqw;background:rgba(240,228,204,.6)"></i>
+      <i style="left:50%;bottom:2.4cqw;width:2.6cqw;height:3cqw;margin-left:-1.3cqw;
+        background:linear-gradient(180deg,rgba(240,228,204,.30),rgba(240,228,204,.14));
+        border:.1cqw solid rgba(255,246,220,.55);border-radius:8% 8% 50% 50%/4% 4% 96% 96%"></i>
+      <i style="left:50%;bottom:2.6cqw;width:2.2cqw;height:1.5cqw;margin-left:-1.1cqw;
+        background:linear-gradient(180deg,#8E3038,#5A1B22);border-radius:6% 6% 50% 50%/4% 4% 96% 96%;opacity:.9"></i>
+      <i style="left:50%;bottom:4.9cqw;width:.9cqw;height:.22cqw;margin-left:-.45cqw;background:rgba(255,246,220,.85);border-radius:50%;filter:blur(.05cqw)"></i>
+    </div>
+
+    <!-- 右酒杯 -->
+    <div class="glass" style="right:39.6cqw;bottom:17.8cqw;z-index:8">
+      <i style="right:0;bottom:0;width:2.2cqw;height:.28cqw;background:#E6DCC4;border-radius:50%;opacity:.75"></i>
+      <i style="right:50%;bottom:.2cqw;width:.16cqw;height:2.4cqw;margin-right:-.08cqw;background:rgba(240,228,204,.6)"></i>
+      <i style="right:50%;bottom:2.4cqw;width:2.6cqw;height:3cqw;margin-right:-1.3cqw;
+        background:linear-gradient(180deg,rgba(240,228,204,.30),rgba(240,228,204,.14));
+        border:.1cqw solid rgba(255,246,220,.55);border-radius:8% 8% 50% 50%/4% 4% 96% 96%"></i>
+      <i style="right:50%;bottom:2.6cqw;width:2.2cqw;height:1.5cqw;margin-right:-1.1cqw;
+        background:linear-gradient(180deg,#8E3038,#5A1B22);border-radius:6% 6% 50% 50%/4% 4% 96% 96%;opacity:.9"></i>
+      <i style="right:50%;bottom:4.9cqw;width:.9cqw;height:.22cqw;margin-right:-.45cqw;background:rgba(255,246,220,.85);border-radius:50%;filter:blur(.05cqw)"></i>
+    </div>
+
+    <!-- 前景契约纸 -->
+    <div style="position:absolute;left:6cqw;bottom:2.4cqw;width:22cqw;height:14cqw;z-index:10;
+      transform:rotate(-4deg);box-shadow:0 1.2cqw 3cqw rgba(0,0,0,.5)">
+      <div style="position:absolute;inset:0;background:linear-gradient(150deg,#FBF3E1 0%,#EFE1C4 48%,#DCC9A6 100%)"></div>
+      <div style="position:absolute;inset:.62cqw;border:.1cqw solid #C9A227"></div>
+      <div style="position:absolute;left:1.6cqw;top:1.3cqw;font-family:var(--f-serif);font-size:1.5cqw;
+        letter-spacing:.24em;color:#4A382C">契　约</div>
+      <div style="position:absolute;left:1.6cqw;top:4.2cqw;font-family:var(--f-serif);font-size:.72cqw;
+        line-height:1.9;letter-spacing:.06em;color:#6B5642">
+        第一条　本关系自今夜起生效<br>
+        第二条　双方均不承认这是恋爱<br>
+        第三条　有效期至明日清晨
+      </div>
+      <div style="position:absolute;right:2.2cqw;bottom:1.9cqw;width:3.4cqw;height:3.4cqw;border-radius:50%;
+        background:radial-gradient(circle at 36% 32%,#A33A3F,#6E1A22 62%,#4E1017 100%);
+        box-shadow:inset 0 0 1.2cqw rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;
+        font-family:var(--f-serif);font-size:1.1cqw;color:rgba(240,228,204,.82);letter-spacing:.1em">信</div>
+    </div>
+
+    <!-- 戒指 -->
+    <div style="position:absolute;right:8.4cqw;bottom:5.2cqw;width:4.4cqw;height:4.4cqw;z-index:10;
+      transform:rotate(-14deg)">
+      <div style="position:absolute;inset:.6cqw;border:.42cqw solid #D9BA5C;border-radius:50%;
+        box-shadow:inset 0 0 1cqw rgba(0,0,0,.35),0 .2cqw .5cqw rgba(0,0,0,.4)"></div>
+      <div style="position:absolute;left:50%;top:-.5cqw;width:1.7cqw;height:1.7cqw;margin-left:-.85cqw;
+        background:radial-gradient(circle at 34% 30%,#FFF9E6,#E8D9A8 40%,#C9A227 70%,#8E6A19 100%);
+        transform:rotate(45deg);box-shadow:0 0 .8cqw rgba(255,246,220,.55)"></div>
+    </div>
+
+    <!-- 标题 -->
+    <div style="position:absolute;left:5cqw;top:4.4cqw;z-index:12;max-width:30cqw">
+      <div style="font-family:var(--f-mono);font-size:.78cqw;letter-spacing:.34em;color:rgba(201,162,39,.9)">
+        CANDLELIGHT · CONTRACT · GOLD LEAF</div>
+      <div class="serifit" style="margin-top:.9cqw;font-size:3.1cqw;line-height:1.16;color:#F5EBD6;
+        text-shadow:0 .2cqw 1.4cqw rgba(0,0,0,.6)">先说清楚，<br>再谈感情。</div>
+      <div style="margin-top:1cqw;font-size:.92cqw;line-height:1.9;color:rgba(240,228,204,.62)">
+        把关系写成条款，盖上印章，<br>放进烛光里念一遍。</div>
+    </div>
+
+    <div style="position:absolute;inset:0;pointer-events:none;z-index:14;background:
+      radial-gradient(72% 62% at 50% 44%,rgba(10,7,6,0) 42%,rgba(10,7,6,.74) 100%)"></div>
+  </div>
+
+  <div class="legend">
+    <div><b>材料分层，不是整片金色</b>深棕黑托底 → 木褐做中间层 → 奶油纸提亮 → 金色只出现在边框、杯口、烛台这些"硬金属"上。金色面积一多，贵气立刻变成影楼。</div>
+    <div><b>光是主角，且只照几处</b>画面只有三个光源：两支烛焰和肖像上的暖边光。其余靠反射与散景暗示，让暗部保持干净。</div>
+    <div><b>对称建立仪式</b>烛台、酒杯、肖像都沿中轴成对出现。人可以歪，桌子必须正——秩序感来自桌。</div>
+    <div><b>把文字做成道具</b>歌词、条款、签名写在纸、牌、合同上，让排版进入场景（场景内排版），而不是飘在画面外。</div>
+  </div>
+
+  <h2>子风格拓展 <span>SUB-STYLES × 3</span></h2>
+  <p class="h2note">三个方向：烛光与暖金材料（器物近景＋散景）、精致纸品与书法（纸面排版）、宴席式对称陈列（全宽，一点透视长桌）。</p>
+
+  <div class="subs">
+
+    <!-- 1. 烛光与暖金材料 -->
+    <section class="sub">
+      <div class="frame cc1" id="f-candle">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(58% 52% at 42% 58%,#5A3A22 0%,#33211A 34%,#1A1210 68%,#0D0908 100%)"></div>
+
+        <!-- 暖色散景 -->
+        <div class="bokeh" style="left:62cqw;top:8cqw;width:9cqw;height:9cqw;opacity:.4"></div>
+        <div class="bokeh" style="left:74cqw;top:20cqw;width:5cqw;height:5cqw;opacity:.3"></div>
+        <div class="bokeh" style="left:56cqw;top:26cqw;width:3cqw;height:3cqw;opacity:.22"></div>
+
+        <!-- 金框斜穿画面 -->
+        <div class="goldframe" style="position:absolute;left:-6cqw;top:8cqw;width:64cqw;height:2.2cqw;
+          transform:rotate(-9deg);box-shadow:0 .4cqw 1.4cqw rgba(0,0,0,.6)"></div>
+        <div style="position:absolute;left:0;top:9.2cqw;width:50cqw;height:.16cqw;background:rgba(255,246,220,.55);
+          transform:rotate(-9deg);filter:blur(.04cqw)"></div>
+        <div class="goldframe" style="position:absolute;left:-6cqw;top:8cqw;width:2.2cqw;height:40cqw;
+          transform:rotate(-9deg);box-shadow:0 .4cqw 1.4cqw rgba(0,0,0,.6)"></div>
+        <!-- 金框内侧的暗面 -->
+        <div style="position:absolute;left:0;top:0;width:52cqw;height:56.25cqw;
+          background:linear-gradient(120deg,rgba(120,30,38,.45),rgba(40,18,14,.85) 60%,rgba(20,12,10,.95))"></div>
+
+        <!-- 烛（左，主体） -->
+        <div style="position:absolute;left:12cqw;bottom:6cqw;width:4cqw;height:36cqw;z-index:6">
+          <div style="position:absolute;left:50%;bottom:0;width:4.4cqw;height:.9cqw;margin-left:-2.2cqw;
+            background:linear-gradient(180deg,#EBD9AA,#8E6A19);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.8cqw;width:.5cqw;height:5.4cqw;margin-left:-.25cqw;
+            background:linear-gradient(90deg,#8E6A19,#E8D9A8 46%,#8E6A19)"></div>
+          <div style="position:absolute;left:50%;width:2.2cqw;height:26cqw;margin-left:-1.1cqw;bottom:6cqw;
+            background:linear-gradient(90deg,#C9AE80,#F6EBD2 34%,#FFFDF2 48%,#E4D0A8 74%,#A98B5C 100%);
+            border-radius:.2cqw .2cqw 0 0"></div>
+          <!-- 蜡泪 -->
+          <div style="position:absolute;left:1.9cqw;bottom:26cqw;width:.5cqw;height:4.6cqw;
+            background:linear-gradient(180deg,#FFFDF2,#E4D0A8);border-radius:0 0 .25cqw .25cqw;opacity:.9"></div>
+          <!-- 焰 -->
+          <div style="position:absolute;left:50%;bottom:31.6cqw;width:1.5cqw;height:5cqw;margin-left:-.75cqw;
+            background:radial-gradient(52% 46% at 50% 64%,#FFFBEC 0%,#FFF0BE 26%,#F7C766 52%,#E8952F 74%,rgba(232,149,47,0) 100%);
+            border-radius:50% 50% 44% 44%/58% 58% 42% 42%;filter:blur(.06cqw)"></div>
+          <div style="position:absolute;left:50%;bottom:33.8cqw;width:.5cqw;height:1.8cqw;margin-left:-.25cqw;
+            background:rgba(255,246,220,.95);border-radius:50%;filter:blur(.14cqw)"></div>
+        </div>
+        <div class="glow" style="left:2cqw;bottom:20cqw;width:26cqw;height:26cqw;z-index:4;
+          background:radial-gradient(circle,rgba(247,196,96,.30),rgba(247,196,96,0) 66%)"></div>
+
+        <!-- 酒杯（右，次主体，失焦） -->
+        <div style="position:absolute;right:8cqw;bottom:4.4cqw;width:14cqw;height:20cqw;z-index:5;filter:blur(.08cqw)">
+          <div style="position:absolute;left:50%;bottom:0;width:9cqw;height:1.1cqw;margin-left:-4.5cqw;
+            background:rgba(240,228,204,.5);border-radius:50%;filter:blur(.2cqw)"></div>
+          <div style="position:absolute;left:50%;bottom:.9cqw;width:.6cqw;height:8cqw;margin-left:-.3cqw;
+            background:linear-gradient(90deg,rgba(240,228,204,.2),rgba(240,228,204,.6),rgba(240,228,204,.2))"></div>
+          <div style="position:absolute;left:50%;bottom:8.6cqw;width:9.4cqw;height:10cqw;margin-left:-4.7cqw;
+            background:linear-gradient(180deg,rgba(240,228,204,.22),rgba(240,228,204,.10));
+            border:.16cqw solid rgba(255,246,220,.5);border-radius:6% 6% 50% 50%/3% 3% 97% 97%"></div>
+          <div style="position:absolute;left:50%;bottom:9.2cqw;width:8.4cqw;height:5.4cqw;margin-left:-4.2cqw;
+            background:linear-gradient(180deg,#8E3038,#51161D);border-radius:6% 6% 50% 50%/3% 3% 97% 97%"></div>
+          <div style="position:absolute;left:50%;bottom:14.4cqw;width:3.6cqw;height:.7cqw;margin-left:-1.8cqw;
+            background:rgba(255,250,232,.9);border-radius:50%;filter:blur(.12cqw)"></div>
+          <div style="position:absolute;left:5.4cqw;bottom:11cqw;width:.9cqw;height:6cqw;
+            background:linear-gradient(90deg,rgba(255,246,220,0),rgba(255,246,220,.75));border-radius:50%"></div>
+        </div>
+
+        <!-- 奶油纸面（右下角入画） -->
+        <div style="position:absolute;right:-4cqw;bottom:-6cqw;width:34cqw;height:20cqw;
+          background:linear-gradient(150deg,#F7EDDA,#E2CFAC);transform:rotate(-7deg);opacity:.55"></div>
+
+        <!-- 标注 -->
+        <div style="position:absolute;left:4cqw;top:4cqw;z-index:9">
+          <div style="font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.24em;color:rgba(201,162,39,.9)">03 SOURCES</div>
+        </div>
+        <div style="position:absolute;right:3.6cqw;top:3.2cqw;z-index:9;text-align:right;
+          font-family:var(--f-mono);font-size:.82cqw;line-height:1.9;letter-spacing:.08em;color:rgba(240,228,204,.55)">
+          焰 1 · 杯口高光 1 · 框边高光 1<br>散景 3（f/1.7 感）</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">01</span>烛光与暖金材料<small>Candlelight &amp; Warm Gold Materials</small></h3>
+        <p>这套风格的近景不靠"细节多"，靠"亮得窄"。一支蜡烛、一只酒杯、一段金框，就够撑起整张画面：焰心是唯一的纯白，杯口一条弧形高光，金框一条细亮线，其余全部沉进棕黑。散景是把暗部撑开的关键——虚的暖圆点比实的纹理更有体积。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">烛焰暖光</span><span class="tag">金属细高光</span>
+          <span class="tag">暖色散景</span><span class="tag">深棕黑背景</span></div>
+      </div>
+    </section>
+
+    <!-- 2. 精致纸品与书法 -->
+    <section class="sub">
+      <div class="frame cc2" id="f-paper">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(70% 66% at 46% 40%,#2E211A 0%,#1A1310 52%,#0C0908 100%)"></div>
+        <div style="position:absolute;inset:0;
+          background:repeating-linear-gradient(90deg,rgba(0,0,0,.3) 0 2.6cqw,rgba(0,0,0,0) 2.6cqw 4.4cqw);opacity:.6"></div>
+
+        <!-- 底下的纸（微露） -->
+        <div style="position:absolute;left:14cqw;top:11cqw;width:56cqw;height:38cqw;
+          background:linear-gradient(150deg,#E3D2B2,#CBB492);transform:rotate(4.5deg);
+          box-shadow:0 1.4cqw 3cqw rgba(0,0,0,.55)"></div>
+
+        <!-- 主纸：金边牌/合同 -->
+        <div style="position:absolute;left:22cqw;top:8cqw;width:52cqw;height:40cqw;
+          background:linear-gradient(155deg,#FDF6E6 0%,#F4E7CC 46%,#E4D2AF 100%);
+          transform:rotate(-2.6deg);box-shadow:0 1.8cqw 3.6cqw rgba(0,0,0,.6)">
+          <div style="position:absolute;inset:1.1cqw;border:.14cqw solid #C9A227"></div>
+          <div style="position:absolute;inset:1.7cqw;border:.06cqw solid rgba(201,162,39,.5)"></div>
+          <!-- 书法标题 -->
+          <div style="position:absolute;left:3.4cqw;top:3.4cqw;font-family:var(--f-serif);font-style:italic;
+            font-size:6.4cqw;line-height:1.05;color:#3A2A20;letter-spacing:.02em">关系<br>条款</div>
+          <!-- 小字行 -->
+          <div style="position:absolute;left:3.6cqw;bottom:11.2cqw;font-family:var(--f-serif);font-size:1.02cqw;
+            line-height:2.1;letter-spacing:.06em;color:#6B5642">
+            第一条　双方自愿，且不对外声明<br>
+            第二条　节日可互相问候，不必见面<br>
+            第三条　任何一方可随时终止，无需理由
+          </div>
+          <!-- 签名线 -->
+          <div style="position:absolute;left:3.6cqw;bottom:5.2cqw;width:20cqw;height:.08cqw;background:rgba(107,86,66,.55)"></div>
+          <div style="position:absolute;left:3.6cqw;bottom:3.5cqw;font-family:var(--f-serif);font-style:italic;
+            font-size:1.5cqw;color:#4A382C">SITUATIONSHIP</div>
+          <!-- 印章 -->
+          <div style="position:absolute;right:3.2cqw;bottom:4cqw;width:7cqw;height:7cqw;border-radius:50%;
+            background:radial-gradient(circle at 34% 30%,#A83B40,#6E1A22 58%,#4A0F16 100%);
+            box-shadow:inset 0 0 2cqw rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;
+            font-family:var(--f-serif);font-size:2.4cqw;color:rgba(244,231,204,.8);transform:rotate(-8deg);
+            letter-spacing:.06em">契</div>
+          <!-- 金箔角标 -->
+          <div class="goldframe" style="position:absolute;right:0;top:0;width:9cqw;height:1cqw;
+            clip-path:polygon(0 0,100% 0,100% 100%,0 100%)"></div>
+        </div>
+
+        <!-- 丝带（斜跨右上角） -->
+        <div style="position:absolute;left:55cqw;top:-8cqw;width:4.2cqw;height:26cqw;transform-origin:0 0;
+          background:linear-gradient(90deg,#5E1620,#8E2B35 40%,#B04A52 52%,#7A2029 78%,#4E1017 100%);
+          transform:rotate(30deg);box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.5);z-index:6"></div>
+        <div style="position:absolute;left:63cqw;top:12.6cqw;width:6.4cqw;height:3.2cqw;
+          background:linear-gradient(135deg,#8E2B35,#5E1620);transform:rotate(14deg);
+          clip-path:polygon(0 0,100% 26%,100% 100%,0 66%);z-index:6"></div>
+        <div style="position:absolute;left:64.6cqw;top:9.4cqw;width:5.6cqw;height:3.4cqw;z-index:7;
+          background:linear-gradient(135deg,#B04A52,#7A2029);transform:rotate(-6deg);
+          clip-path:polygon(50% 44%,100% 0,100% 76%,50% 56%,0 76%,0 0);box-shadow:0 .3cqw .8cqw rgba(0,0,0,.4)"></div>
+
+        <!-- 说明 -->
+        <div style="position:absolute;left:4cqw;bottom:3cqw;z-index:8;font-family:var(--f-mono);
+          font-size:.86cqw;line-height:1.9;letter-spacing:.08em;color:rgba(240,228,204,.6)">
+          书法标题 6.4cqw／衬线正文 1.02cqw<br>金边 .14cqw＋内细线 .06cqw</div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">02</span>精致纸品与书法<small>Luxury Stationery &amp; Calligraphy</small></h3>
+        <p>纸品是这套风格的"舞台侧幕"：奶油色纸、金边、红蜡、丝带，四样东西一摆，任何台词都自动带上合约的严肃感。字体分两层——书法式大标题负责情绪，衬线小字负责条款；两层字号差 6 倍以上，读起来才有主次。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">奶油纸</span><span class="tag">金边牌</span>
+          <span class="tag">蜡封印章</span><span class="tag">书法＋衬线双轨</span></div>
+      </div>
+    </section>
+
+    <!-- 3. 宴席式对称陈列（全宽） -->
+    <section class="sub" style="grid-column:1/-1">
+      <div class="frame cc3" id="f-banquet">
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(60% 54% at 50% 30%,#4A2E20 0%,#2A1B15 40%,#140F0D 76%,#0A0807 100%)"></div>
+        <!-- 帷幕 -->
+        <div style="position:absolute;inset:0;
+          background:repeating-linear-gradient(90deg,rgba(0,0,0,.4) 0 2.4cqw,rgba(0,0,0,0) 2.4cqw 3.6cqw,
+            rgba(122,43,51,.2) 3.6cqw 4.8cqw,rgba(0,0,0,.32) 4.8cqw 7.2cqw);opacity:.75"></div>
+
+        <!-- 两侧肖像拼贴（保留平面边缘） -->
+        <div style="position:absolute;left:3.4cqw;top:5cqw;width:15cqw;height:19cqw;transform:rotate(-3.4deg);
+          box-shadow:0 1.2cqw 3cqw rgba(0,0,0,.6);z-index:3">
+          <div class="goldframe" style="position:absolute;inset:0"></div>
+          <div style="position:absolute;inset:.8cqw;background:linear-gradient(160deg,#463225,#22160F)"></div>
+          <div style="position:absolute;inset:.8cqw;overflow:hidden">
+            <div style="position:absolute;left:50%;top:26%;width:3.4cqw;height:4.2cqw;margin-left:-1.7cqw;
+              border-radius:50%;background:#140E0B"></div>
+            <div style="position:absolute;left:50%;top:50%;width:8cqw;height:8cqw;margin-left:-4cqw;
+              border-radius:50% 50% 0 0/70% 70% 0 0;background:#140E0B"></div>
+            <div style="position:absolute;right:0;top:0;bottom:0;width:2cqw;
+              background:linear-gradient(270deg,rgba(201,162,39,.28),rgba(201,162,39,0))"></div>
+          </div>
+        </div>
+        <div style="position:absolute;right:3.4cqw;top:5cqw;width:15cqw;height:19cqw;transform:rotate(3.4deg);
+          box-shadow:0 1.2cqw 3cqw rgba(0,0,0,.6);z-index:3">
+          <div class="goldframe" style="position:absolute;inset:0"></div>
+          <div style="position:absolute;inset:.8cqw;background:linear-gradient(160deg,#463225,#22160F)"></div>
+          <div style="position:absolute;inset:.8cqw;overflow:hidden">
+            <div style="position:absolute;left:50%;top:26%;width:3.4cqw;height:4.2cqw;margin-left:-1.7cqw;
+              border-radius:50%;background:#140E0B"></div>
+            <div style="position:absolute;left:50%;top:50%;width:8cqw;height:8cqw;margin-left:-4cqw;
+              border-radius:50% 50% 0 0/70% 70% 0 0;background:#140E0B"></div>
+            <div style="position:absolute;left:0;top:0;bottom:0;width:2cqw;
+              background:linear-gradient(90deg,rgba(201,162,39,.28),rgba(201,162,39,0))"></div>
+          </div>
+        </div>
+
+        <!-- 长桌（一点透视，远端在上） -->
+        <div style="position:absolute;inset:0;top:20cqw;
+          background:linear-gradient(180deg,#2A1D16 0%,#170F0C 60%,#0C0807 100%)"></div>
+        <div style="position:absolute;left:0;right:0;top:20cqw;bottom:0;
+          background:linear-gradient(180deg,#B8A17E 0%,#E7D8BA 26%,#F0E2C6 52%,#DCC7A4 76%,#B49C7A 100%);
+          clip-path:polygon(41% 0,59% 0,100% 100%,0 100%)"></div>
+        <!-- 桌布透视线 -->
+        <svg viewBox="0 0 100 56.25" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+          <line x1="41" y1="20" x2="0" y2="56.25" stroke="rgba(110,88,62,.35)" stroke-width=".1"></line>
+          <line x1="59" y1="20" x2="100" y2="56.25" stroke="rgba(110,88,62,.35)" stroke-width=".1"></line>
+          <line x1="41" y1="20" x2="34" y2="56.25" stroke="rgba(110,88,62,.16)" stroke-width=".07"></line>
+          <line x1="59" y1="20" x2="66" y2="56.25" stroke="rgba(110,88,62,.16)" stroke-width=".07"></line>
+          <line x1="50" y1="20" x2="50" y2="56.25" stroke="rgba(110,88,62,.20)" stroke-width=".07"></line>
+          <!-- 横向褶（越近越疏） -->
+          <line x1="43.4" y1="26" x2="56.6" y2="26" stroke="rgba(110,88,62,.14)" stroke-width=".07"></line>
+          <line x1="39" y1="34" x2="61" y2="34" stroke="rgba(110,88,62,.12)" stroke-width=".07"></line>
+          <line x1="32" y1="44" x2="68" y2="44" stroke="rgba(110,88,62,.1)" stroke-width=".07"></line>
+        </svg>
+        <!-- 桌面光池 -->
+        <div style="position:absolute;left:50%;top:22cqw;width:52cqw;height:22cqw;margin-left:-26cqw;
+          background:radial-gradient(closest-side,rgba(255,238,196,.42),rgba(255,238,196,0) 74%)"></div>
+
+        <!-- 烛台：三对，沿中轴成对 -->
+        <!-- 远端一对 -->
+        <div style="position:absolute;left:46.4cqw;bottom:31cqw;width:1.2cqw;height:6.4cqw;z-index:6">
+          <div style="position:absolute;left:50%;bottom:0;width:1.2cqw;height:.4cqw;margin-left:-.6cqw;
+            background:linear-gradient(180deg,#EBD9AA,#8E6A19);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.3cqw;width:.55cqw;height:4.6cqw;margin-left:-.275cqw;
+            background:linear-gradient(90deg,#C9AE80,#FFFDF2 50%,#A98B5C)"></div>
+          <div style="position:absolute;left:50%;bottom:5.6cqw;width:.6cqw;height:1.9cqw;margin-left:-.3cqw;
+            background:radial-gradient(52% 46% at 50% 64%,#FFFBEC,#F7C766 52%,rgba(232,149,47,0) 100%);
+            border-radius:50% 50% 44% 44%/58% 58% 42% 42%"></div>
+        </div>
+        <div style="position:absolute;right:46.4cqw;bottom:31cqw;width:1.2cqw;height:6.4cqw;z-index:6">
+          <div style="position:absolute;left:50%;bottom:0;width:1.2cqw;height:.4cqw;margin-left:-.6cqw;
+            background:linear-gradient(180deg,#EBD9AA,#8E6A19);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.3cqw;width:.55cqw;height:4.6cqw;margin-left:-.275cqw;
+            background:linear-gradient(90deg,#C9AE80,#FFFDF2 50%,#A98B5C)"></div>
+          <div style="position:absolute;left:50%;bottom:5.6cqw;width:.6cqw;height:1.9cqw;margin-left:-.3cqw;
+            background:radial-gradient(52% 46% at 50% 64%,#FFFBEC,#F7C766 52%,rgba(232,149,47,0) 100%);
+            border-radius:50% 50% 44% 44%/58% 58% 42% 42%"></div>
+        </div>
+
+        <!-- 中段一对 -->
+        <div class="candle" style="left:37.4cqw;bottom:22cqw;z-index:7;width:1.7cqw;height:9.4cqw">
+          <div style="position:absolute;left:50%;bottom:0;width:1.6cqw;height:.5cqw;margin-left:-.8cqw;
+            background:linear-gradient(180deg,#EBD9AA,#8E6A19);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.45cqw;width:.75cqw;height:6.6cqw;margin-left:-.375cqw;
+            background:linear-gradient(90deg,#C9AE80,#FFFDF2 50%,#A98B5C)"></div>
+          <div style="position:absolute;left:50%;bottom:7.6cqw;width:.9cqw;height:2.7cqw;margin-left:-.45cqw;
+            background:radial-gradient(52% 46% at 50% 64%,#FFFBEC,#F7C766 52%,rgba(232,149,47,0) 100%);
+            border-radius:50% 50% 44% 44%/58% 58% 42% 42%"></div>
+        </div>
+        <div class="glow" style="left:34cqw;bottom:26cqw;width:10cqw;height:10cqw;z-index:4;
+          background:radial-gradient(circle,rgba(247,196,96,.24),rgba(247,196,96,0) 66%)"></div>
+        <div class="candle" style="right:37.4cqw;bottom:22cqw;z-index:7;width:1.7cqw;height:9.4cqw">
+          <div style="position:absolute;left:50%;bottom:0;width:1.6cqw;height:.5cqw;margin-left:-.8cqw;
+            background:linear-gradient(180deg,#EBD9AA,#8E6A19);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.45cqw;width:.75cqw;height:6.6cqw;margin-left:-.375cqw;
+            background:linear-gradient(90deg,#C9AE80,#FFFDF2 50%,#A98B5C)"></div>
+          <div style="position:absolute;left:50%;bottom:7.6cqw;width:.9cqw;height:2.7cqw;margin-left:-.45cqw;
+            background:radial-gradient(52% 46% at 50% 64%,#FFFBEC,#F7C766 52%,rgba(232,149,47,0) 100%);
+            border-radius:50% 50% 44% 44%/58% 58% 42% 42%"></div>
+        </div>
+        <div class="glow" style="right:34cqw;bottom:26cqw;width:10cqw;height:10cqw;z-index:4;
+          background:radial-gradient(circle,rgba(247,196,96,.24),rgba(247,196,96,0) 66%)"></div>
+
+        <!-- 近端一对 -->
+        <div class="candle" style="left:24cqw;bottom:11cqw;z-index:8;width:2.4cqw;height:14cqw">
+          <div style="position:absolute;left:50%;bottom:0;width:2.4cqw;height:.7cqw;margin-left:-1.2cqw;
+            background:linear-gradient(180deg,#EBD9AA,#8E6A19);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.6cqw;width:.3cqw;height:3.2cqw;margin-left:-.15cqw;
+            background:#B08C3E"></div>
+          <div style="position:absolute;left:50%;bottom:3.6cqw;width:1.1cqw;height:9.4cqw;margin-left:-.55cqw;
+            background:linear-gradient(90deg,#C9AE80,#FFFDF2 48%,#A98B5C)"></div>
+          <div style="position:absolute;left:50%;bottom:12.9cqw;width:1.3cqw;height:3.9cqw;margin-left:-.65cqw;
+            background:radial-gradient(52% 46% at 50% 64%,#FFFBEC,#FFF0BE 24%,#F7C766 52%,rgba(232,149,47,0) 100%);
+            border-radius:50% 50% 44% 44%/58% 58% 42% 42%"></div>
+        </div>
+        <div class="glow" style="left:20cqw;bottom:18cqw;width:15cqw;height:15cqw;z-index:4;
+          background:radial-gradient(circle,rgba(247,196,96,.26),rgba(247,196,96,0) 68%)"></div>
+        <div class="candle" style="right:24cqw;bottom:11cqw;z-index:8;width:2.4cqw;height:14cqw">
+          <div style="position:absolute;left:50%;bottom:0;width:2.4cqw;height:.7cqw;margin-left:-1.2cqw;
+            background:linear-gradient(180deg,#EBD9AA,#8E6A19);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.6cqw;width:.3cqw;height:3.2cqw;margin-left:-.15cqw;
+            background:#B08C3E"></div>
+          <div style="position:absolute;left:50%;bottom:3.6cqw;width:1.1cqw;height:9.4cqw;margin-left:-.55cqw;
+            background:linear-gradient(90deg,#C9AE80,#FFFDF2 48%,#A98B5C)"></div>
+          <div style="position:absolute;left:50%;bottom:12.9cqw;width:1.3cqw;height:3.9cqw;margin-left:-.65cqw;
+            background:radial-gradient(52% 46% at 50% 64%,#FFFBEC,#FFF0BE 24%,#F7C766 52%,rgba(232,149,47,0) 100%);
+            border-radius:50% 50% 44% 44%/58% 58% 42% 42%"></div>
+        </div>
+        <div class="glow" style="right:20cqw;bottom:18cqw;width:15cqw;height:15cqw;z-index:4;
+          background:radial-gradient(circle,rgba(247,196,96,.26),rgba(247,196,96,0) 68%)"></div>
+
+        <!-- 酒杯一对（中段，桌上） -->
+        <div style="position:absolute;left:41.4cqw;bottom:26.4cqw;width:4cqw;height:8.6cqw;z-index:7">
+          <div style="position:absolute;left:50%;bottom:0;width:2.6cqw;height:.3cqw;margin-left:-1.3cqw;
+            background:rgba(240,228,204,.55);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.25cqw;width:.16cqw;height:2.8cqw;margin-left:-.08cqw;
+            background:rgba(240,228,204,.5)"></div>
+          <div style="position:absolute;left:50%;bottom:3cqw;width:2.4cqw;height:3.4cqw;margin-left:-1.2cqw;
+            border:.08cqw solid rgba(255,246,220,.5);border-radius:6% 6% 50% 50%/3% 3% 97% 97%;
+            background:rgba(240,228,204,.16)"></div>
+          <div style="position:absolute;left:50%;bottom:3.2cqw;width:2cqw;height:1.6cqw;margin-left:-1cqw;
+            background:linear-gradient(180deg,#8E3038,#51161D);border-radius:6% 6% 50% 50%/3% 3% 97% 97%"></div>
+        </div>
+        <div style="position:absolute;right:41.4cqw;bottom:26.4cqw;width:4cqw;height:8.6cqw;z-index:7">
+          <div style="position:absolute;left:50%;bottom:0;width:2.6cqw;height:.3cqw;margin-left:-1.3cqw;
+            background:rgba(240,228,204,.55);border-radius:50%"></div>
+          <div style="position:absolute;left:50%;bottom:.25cqw;width:.16cqw;height:2.8cqw;margin-left:-.08cqw;
+            background:rgba(240,228,204,.5)"></div>
+          <div style="position:absolute;left:50%;bottom:3cqw;width:2.4cqw;height:3.4cqw;margin-left:-1.2cqw;
+            border:.08cqw solid rgba(255,246,220,.5);border-radius:6% 6% 50% 50%/3% 3% 97% 97%;
+            background:rgba(240,228,204,.16)"></div>
+          <div style="position:absolute;left:50%;bottom:3.2cqw;width:2cqw;height:1.6cqw;margin-left:-1cqw;
+            background:linear-gradient(180deg,#8E3038,#51161D);border-radius:6% 6% 50% 50%/3% 3% 97% 97%"></div>
+        </div>
+
+        <!-- 近景一只杯（大，切边） -->
+        <div style="position:absolute;left:50%;bottom:-3.4cqw;width:14cqw;height:19cqw;margin-left:-7cqw;z-index:9">
+          <div style="position:absolute;left:50%;bottom:6cqw;width:13cqw;height:14cqw;margin-left:-6.5cqw;
+            border:.2cqw solid rgba(255,246,220,.42);border-radius:6% 6% 50% 50%/3% 3% 97% 97%;
+            background:linear-gradient(180deg,rgba(240,228,204,.16),rgba(240,228,204,.05))"></div>
+          <div style="position:absolute;left:50%;bottom:6.6cqw;width:11.4cqw;height:7cqw;margin-left:-5.7cqw;
+            background:linear-gradient(180deg,#8E3038,#4A1219);border-radius:6% 6% 50% 50%/3% 3% 97% 97%;opacity:.92"></div>
+          <div style="position:absolute;left:50%;bottom:19.4cqw;width:12.6cqw;height:.3cqw;margin-left:-6.3cqw;
+            background:rgba(255,250,232,.8);border-radius:50%;filter:blur(.06cqw)"></div>
+        </div>
+
+        <!-- 中轴文字 -->
+        <div style="position:absolute;left:50%;top:2.2cqw;transform:translateX(-50%);z-index:10;text-align:center">
+          <div style="font-family:var(--f-mono);font-size:.74cqw;letter-spacing:.4em;color:rgba(201,162,39,.85)">
+            BANQUET · ONE-POINT PERSPECTIVE</div>
+          <div class="serifit" style="margin-top:.6cqw;font-size:2.1cqw;color:#F5EBD6;
+            text-shadow:0 .2cqw 1.2cqw rgba(0,0,0,.7)">左边一份，右边一份</div>
+        </div>
+
+        <div style="position:absolute;left:4cqw;bottom:2.4cqw;z-index:10;font-family:var(--f-mono);
+          font-size:.8cqw;line-height:1.9;letter-spacing:.08em;color:rgba(240,228,204,.55)">
+          烛台 3 对 · 酒杯 2 对 · 肖像 2 幅<br>全部沿中轴镜像</div>
+        <div style="position:absolute;inset:0;pointer-events:none;z-index:12;background:
+          radial-gradient(74% 66% at 50% 42%,rgba(8,6,5,0) 40%,rgba(8,6,5,.72) 100%)"></div>
+      </div>
+      <div class="body">
+        <h3><span class="idx">03</span>宴席式对称陈列<small>Symmetrical Banquet Staging</small></h3>
+        <p>长桌是最好的对称机器：一条灭点在中轴的透视线，所有器物沿它左右成对，越近越大、越远越密。肖像故意保留平直边缘和一点偏转——拼贴的"假"是允许的，只要中轴不乱。近景那只切边的酒杯负责给画面重量，没有它，桌子会显得悬空。</p>
+        <div class="tags"><span class="k">识别要素</span><span class="tag">一点透视</span><span class="tag">成对器物</span>
+          <span class="tag">平面边缘拼贴</span><span class="tag">近景切边</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <h2>AI 创作视觉规则 <span>RULES &amp; PROMPT</span></h2>
+  <div class="rules">
+    <div><b>四种材料，四个明度</b>棕黑（底）→ 木褐（中）→ 奶油纸（亮）→ 暖金（点）。每一层只做一件事，不要用同一种金色同时当底色和高光。</div>
+    <div><b>柔亮高光，硬金属线</b>玻璃与丝绸用宽而软的高光（模糊半径大、亮度低）；金属边框与烛台用窄而硬的亮线。两种高光混用，材质才分得开。</div>
+    <div><b>衬线正文＋书法标题</b>正文用衬线、字号小、字距正常；标题用书法或斜体衬线、字号至少大 5 倍。歌词与条款写进道具，不做画面外的字幕块。</div>
+    <div><b>产品近景＋浅景深</b>镜头贴到器物上，前后景用散景糊掉。景深越浅，越像奢侈品广告；全景多留一件亮物即可，不要满桌都亮。</div>
+  </div>
+  <div class="prompt"><b>PROMPT · 要素组合</b>古典奢华视觉（Classical Luxury Aesthetics）三维音乐短片：暖金金属、奶油色合同纸、深色帷幕、丝绸与烛光，酒杯、戒指、丝带和印章精致陈列。卧室与宴席采用对称构图，局部加入保留平面边缘的人物肖像拼贴。衬线正文和书法式歌词写在金边牌、合同与纸条上，通过产品近景、浅景深与柔和高光突出物件。</div>
+
+  <footer>样例说明：本页帷幕、金框、烛台、蜡烛火焰、酒杯、契约纸、印章、丝带与全部文字，均为 HTML / CSS / SVG 现场绘制，未使用外部图片或来源视频画面。子风格依据 <code>styles/古典奢华视觉.md</code>。</footer>
+</div>
+</body>
+</html>
