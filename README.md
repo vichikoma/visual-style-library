@@ -1,17 +1,8 @@
 # 视觉风格合集 · Visual Style Library
 
-25 种视觉风格的设计参考库：每个风格一页独立 HTML，**画面全部用 CSS / SVG / Canvas 现场绘制**，不引用任何外部图片与视频截图，可离线打开、可直接当作分镜稿或生成提示的参考。
+25 种视觉风格的设计参考库：每个风格一页独立 HTML，**画面全部用 CSS / SVG / Canvas 现场绘制**，不引用任何外部图片与视频截图，可离线打开、可直接当作分镜稿或生成提示的参考。文字条目见 [风格合集](https://github.com/vichikoma/visual-style-library/blob/main/visual-style-collection.md)，在线页面见 [样例索引](https://vichikoma.github.io/visual-style-library/examples/)。
 
 [![25 种风格缩略图网格 · 点击打开在线索引](preview.png)](https://vichikoma.github.io/visual-style-library/examples/)
-
-## 每页结构
-
-| 区块 | 内容 |
-| --- | --- |
-| 风格概览 | 编号、标题、元信息、检索标签、色板 |
-| 主风格综合帧 | 一条 16:9 的主视觉（索引页的缩略图即此帧） |
-| 子风格拓展 | 3–4 个方向各一帧，附识别要点与参数标注 |
-| AI 创作视觉规则 | 三条要点 + 可直接改写的提示词 |
 
 ## 风格清单
 
